@@ -9,7 +9,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 router.post('/simple-pick-list/answer-action-plan-external', function(request, response){
     var actionPlanIsExternal = request.session.data["alreadyHaveActionPlan"]
 
-    if (actionPlanIsExternal) {
+    if (actionPlanIsExternal == "Yes") {
         response.redirect("external-action-plan")
     } else {
         response.redirect("choose-actions")
