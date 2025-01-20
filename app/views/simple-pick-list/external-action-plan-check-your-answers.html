@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Externally hosted action plan URL"
+            },
+            value: {
+              html: "<a href=\"https://example.com\">" + data.externalActionPlanURL + "</a>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Externally hosted action plan URL"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Now confirm your submission
+      </h2>
+
+      <form action="/confirmation" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

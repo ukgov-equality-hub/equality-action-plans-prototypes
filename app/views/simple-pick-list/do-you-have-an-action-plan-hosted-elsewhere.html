@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Do you already have an action plan hosted elsewhere? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Do you already have an action plan hosted elsewhere?
+      </h1>
+
+      <form class="form" action="answer-action-plan-external" method="post">
+
+        {{ govukRadios({
+          name: "alreadyHaveActionPlan",
+          fieldset: {
+          },
+          hint: {
+            text: "If you already have an action plan hosted elsewhere, e.g. on your website,
+          then you do not need to enter it in full on our service."
+          },
+          value: data.alreadyHaveActionPlan,
+          items: [
+            {
+              value: "true",
+              text: "Yes"
+            },
+            {
+              value: "false",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

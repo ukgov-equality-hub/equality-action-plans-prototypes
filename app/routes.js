@@ -6,4 +6,12 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
+router.post('/simple-pick-list/answer-action-plan-external', function(request, response){
+    var actionPlanIsExternal = request.session.data["alreadyHaveActionPlan"]
+
+    if (actionPlanIsExternal) {
+        response.redirect("external-action-plan")
+    } else {
+        response.redirect("choose-actions")
+    }
+})

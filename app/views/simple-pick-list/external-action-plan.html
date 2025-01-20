@@ -1,0 +1,43 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Where is your action plan? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Where is your action plan?
+      </h1>
+
+      <form class="form" action="external-action-plan-check-your-answers" method="post">
+
+        {{ govukInput({
+          id: "",
+          name: "externalActionPlanURL",
+          hint: {
+            text: "Please provide a URL where your action plan can be seen by the public. Include the https://"
+          },
+          value: data.externalActionPlanURL
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
