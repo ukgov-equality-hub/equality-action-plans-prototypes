@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Complete list of possible suggested actions – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Suggested actions - reference
+      </h1>
+
+      <p>
+        This is a complete list of all the suggested actions in our service.
+        Use this as a reference when constructing your action plan.
+      </p>
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {{ govukTable({
+        caption: "Complete list of suggested actions",
+        firstCellIsHeader: true,
+        head: [
+          {
+          },
+          {
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Set internal targets for gender representation and equality"
+            },
+            {
+              html: "<a href=\"\">More information</a>"
+            }
+          ],
+          [
+            {
+              text: "Appoint employment equity leads and/or task forces"
+            },
+            {
+              html: "<a href=\"\">More information</a>"
+            }
+          ],
+          [
+            {
+              text: "Offer flexible working by default in job adverts"
+            },
+            {
+              html: "<a href=\"\">More information</a>"
+            }
+          ],
+          [
+            {
+              colspan: 2,
+              html:
+                "Other<br/><br/>
+                <p class=\"hint\">You can use this action to represent any other actions you are taking that are not covered elsewhere in this list</p>"
+            }
+          ]
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
