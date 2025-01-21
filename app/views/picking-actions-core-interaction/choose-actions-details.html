@@ -1,0 +1,104 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Choose actions for your action plan – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose actions for your action plan
+      </h1>
+
+      <p>Select all the actions you will commit to in your action plan.</p>
+      <p>This will be visible in your public record on this service.</p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form class="form govuk-!-margin-top-4" action="/path/of/next/page" method="post">
+
+        {#  NOTE: The details links in the hint sections probably do not work in screen readers!
+            See https://design-system.service.gov.uk/components/checkboxes/ - "Checkbox items with hints"
+            This pattern should be tested with screen readers, and if necessary redeveloped,
+            before implementation into a working platform. #}
+
+        {{ govukCheckboxes({
+          name: "actions",
+          values: data.actions,
+          items: [
+            {
+              value: "targets",
+              text: "Set internal targets for gender representation and equality",
+              hint: {
+                html: govukDetails({
+                  summaryText: "Why choose this?",
+                  text: "Targets provide motivation and accountability, meaning that change is
+                    more likely to happen. General goals such as “we will change our culture to be more inclusive”
+                    are not effective unless they are accompanied by specific targets.",
+                  classes: "govuk-!-margin-bottom-3"
+                })
+              }
+            },
+            {
+              value: "equity-leads-or-task-forces",
+              text: "Appoint employment equity leads and/or task forces",
+              hint: {
+                html: govukDetails({
+                  summaryText: "Why choose this?",
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.",
+                  classes: "govuk-!-margin-bottom-3"
+                })
+              }
+            },
+            {
+              value: "flexible-working",
+              text: "Offer flexible working by default in job adverts",
+              hint: {
+                html: govukDetails({
+                  summaryText: "Why choose this?",
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.",
+                  classes: "govuk-!-margin-bottom-3"
+                })
+              }
+            },
+            {
+              value: "structured-interviews",
+              text: "Use structured interviews for recruitment and promotions",
+              hint: {
+                html: govukDetails({
+                  summaryText: "Why choose this?",
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.",
+                  classes: "govuk-!-margin-bottom-3"
+                })
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Choose actions for your action plan – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose actions for your action plan
+      </h1>
+
+      <p>Select all the actions you will commit to in your action plan.</p>
+      <p>This will be visible in your public record on this service.</p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form class="form govuk-!-margin-top-7" action="/path/of/next/page" method="post">
+
+        {{ govukAccordion({
+          id: "",
+          items: [
+            {
+              heading: {
+                html: "
+                  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">
+                    <div class=\"govuk-checkboxes__item\">
+                      <input class=\"govuk-checkboxes__input\" id=\"actions-1\" name=\"actions\" type=\"checkbox\" value=\"targets\">
+                      <label class=\"govuk-checkboxes__label\" for=\"actions-1\">
+                        Set internal targets for gender representation and equality
+                      </label>
+                    </div>
+                  </div>
+                "
+              },
+              content: {
+                html: "
+                  <p>
+                    Targets provide motivation and accountability, meaning that change is
+                    more likely to happen.
+                  </p>
+                  <p>
+                    General goals such as “we will change our culture to be more inclusive”
+                    are not effective unless they are accompanied by specific goals.
+                  </p>
+                "
+              }
+            },
+            {
+              heading: {
+                text: "Appoint employment equity leads and/or task forces"
+              },
+              content: {
+                html: "Content two HTML"
+              }
+            },
+            {
+              heading: {
+                text: "Offer flexible working by default in job adverts"
+              },
+              content: {
+                html: "Content three HTML"
+              }
+            },
+            {
+              heading: {
+                text: "Use structured interviews for recruitment and promotions"
+              },
+              content: {
+                html: "Content four HTML"
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
