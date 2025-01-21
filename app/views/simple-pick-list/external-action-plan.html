@@ -25,8 +25,11 @@ Where is your action plan? – {{ serviceName }} – GOV.UK Prototype Kit
         {{ govukInput({
           id: "",
           name: "externalActionPlanURL",
+          label: {
+            text: "Please provide a URL where your action plan can be seen by the public."
+          },
           hint: {
-            text: "Please provide a URL where your action plan can be seen by the public. Include the https://"
+            text: "Include the https://"
           },
           value: data.externalActionPlanURL
         }) }}
