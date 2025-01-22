@@ -1,11 +1,11 @@
-﻿
+
 locals {
   main_app_elastic_beanstalk_solution_stack_name = "64bit Amazon Linux 2023 v6.4.1 running Node.js 22"
   main_app_elastic_beanstalk_ec2_instance_type = "t4g.nano"
   main_app_elastic_beanstalk_root_volume_size = 8  // Disk space (in GB) to give each EC2 instance
 
   main_app_elastic_beanstalk_min_instances = 1
-  main_app_elastic_beanstalk_max_instances = 1
+  main_app_elastic_beanstalk_max_instances = 2
 
   main_app_elastic_beanstalk_health_check_path = "/"  // It would be nice if this was a dedicated "/health-check" endpoint that's unauthenticated
   main_app_elastic_beanstalk_health_check_matcher_http_code = 200
