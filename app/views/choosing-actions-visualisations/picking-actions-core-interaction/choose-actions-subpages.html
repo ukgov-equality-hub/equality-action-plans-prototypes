@@ -32,13 +32,13 @@
             title: {
               text: "Set internal targets for gender representation and equality"
             },
-            href: "#",
+            href: "choose-actions-subpages/targets",
             status: {
               tag: {
                 text: "Selected",
                 classes: "govuk-tag--turquoise"
               }
-            } if true else {
+            } if data['choosingActions.tasks.selected'] == "Yes" else {
               text: "Not selected"
             }
           },
