@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% macro status(name, id) %}
+<div class="govuk-task-list__status" id="{{id}}">
+  {{ if(name=="test")}}<strong class="govuk-tag govuk-tag--blue">{{endif}}
+    Incomplete
+    {{ if(name=="test")}}</strong>{{endif}}
+</div>
+{% endmacro %}
+
+{% block pageTitle %}
+  Choose actions for your action plan – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose actions for your action plan
+      </h1>
+
+      <p>Below is the full list of actions that can be included in your action plan.</p>
+      <p>You can click through on each action to find more information, and decide whether to include it.</p>
+
+      {{ govukTaskList({
+        idPrefix: "actions",
+        items: [
+          {
+            title: {
+              text: "Set internal targets for gender representation and equality"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "Selected",
+                classes: "govuk-tag--turquoise"
+              }
+            } if true else {
+              text: "Not selected"
+            }
+          },
+          {
+            title: {
+              text: "Appoint employment equity leads and/or task forces"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "Selected",
+                classes: "govuk-tag--turquoise"
+              }
+            } if false else {
+              text: "Not selected"
+            }
+          },
+          {
+            title: {
+              text: "Offer flexible working by default in job adverts"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "Selected",
+                classes: "govuk-tag--turquoise"
+              }
+            } if false else {
+              text: "Not selected"
+            }
+          },
+          {
+            title: {
+              text: "Use structured interviews for recruitment and promotions"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "Selected",
+                classes: "govuk-tag--turquoise"
+              }
+            } if false else {
+              text: "Not selected"
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
