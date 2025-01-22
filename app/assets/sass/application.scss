@@ -8,6 +8,9 @@
 }
 
 .review-note {
-    color: govuk-colour("orange");
+    border: solid 2px black;
+    @include govuk-responsive-padding(2);
+    background-color: mix(govuk-colour("orange"), white, 25%);
+    color: $govuk-secondary-text-colour;
     font-style: italic;
 }
