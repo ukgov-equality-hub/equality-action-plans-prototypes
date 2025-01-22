@@ -25,67 +25,77 @@
       <p>Below is the full list of actions that can be included in your action plan.</p>
       <p>You can click through on each action to find more information, and decide whether to include it.</p>
 
-      {{ govukTaskList({
-        idPrefix: "actions",
-        items: [
-          {
-            title: {
-              text: "Set internal targets for gender representation and equality"
-            },
-            href: "choose-actions-subpages/targets",
-            status: {
-              tag: {
-                text: "Selected",
-                classes: "govuk-tag--turquoise"
+      <form action="choose-actions-subpages/submitted" method="post">
+
+        {{ govukTaskList({
+          idPrefix: "actions",
+          items: [
+            {
+              title: {
+                text: "Set internal targets for gender representation and equality"
+              },
+              href: "choose-actions-subpages/targets",
+              status: {
+                tag: {
+                  text: "Selected",
+                  classes: "govuk-tag--turquoise"
+                }
+              } if data['choosingActions.tasks.selected'] == "Yes" else {
+                text: "Not selected"
               }
-            } if data['choosingActions.tasks.selected'] == "Yes" else {
-              text: "Not selected"
-            }
-          },
-          {
-            title: {
-              text: "Appoint employment equity leads and/or task forces"
             },
-            href: "#",
-            status: {
-              tag: {
-                text: "Selected",
-                classes: "govuk-tag--turquoise"
+            {
+              title: {
+                text: "Appoint employment equity leads and/or task forces"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Selected",
+                  classes: "govuk-tag--turquoise"
+                }
+              } if false else {
+                text: "Not selected"
               }
-            } if false else {
-              text: "Not selected"
-            }
-          },
-          {
-            title: {
-              text: "Offer flexible working by default in job adverts"
             },
-            href: "#",
-            status: {
-              tag: {
-                text: "Selected",
-                classes: "govuk-tag--turquoise"
+            {
+              title: {
+                text: "Offer flexible working by default in job adverts"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Selected",
+                  classes: "govuk-tag--turquoise"
+                }
+              } if false else {
+                text: "Not selected"
               }
-            } if false else {
-              text: "Not selected"
-            }
-          },
-          {
-            title: {
-              text: "Use structured interviews for recruitment and promotions"
             },
-            href: "#",
-            status: {
-              tag: {
-                text: "Selected",
-                classes: "govuk-tag--turquoise"
+            {
+              title: {
+                text: "Use structured interviews for recruitment and promotions"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Selected",
+                  classes: "govuk-tag--turquoise"
+                }
+              } if false else {
+                text: "Not selected"
               }
-            } if false else {
-              text: "Not selected"
             }
-          }
-        ]
-      }) }}
+          ]
+        }) }}
+
+        <p>When you are happy with your plan, click below to submit it to our service.</p>
+
+        {{ govukButton({
+          text: "Submit action plan"
+        }) }}
+
+      </form>
 
     </div>
   </div>
