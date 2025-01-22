@@ -24,15 +24,16 @@
       <p>Select all the actions you will commit to in your action plan.</p>
       <p>This will be visible in your public record on this service.</p>
 
+      <p class="review-note">
+        Note: The details links in the hint sections probably do not work in screen readers. See
+        <a href="https://design-system.service.gov.uk/components/checkboxes/">GOV.UK checkboxes</a>
+         - "Checkbox items with hints".
+      </p>
+
     </div>
     <div class="govuk-grid-column-full">
 
       <form class="form govuk-!-margin-top-4" action="/path/of/next/page" method="post">
-
-        {#  NOTE: The details links in the hint sections probably do not work in screen readers!
-            See https://design-system.service.gov.uk/components/checkboxes/ - "Checkbox items with hints"
-            This pattern should be tested with screen readers, and if necessary redeveloped,
-            before implementation into a working platform. #}
 
         {{ govukCheckboxes({
           name: "actions",
