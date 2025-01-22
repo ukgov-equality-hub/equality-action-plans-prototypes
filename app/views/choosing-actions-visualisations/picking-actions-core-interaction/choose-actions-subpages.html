@@ -48,13 +48,13 @@
               title: {
                 text: "Appoint employment equity leads and/or task forces"
               },
-              href: "#",
+              href: "choose-actions-subpages/equity-leads",
               status: {
                 tag: {
                   text: "Selected",
                   classes: "govuk-tag--turquoise"
                 }
-              } if false else {
+              } if data['choosingActions.equity-leads.selected'] == "Yes" else {
                 text: "Not selected"
               }
             },
@@ -62,13 +62,13 @@
               title: {
                 text: "Offer flexible working by default in job adverts"
               },
-              href: "#",
+              href: "choose-actions-subpages/flexible-working",
               status: {
                 tag: {
                   text: "Selected",
                   classes: "govuk-tag--turquoise"
                 }
-              } if false else {
+              } if data['choosingActions.flexible-working.selected'] == "Yes" else {
                 text: "Not selected"
               }
             },
@@ -76,13 +76,13 @@
               title: {
                 text: "Use structured interviews for recruitment and promotions"
               },
-              href: "#",
+              href: "choose-actions-subpages/structured-interviews",
               status: {
                 tag: {
                   text: "Selected",
                   classes: "govuk-tag--turquoise"
                 }
-              } if false else {
+              } if data['choosingActions.structured-interviews.selected'] == "Yes" else {
                 text: "Not selected"
               }
             }

@@ -19,19 +19,19 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Set internal targets for gender representation and equality
+        Appoint employment equity leads and/or task forces
       </h1>
 
       <p>
-        Targets provide motivation and accountability, meaning that change is more likely to happen.
-        General goals such as “we will change our culture to be more inclusive” are not effective
-        unless they are accompanied by specific targets.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat.
       </p>
 
       <form action="../choose-actions-subpages" method="post">
 
         {{ govukRadios({
-          name: "choosingActions.tasks.selected",
+          name: "choosingActions.equity-leads.selected",
           fieldset: {
             legend: {
               text: "Do you want to add this action to your action plan?",
@@ -39,7 +39,7 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data['choosingActions.tasks.selected'],
+          value: data['choosingActions.equity-leads.selected'],
           items: [
             {
               value: "Yes",
