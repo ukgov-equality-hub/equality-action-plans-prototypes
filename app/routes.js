@@ -6,7 +6,7 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-router.post('/simple-pick-list/answer-action-plan-external', function(request, response){
+router.post('/choosing-actions-visualisations/simple-pick-list/answer-action-plan-external', function(request, response){
     var actionPlanIsExternal = request.session.data["alreadyHaveActionPlan"]
 
     if (actionPlanIsExternal == "Yes") {
