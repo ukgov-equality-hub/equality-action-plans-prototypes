@@ -32,6 +32,11 @@ resource "aws_elastic_beanstalk_application" "main_app_elastic_beanstalk_applica
 }
 
 
+data "aws_iam_instance_profile" "elastic_beanstalk" {
+  name = "aws-elasticbeanstalk-ec2-role"
+}
+
+
 resource "aws_elastic_beanstalk_environment" "main_app_elastic_beanstalk_environment" {
   name                = "${var.service_name_hyphens}--${var.environment_hyphens}--EB-Env"
   application         = aws_elastic_beanstalk_application.main_app_elastic_beanstalk_application.name
@@ -79,6 +84,12 @@ resource "aws_elastic_beanstalk_environment" "main_app_elastic_beanstalk_environ
     namespace = "aws:ec2:instances"
     name      = "InstanceTypes"
     value     = local.main_app_elastic_beanstalk_ec2_instance_type
+  }
+
+  setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name      = "IamInstanceProfile"
+    value     = data.aws_iam_instance_profile.elastic_beanstalk.name
   }
 
   setting {
