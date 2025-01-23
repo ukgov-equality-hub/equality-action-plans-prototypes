@@ -1,6 +1,6 @@
 
 locals {
-  main_app_elastic_beanstalk_solution_stack_name = "64bit Amazon Linux 2023 v6.4.1 running Node.js 22"
+  main_app_elastic_beanstalk_solution_stack_name = "64bit Amazon Linux 2023 v6.4.1 running Node.js 20"
   main_app_elastic_beanstalk_ec2_instance_type = "t4g.nano"
   main_app_elastic_beanstalk_root_volume_size = 8  // Disk space (in GB) to give each EC2 instance
 
