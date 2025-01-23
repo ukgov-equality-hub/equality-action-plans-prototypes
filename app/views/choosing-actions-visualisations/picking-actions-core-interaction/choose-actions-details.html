@@ -35,63 +35,27 @@
 
       <form class="form govuk-!-margin-top-4" action="/path/of/next/page" method="post">
 
-        {{ govukCheckboxes({
-          name: "choosingActions[actions]",
-          items: [
-            {
-              value: "targets",
-              text: "Set internal targets for gender representation and equality",
-              hint: {
-                html: govukDetails({
-                  summaryText: "Why choose this?",
-                  text: "Targets provide motivation and accountability, meaning that change is
-                    more likely to happen. General goals such as “we will change our culture to be more inclusive”
-                    are not effective unless they are accompanied by specific targets.",
-                  classes: "govuk-!-margin-bottom-3"
-                })
-              }
-            },
-            {
-              value: "equity-leads",
-              text: "Appoint employment equity leads and/or task forces",
-              hint: {
-                html: govukDetails({
-                  summaryText: "Why choose this?",
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.",
-                  classes: "govuk-!-margin-bottom-3"
-                })
-              }
-            },
-            {
-              value: "flexible-working",
-              text: "Offer flexible working by default in job adverts",
-              hint: {
-                html: govukDetails({
-                  summaryText: "Why choose this?",
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.",
-                  classes: "govuk-!-margin-bottom-3"
-                })
-              }
-            },
-            {
-              value: "structured-interviews",
-              text: "Use structured interviews for recruitment and promotions",
-              hint: {
-                html: govukDetails({
-                  summaryText: "Why choose this?",
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.",
-                  classes: "govuk-!-margin-bottom-3"
-                })
-              }
-            }
-          ]
-        }) }}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              {% for action in data.db.actions %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="choosingActions[actions]" name="choosingActions[actions]" type="checkbox" value="{{action.shortCode}}" aria-describedby="choosingActions[actions]-item{{loop.index}}-hint">
+                  <label class="govuk-label govuk-checkboxes__label" for="choosingActions[actions]">
+                    {{ action.title }}
+                  </label>
+                  <div id="choosingActions[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
+                    {{ govukDetails({
+                      summaryText: "Why choose this?",
+                      text: action.description,
+                      classes: "govuk-!-margin-bottom-3"
+                    }) }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>
 
         {{ govukButton({
           text: "Continue"
