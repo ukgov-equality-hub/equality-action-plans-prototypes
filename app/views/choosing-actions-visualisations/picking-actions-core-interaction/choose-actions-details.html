@@ -36,8 +36,7 @@
       <form class="form govuk-!-margin-top-4" action="/path/of/next/page" method="post">
 
         {{ govukCheckboxes({
-          name: "actions",
-          values: data.actions,
+          name: "choosingActions[actions]",
           items: [
             {
               value: "targets",
@@ -53,7 +52,7 @@
               }
             },
             {
-              value: "equity-leads-or-task-forces",
+              value: "equity-leads",
               text: "Appoint employment equity leads and/or task forces",
               hint: {
                 html: govukDetails({

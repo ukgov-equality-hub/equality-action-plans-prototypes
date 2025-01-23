@@ -40,7 +40,7 @@
                   text: "Selected",
                   classes: "govuk-tag--turquoise"
                 }
-              } if data['choosingActions.tasks.selected'] == "Yes" else {
+              } if data.choosingActions['tasks'].selected == "Yes" else {
                 text: "Not selected"
               }
             },
@@ -54,7 +54,7 @@
                   text: "Selected",
                   classes: "govuk-tag--turquoise"
                 }
-              } if data['choosingActions.equity-leads.selected'] == "Yes" else {
+              } if data.choosingActions['equity-leads'].selected == "Yes" else {
                 text: "Not selected"
               }
             },
@@ -68,7 +68,7 @@
                   text: "Selected",
                   classes: "govuk-tag--turquoise"
                 }
-              } if data['choosingActions.flexible-working.selected'] == "Yes" else {
+              } if data.choosingActions['flexible-working'].selected == "Yes" else {
                 text: "Not selected"
               }
             },
@@ -82,7 +82,7 @@
                   text: "Selected",
                   classes: "govuk-tag--turquoise"
                 }
-              } if data['choosingActions.structured-interviews.selected'] == "Yes" else {
+              } if data.choosingActions['structured-interviews'].selected == "Yes" else {
                 text: "Not selected"
               }
             }

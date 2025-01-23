@@ -31,7 +31,7 @@
       <form action="../choose-actions-subpages" method="post">
 
         {{ govukRadios({
-          name: "choosingActions.structured-interviews.selected",
+          name: "choosingActions[structured-interviews][selected]",
           fieldset: {
             legend: {
               text: "Do you want to add this action to your action plan?",
@@ -39,7 +39,7 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data['choosingActions.structured-interviews.selected'],
+          value: data.choosingActions['structured-interviews'].selected,
           items: [
             {
               value: "Yes",
