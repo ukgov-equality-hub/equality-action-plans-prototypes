@@ -8,7 +8,7 @@ locals {
   main_app_elastic_beanstalk_max_instances = 2
 
   main_app_elastic_beanstalk_health_check_path = "/"  // It would be nice if this was a dedicated "/health-check" endpoint that's unauthenticated
-  main_app_elastic_beanstalk_health_check_matcher_http_code = 200
+  main_app_elastic_beanstalk_health_check_matcher_http_code = "200,302"  // Normally this would be 200, but because the health checker won't be logged in, the prototype will respond with a 302 to the login screen
 }
 
 
