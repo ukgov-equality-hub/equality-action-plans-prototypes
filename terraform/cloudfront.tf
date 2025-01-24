@@ -3,6 +3,10 @@ data "aws_cloudfront_cache_policy" "cloudfront_cache_policy__managed_caching_dis
   name = "Managed-CachingDisabled"
 }
 
+data "aws_cloudfront_origin_request_policy" "cloudfront_origin_request_policy__managed_all_viewer" {
+  name = "Managed-AllViewer"
+}
+
 locals {
   distribution__origin_id = "${var.service_name_hyphens}--${var.environment_hyphens}--origin"
 }
@@ -44,9 +48,9 @@ resource "aws_cloudfront_distribution" "distribution" {
     cached_methods = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = local.distribution__origin_id
     cache_policy_id = data.aws_cloudfront_cache_policy.cloudfront_cache_policy__managed_caching_disabled.id
+    origin_request_policy_id = data.aws_cloudfront_origin_request_policy.cloudfront_origin_request_policy__managed_all_viewer.id
     viewer_protocol_policy = "redirect-to-https"
     compress = true
-
   }
 
   restrictions {
