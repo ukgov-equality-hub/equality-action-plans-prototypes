@@ -33,11 +33,11 @@
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               {% for action in data.db.actions %}
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="choosingActions[actions]" name="choosingActions[actions]" type="checkbox" value="{{action.shortCode}}" aria-describedby="choosingActions[actions]-item{{loop.index}}-hint">
-                  <label class="govuk-label govuk-checkboxes__label" for="choosingActions[actions]">
+                  <input class="govuk-checkboxes__input" id="simplePickList[{{action.shortCode}}][selected]" name="simplePickList[{{action.shortCode}}][selected]" type="checkbox" value="Yes" {{ "checked" if data.simplePickList[action.shortCode].selected == 'Yes'}} aria-describedby="simplePickList[actions]-item{{loop.index}}-hint">
+                  <label class="govuk-label govuk-checkboxes__label" for="simplePickList[{{action.shortCode}}][selected]">
                     {{ action.title }}
                   </label>
-                  <div id="choosingActions[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
+                  <div id="simplePickList[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
                     {{ govukDetails({
                       summaryText: "Why choose this?",
                       text: action.description,
