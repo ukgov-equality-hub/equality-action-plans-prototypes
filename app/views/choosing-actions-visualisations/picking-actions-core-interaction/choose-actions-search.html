@@ -12,6 +12,8 @@
 }) }}
 {% endblock %}
 
+{% set searchMatches = data | search %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -57,16 +59,21 @@
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              {% if data.choosingActions.searchText and data.choosingActions.searchText != "" %}
+                <h2 class="govuk-fieldset__heading">
+                  {{searchMatches.length}} of {{data.db.actions.length}} actions shown
+                </h2>
+              {% endif %}
+            </legend>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              {% for action in data.db.actions %}
-                {% if not data.choosingActions.searchText or data.choosingActions.searchText == "" or action.title.toLowerCase().includes(data.choosingActions.searchText.toLowerCase()) %}
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="choosingActions[{{action.shortCode}}][selected]" name="choosingActions[{{action.shortCode}}][selected]" type="checkbox" value="Yes" {{"checked" if data.choosingActions[action.shortCode].selected == 'Yes'}} aria-describedby="choosingActions[actions]-item{{loop.index}}-hint">
-                    <label class="govuk-label govuk-checkboxes__label" for="choosingActions[{{action.shortCode}}][selected]">
-                      {{ action.title }}
-                    </label>
-                  </div>
-                {% endif %}
+              {% for action in searchMatches %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="choosingActions[{{action.shortCode}}][selected]" name="choosingActions[{{action.shortCode}}][selected]" type="checkbox" value="Yes" {{"checked" if data.choosingActions[action.shortCode].selected == 'Yes'}} aria-describedby="choosingActions[actions]-item{{loop.index}}-hint">
+                  <label class="govuk-label govuk-checkboxes__label" for="choosingActions[{{action.shortCode}}][selected]">
+                    {{ action.title }}
+                  </label>
+                </div>
               {% endfor %}
             </div>
           </fieldset>

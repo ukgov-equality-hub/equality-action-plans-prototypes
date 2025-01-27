@@ -6,5 +6,15 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const addFilter = govukPrototypeKit.views.addFilter
 
-// Add your filters here
+addFilter('search', function (data) {
+    var matches = [];
 
+    data.db.actions.forEach(action => {
+        if ((!data.choosingActions.searchText || data.choosingActions.searchText == "")
+            || action.title.toLowerCase().includes(data.choosingActions.searchText.toLowerCase())) {
+                matches.push(action);
+        }
+    });
+
+    return matches;
+})
