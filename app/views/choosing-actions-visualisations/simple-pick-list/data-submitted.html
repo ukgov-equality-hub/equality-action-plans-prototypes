@@ -1,0 +1,41 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Simple pick list" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Review your gender pay gap data
+      <br />
+      <span class="govuk-!-font-size-27 govuk-!-margin-top-3" style="display: inline-block; line-height: 1.3 !important;">
+        Reporting as SOFTWIRE TECHNOLOGY LIMITED
+        <br />
+        for snapshot date 5 April 2024
+      </span>
+    </h1>
+
+    {% include "/common/gpg-data-tables" %}
+
+    <div class="govuk-inset-text">
+      <p class="govuk-body">
+          Next you must create an action plan to address your gender pay gap.
+      </p>
+      <p class="govuk-body">
+          This service contains a list of actions proven to be effective, and you can choose
+          a selection that are appropriate for you given the patterns in your data.
+      </p>
+    </div>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "do-you-have-an-action-plan-hosted-elsewhere"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
