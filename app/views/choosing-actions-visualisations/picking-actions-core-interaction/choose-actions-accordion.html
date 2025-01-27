@@ -33,87 +33,32 @@
 
       <form class="form govuk-!-margin-top-7" action="/path/of/next/page" method="post">
 
-        {{ govukAccordion({
-          id: "",
-          items: [
-            {
-              heading: {
-                html: "
-                  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">
-                    <div class=\"govuk-checkboxes__item\">
-                      <input class=\"govuk-checkboxes__input\" id=\"actions-1\" name=\"choosingActions[actions]\" type=\"checkbox\" value=\"targets\">
-                      <label class=\"govuk-checkboxes__label\" for=\"actions-1\">
-                        Set internal targets for gender representation and equality
-                      </label>
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+
+          {% for action in data.db.actions %}
+
+            <div class="govuk-accordion__section">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="actions-{{loop.index}}" name="choosingActions[actions]" type="checkbox" value="{{action.shortCode}}">
+                        <label class="govuk-checkboxes__label" for="actions-{{loop.index}}">
+                          {{action.title}}
+                        </label>
+                      </div>
                     </div>
-                  </div>
-                "
-              },
-              content: {
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat."
-              }
-            },
-            {
-              heading: {
-                html: "
-                  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">
-                    <div class=\"govuk-checkboxes__item\">
-                      <input class=\"govuk-checkboxes__input\" id=\"actions-1\" name=\"choosingActions[actions]\" type=\"checkbox\" value=\"equity-leads\">
-                      <label class=\"govuk-checkboxes__label\" for=\"actions-1\">
-                        Appoint employment equity leads and/or task forces
-                      </label>
-                    </div>
-                  </div>
-                "
-              },
-              content: {
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat."
-              }
-            },
-            {
-              heading: {
-                html: "
-                  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">
-                    <div class=\"govuk-checkboxes__item\">
-                      <input class=\"govuk-checkboxes__input\" id=\"actions-1\" name=\"choosingActions[actions]\" type=\"checkbox\" value=\"flexible-working\">
-                      <label class=\"govuk-checkboxes__label\" for=\"actions-1\">
-                        Offer flexible working by default in job adverts
-                      </label>
-                    </div>
-                  </div>
-                "
-              },
-              content: {
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat."
-              }
-            },
-            {
-              heading: {
-                html: "
-                  <div class=\"govuk-checkboxes\" data-module=\"govuk-checkboxes\">
-                    <div class=\"govuk-checkboxes__item\">
-                      <input class=\"govuk-checkboxes__input\" id=\"actions-1\" name=\"choosingActions[actions]\" type=\"checkbox\" value=\"structured-interviews\">
-                      <label class=\"govuk-checkboxes__label\" for=\"actions-1\">
-                        Use structured interviews for recruitment and promotions
-                      </label>
-                    </div>
-                  </div>
-                "
-              },
-              content: {
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat."
-              }
-            }
-          ]
-        }) }}
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body">{{action.description}}</p>
+              </div>
+            </div>
+
+          {% endfor %}
+        </div>
 
         {{ govukButton({
           text: "Continue"
