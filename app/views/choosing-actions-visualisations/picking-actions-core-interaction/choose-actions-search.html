@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Choose actions for your action plan – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose actions for your action plan
+      </h1>
+
+      <p>Select all the actions you will commit to in your action plan.</p>
+      <p>This will be visible in your public record on this service.</p>
+
+      <form class="form" action="choose-actions-search" method="post">
+
+        <div class="govuk-form-group govuk-!-margin-bottom-3">
+          {{ govukInput({
+            id: "search-text",
+            name: "choosingActions[searchText]",
+            label: {
+              text: "Search",
+              isPageHeading: false,
+              classes: "govuk-label--s"
+            },
+            value: data.choosingActions.searchText,
+            classes: "govuk-!-width-one-half"
+          }) }}
+        </div>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Search",
+            classes: "govuk-button--secondary"
+          }) }}
+
+          {% if data.choosingActions.searchText and data.choosingActions.searchText != "" %}
+            <a class="govuk-link govuk-link--no-visited-state" href="./choose-actions-search?choosingActions[searchText]=">Clear search</a>
+          {% endif %}
+        </div>
+
+      </form>
+
+      <form class="form govuk-!-margin-top-4" action="/path/of/next/page" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              {% for action in data.db.actions %}
+                {% if not data.choosingActions.searchText or data.choosingActions.searchText == "" or action.title.toLowerCase().includes(data.choosingActions.searchText.toLowerCase()) %}
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="choosingActions[actions]" name="choosingActions[actions]" type="checkbox" value="{{action.shortCode}}" aria-describedby="choosingActions[actions]-item{{loop.index}}-hint">
+                    <label class="govuk-label govuk-checkboxes__label" for="choosingActions[actions]">
+                      {{ action.title }}
+                    </label>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
