@@ -30,9 +30,7 @@
 
           <li class="govuk-task-list__item govuk-task-list__item--with-link">
             <div class="govuk-task-list__name-and-hint">
-              <a class="govuk-link govuk-task-list__link" href="choose-actions-subpages/{{action.shortCode}}" aria-describedby="company-details-{{loop.index}}-status">
-                {{action.title}}
-              </a>
+              {{action.title}}
             </div>
             <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
               {% if data.choosingActions[action.shortCode].selected == "Yes" %}
