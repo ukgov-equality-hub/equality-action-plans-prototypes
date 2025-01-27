@@ -10,24 +10,34 @@
     <div class="govuk-grid-column-two-thirds">
 
       {{ govukPanel({
-        titleText: "Action plan submitted",
-        text: "We have received your action plan"
+        titleText: "Data and action plan submitted",
+        text: "You've submitted your gender pay gap data and action plan for the 2024-25 reporting year.",
+        classes: "govuk-!-margin-bottom-6"
       }) }}
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-6">
-        What happens next
+      <p>
+        Your gender pay gap information and action plan have now been published on the Gender pay gap service.
+      </p>
+      <p>
+        <a href="#">View your published gender pay gap information and action plan</a>
+      </p>
+
+      <h2 class="govuk-heading-s">
+        Next steps
       </h2>
 
       <p>
-        Your action plan is now publicly visible in your record on our service.
-      </p>
-      <p>
-        <a href="#">View your public record</a>
+        You must also publish your gender pay gap report (and <a href="#">written statement (opens in a new tab)</a>
+        if applicable) in a prominent place on your employer's public facing website.
       </p>
 
-      <p class="govuk-body govuk-!-margin-top-6"">
+      <p class="govuk-body govuk-!-margin-top-6">
         <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
       </p>
+
+      {{ govukButton({
+        text: "Sign out"
+      }) }}
 
     </div>
   </div>
