@@ -1,0 +1,70 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% block pageTitle %}
+  Choose actions for your action plan – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose actions for your action plan
+      </h1>
+
+      <p>
+        Below is the full list of actions that can be included in your action plan,
+        showing which ones you have selected.
+      </p>
+      <p>
+        Confirm your selection below, or return to the previous page to modify your selection.
+      </p>
+
+      <form action="#" method="post">
+
+        <ul class="govuk-task-list">
+          {% for action in data.db.actions %}
+
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="choose-actions-subpages/{{action.shortCode}}" aria-describedby="company-details-{{loop.index}}-status">
+                {{action.title}}
+              </a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
+              {% if data.choosingActions[action.shortCode].selected == "Yes" %}
+                <strong class="govuk-tag govuk-tag--turquoise">
+                  Selected
+                </strong>
+              {% else %}
+                Not selected
+              {% endif %}
+            </div>
+          </li>
+
+          {% endfor %}
+        </ul>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Submit action plan"
+          }) }}
+          <a href="./choose-actions-search" class="govuk-link">Return to action selection</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
