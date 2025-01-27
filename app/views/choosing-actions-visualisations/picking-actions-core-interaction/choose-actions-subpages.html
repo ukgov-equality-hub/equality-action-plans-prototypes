@@ -27,67 +27,28 @@
 
       <form action="choose-actions-subpages/submitted" method="post">
 
-        {{ govukTaskList({
-          idPrefix: "actions",
-          items: [
-            {
-              title: {
-                text: "Set internal targets for gender representation and equality"
-              },
-              href: "choose-actions-subpages/targets",
-              status: {
-                tag: {
-                  text: "Selected",
-                  classes: "govuk-tag--turquoise"
-                }
-              } if data.choosingActions['tasks'].selected == "Yes" else {
-                text: "Not selected"
-              }
-            },
-            {
-              title: {
-                text: "Appoint employment equity leads and/or task forces"
-              },
-              href: "choose-actions-subpages/equity-leads",
-              status: {
-                tag: {
-                  text: "Selected",
-                  classes: "govuk-tag--turquoise"
-                }
-              } if data.choosingActions['equity-leads'].selected == "Yes" else {
-                text: "Not selected"
-              }
-            },
-            {
-              title: {
-                text: "Offer flexible working by default in job adverts"
-              },
-              href: "choose-actions-subpages/flexible-working",
-              status: {
-                tag: {
-                  text: "Selected",
-                  classes: "govuk-tag--turquoise"
-                }
-              } if data.choosingActions['flexible-working'].selected == "Yes" else {
-                text: "Not selected"
-              }
-            },
-            {
-              title: {
-                text: "Use structured interviews for recruitment and promotions"
-              },
-              href: "choose-actions-subpages/structured-interviews",
-              status: {
-                tag: {
-                  text: "Selected",
-                  classes: "govuk-tag--turquoise"
-                }
-              } if data.choosingActions['structured-interviews'].selected == "Yes" else {
-                text: "Not selected"
-              }
-            }
-          ]
-        }) }}
+        <ul class="govuk-task-list">
+          {% for action in data.db.actions %}
+
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="choose-actions-subpages/{{action.shortCode}}" aria-describedby="company-details-{{loop.index}}-status">
+                {{action.title}}
+              </a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
+              {% if data.choosingActions[action.shortCode].selected == "Yes" %}
+                <strong class="govuk-tag govuk-tag--turquoise">
+                  Selected
+                </strong>
+              {% else %}
+                Not selected
+              {% endif %}
+            </div>
+          </li>
+
+          {% endfor %}
+        </ul>
 
         <p>When you are happy with your plan, click below to submit it to our service.</p>
 

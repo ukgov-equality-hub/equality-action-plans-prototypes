@@ -31,7 +31,7 @@
       <form action="../choose-actions-subpages" method="post">
 
         {{ govukRadios({
-          name: "choosingActions[tasks][selected]",
+          name: "choosingActions[targets][selected]",
           fieldset: {
             legend: {
               text: "Do you want to add this action to your action plan?",
@@ -39,7 +39,7 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data.choosingActions['tasks'].selected,
+          value: data.choosingActions['targets'].selected,
           items: [
             {
               value: "Yes",
