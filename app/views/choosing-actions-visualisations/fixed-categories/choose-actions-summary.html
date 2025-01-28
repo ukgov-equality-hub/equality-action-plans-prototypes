@@ -38,18 +38,18 @@
             <dd class="govuk-summary-list__value">
               {% set numberOfActions = 0 %}
               {% for action in data.db.actions %}
-                {% if action.category == category.shortCode and data.choosingActions[action.shortCode].selected == "Yes" %}
+                {% if action.category == category.shortCode and data.fixedCategories[action.shortCode].selected == "Yes" %}
                   {% set numberOfActions = numberOfActions + 1 %}
                 <p>{{action.title}}</p>
                 {% endif %}
               {% endfor %}
               {% if numberOfActions == 0 %}
-                <a class="govuk-link" href="choose-actions?category={{category.shortCode}}">Select actions</a>
+                <a class="govuk-link" href="choose-actions?fixedCategories['category']={{category.shortCode}}">Select actions</a>
               {% endif %}
             </dd>
             {% if numberOfActions != 0 %}
               <dd class="govuk-summary-list__actions actions-narrow">
-                <a class="govuk-link" href="choose-actions?category={{category.shortCode}}">Change</a>
+                <a class="govuk-link" href="choose-actions?fixedCategories['category']={{category.shortCode}}">Change</a>
               </dd>
             {% endif %}
           </div>

@@ -60,6 +60,54 @@ module.exports = {
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
           + ' aliquip ex ea commodo consequat.'
+      },
+      {
+        shortCode: 'remuneration-transparency',
+        category: 'promotion-and-retention',
+        title: 'Increase transparency to promotion, pay and reward processes',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
+          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
+          + ' aliquip ex ea commodo consequat.'
+      },
+      {
+        shortCode: 'promotion-application-by-default',
+        category: 'promotion-and-retention',
+        title: 'Default employees into applying for promotion or other competitive opportunities',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
+          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
+          + ' aliquip ex ea commodo consequat.'
+      },
+      {
+        shortCode: 'share-local-support-for-flexible-working',
+        category: 'flexibility',
+        title: 'Share local support for parental leave and flexible working',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
+          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
+          + ' aliquip ex ea commodo consequat.'
+      },
+      {
+        shortCode: 'flexible-working-available-to-all',
+        category: 'flexibility',
+        title: 'Make workplace or role adjustments available to everyone',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
+          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
+          + ' aliquip ex ea commodo consequat.'
+      },
+      {
+        shortCode: 'rest-areas',
+        category: 'menopause',
+        title: 'Provide rest areas or quiet rooms and fans/cooling systems',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
+          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
+          + ' aliquip ex ea commodo consequat.'
+      },
+      {
+        shortCode: 'relax-uniform-policies',
+        category: 'menopause',
+        title: 'Evaluate and relax uniform policies',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
+          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
+          + ' aliquip ex ea commodo consequat.'
       }
     ]
   }
