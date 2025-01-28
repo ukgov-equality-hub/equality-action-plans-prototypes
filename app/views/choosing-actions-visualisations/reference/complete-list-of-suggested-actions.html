@@ -10,7 +10,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-xl">
         Suggested actions - reference
       </h1>
 
@@ -18,19 +18,14 @@
         This is a complete list of all the suggested actions in our service.
         Use this as a reference when constructing your action plan.
       </p>
-    </div>
-    <div class="govuk-grid-column-full">
 
       {% for category in data.db.actionCategories %}
-        <h2 class="govuk-heading-m">{{category.title}}</h2>
+        <h2 class="govuk-heading-l">{{category.title}}</h2>
 
         {% for action in data.db.actions %}
           {% if action.category == category.shortCode %}
-            <p>{{action.title}}</p>
-            {{ govukDetails({
-              summaryText: "Show description",
-              text: action.description
-            }) }}
+            <h3 class="govuk-heading-m">{{action.title}}</h3>
+            <p>{{action.description}}</p>
           {% endif %}
         {% endfor %}
       {% endfor %}
