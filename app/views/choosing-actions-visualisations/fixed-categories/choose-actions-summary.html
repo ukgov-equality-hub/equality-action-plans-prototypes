@@ -44,12 +44,12 @@
                 {% endif %}
               {% endfor %}
               {% if numberOfActions == 0 %}
-                <a class="govuk-link" href="choose-actions?fixedCategories['category']={{category.shortCode}}">Select actions</a>
+                <a class="govuk-link" href="choose-actions?fixedCategories[category]={{category.shortCode}}">Select actions</a>
               {% endif %}
             </dd>
             {% if numberOfActions != 0 %}
               <dd class="govuk-summary-list__actions actions-narrow">
-                <a class="govuk-link" href="choose-actions?fixedCategories['category']={{category.shortCode}}">Change</a>
+                <a class="govuk-link" href="choose-actions?fixedCategories[category]={{category.shortCode}}">Change</a>
               </dd>
             {% endif %}
           </div>
