@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Choose actions for your action plan – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose actions for your action plan
+      </h1>
+
+      <p>Select all the actions you will commit to in your action plan.</p>
+      <p>This will be visible in your public record on this service.</p>
+
+      <p class="review-note">
+        Note: The details links in the hint sections probably do not work in screen readers. See
+        <a href="https://design-system.service.gov.uk/components/checkboxes/">GOV.UK checkboxes</a>
+         - "Checkbox items with hints".
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form class="form govuk-!-margin-top-4" action="choose-actions-summary" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              {% for action in data.db.actions %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="simplePickList[{{action.shortCode}}][selected]" name="simplePickList[{{action.shortCode}}][selected]" type="checkbox" value="Yes" {{ "checked" if data.simplePickList[action.shortCode].selected == 'Yes'}} aria-describedby="simplePickList[actions]-item{{loop.index}}-hint">
+                  <label class="govuk-label govuk-checkboxes__label" for="simplePickList[{{action.shortCode}}][selected]">
+                    {{ action.title }}
+                  </label>
+                  <div id="simplePickList[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
+                    {{ govukDetails({
+                      summaryText: "Why choose this?",
+                      text: action.description,
+                      classes: "govuk-!-margin-bottom-3"
+                    }) }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
