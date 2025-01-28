@@ -28,6 +28,10 @@
 
       <form class="form govuk-!-margin-top-4" action="choose-actions-summary" method="post">
 
+        <h2 class="govuk-heading-m">{% for category in data.db.actionCategories %}{% if category.shortCode == data.fixedCategories.category %}
+          {{category.title}}
+        {% endif %}{% endfor %}</h2>
+
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
