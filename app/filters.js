@@ -10,7 +10,7 @@ addFilter('search', function (data) {
     var matches = [];
 
     data.db.actions.forEach(action => {
-        if ((!data.choosingActions.searchText || data.choosingActions.searchText == "")
+        if ((!data.choosingActions || !data.choosingActions.searchText || data.choosingActions.searchText == "")
             || action.title.toLowerCase().includes(data.choosingActions.searchText.toLowerCase())) {
                 matches.push(action);
         }
