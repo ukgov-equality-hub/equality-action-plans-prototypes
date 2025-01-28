@@ -21,50 +21,19 @@
     </div>
     <div class="govuk-grid-column-full">
 
-      {{ govukTable({
-        caption: "Complete list of suggested actions",
-        firstCellIsHeader: true,
-        head: [
-          {
-          },
-          {
-          }
-        ],
-        rows: [
-          [
-            {
-              text: "Set internal targets for gender representation and equality"
-            },
-            {
-              html: "<a href=\"\">More information</a>"
-            }
-          ],
-          [
-            {
-              text: "Appoint employment equity leads and/or task forces"
-            },
-            {
-              html: "<a href=\"\">More information</a>"
-            }
-          ],
-          [
-            {
-              text: "Offer flexible working by default in job adverts"
-            },
-            {
-              html: "<a href=\"\">More information</a>"
-            }
-          ],
-          [
-            {
-              colspan: 2,
-              html:
-                "Other<br/><br/>
-                <p class=\"hint\">You can use this action to represent any other actions you are taking that are not covered elsewhere in this list</p>"
-            }
-          ]
-        ]
-      }) }}
+      {% for category in data.db.actionCategories %}
+        <h2 class="govuk-heading-m">{{category.title}}</h2>
+
+        {% for action in data.db.actions %}
+          {% if action.category == category.shortCode %}
+            <p>{{action.title}}</p>
+            {{ govukDetails({
+              summaryText: "Show description",
+              text: action.description
+            }) }}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
 
     </div>
   </div>
