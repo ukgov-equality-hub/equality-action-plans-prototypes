@@ -38,7 +38,7 @@
             <dd class="govuk-summary-list__value">
               {% set numberOfActions = 0 %}
               {% for action in data.db.actions %}
-                {% if action.category == category.shortCode %}
+                {% if action.category == category.shortCode and data.choosingActions[action.shortCode].selected == "Yes" %}
                   {% set numberOfActions = numberOfActions + 1 %}
                 <p>{{action.title}}</p>
                 {% endif %}
