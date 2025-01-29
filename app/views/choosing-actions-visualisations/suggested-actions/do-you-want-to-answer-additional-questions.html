@@ -1,0 +1,87 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  
+  {{ govukServiceNavigation({
+    serviceName: "Gender pay gap service",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Current reports",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Historical reports"
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Employer details"
+      }
+    ]
+  }) }}
+
+  {{ super() }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Adding an action plan
+        <br />
+        <span class="govuk-!-font-size-27">
+          for {{data.db.company.name}}
+        </span>
+      </h1>
+
+      <form class="form" action="answer-additional-questions" method="post">
+
+        {{ govukRadios({
+          name: "suggestedActions[additional-questions]",
+          fieldset: {
+            legend: {
+              text: "Do you want to answer additional questions to help us suggest actions?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "We estimate these questions will take around 5 minutes to answer."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

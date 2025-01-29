@@ -1,0 +1,118 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  
+  {{ govukServiceNavigation({
+    serviceName: "Gender pay gap service",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Current reports",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Historical reports"
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Employer details"
+      }
+    ]
+  }) }}
+
+  {{ super() }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Manage your employer's reporting
+        <br />
+        <span class="govuk-!-font-size-27">
+          for {{data.db.company.name}}
+        </span>
+      </h1>
+
+      <h2 class="govuk-heading-l">
+        Your employer's current reports
+      </h2>
+
+      {% from "govuk/components/table/macro.njk" import govukTable %}
+
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Deadline"
+            },
+            {
+              text: "Report type"
+            },
+            {
+              text: "Reporting requirement"
+            },
+            {
+              text: "Report status"
+            },
+            {
+              text: ""
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "4 Apr 2025"
+              },
+              {
+                text: "GPG data"
+              },
+              {
+                text: "You are required to report."
+              },
+              {
+                html: "<strong class=\"govuk-tag govuk-tag--green\">Reported</strong>"
+              },
+              {
+                html: "<a href=\"#\">Edit report</a>"
+              }
+            ],
+            [
+              {
+                text: "4 Apr 2025"
+              },
+              {
+                text: "Action plan"
+              },
+              {
+                text: "You are required to report."
+              },
+              {
+                html: "<strong class=\"govuk-tag govuk-tag--blue\">Due 4 Apr 2025</strong>"
+              },
+              {
+                html: "<a href=\"action-plan-intro\">Add action plan</a>"
+              }
+            ]
+          ]
+        }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

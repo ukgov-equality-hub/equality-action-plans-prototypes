@@ -1,0 +1,95 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  
+  {{ govukServiceNavigation({
+    serviceName: "Gender pay gap service",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Current reports",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Historical reports"
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Employer details"
+      }
+    ]
+  }) }}
+
+  {{ super() }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Adding an action plan
+        <br />
+        <span class="govuk-!-font-size-27">
+          for {{data.db.company.name}}
+        </span>
+      </h1>
+
+      <p>
+        You must add an action plan to your gender pay gap report by the reporting deadline (4th Apr 2025).
+      </p>
+      <p>
+        This service contains a list of actions proven to be effective, and you can choose
+        a selection that are appropriate for you given the patterns in your data.
+      </p>
+
+      <form class="form" action="answer-help-requested" method="post">
+
+        {{ govukRadios({
+          name: "suggestedActions[help-requested]",
+          fieldset: {
+            legend: {
+              text: "Would you like help constructing your action plan?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Our service can guide you to selecting actions appropriate to your situation."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

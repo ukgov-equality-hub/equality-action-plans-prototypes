@@ -1,0 +1,100 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  
+  {{ govukServiceNavigation({
+    serviceName: "Gender pay gap service",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Current reports",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Historical reports"
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Employer details"
+      }
+    ]
+  }) }}
+
+  {{ super() }}
+
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Adding an action plan
+        <br />
+        <span class="govuk-!-font-size-27">
+          for {{data.db.company.name}}
+        </span>
+      </h1>
+
+      <p>
+        Below is the full list of actions that can be included in your action plan,
+        showing which ones you have selected.
+      </p>
+      <p>
+        Confirm your selection below, or modify your selection.
+      </p>
+
+      <form class="govuk-!-margin-top-8" action="submitted" method="post">
+
+        <ul class="govuk-task-list">
+          {% for action in data.db.actions %}
+
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              <a href="#">{{action.title}}</a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
+              {% if loop.index % 3 == 0 %}
+                <strong class="govuk-tag govuk-tag--turquoise">
+                  Selected
+                </strong>
+              {% else %}
+                Not selected
+              {% endif %}
+            </div>
+          </li>
+
+          {% endfor %}
+        </ul>
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">
+              On submission your gender pay gap information will be published on the Gender pay gap service.
+          </p>
+        </div>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Submit action plan"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

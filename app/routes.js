@@ -15,3 +15,13 @@ router.post('/choosing-actions-visualisations/simple-pick-list/answer-action-pla
         response.redirect("choose-actions")
     }
 })
+
+router.post('/choosing-actions-visualisations/suggested-actions/answer-help-requested', function(request, response){
+    var helpRequested = request.session.data['suggestedActions']['help-requested']
+
+    if (helpRequested == "Yes") {
+        response.redirect("do-you-want-to-answer-additional-questions")
+    } else {
+        response.redirect("choose-actions-summary")
+    }
+})
