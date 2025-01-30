@@ -48,7 +48,15 @@
 
       <form class="govuk-!-margin-top-6" action="suggested-actions" method="post">
 
-        <p class="todo">Questions to be written</p>
+        <div class="user-note">
+          <p>The content of these questions is still to be decided.</p>
+          <p class="govuk-!-margin-bottom-0">
+            This illustration focuses on the journey rather than the content,
+            so you can click "Continue" as if you'd answered some questions.
+          </p>
+        </div>
+
+        <input type="hidden" name="suggestedActions[answered-questionnaire]" value="true" />
 
         <div class="govuk-button-group govuk-!-margin-top-6">
           {{ govukButton({

@@ -32,6 +32,7 @@ router.post('/choosing-actions-visualisations/suggested-actions/answer-additiona
     if (answerAdditionalQuestions == "Yes") {
         response.redirect("questionnaire")
     } else {
+        request.session.data['suggestedActions']['answered-questionnaire'] = "false";
         response.redirect("suggested-actions")
     }
 })

@@ -47,7 +47,7 @@
       </h1>
 
       <p>
-        Based on your data, we suggest the following actions.
+        Based on your {{"data and answers" if data.suggestedActions['answered-questionnaire'] == "true" else "data"}}, we suggest the following actions.
       </p>
 
       <form class="govuk-!-margin-top-6" action="choose-actions-summary" method="post">
