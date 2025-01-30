@@ -25,3 +25,13 @@ router.post('/choosing-actions-visualisations/suggested-actions/answer-help-requ
         response.redirect("choose-actions-summary")
     }
 })
+
+router.post('/choosing-actions-visualisations/suggested-actions/answer-additional-questions', function(request, response){
+    var answerAdditionalQuestions = request.session.data['suggestedActions']['additional-questions']
+
+    if (answerAdditionalQuestions == "Yes") {
+        response.redirect("questionnaire")
+    } else {
+        response.redirect("suggested-actions")
+    }
+})
