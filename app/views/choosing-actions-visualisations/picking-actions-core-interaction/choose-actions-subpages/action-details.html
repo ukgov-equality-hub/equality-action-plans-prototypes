@@ -6,25 +6,30 @@
 {% endblock %}
 {% set serviceName="Choosing actions - visualisations" %}
 
+{% set thisPageAction = "" %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.coreInteraction.action %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Offer flexible working by default in job adverts
+        {{thisPageAction.title}}
       </h1>
 
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat.
+        {{thisPageAction.description}}
       </p>
 
       <form action="../choose-actions-subpages" method="post">
 
         {{ govukRadios({
-          name: "choosingActions[flexible-working][selected]",
+          name: "choosingActions[" + thisPageAction.shortCode + "][selected]",
           fieldset: {
             legend: {
               text: "Do you want to add this action to your action plan?",
@@ -32,7 +37,7 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data.choosingActions['flexible-working'].selected,
+          value: data.choosingActions[thisPageAction.shortCode].selected,
           items: [
             {
               value: "Yes",

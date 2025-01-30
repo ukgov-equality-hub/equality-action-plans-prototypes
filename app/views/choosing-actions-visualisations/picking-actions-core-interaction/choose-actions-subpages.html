@@ -18,14 +18,17 @@
       <p>Below is the full list of actions that can be included in your action plan.</p>
       <p>You can click through on each action to find more information, and decide whether to include it.</p>
 
-      <form action="choose-actions-subpages/submitted" method="post">
+    </div>
+    <div class="govuk-grid-column-full">
+        
+      <form class="govuk-!-margin-top-4" action="choose-actions-subpages/submitted" method="post">
 
         <ul class="govuk-task-list">
           {% for action in data.db.actions %}
 
           <li class="govuk-task-list__item govuk-task-list__item--with-link">
             <div class="govuk-task-list__name-and-hint">
-              <a class="govuk-link govuk-task-list__link" href="choose-actions-subpages/{{action.shortCode}}" aria-describedby="company-details-{{loop.index}}-status">
+              <a class="govuk-link govuk-task-list__link" href="choose-actions-subpages/action-details?coreInteraction[action]={{action.shortCode}}" aria-describedby="company-details-{{loop.index}}-status">
                 {{action.title}}
               </a>
             </div>
