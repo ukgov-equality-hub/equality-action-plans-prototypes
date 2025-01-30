@@ -60,15 +60,15 @@
 
           <h2 class="govuk-heading-m">{{category.title}}</h2>
 
-          <ul class="govuk-task-list">
+          <dl class="govuk-summary-list action-plan-summary">
             {% for action in data.db.actions %}
-
               {% if action.category == category.shortCode %}
-                <li class="govuk-task-list__item govuk-task-list__item--with-link">
-                  <div class="govuk-task-list__name-and-hint">
-                    <a href="action-details?suggestedActions[actionDetailsShortCode]={{action.shortCode}}">{{action.title}}</a>
-                  </div>
-                  <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key action-name">
+                    {{action.title}}
+                  </dt>
+                  <dd class="govuk-summary-list__value action-status">
                     {% if data.suggestedActions[action.shortCode].selected == "Yes" %}
                       <strong class="govuk-tag govuk-tag--turquoise">
                         Selected
@@ -76,12 +76,15 @@
                     {% else %}
                       Not selected
                     {% endif %}
-                  </div>
-                </li>
+                  </dd>
+                  <dd class="govuk-summary-list__actions action-change">
+                    <a class="govuk-link" href="action-details?suggestedActions[actionDetailsShortCode]={{action.shortCode}}">Change<span class="govuk-visually-hidden"> name</span></a>
+                  </dd>
+                </div>
+
               {% endif %}
-  
             {% endfor %}
-          </ul>
+          </dl>
   
         {% endfor %}
 

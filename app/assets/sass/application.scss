@@ -20,6 +20,21 @@
     background-color: mix(govuk-colour("turquoise"), white, 25%);
 }
 
+.action-plan-summary {
+    .action-name {
+        width: 75%;
+        font-weight: normal;
+    }
+
+    .action-status {
+        width: 15%;
+    }
+
+    .action-change {
+        width: 10%;
+    }
+}
+
 .actions-narrow {
     width: 10%;
 }
