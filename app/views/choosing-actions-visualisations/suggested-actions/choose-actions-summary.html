@@ -57,28 +57,36 @@
         Confirm your selection below, or modify your selection.
       </p>
 
-      <form class="govuk-!-margin-top-8" action="submitted" method="post">
+      <form class="govuk-!-margin-top-6" action="submitted" method="post">
 
-        <ul class="govuk-task-list">
-          {% for action in data.db.actions %}
+        {% for category in data.db.actionCategories %}
 
-          <li class="govuk-task-list__item govuk-task-list__item--with-link">
-            <div class="govuk-task-list__name-and-hint">
-              <a href="#">{{action.title}}</a>
-            </div>
-            <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
-              {% if loop.index % 3 == 0 %}
-                <strong class="govuk-tag govuk-tag--turquoise">
-                  Selected
-                </strong>
-              {% else %}
-                Not selected
+          <h2 class="govuk-heading-m">{{category.title}}</h2>
+
+          <ul class="govuk-task-list">
+            {% for action in data.db.actions %}
+
+              {% if action.category == category.shortCode %}
+                <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                  <div class="govuk-task-list__name-and-hint">
+                    <a href="#">{{action.title}}</a>
+                  </div>
+                  <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
+                    {% if loop.index % 3 == 0 %}
+                      <strong class="govuk-tag govuk-tag--turquoise">
+                        Selected
+                      </strong>
+                    {% else %}
+                      Not selected
+                    {% endif %}
+                  </div>
+                </li>
               {% endif %}
-            </div>
-          </li>
-
-          {% endfor %}
-        </ul>
+  
+            {% endfor %}
+          </ul>
+  
+        {% endfor %}
 
         <div class="govuk-inset-text">
           <p class="govuk-body">
