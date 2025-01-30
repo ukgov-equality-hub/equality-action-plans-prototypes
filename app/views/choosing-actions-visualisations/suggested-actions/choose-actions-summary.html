@@ -68,10 +68,10 @@
               {% if action.category == category.shortCode %}
                 <li class="govuk-task-list__item govuk-task-list__item--with-link">
                   <div class="govuk-task-list__name-and-hint">
-                    <a href="#">{{action.title}}</a>
+                    <a href="action-details?suggestedActions[actionDetailsShortCode]={{action.shortCode}}">{{action.title}}</a>
                   </div>
                   <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
-                    {% if loop.index % 3 == 0 %}
+                    {% if data.suggestedActions[action.shortCode].selected == "Yes" %}
                       <strong class="govuk-tag govuk-tag--turquoise">
                         Selected
                       </strong>
