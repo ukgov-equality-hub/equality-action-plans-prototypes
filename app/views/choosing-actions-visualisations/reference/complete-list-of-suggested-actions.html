@@ -26,6 +26,22 @@
           {% if action.category == category.shortCode %}
             <h3 class="govuk-heading-m">{{action.title}}</h3>
             <p>{{action.description}}</p>
+            <h4 class="govuk-heading-s">Target metrics</h4>
+            {% if not action.targets or action.targets.length == 0 %}
+              <p>
+                This action is a strategic action overseeing the improvement process as a whole.
+                As a result, it should lead to a positive impact on all metrics.
+              </p>
+            {% else %}
+              <p>This action should improve the following metrics:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                {% for metricShortCode in action.targets %}
+                  {% for dbMetric in data.db.metrics %}{% if dbMetric.shortCode == metricShortCode %}
+                    <li>{{dbMetric.title.toLowerCase()}}</li>
+                  {% endif %}{% endfor %}
+                {% endfor %}
+              </ul>
+            {% endif %}
           {% endif %}
         {% endfor %}
       {% endfor %}

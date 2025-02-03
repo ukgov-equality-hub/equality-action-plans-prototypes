@@ -2,7 +2,20 @@ module.exports = {
 
   db: {
     company: {
-      name: "Dunder Mifflin Paper Company, Inc"
+      name: "Dunder Mifflin Paper Company, Inc",
+      report: {
+        metrics: [
+          { 'median-hourly-pay-gap-percent': '50' },
+          { 'mean-hourly-pay-gap-percent': '60' },
+          { 'upper-quartile-percent-women': '50' },
+          { 'upper-middle-quartile-percent-women': '50' },
+          { 'lower-middle-quartile-percent-women': '50' },
+          { 'lower-quartile-percent-women': '50' },
+          { 'median-bonus-pay-gap-percent': '50' },
+          { 'mean-bonus-pay-gap-percent': '50' },
+          { 'percent-women-vs-men-receiving-bonus': '50 vs 55' }
+        ]
+      }
     },
 
     actionCategories: [
@@ -32,6 +45,7 @@ module.exports = {
       {
         shortCode: 'targets',
         category: 'leadership-and-accountability',
+        targets: [],
         title: 'Set internal targets for gender representation and equality',
         description: 'Targets provide motivation and accountability, meaning that change is more likely to happen.'
           + ' General goals such as “we will change our culture to be more inclusive” are not effective unless'
@@ -40,6 +54,7 @@ module.exports = {
       {
         shortCode: 'equity-leads',
         category: 'leadership-and-accountability',
+        targets: [],
         title: 'Appoint employment equity leads and/or task forces',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -48,6 +63,7 @@ module.exports = {
       {
         shortCode: 'flexible-working',
         category: 'recruitment',
+        targets: ['median-hourly-pay-gap-percent'],
         title: 'Offer flexible working by default in job adverts',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -56,6 +72,7 @@ module.exports = {
       {
         shortCode: 'structured-interviews',
         category: 'recruitment',
+        targets: [],
         title: 'Use structured interviews for recruitment and promotions',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -64,6 +81,7 @@ module.exports = {
       {
         shortCode: 'remuneration-transparency',
         category: 'promotion-and-retention',
+        targets: [],
         title: 'Increase transparency to promotion, pay and reward processes',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -72,6 +90,7 @@ module.exports = {
       {
         shortCode: 'promotion-application-by-default',
         category: 'promotion-and-retention',
+        targets: [],
         title: 'Default employees into applying for promotion or other competitive opportunities',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -80,6 +99,7 @@ module.exports = {
       {
         shortCode: 'share-local-support-for-flexible-working',
         category: 'flexibility',
+        targets: [],
         title: 'Share local support for parental leave and flexible working',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -88,6 +108,7 @@ module.exports = {
       {
         shortCode: 'flexible-working-available-to-all',
         category: 'flexibility',
+        targets: [],
         title: 'Make workplace or role adjustments available to everyone',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -96,6 +117,7 @@ module.exports = {
       {
         shortCode: 'rest-areas',
         category: 'menopause',
+        targets: [],
         title: 'Provide rest areas or quiet rooms and fans/cooling systems',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -104,10 +126,50 @@ module.exports = {
       {
         shortCode: 'relax-uniform-policies',
         category: 'menopause',
+        targets: [],
         title: 'Evaluate and relax uniform policies',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
           + ' aliquip ex ea commodo consequat.'
+      }
+    ],
+
+    metrics: [
+      {
+        shortCode: 'median-hourly-pay-gap-percent',
+        title: 'Median hourly pay gap'
+      },
+      {
+        shortCode: 'mean-hourly-pay-gap-percent',
+        title: 'Mean hourly pay gap'
+      },
+      {
+        shortCode: 'upper-quartile-percent-women',
+        title: 'Percentage of women in the upper hourly pay quartile'
+      },
+      {
+        shortCode: 'upper-middle-quartile-percent-women',
+        title: 'Percentage of women in the upper middle hourly pay quartile'
+      },
+      {
+        shortCode: 'lower-middle-quartile-percent-women',
+        title: 'Percentage of women in the lower middle hourly pay quartile'
+      },
+      {
+        shortCode: 'lower-quartile-percent-women',
+        title: 'Percentage of women in the lower hourly pay quartile'
+      },
+      {
+        shortCode: 'median-bonus-pay-gap-percent',
+        title: 'Median bonus pay gap'
+      },
+      {
+        shortCode: 'mean-bonus-pay-gap-percent',
+        title: 'Mean bonus pay gap'
+      },
+      {
+        shortCode: 'percent-women-vs-men-receiving-bonus',
+        title: 'Percentage of women vs men receiving a bonus'
       }
     ]
   }
