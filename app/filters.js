@@ -6,6 +6,10 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const addFilter = govukPrototypeKit.views.addFilter
 
+addFilter('parseInt', function(number) {
+    return parseInt(number);
+})
+
 addFilter('search', function (data) {
     var matches = [];
 

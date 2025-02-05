@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Best practice checklist" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <p class="user-note">
+      In this prototype, the user has agreed to complete a "best practice checklist"
+      - an alternative way of presenting a list of suggested actions for an action plan.
+    </p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "introduction",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
