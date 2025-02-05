@@ -7,7 +7,7 @@
     font-style: italic;
 }
 
-.review-note, .user-note {
+.review-note, .user-note, .warning {
     border: solid 2px black;
     @include govuk-responsive-padding(2);
 }
@@ -18,6 +18,9 @@
 }
 .user-note {
     background-color: mix(govuk-colour("turquoise"), white, 25%);
+}
+.warning {
+    background-color: mix(govuk-colour("red"), white, 25%);
 }
 
 .action-plan-summary {
