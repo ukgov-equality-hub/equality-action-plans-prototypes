@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Choose actions for your action plan – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose actions for your action plan
+      </h1>
+
+      <p>Select all the actions you will commit to in this category.</p>
+      <p>This will be visible in your public record on this service.</p>
+
+      <p class="review-note">
+        Note: The details links in the hint sections probably do not work in screen readers. See
+        <a href="https://design-system.service.gov.uk/components/checkboxes/">GOV.UK checkboxes</a>
+         - "Checkbox items with hints".
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form class="form govuk-!-margin-top-4" action="choose-actions-summary" method="post">
+
+        <h2 class="govuk-heading-m">{% for category in data.db.actionCategories %}{% if category.shortCode == data.fixedCategories.category %}
+          {{category.title}}
+        {% endif %}{% endfor %}</h2>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              {% for action in data.db.actions %}
+                {% if action.category == data.fixedCategories.category %}
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="fixedCategories[{{action.shortCode}}][selected]" name="fixedCategories[{{action.shortCode}}][selected]" type="checkbox" value="Yes" {{ "checked" if data.fixedCategories[action.shortCode].selected == 'Yes'}} aria-describedby="fixedCategories[actions]-item{{loop.index}}-hint">
+                    <label class="govuk-label govuk-checkboxes__label" for="fixedCategories[{{action.shortCode}}][selected]">
+                      {{ action.title }}
+                    </label>
+                    <div id="fixedCategories[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
+                      {{ govukDetails({
+                        summaryText: "Why choose this?",
+                        text: action.description,
+                        classes: "govuk-!-margin-bottom-3"
+                      }) }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -63,7 +63,10 @@ module.exports = {
       {
         shortCode: 'flexible-working',
         category: 'recruitment',
-        targets: ['median-hourly-pay-gap-percent'],
+        targets: [
+          'lower-middle-quartile-percent-women',
+          'upper-middle-quartile-percent-women'
+        ],
         title: 'Offer flexible working by default in job adverts',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -72,7 +75,10 @@ module.exports = {
       {
         shortCode: 'structured-interviews',
         category: 'recruitment',
-        targets: [],
+        targets: [
+          'lower-middle-quartile-percent-women',
+          'upper-middle-quartile-percent-women'
+        ],
         title: 'Use structured interviews for recruitment and promotions',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -81,7 +87,12 @@ module.exports = {
       {
         shortCode: 'remuneration-transparency',
         category: 'promotion-and-retention',
-        targets: [],
+        targets: [
+          'median-hourly-pay-gap-percent',
+          'mean-hourly-pay-gap-percent',
+          'upper-quartile-percent-women',
+          'upper-middle-quartile-percent-women'
+        ],
         title: 'Increase transparency to promotion, pay and reward processes',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -90,7 +101,12 @@ module.exports = {
       {
         shortCode: 'promotion-application-by-default',
         category: 'promotion-and-retention',
-        targets: [],
+        targets: [
+          'median-hourly-pay-gap-percent',
+          'mean-hourly-pay-gap-percent',
+          'upper-quartile-percent-women',
+          'upper-middle-quartile-percent-women'
+        ],
         title: 'Default employees into applying for promotion or other competitive opportunities',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -99,7 +115,10 @@ module.exports = {
       {
         shortCode: 'share-local-support-for-flexible-working',
         category: 'flexibility',
-        targets: [],
+        targets: [
+          'median-hourly-pay-gap-percent',
+          'mean-hourly-pay-gap-percent'
+        ],
         title: 'Share local support for parental leave and flexible working',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -108,7 +127,11 @@ module.exports = {
       {
         shortCode: 'flexible-working-available-to-all',
         category: 'flexibility',
-        targets: [],
+        targets: [
+          'upper-quartile-percent-women',
+          'upper-middle-quartile-percent-women',
+          'lower-middle-quartile-percent-women'
+        ],
         title: 'Make workplace or role adjustments available to everyone',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -117,7 +140,9 @@ module.exports = {
       {
         shortCode: 'rest-areas',
         category: 'menopause',
-        targets: [],
+        targets: [
+          'menopause'
+        ],
         title: 'Provide rest areas or quiet rooms and fans/cooling systems',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -126,7 +151,9 @@ module.exports = {
       {
         shortCode: 'relax-uniform-policies',
         category: 'menopause',
-        targets: [],
+        targets: [
+          'menopause'
+        ],
         title: 'Evaluate and relax uniform policies',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
           + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -170,6 +197,10 @@ module.exports = {
       {
         shortCode: 'percent-women-vs-men-receiving-bonus',
         title: 'Percentage of women vs men receiving a bonus'
+      },
+      {
+        shortCode: 'menopause',
+        title: 'Experience of work for those going through menopause'
       }
     ]
   }

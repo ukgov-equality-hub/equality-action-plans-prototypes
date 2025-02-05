@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% set pageName="Using target metrics" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Identify target metrics
+      </h1>
+
+      <p>
+        To identify the best actions to add to your action plan,
+        first identify the metrics you most want to improve.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form action="choose-actions" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="metrics-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Which metrics will you focus on improving?
+              </h2>
+            </legend>
+            <div id="metrics-hint" class="govuk-hint">
+              We recommend focusing on 3-5 metrics at a time
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              {% for metric in data.db.metrics %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="{{metric.shortCode}}" name="targetMetrics[{{metric.shortCode}}]" type="checkbox" value="Yes">
+                  <label class="govuk-label govuk-checkboxes__label" for="{{metric.shortCode}}">
+                    {{metric.title}}
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>        
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
