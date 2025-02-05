@@ -54,20 +54,14 @@
 
         {% for category in data.db.actionCategories %}
 
-          {% if loop.index % 3 != 1 %}
-            <h2 class="govuk-heading-m">{{category.title}}</h2>
-          {% endif %}
-
           {% for action in data.db.actions %}
             {% if action.category == category.shortCode and loop.index % 3 == 0 %}
-              <p>
-                {{action.title}}
-              </p>
+              <span class="govuk-caption-l">{{category.title}}</span>
+              <h2 class="govuk-heading-m">{{action.title}}</h2>
               <input type="hidden" name="suggestedActions[{{action.shortCode}}][selected]" value="Yes"/>
               {{ govukDetails({
                 summaryText: "Why choose this?",
-                text: action.description,
-                classes: "govuk-!-margin-bottom-3"
+                text: action.description
               }) }}
             {% endif %}
           {% endfor %}
