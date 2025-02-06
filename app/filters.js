@@ -22,3 +22,37 @@ addFilter('search', function (data) {
 
     return matches;
 })
+
+addFilter('actionSummariesFilteredByMetrics', function(data) {
+    var actionSummaries = [];
+
+    data.db.actions.forEach(action => {
+        var metricSummaries = [];
+
+        action.targets.forEach(metricShortCode => {
+            if (data.targetMetrics[metricShortCode] == "Yes") {
+
+                data.db.metrics.forEach(metric => {
+                    if (metric.shortCode == metricShortCode) {
+                        metricSummaries.push({
+                            shortCode: metric.shortCode,
+                            title: metric.title
+                        })
+                    }
+                })
+
+            }
+        });
+
+        if (action.targets.length == 0 || metricSummaries.length > 0) {
+            actionSummaries.push({
+                shortCode: action.shortCode,
+                title: action.title,
+                description: action.description,
+                metrics: metricSummaries
+            });
+        }
+    });
+
+    return actionSummaries;
+})
