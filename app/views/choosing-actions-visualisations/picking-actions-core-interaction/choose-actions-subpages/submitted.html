@@ -1,35 +1,6 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/submitted.html" %}
 
-{% block pageTitle %}
-  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      {{ govukPanel({
-        titleText: "Action plan submitted",
-        text: "We have received your action plan"
-      }) }}
-
-      <h2 class="govuk-heading-m govuk-!-margin-top-6">
-        What happens next
-      </h2>
-
-      <p>
-        Your action plan is now publicly visible in your record on our service.
-      </p>
-      <p>
-        <a href="#">View your public record</a>
-      </p>
-
-      <p class="govuk-body govuk-!-margin-top-6"">
-        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
-      </p>
-
-    </div>
-  </div>
-
-{% endblock %}
+{% set pageName="Core interaction" %}
+{% set serviceName="Choosing actions - visualisations" %}
+{% set confirmationTitle = "Action plan submitted" %}
+{% set confirmationText = "We have received your gender pay gap action plan for the 2024-25 reporting year." %}
