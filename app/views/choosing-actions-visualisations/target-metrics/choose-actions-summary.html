@@ -1,72 +1,68 @@
 {% extends "layouts/main.html" %}
-{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
-{% set pageName="Using target metrics" %}
+{% set pageName="Suggested actions" %}
 {% set serviceName="Choosing actions - visualisations" %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">
-        Choose actions for your action plan
+      <h1 class="govuk-heading-xl">
+        Your action plan
       </h1>
 
       <p>
-        Below are the categories of actions in your action plan,
-        and the actions you have selected in each category.
+        Below is the full list of actions that can be included in your action plan,
+        showing which ones you have selected.
       </p>
       <p>
-        Before submitting your action plan, you must select at least one action in each category.
+        Confirm your selection below, or modify your selection.
       </p>
 
-    </div>
-    <div class="govuk-grid-column-full">
+      <form class="govuk-!-margin-top-6" action="submitted" method="post">
 
-      <form action="submitted" method="post">
+        {% for category in data.db.actionCategories %}
 
-        <dl class="govuk-summary-list govuk-!-margin-top-4 govuk-!-margin-bottom-9">
-          {% for category in data.db.actionCategories %}
+          <h2 class="govuk-heading-m">{{category.title}}</h2>
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              {{category.title}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% set numberOfActions = 0 %}
-              {% for action in data.db.actions %}
-                {% if action.category == category.shortCode and data.fixedCategories[action.shortCode].selected == "Yes" %}
-                  {% set numberOfActions = numberOfActions + 1 %}
-                <p>{{action.title}}</p>
-                {% endif %}
-              {% endfor %}
-              {% if numberOfActions == 0 %}
-                <a class="govuk-link" href="choose-actions?fixedCategories[category]={{category.shortCode}}">Select actions</a>
+          <dl class="govuk-summary-list action-plan-summary">
+            {% for action in data.db.actions %}
+              {% if action.category == category.shortCode %}
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key action-name">
+                    {{action.title}}
+                  </dt>
+                  <dd class="govuk-summary-list__value action-status">
+                    {% if data.targetMetrics[action.shortCode].selected == "Yes" %}
+                      <strong class="govuk-tag govuk-tag--turquoise">
+                        Selected
+                      </strong>
+                    {% else %}
+                      Not selected
+                    {% endif %}
+                  </dd>
+                  <dd class="govuk-summary-list__actions action-change">
+                    <a class="govuk-link" href="action-details?suggestedActions[actionDetailsShortCode]={{action.shortCode}}">Change<span class="govuk-visually-hidden"> name</span></a>
+                  </dd>
+                </div>
+
               {% endif %}
-            </dd>
-            {% if numberOfActions != 0 %}
-              <dd class="govuk-summary-list__actions actions-narrow">
-                <a class="govuk-link" href="choose-actions?fixedCategories[category]={{category.shortCode}}">Change</a>
-              </dd>
-            {% endif %}
-          </div>
-        
-          {% endfor %}
-        </dl>
+            {% endfor %}
+          </dl>
+  
+        {% endfor %}
 
         <div class="govuk-inset-text">
           <p class="govuk-body">
               On submission your gender pay gap information will be published on the Gender pay gap service.
           </p>
-          <p class="govuk-body">
-              Submission of inaccurate data will mean your employer has not complied with the gender pay gap reporting regulations.
-          </p>
         </div>
 
         <div class="govuk-button-group">
           {{ govukButton({
-            text: "Submit"
+            text: "Submit action plan"
           }) }}
         </div>
 

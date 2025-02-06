@@ -23,6 +23,7 @@
             summaryText: "Read description",
             text: actionSummary.description
           }) }}
+          <input type="hidden" name="targetMetrics[{{actionSummary.shortCode}}][selected]" value="Yes" />
           {% if actionSummary.metrics.length == 0 %}
             <p>
               This action is a strategic action overseeing the improvement process as a whole.
