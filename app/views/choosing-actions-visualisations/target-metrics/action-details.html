@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Suggested actions" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% set thisPageAction = "" %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.targetMetrics.actionDetailsShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageAction.title}}
+      </h1>
+
+      <p>
+        {{thisPageAction.description}}
+      </p>
+
+      <form action="choose-actions-summary" method="post">
+
+        {{ govukRadios({
+          name: "targetMetrics[" + thisPageAction.shortCode + "][selected]",
+          fieldset: {
+            legend: {
+              text: "Do you want to add this action to your action plan?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: data.targetMetrics[thisPageAction.shortCode].selected,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
