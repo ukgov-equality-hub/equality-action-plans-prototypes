@@ -1,0 +1,37 @@
+<ul class="govuk-task-list">
+  {% for action in data.db.actions %}
+
+    <li class="govuk-task-list__item govuk-task-list__item--with-link">
+      <div class="govuk-task-list__name-and-hint">
+        <a class="govuk-link govuk-task-list__link" href="action-details?actionIndex={{loop.index0}}&returnToSummary=true" aria-describedby="company-details-{{loop.index}}-status">
+          {{action.title}}
+        </a>
+        {% if data.bestPracticeChecklist[action.shortCode].narrative and data.bestPracticeChecklist[action.shortCode].narrative != "" %}
+          {{ govukDetails({
+            summaryText: "Your supporting narrative",
+            text: data.bestPracticeChecklist[action.shortCode].narrative,
+            classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4"
+          }) }}
+        {% endif %}
+      </div>
+      <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
+        {% if data.bestPracticeChecklist[action.shortCode].status == "embedded" %}
+          <strong class="govuk-tag govuk-tag--green">
+            Embedded
+          </strong>
+        {% elif data.bestPracticeChecklist[action.shortCode].status == "in-progress" %}
+          <strong class="govuk-tag govuk-tag--blue">
+            In progress
+          </strong>
+        {% elif data.bestPracticeChecklist[action.shortCode].status == "add-to-plan" %}
+          <strong class="govuk-tag govuk-tag--orange">
+            Add to plan
+          </strong>
+        {% else %}
+          Not pursuing currently
+        {% endif %}
+      </div>
+    </li>
+
+  {% endfor %}
+</ul>

@@ -1,0 +1,46 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Would you like to update your action plan?
+    </h1>
+
+    <p>
+      This is a good time to look over your action plan below and update it if anything
+      has changed. However, this is not required.
+    </p>
+    <p>
+      When you are ready, submit your annual review comments, along with your action plan
+      updates, using the button below.
+    </p>
+
+  </div>
+  <div class="govuk-grid-column-full">
+
+    <form class="govuk-!-margin-top-4" action="submitted" method="post">
+
+      {% include "common/action-plan-in-progress.html" %}
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">
+          On submission your annual review and action plan will be published on the Gender pay gap service.
+        </p>
+      </div>
+
+      {{ govukButton({
+        text: "Submit review"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
