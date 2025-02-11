@@ -9,16 +9,16 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      What progress have you made this year?
+      How are you measuring progress and impact?
     </h1>
 
-    <form class="form" action="measuring-impact" method="post">
+    <form class="form" action="update-action-plan" method="post">
 
       {{ govukTextarea({
-        id: "annualReview[progress]",
-        name: "annualReview[progress]",
+        id: "annualReview[measuringImpact]",
+        name: "annualReview[measuringImpact]",
         hint: {
-          text: "Please describe the progress your organisation has made in the last year on implementing your action plan"
+          text: "Please describe what measures your organisation has put in place to track the progress and impact of your action plan"
         }
       }) }}
 
