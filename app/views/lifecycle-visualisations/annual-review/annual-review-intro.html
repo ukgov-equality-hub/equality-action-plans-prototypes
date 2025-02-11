@@ -1,0 +1,42 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Suggested actions" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Action plan annual review
+      </h1>
+
+      <p class="review-note">
+        This page would likely only be shown the first time an org needs to do an
+        annual review. Otherwise it would be skipped.
+      </p>
+
+      <p>
+        Every year after your action plan is created, you will be asked to review it.
+      </p>
+      <p>
+        Every three years, this will be a thorough evaluation of all actions and a
+        reselection of new actions for your action plan. In the intervening years,
+        only a brief summary of progress and measurement is required.
+      </p>
+      <p>
+        As this is your first year of review, we will only ask you two brief summary
+        questions. You can also update your plan at this stage but it is not required.
+      </p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "implementation-progress",
+        isStartButton: true
+      }) }}
+  
+    </div>
+  </div>
+
+{% endblock %}
