@@ -1,0 +1,77 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  
+  {{ govukServiceNavigation({
+    serviceName: "Gender pay gap service",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Current reports",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Historical reports"
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Employer details"
+      }
+    ]
+  }) }}
+
+  {{ super() }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Manage your employer's reporting
+      <br />
+      <span class="govuk-!-font-size-27">
+        for {{data.db.company.name}}
+      </span>
+    </h1>
+
+    <h2 class="govuk-heading-l">
+      Your employer's current reports
+    </h2>
+
+    {% from "govuk/components/table/macro.njk" import govukTable %}
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Deadline"
+          },
+          {
+            text: "Report type"
+          },
+          {
+            text: "Reporting requirement"
+          },
+          {
+            text: "Report status"
+          },
+          {
+            text: ""
+          }
+        ],
+        rows: currentReportsRows
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
