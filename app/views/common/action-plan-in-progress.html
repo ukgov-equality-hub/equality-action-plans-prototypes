@@ -25,7 +25,7 @@
           </strong>
         {% elif data[journeyShortCode][action.shortCode].status == "add-to-plan" %}
           <strong class="govuk-tag govuk-tag--orange">
-            Add to plan
+            {{ "Add to plan" if creatingNewActionPlan else "New in action plan" }}
           </strong>
         {% else %}
           Not pursuing currently
