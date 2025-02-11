@@ -1,0 +1,25 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ serviceName }}
+    </h1>
+
+    <p>These are illustrative visualisations of the lifecycle of an action plan.</p>
+    <p>An action plan will have a brief review annually and a thorough review every three years.</p>
+
+    <p><a class="todo" href="annual-review">WIP: Annual review (brief, looking at the plan as a whole)</a></p>
+
+    <p><a class="todo" href="three-year-review">TODO: Three-year review (looking in detail at each action on the plan)</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

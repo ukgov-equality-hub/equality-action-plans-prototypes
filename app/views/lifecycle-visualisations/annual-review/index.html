@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Annual review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <p class="user-note">
+      This prototype will start from your dashboard page on the GPG service.
+    </p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "annual-review/dashboard",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
