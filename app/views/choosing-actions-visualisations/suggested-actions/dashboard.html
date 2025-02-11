@@ -3,24 +3,7 @@
 {% set pageName="Suggested actions" %}
 {% set serviceName="Choosing actions - visualisations" %}
 
-{% set currentReportsRows = [
-  [
-    {
-      text: "4 Apr 2025"
-    },
-    {
-      text: "GPG data"
-    },
-    {
-      text: "You are required to report."
-    },
-    {
-      html: "<strong class=\"govuk-tag govuk-tag--green\">Reported</strong>"
-    },
-    {
-      html: "<a href=\"#\">Edit report</a>"
-    }
-  ],
+{% set reportsDueRows = [
   [
     {
       text: "4 Apr 2025"
@@ -36,6 +19,26 @@
     },
     {
       html: "<a href=\"action-plan-intro\">Add action plan</a>"
+    }
+  ]
+] %}
+
+{% set completedReportsRows = [
+  [
+    {
+      text: "4 Apr 2025"
+    },
+    {
+      text: "GPG data"
+    },
+    {
+      text: "You are required to report."
+    },
+    {
+      html: "<strong class=\"govuk-tag govuk-tag--green\">Reported</strong>"
+    },
+    {
+      html: "<a href=\"#\">Edit report</a>"
     }
   ]
 ] %}
