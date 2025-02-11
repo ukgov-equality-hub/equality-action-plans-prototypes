@@ -1,37 +1,7 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/menu-bar.html" %}
 
 {% set pageName="Suggested actions" %}
 {% set serviceName="Choosing actions - visualisations" %}
-
-{% block beforeContent %}
-  
-  {{ govukServiceNavigation({
-    serviceName: "Gender pay gap service",
-    serviceUrl: "#",
-    navigation: [
-      {
-        href: "#",
-        text: "Current reports",
-        active: true
-      },
-      {
-        href: "#",
-        text: "Historical reports"
-      },
-      {
-        href: "#",
-        text: "Users"
-      },
-      {
-        href: "#",
-        text: "Employer details"
-      }
-    ]
-  }) }}
-
-  {{ super() }}
-
-{% endblock %}
 
 {% block content %}
 

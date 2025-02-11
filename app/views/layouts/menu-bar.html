@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+
+{% block menuBar %}
+  
+  {{ govukServiceNavigation({
+    serviceName: "Gender pay gap service",
+    serviceUrl: "#",
+    navigation: [
+      {
+        href: "#",
+        text: "Current reports",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Historical reports"
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Employer details"
+      }
+    ]
+  }) }}
+
+{% endblock %}
