@@ -24,16 +24,16 @@
 }
 
 .action-plan-summary {
-  .action-name {
+  .govuk-summary-list__key {
     width: 75%;
     font-weight: normal;
   }
 
-  .action-status {
+  .govuk-summary-list__value {
     width: 15%;
   }
 
-  .action-change {
+  .govuk-summary-list__actions {
     width: 10%;
   }
 }

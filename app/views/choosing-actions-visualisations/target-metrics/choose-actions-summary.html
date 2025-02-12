@@ -31,10 +31,10 @@
               {% if action.category == category.shortCode %}
 
                 <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key action-name">
+                  <dt class="govuk-summary-list__key">
                     {{action.title}}
                   </dt>
-                  <dd class="govuk-summary-list__value action-status">
+                  <dd class="govuk-summary-list__value">
                     {% if data.targetMetrics[action.shortCode].selected == "Yes" %}
                       <strong class="govuk-tag govuk-tag--turquoise">
                         Selected
@@ -43,7 +43,7 @@
                       Not selected
                     {% endif %}
                   </dd>
-                  <dd class="govuk-summary-list__actions action-change">
+                  <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="action-details?targetMetrics[actionDetailsShortCode]={{action.shortCode}}">Change<span class="govuk-visually-hidden"> name</span></a>
                   </dd>
                 </div>
