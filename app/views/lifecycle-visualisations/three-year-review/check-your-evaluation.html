@@ -1,0 +1,98 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Three-year review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Check your evaluation
+    </h1>
+
+    <p>
+      Please check your report below and submit it when you are ready.
+    </p>
+
+    <form class="form" action="submitted" method="post">
+
+      {% for action in data.db.actions %}
+        <h2 class="govuk-heading-m">{{action.title}}</h2>
+
+        {{ govukSummaryList({
+          classes: "three-year-review-summary",
+          rows: [
+            {
+              key: {
+                text: "Status change"
+              },
+              value: {
+                html: "<strong class=\"govuk-tag govuk-tag--blue\">In progress</strong>" + " changed to " + "<strong class=\"govuk-tag govuk-tag--green\">Embedded</strong>"
+                  if loop.index0 % 3 == 0 else "No change"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Evaluation",
+                classes: "key"
+              },
+              value: {
+                text: data.threeYearReview[action.shortCode].evaluation,
+                classes: "value"
+              },
+              actions: {
+                classes: "change",
+                items: [
+                  {
+                    href: "#",
+                    text: "Change"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Supporting information"
+              },
+              value: {
+                text: data.threeYearReview[action.shortCode].supportingInformation
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      {% endfor %}
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">
+          On submission your annual review and action plan will be published on the Gender pay gap service.
+        </p>
+      </div>
+
+      {{ govukButton({
+        text: "Submit review"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

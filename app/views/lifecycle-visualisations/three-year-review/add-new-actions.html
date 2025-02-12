@@ -1,0 +1,33 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Three-year review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Would you like to add new actions to your plan?
+    </h1>
+
+    <p>
+      The following lists all of our recommended actions that are not yet in your plan.
+      If you would like to add any of them to your plan at this stage, tick them below.
+    </p>
+
+    <form class="form" action="check-your-evaluation" method="post">
+
+      <p class="todo">TODO: List of actions not yet in plan</p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

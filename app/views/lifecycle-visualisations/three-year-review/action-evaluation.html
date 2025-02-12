@@ -1,0 +1,81 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Three-year review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% set thisPageAction = data.db.actions[data.actionIndex] %}
+{% set nextActionIndex = (data.actionIndex | parseInt) + 1 %}
+{% set nextPage = ("action-evaluation?actionIndex=" + nextActionIndex) if data.db.actions[nextActionIndex] else "add-new-actions" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{thisPageAction.title}}
+    </h1>
+
+    <form class="form" action="{{nextPage}}" method="post">
+
+      {{ govukRadios({
+        name: "threeYearReview[" + thisPageAction.shortCode + "][status]",
+        fieldset: {
+          legend: {
+            text: "What's the current status of this action?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "Update the status if it has changed since your last review"
+        },
+        value: data.threeYearReview[thisPageAction.shortCode].status,
+        items: [
+          {
+            value: "embedded",
+            text: "We have embedded this in our working culture"
+          },
+          {
+            value: "in-progress",
+            text: "We are working on embedding this"
+          },
+          {
+            value: "ignore",
+            text: "We have stopped working on this"
+          }
+        ]
+      }) }}
+
+      {{ govukTextarea({
+        id: "threeYearReview[{{thisPageAction.shortCode}}][evaluation]",
+        name: "threeYearReview[{{thisPageAction.shortCode}}][evaluation]",
+        value: data.threeYearReview[thisPageAction.shortCode].evaluation,
+        label: {
+          text: "How's this action going?",
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: "Please give us your evaluation of your progress on this action and the impact it's having"
+        }
+      }) }}
+
+      {{ govukTextarea({
+        id: "threeYearReview[{{thisPageAction.shortCode}}][supportingInformation]",
+        name: "threeYearReview[{{thisPageAction.shortCode}}][supportingInformation]",
+        value: data.threeYearReview[thisPageAction.shortCode].supportingInformation,
+        label: {
+          text: "What information have you used to evaluate this action?",
+          classes: "govuk-label--m"
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

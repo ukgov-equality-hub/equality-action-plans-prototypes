@@ -1,43 +1,57 @@
 .hint {
-    color: $govuk-secondary-text-colour;
+  color: $govuk-secondary-text-colour;
 }
 
 .todo, a.todo {
-    color: $govuk-error-colour;
-    font-style: italic;
+  color: $govuk-error-colour;
+  font-style: italic;
 }
 
 .review-note, .user-note, .warning {
-    border: solid 2px black;
-    @include govuk-responsive-padding(2);
+  border: solid 2px black;
+  @include govuk-responsive-padding(2);
 }
 .review-note {
-    background-color: mix(govuk-colour("orange"), white, 25%);
-    color: $govuk-secondary-text-colour;
-    font-style: italic;
+  background-color: mix(govuk-colour("orange"), white, 25%);
+  color: $govuk-secondary-text-colour;
+  font-style: italic;
 }
 .user-note {
-    background-color: mix(govuk-colour("turquoise"), white, 25%);
+  background-color: mix(govuk-colour("turquoise"), white, 25%);
 }
 .warning {
-    background-color: mix(govuk-colour("red"), white, 25%);
+  background-color: mix(govuk-colour("red"), white, 25%);
 }
 
 .action-plan-summary {
-    .action-name {
-        width: 75%;
-        font-weight: normal;
-    }
+  .action-name {
+    width: 75%;
+    font-weight: normal;
+  }
 
-    .action-status {
-        width: 15%;
-    }
+  .action-status {
+    width: 15%;
+  }
 
-    .action-change {
-        width: 10%;
-    }
+  .action-change {
+    width: 10%;
+  }
+}
+
+.three-year-review-summary {
+  .govuk-summary-list__key {
+    width: 30%
+  }
+
+  .govuk-summary-list__value {
+    width: 60%;
+  }
+
+  .govuk-summary-list__actions {
+    width: 10%;
+  }
 }
 
 .actions-narrow {
-    width: 10%;
+  width: 10%;
 }

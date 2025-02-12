@@ -1,0 +1,37 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Three-year review" %}
+{% set serviceName="Action plan lifecycle - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Action plan three-year review
+      </h1>
+
+      <p class="review-note">
+        This page would likely only be shown the first time an org needs to do a
+        three-year review. Otherwise it would be skipped.
+      </p>
+
+      <p>
+        Every three years after your action plan is created, you will be asked to review it in detail.
+      </p>
+      <p>
+        This is a more thorough process than the annual reviews your organisation has previously
+        conducted. We will ask you to evaluate all actions and select new actions for your action plan.
+      </p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "action-evaluation?actionIndex=0",
+        isStartButton: true
+      }) }}
+  
+    </div>
+  </div>
+
+{% endblock %}
