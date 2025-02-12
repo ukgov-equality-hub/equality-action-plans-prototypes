@@ -1,0 +1,50 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Three-year review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Evaluate your plan
+    </h1>
+
+    <p>
+      Please evaluate each action in your plan.
+    </p>
+
+  </div>
+  <div class="govuk-grid-column-full">
+
+    <form class="form" action="add-new-actions" method="post">
+
+      <dl class="govuk-summary-list action-plan-summary">
+        {% for action in data.db.actions %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{action.title}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data.threeYearReview[action.shortCode].status | statusToTag | safe }}
+              (no change)
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="action-evaluation?actionShortCode={{action.shortCode}}">Change</span></a>
+            </dd>
+          </div>
+        {% endfor %}
+      </dl>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

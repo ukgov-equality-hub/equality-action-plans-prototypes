@@ -3,9 +3,12 @@
 {% set pageName="Three-year review" %}
 {% set serviceName="Action Plan lifecycle - visualisations" %}
 
-{% set thisPageAction = data.db.actions[data.actionIndex] %}
-{% set nextActionIndex = (data.actionIndex | parseInt) + 1 %}
-{% set nextPage = ("action-evaluation?actionIndex=" + nextActionIndex) if data.db.actions[nextActionIndex] else "add-new-actions" %}
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
 
 {% block content %}
 
@@ -16,7 +19,7 @@
       {{thisPageAction.title}}
     </h1>
 
-    <form class="form" action="{{nextPage}}" method="post">
+    <form class="form" action="evaluate-your-plan" method="post">
 
       {{ govukRadios({
         name: "threeYearReview[" + thisPageAction.shortCode + "][status]",

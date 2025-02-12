@@ -10,6 +10,37 @@ addFilter('parseInt', function(number) {
     return parseInt(number);
 })
 
+addFilter('statusToTag', function(status) {
+  var title, colour;
+
+  switch (status) {
+    case "embedded":
+      title = "Embedded";
+      colour = "govuk-tag--turquoise";
+      break;
+  
+    case "in-progress":
+      title = "In progress";
+      colour = "govuk-tag--blue";
+      break;
+  
+    case "add-to-plan":
+      title = "Add to plan";
+      colour = "govuk-tag--orange";
+      break;
+  
+    default:
+      title = 'Not pursuing currently'
+      break;
+  }
+
+  if (colour) {
+    return '<strong class="govuk-tag ' + colour + '">' + title + '</strong>';
+  } else {
+    return title;
+  }
+})
+
 addFilter('search', function (data) {
     var matches = [];
 
