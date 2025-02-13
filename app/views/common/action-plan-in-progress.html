@@ -1,37 +1,52 @@
-<ul class="govuk-task-list">
+{% set showChanges = false %}
+{% if not creatingNewActionPlan %}
   {% for action in data.db.actions %}
+    {% if data[journeyShortCode][action.shortCode].status
+      and data[journeyShortCode][action.shortCode].status != data.db.company.actionsInProgress[action.shortCode].status %}
 
-    <li class="govuk-task-list__item govuk-task-list__item--with-link">
-      <div class="govuk-task-list__name-and-hint">
-        <a class="govuk-link govuk-task-list__link" href="action-details?actionIndex={{loop.index0}}&returnToSummary=true" aria-describedby="company-details-{{loop.index}}-status">
-          {{action.title}}
-        </a>
-        {% if data[journeyShortCode][action.shortCode].narrative and data[journeyShortCode][action.shortCode].narrative != "" %}
+      {% set showChanges = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<dl class="govuk-summary-list action-plan-summary{{ "-with-changes" if showChanges}}">
+  
+  {% for action in data.db.actions %}
+    {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+    {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
+    {% set submittedNarrative = data[journeyShortCode][action.shortCode].narrative %}
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        {{action.title}}
+        {% if submittedNarrative and submittedNarrative != "" %}
           {{ govukDetails({
             summaryText: "Your supporting narrative",
-            text: data[journeyShortCode][action.shortCode].narrative,
+            text: submittedNarrative,
             classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4"
           }) }}
         {% endif %}
-      </div>
-      <div class="govuk-task-list__status" id="company-details-{{loop.index}}-status">
-        {% if data[journeyShortCode][action.shortCode].status == "embedded" %}
-          <strong class="govuk-tag govuk-tag--green">
-            Embedded
-          </strong>
-        {% elif data[journeyShortCode][action.shortCode].status == "in-progress" %}
-          <strong class="govuk-tag govuk-tag--blue">
-            In progress
-          </strong>
-        {% elif data[journeyShortCode][action.shortCode].status == "add-to-plan" %}
-          <strong class="govuk-tag govuk-tag--orange">
-            {{ "Add to plan" if creatingNewActionPlan else "New in action plan" }}
-          </strong>
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if creatingNewActionPlan %}
+          {% if submittedStatus %}
+            {{ submittedStatus | statusToTag | safe }}
+          {% else %}
+          <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Add status for this action</span></a>
+          {% endif %}
         {% else %}
-          Not pursuing currently
+          {{ dbStatus | statusToTag | safe }}
+          {% if submittedStatus and submittedStatus != dbStatus %}
+            changed to {{ submittedStatus | statusToTag | safe }}
+          {% endif %}
         {% endif %}
-      </div>
-    </li>
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        {% if submittedStatus or not creatingNewActionPlan %}
+          <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Change</span></a>
+        {% endif %}
+      </dd>
+    </div>
 
   {% endfor %}
-</ul>
+  </dl>

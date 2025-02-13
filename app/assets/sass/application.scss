@@ -25,15 +25,30 @@
 
 .action-plan-summary {
   .govuk-summary-list__key {
-    width: 60%;
+    width: 67%;
   }
 
   .govuk-summary-list__value {
-    width: 30%;
+    width: 25%;
   }
 
   .govuk-summary-list__actions {
-    width: 10%;
+    width: 8%;
+  }
+}
+
+.action-plan-summary-with-changes {
+  .govuk-summary-list__key {
+    width: 57%;
+  }
+
+  .govuk-summary-list__value {
+    width: 35%;
+    text-align: center;
+  }
+
+  .govuk-summary-list__actions {
+    width: 8%;
   }
 }
 

@@ -4,9 +4,12 @@
 {% set pageName="Best practice checklist" %}
 {% set serviceName="Choosing actions - visualisations" %}
 
-{% set thisPageAction = data.db.actions[data.actionIndex] %}
-{% set nextActionIndex = (data.actionIndex | parseInt) + 1 %}
-{% set nextPage = "checklist-summary" if not data.db.actions[nextActionIndex] else ("action-details?actionIndex=" + nextActionIndex) %}
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
 
 {% block content %}
 
@@ -21,7 +24,7 @@
         {{thisPageAction.description}}
       </p>
 
-      <form action="{{'checklist-summary' if data.returnToSummary == "true" else nextPage}}" method="post">
+      <form action="checklist-summary" method="post">
 
         {{ govukRadios({
           name: "bestPracticeChecklist[" + thisPageAction.shortCode + "][status]",
@@ -63,7 +66,7 @@
           hint: {
             text: "If you would like to give more details, you can do so here"
           },
-          value: data.bestPracticeChecklist[thisPageAction.shortCode]['narrative']
+          value: data.bestPracticeChecklist[thisPageAction.shortCode].narrative
         }) }}
 
         {{ govukButton({

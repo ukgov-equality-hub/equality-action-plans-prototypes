@@ -1,51 +1,9 @@
 module.exports = {
 
-  annualReview: {
-    'targets': {
-      status: 'embedded',
-      narrative: ''
-    },
-    'equity-leads': {
-      status: 'embedded',
-      narrative: ''
-    },
-    'flexible-working': {
-      status: 'embedded',
-      narrative: ''
-    },
-    'structured-interviews': {
-      status: 'in-progress',
-      narrative: ''
-    },
-    'remuneration-transparency': {
-      status: 'add-to-plan',
-      narrative: ''
-    },
-    'promotion-application-by-default': {
-      status: 'ignore',
-      narrative: 'We don\'t believe this is helpful for our employees who may not want to change role'
-    },
-    'share-local-support-for-flexible-working': {
-      status: 'embedded',
-      narrative: ''
-    },
-    'flexible-working-available-to-all': {
-      status: 'in-progress',
-      narrative: ''
-    },
-    'rest-areas': {
-      status: 'add-to-plan',
-      narrative: ''
-    },
-    'relax-uniform-policies': {
-      status: 'add-to-plan',
-      narrative: ''
-    }
-  },
-
   db: {
     company: {
       name: "Dunder Mifflin Paper Company, Inc",
+
       report: {
         metrics: [
           { 'median-hourly-pay-gap-percent': '50' },
@@ -58,7 +16,40 @@ module.exports = {
           { 'mean-bonus-pay-gap-percent': '50' },
           { 'percent-women-vs-men-receiving-bonus': '50 vs 55' }
         ]
-      }
+      },
+
+      actionsInProgress: {
+        'targets': {
+          status: 'embedded'
+        },
+        'equity-leads': {
+          status: 'embedded'
+        },
+        'flexible-working': {
+          status: 'embedded'
+        },
+        'structured-interviews': {
+          status: 'in-progress'
+        },
+        'remuneration-transparency': {
+          status: 'add-to-plan'
+        },
+        'promotion-application-by-default': {
+          status: 'ignore'
+        },
+        'share-local-support-for-flexible-working': {
+          status: 'embedded'
+        },
+        'flexible-working-available-to-all': {
+          status: 'in-progress'
+        },
+        'rest-areas': {
+          status: 'add-to-plan'
+        },
+        'relax-uniform-policies': {
+          status: 'add-to-plan'
+        }
+      },
     },
 
     actionCategories: [
@@ -247,5 +238,4 @@ module.exports = {
       }
     ]
   }
-
 }

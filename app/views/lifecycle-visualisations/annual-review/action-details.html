@@ -1,12 +1,16 @@
 {% extends "layouts/main.html" %}
-{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
 {% set pageName="Annual review" %}
 {% set serviceName="Action Plan lifecycle - visualisations" %}
 
-{% set thisPageAction = data.db.actions[data.actionIndex] %}
-{% set nextActionIndex = (data.actionIndex | parseInt) + 1 %}
-{% set nextPage = "checklist-summary" if not data.db.actions[nextActionIndex] else ("action-details?actionIndex=" + nextActionIndex) %}
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+{% set dbStatus = data.db.company.actionsInProgress[thisPageAction.shortCode].status %}
+{% set submittedStatus = data.annualReview[thisPageAction.shortCode].status %}
 
 {% block content %}
 
@@ -32,7 +36,7 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data.annualReview[thisPageAction.shortCode].status,
+          value: submittedStatus if submittedStatus else dbStatus,
           items: [
             {
               value: "embedded",
@@ -63,7 +67,7 @@
           hint: {
             text: "If you would like to give more details, you can do so here"
           },
-          value: data.annualReview[thisPageAction.shortCode]['narrative']
+          value: data.annualReview[thisPageAction.shortCode].narrative
         }) }}
 
         {{ govukButton({
