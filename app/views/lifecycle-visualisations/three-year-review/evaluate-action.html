@@ -52,8 +52,8 @@
       }) }}
 
       {{ govukTextarea({
-        id: "threeYearReview[{{thisPageAction.shortCode}}][evaluation]",
-        name: "threeYearReview[{{thisPageAction.shortCode}}][evaluation]",
+        id: "threeYearReview["+thisPageAction.shortCode+"][evaluation]",
+        name: "threeYearReview["+thisPageAction.shortCode+"][evaluation]",
         value: data.threeYearReview[thisPageAction.shortCode].evaluation,
         label: {
           text: "How's this action going?",
@@ -65,8 +65,8 @@
       }) }}
 
       {{ govukTextarea({
-        id: "threeYearReview[{{thisPageAction.shortCode}}][supportingInformation]",
-        name: "threeYearReview[{{thisPageAction.shortCode}}][supportingInformation]",
+        id: "threeYearReview["+thisPageAction.shortCode+"][supportingInformation]",
+        name: "threeYearReview["+thisPageAction.shortCode+"][supportingInformation]",
         value: data.threeYearReview[thisPageAction.shortCode].supportingInformation,
         label: {
           text: "What information have you used to evaluate this action?",

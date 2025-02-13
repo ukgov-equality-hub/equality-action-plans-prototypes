@@ -22,6 +22,9 @@
     <form class="form" action="submitted" method="post">
 
       {% for action in data.db.actions %}
+        {% set submittedStatus = data.threeYearReview[action.shortCode].status %}
+        {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+
         <h2 class="govuk-heading-m">{{action.title}}</h2>
 
         {{ govukSummaryList({
@@ -32,8 +35,8 @@
                 text: "Status change"
               },
               value: {
-                html: "<strong class=\"govuk-tag govuk-tag--blue\">In progress</strong>" + " changed to " + "<strong class=\"govuk-tag govuk-tag--green\">Embedded</strong>"
-                  if loop.index0 % 3 == 0 else "No change"
+                html: "No change" if submittedStatus == dbStatus
+                  else dbStatus | statusToTag + " changed to " + submittedStatus | statusToTag
               },
               actions: {
                 items: [
