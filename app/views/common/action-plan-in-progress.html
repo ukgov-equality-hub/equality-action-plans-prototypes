@@ -32,7 +32,7 @@
           {% if submittedStatus %}
             {{ submittedStatus | statusToTag | safe }}
           {% else %}
-          <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Add status for this action</span></a>
+            <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Add status for this action</a>
           {% endif %}
         {% else %}
           {{ dbStatus | statusToTag | safe }}
@@ -43,7 +43,7 @@
       </dd>
       <dd class="govuk-summary-list__actions">
         {% if submittedStatus or not creatingNewActionPlan %}
-          <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Change</span></a>
+          <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Change</a>
         {% endif %}
       </dd>
     </div>
