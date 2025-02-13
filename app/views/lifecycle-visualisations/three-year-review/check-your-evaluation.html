@@ -35,7 +35,7 @@
                 text: "Status change"
               },
               value: {
-                html: "No change" if submittedStatus == dbStatus
+                html: "No change" if not submittedStatus or submittedStatus == dbStatus
                   else dbStatus | statusToTag + " changed to " + submittedStatus | statusToTag
               },
               actions: {
