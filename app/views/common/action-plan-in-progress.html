@@ -28,12 +28,12 @@
         {% endif %}
       </dt>
       <dd class="govuk-summary-list__value">
-        {% if creatingNewActionPlan %}
-          {% if submittedStatus %}
-            {{ submittedStatus | statusToTag | safe }}
-          {% else %}
-            <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Add status for this action</a>
-          {% endif %}
+        {% if mustSubmit and not submittedStatus %}
+          <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">
+            {{ unsubmittedLinkText }}
+          </a>
+        {% elif creatingNewActionPlan %}
+          {{ submittedStatus | statusToTag | safe }}
         {% else %}
           {{ dbStatus | statusToTag | safe }}
           {% if submittedStatus and submittedStatus != dbStatus %}
@@ -42,8 +42,8 @@
         {% endif %}
       </dd>
       <dd class="govuk-summary-list__actions">
-        {% if submittedStatus or not creatingNewActionPlan %}
-          <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Change</a>
+        {% if submittedStatus or (not creatingNewActionPlan and not mustSubmit) %}
+          <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">Change</a>
         {% endif %}
       </dd>
     </div>

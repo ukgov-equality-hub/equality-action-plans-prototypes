@@ -9,6 +9,8 @@
     {% set thisPageAction = action %}
   {% endif %}
 {% endfor %}
+{% set dbStatus = data.db.company.actionsInProgress[thisPageAction.shortCode].status %}
+{% set submittedStatus = data.threeYearReview[thisPageAction.shortCode].status %}
 
 {% block content %}
 
@@ -32,7 +34,7 @@
         hint: {
           text: "Update the status if it has changed since your last review"
         },
-        value: data.threeYearReview[thisPageAction.shortCode].status,
+        value: submittedStatus if submittedStatus else dbStatus,
         items: [
           {
             value: "embedded",
