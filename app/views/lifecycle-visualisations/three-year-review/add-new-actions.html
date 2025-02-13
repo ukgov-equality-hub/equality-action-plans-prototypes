@@ -19,10 +19,22 @@
 
     <form class="form" action="check-your-evaluation" method="post">
 
-      <p class="todo">TODO: List of actions not yet in plan</p>
+      <div class="warning">
+        <p>TODO!</p>
+        <p>
+          So far this journey lists all actions in the system for evaluation,
+          even if they are not currently on the user's plan.
+        </p>
+        <p class="govuk-!-margin-bottom-0">
+          This mock-up will be modified so that it only lists for evaluation
+          the actions that are actually on the plan, and then any actions
+          that are <em>not</em> already on the plan can be added here.
+        </p>
+      </div>
 
       {{ govukButton({
-        text: "Continue"
+        text: "Continue",
+        classes: "govuk-!-margin-top-3"
       }) }}
 
     </form>
