@@ -39,7 +39,7 @@
           {% if submittedStatus and submittedStatus != dbStatus %}
             changed to {{ submittedStatus | statusToTag | safe }}
           {% elif highlightNoChange %}
-            (no change)
+            <span class="hint">(no change)</span>
           {% endif %}
         {% endif %}
       </dd>
