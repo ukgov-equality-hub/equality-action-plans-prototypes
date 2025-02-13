@@ -38,6 +38,8 @@
           {{ dbStatus | statusToTag | safe }}
           {% if submittedStatus and submittedStatus != dbStatus %}
             changed to {{ submittedStatus | statusToTag | safe }}
+          {% elif highlightNoChange %}
+            (no change)
           {% endif %}
         {% endif %}
       </dd>
