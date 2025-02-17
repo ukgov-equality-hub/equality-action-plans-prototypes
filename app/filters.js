@@ -13,6 +13,15 @@ addFilter('parseInt', function(number) {
 addFilter('statusToTag', function(status) {
   var title, colour;
 
+  // BUG: Without the following apparently ludicrous block, the case statement below does
+  //      not recognise the supplied status code in certain contexts (but is fine in others).
+  //      This does happen for other status codes too, but only this one is used in the
+  //      failing contexts.
+  if (status == "add-to-plan")
+  {
+    status = "add-to-plan";
+  }
+
   switch (status) {
     case "embedded":
       title = "Embedded";
@@ -28,9 +37,13 @@ addFilter('statusToTag', function(status) {
       title = "Add to plan";
       colour = "govuk-tag--orange";
       break;
+
+    case "ignore":
+      title = "Not pursuing currently";
+      break;
   
     default:
-      title = 'Not pursuing currently'
+      title = "Not pursuing currently";
       break;
   }
 

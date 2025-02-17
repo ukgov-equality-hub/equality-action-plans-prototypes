@@ -1,6 +1,6 @@
 {% extends "layouts/menu-bar.html" %}
 
-{% set pageName="Three-year review" %}
+{% set pageName="Annual review" %}
 {% set serviceName="Action Plan lifecycle - visualisations" %}
 
 {% block content %}
@@ -9,7 +9,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Would you like to add new actions to your plan?
+      Add actions to your plan
     </h1>
 
     <p>
@@ -17,15 +17,15 @@
       If you would like to add any of them to your plan at this stage, tick them below.
     </p>
 
-    <form class="form" action="check-your-evaluation" method="post">
+    <form class="form" action="update-action-plan" method="post">
 
-      {% set journeyShortCode = "threeYearReview" %}
+      {% set journeyShortCode = "annualReview" %}
       {% set addingToExistingPlan = true %}
 
       {% include "common/action-checklist-details.html" %}
 
       {{ govukButton({
-        text: "Continue",
+        text: "Add to plan",
         classes: "govuk-!-margin-top-3"
       }) }}
 

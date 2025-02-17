@@ -38,7 +38,7 @@ module.exports = {
           status: 'ignore'
         },
         'share-local-support-for-flexible-working': {
-          status: 'embedded'
+          status: 'ignore'
         },
         'flexible-working-available-to-all': {
           status: 'in-progress'
@@ -47,7 +47,7 @@ module.exports = {
           status: 'add-to-plan'
         },
         'relax-uniform-policies': {
-          status: 'add-to-plan'
+          status: 'ignore'
         }
       },
     },

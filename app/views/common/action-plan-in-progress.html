@@ -16,39 +16,43 @@
     {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
     {% set submittedNarrative = data[journeyShortCode][action.shortCode].narrative %}
 
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-        {{action.title}}
-        {% if submittedNarrative and submittedNarrative != "" %}
-          {{ govukDetails({
-            summaryText: "Your supporting narrative",
-            text: submittedNarrative,
-            classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4"
-          }) }}
-        {% endif %}
-      </dt>
-      <dd class="govuk-summary-list__value">
-        {% if mustSubmit and not submittedStatus %}
-          <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">
-            {{ unsubmittedLinkText }}
-          </a>
-        {% elif creatingNewActionPlan %}
-          {{ submittedStatus | statusToTag | safe }}
-        {% else %}
-          {{ dbStatus | statusToTag | safe }}
-          {% if submittedStatus and submittedStatus != dbStatus %}
-            changed to {{ submittedStatus | statusToTag | safe }}
-          {% elif highlightNoChange %}
-            <span class="hint">(no change)</span>
-          {% endif %}
-        {% endif %}
-      </dd>
-      <dd class="govuk-summary-list__actions">
-        {% if submittedStatus or (not creatingNewActionPlan and not mustSubmit) %}
-          <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">Change</a>
-        {% endif %}
-      </dd>
-    </div>
+    {# If this is an existing plan, only display actions already on it or those newly added#}
+    {% if not creatingNewActionPlan and (submittedStatus == "add-to-plan" or (dbStatus and dbStatus != "ignore")) %}
 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{action.title}}
+          {% if submittedNarrative and submittedNarrative != "" %}
+            {{ govukDetails({
+              summaryText: "Your supporting narrative",
+              text: submittedNarrative,
+              classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4"
+            }) }}
+          {% endif %}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if mustSubmit and not submittedStatus %}
+            <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">
+              {{ unsubmittedLinkText }}
+            </a>
+          {% elif creatingNewActionPlan %}
+            {{ submittedStatus | statusToTag | safe }}
+          {% else %}
+            {{ dbStatus | statusToTag | safe }}
+            {% if submittedStatus and submittedStatus != dbStatus %}
+              changed to {{ submittedStatus | statusToTag | safe }}
+            {% elif highlightNoChange %}
+              <span class="hint">(no change)</span>
+            {% endif %}
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          {% if submittedStatus or (not creatingNewActionPlan and not mustSubmit) %}
+            <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">Change</a>
+          {% endif %}
+        </dd>
+      </div>
+
+    {% endif %}
   {% endfor %}
-  </dl>
+</dl>

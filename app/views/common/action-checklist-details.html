@@ -1,0 +1,25 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      {% for action in data.db.actions %}
+        {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+
+        {% if not addingToExistingPlan or (not dbStatus or dbStatus == "ignore") %}
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="{{journeyShortCode}}[{{action.shortCode}}][status]" name="{{journeyShortCode}}[{{action.shortCode}}][status]" type="checkbox" value="add-to-plan" {{"checked" if data[journeyShortCode][action.shortCode].status == 'add-to-plan'}} aria-describedby="{{journeyShortCode}}[actions]-item{{loop.index}}-hint">
+            <label class="govuk-label govuk-checkboxes__label" for="{{journeyShortCode}}[{{action.shortCode}}][status]">
+              {{ action.title }}
+            </label>
+            <div id="{{journeyShortCode}}[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
+              {{ govukDetails({
+                summaryText: "Why choose this?",
+                text: action.description,
+                classes: "govuk-!-margin-bottom-3"
+              }) }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </fieldset>
+</div>
