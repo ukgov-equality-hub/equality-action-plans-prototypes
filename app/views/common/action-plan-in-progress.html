@@ -16,8 +16,11 @@
     {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
     {% set submittedNarrative = data[journeyShortCode][action.shortCode].narrative %}
 
-    {# If this is an existing plan, only display actions already on it or those newly added#}
-    {% if not creatingNewActionPlan and (submittedStatus == "add-to-plan" or (dbStatus and dbStatus != "ignore")) %}
+    {#
+      If this is a new plan, display all actions.
+      Otherwise only display actions on the existing plan or added in this session
+    #}
+    {% if creatingNewActionPlan or (dbStatus and dbStatus != "ignore") or submittedStatus == "add-to-plan" %}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
