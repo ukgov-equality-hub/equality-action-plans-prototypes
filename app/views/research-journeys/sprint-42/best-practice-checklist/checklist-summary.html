@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% set pageName="Best practice checklist" %}
+{% set serviceName="Gender Pay Gap service" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Best practice checklist
+      </h1>
+
+      <p>
+        Below is the list of actions in the best practice checklist.
+        For each, please tell us whether your organisation:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>has already embedded it in your working culture</li>
+        <li>is working on embedding it</li>
+        <li>would like to adopt it and add it to your action plan</li>
+        <li>does not want to pursue this practice currently</li>
+      </ul>
+      <p>When you are ready, submit the checklist to your public record on this service.</p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+        
+      <form class="govuk-!-margin-top-4" action="submitted" method="post">
+
+        {% set journeyShortCode = "sprint42bestPracticeChecklist" %}
+        {% set creatingNewActionPlan = true %}
+        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set editUrl = "action-details" %}
+        {% include "common/action-plan-in-progress.html" %}
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">
+              On submission your best practice checklist will be published on the Gender pay gap service.
+          </p>
+        </div>
+
+        {{ govukButton({
+          text: "Submit checklist"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

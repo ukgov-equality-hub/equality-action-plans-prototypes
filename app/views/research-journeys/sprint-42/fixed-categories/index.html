@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Fixed categories" %}
+{% set serviceName="Gender Pay Gap service" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <p class="user-note">
+      This prototype will start as if you have just entered all your gender pay gap data for this reporting year.
+    </p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "fixed-categories/data-submitted",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

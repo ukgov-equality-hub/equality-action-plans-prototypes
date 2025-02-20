@@ -14,26 +14,31 @@
       <p>
         Your gender pay gap information has now been published on the Gender pay gap service.
       </p>
-      <p>
-        <a href="#">View your published gender pay gap information</a>
-      </p>
 
-      <h2 class="govuk-heading-s">
-        Next steps
-      </h2>
+      {% if not skipDetails %}
+        
+        <p>
+          <a href="#">View your published gender pay gap information</a>
+        </p>
 
-      <p>
-        You must also publish your gender pay gap information (and <a href="#">written statement (opens in a new tab)</a>
-        if applicable) in a prominent place on your employer's public facing website.
-      </p>
+        <h2 class="govuk-heading-s">
+          Next steps
+        </h2>
 
-      <p class="govuk-body govuk-!-margin-top-6">
-        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
-      </p>
+        <p>
+          You must also publish your gender pay gap information (and <a href="#">written statement (opens in a new tab)</a>
+          if applicable) in a prominent place on your employer's public facing website.
+        </p>
 
-      {{ govukButton({
-        text: "Sign out"
-      }) }}
+        <p class="govuk-body govuk-!-margin-top-6">
+          <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+        </p>
+
+        {{ govukButton({
+          text: "Sign out"
+        }) }}
+
+      {% endif %}
 
     </div>
   </div>
