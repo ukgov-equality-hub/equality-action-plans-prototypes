@@ -34,25 +34,30 @@
           {% endif %}
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if mustSubmit and not submittedStatus %}
-            <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">
-              {{ unsubmittedLinkText }}
-            </a>
-          {% elif creatingNewActionPlan %}
-            {{ submittedStatus | statusToTag | safe }}
+          {% if creatingNewActionPlan %}
+            {% if submittedStatus %}
+              {{ submittedStatus | statusToTag | safe }}
+            {% else %}
+              <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">
+                {{ unsubmittedLinkText }}
+              </a>
+            {% endif %}
           {% else %}
             {{ dbStatus | statusToTag | safe }}
-            {% if submittedStatus and submittedStatus != dbStatus %}
-              changed to {{ submittedStatus | statusToTag | safe }}
-            {% elif highlightNoChange %}
-              <span class="hint">(no change)</span>
+            {% if submittedStatus %}
+              {% if submittedStatus != dbStatus %}
+                changed to {{ submittedStatus | statusToTag | safe }}
+              {% elif highlightNoChange %}
+                <span class="hint">(no change)</span>
+              {% endif %}
             {% endif %}
           {% endif %}
         </dd>
         {% if not viewOnly %}
           <dd class="govuk-summary-list__actions">
-            {% if submittedStatus or (not creatingNewActionPlan and not mustSubmit) %}
-              <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">Change</a>
+            {% if submittedStatus or not creatingNewActionPlan %}
+              {% set unsubmittedLinkText = unsubmittedLinkText or "Change" %}
+              <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">{{"Change" if submittedStatus else unsubmittedLinkText}}</a>
             {% endif %}
           </dd>
         {% endif %}

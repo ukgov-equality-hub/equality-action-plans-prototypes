@@ -13,7 +13,8 @@
     </h1>
 
     <p>
-      Please evaluate each action in your plan.
+      Below is your current action plan. Please evaluate each action by updating the status
+      and commenting on your progress.
     </p>
 
   </div>
@@ -23,8 +24,7 @@
 
       {% set journeyShortCode = "threeYearReview" %}
       {% set creatingNewActionPlan = false %}
-      {% set mustSubmit = true %}
-      {% set unsubmittedLinkText = "Evaluate this action" %}
+      {% set unsubmittedLinkText = "Evaluate" %}
       {% set highlightNoChange = true %}
       {% set editUrl = "evaluate-action" %}
       {% include "common/action-plan-in-progress.html" %}
