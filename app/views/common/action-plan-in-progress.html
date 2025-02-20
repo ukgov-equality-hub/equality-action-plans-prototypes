@@ -49,11 +49,13 @@
             {% endif %}
           {% endif %}
         </dd>
-        <dd class="govuk-summary-list__actions">
-          {% if submittedStatus or (not creatingNewActionPlan and not mustSubmit) %}
-            <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">Change</a>
-          {% endif %}
-        </dd>
+        {% if not viewOnly %}
+          <dd class="govuk-summary-list__actions">
+            {% if submittedStatus or (not creatingNewActionPlan and not mustSubmit) %}
+              <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">Change</a>
+            {% endif %}
+          </dd>
+        {% endif %}
       </div>
 
     {% endif %}

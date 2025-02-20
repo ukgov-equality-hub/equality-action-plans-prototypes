@@ -1,0 +1,37 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Your current action plan
+    </h1>
+
+    <p>
+      Below is your current action plan. We will ask you two brief summary questions
+      about the last year, and then you will have an opportunity to update the plan
+      if you want to.
+    </p>
+
+  </div>
+  <div class="govuk-grid-column-full">
+
+    {% set journeyShortCode = "annualReview" %}
+    {% set creatingNewActionPlan = false %}
+    {% set viewOnly = true %}
+    {% include "common/action-plan-in-progress.html" %}
+
+    {{ govukButton({
+      text: "Continue",
+      href: "implementation-progress"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
