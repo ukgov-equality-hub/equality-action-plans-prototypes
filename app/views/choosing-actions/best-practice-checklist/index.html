@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Fixed categories" %}
+{% set pageName="Best practice checklist" %}
 {% set serviceName="Choosing actions - visualisations" %}
 
 {% block content %}
@@ -13,12 +13,13 @@
     </h1>
 
     <p class="user-note">
-      This prototype will start as if you have just entered all your gender pay gap data for this reporting year.
+      In this prototype, the user has agreed to complete a "best practice checklist"
+      - an alternative way of presenting a list of suggested actions for an action plan.
     </p>
 
     {{ govukButton({
       text: "Start now",
-      href: "data-submitted",
+      href: "best-practice-checklist/checklist-summary",
       isStartButton: true
     }) }}
 

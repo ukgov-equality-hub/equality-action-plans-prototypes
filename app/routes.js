@@ -6,7 +6,7 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-router.post('/choosing-actions-visualisations/simple-pick-list/answer-action-plan-external', function(request, response){
+router.post('/choosing-actions/simple-pick-list/answer-action-plan-external', function(request, response){
     var actionPlanIsExternal = request.session.data["choosingActions.alreadyHaveActionPlan"]
 
     if (actionPlanIsExternal == "Yes") {
@@ -16,7 +16,7 @@ router.post('/choosing-actions-visualisations/simple-pick-list/answer-action-pla
     }
 })
 
-router.post('/choosing-actions-visualisations/suggested-actions/answer-help-requested', function(request, response){
+router.post('/choosing-actions/suggested-actions/answer-help-requested', function(request, response){
     var helpRequested = request.session.data['suggestedActions']['help-requested']
 
     if (helpRequested == "Yes") {
@@ -26,7 +26,7 @@ router.post('/choosing-actions-visualisations/suggested-actions/answer-help-requ
     }
 })
 
-router.post('/choosing-actions-visualisations/suggested-actions/answer-additional-questions', function(request, response){
+router.post('/choosing-actions/suggested-actions/answer-additional-questions', function(request, response){
     var answerAdditionalQuestions = request.session.data['suggestedActions']['additional-questions']
 
     if (answerAdditionalQuestions == "Yes") {

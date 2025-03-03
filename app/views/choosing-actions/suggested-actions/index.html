@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Simple pick list" %}
+{% set pageName="Suggested actions" %}
 {% set serviceName="Choosing actions - visualisations" %}
 
 {% block content %}
@@ -13,12 +13,12 @@
     </h1>
 
     <p class="user-note">
-      This prototype will start as if you have just entered all your gender pay gap data for this reporting year.
+      This prototype will start from your dashboard page on the GPG service.
     </p>
 
     {{ govukButton({
       text: "Start now",
-      href: "data-submitted",
+      href: "suggested-actions/dashboard",
       isStartButton: true
     }) }}
 
