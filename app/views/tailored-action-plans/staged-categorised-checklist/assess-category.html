@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Staged, categorised checklist" %}
+{% set serviceName="Tailored action plans - visualisations" %}
+
+{% set thisPageCategory = {} %}
+{% for category in data.db.actionCategories %}
+  {% if category.shortCode == data.categoryShortCode %}
+    {% set thisPageCategory = category %}
+  {% endif %}
+{% endfor %}
+
+{% set firstActionShortCode = "" %}
+{% for action in data.db.actions %}
+  {% if firstActionShortCode == "" and action.category == thisPageCategory.shortCode %}
+    {% set firstActionShortCode = action.shortCode %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageCategory.title}}
+      </h1>
+
+      <p>
+        {{thisPageCategory.description}}
+      </p>
+
+      <p>
+        Each category has several potential actions to take. We will suggest the most important
+        foundational actions first. If your organisation already routinely does all of those then
+        we will suggest further actions that can build on top of them.
+      </p>
+
+      {{ govukButton({
+        href: "action-details?actionShortCode=" + firstActionShortCode,
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

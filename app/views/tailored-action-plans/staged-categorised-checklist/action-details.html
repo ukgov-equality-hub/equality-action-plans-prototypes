@@ -1,0 +1,90 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Staged, categorised checklist" %}
+{% set serviceName="Tailored action plans - visualisations" %}
+
+{% set thisPageAction = {} %}
+{% set nextActionShortCode = "" %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+    {% if data.db.actions[loop.index].category == thisPageAction.category %}
+      {% set nextActionShortCode = data.db.actions[loop.index].shortCode %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageAction.title}} (next: {{nextActionShortCode}})
+      </h1>
+
+      <p>
+        {{thisPageAction.description}}
+      </p>
+
+      {% set nextPageUrl = ("action-details?actionShortCode=" + nextActionShortCode) if nextActionShortCode else "overview" %}
+      <form action="{{nextPageUrl}}" method="post">
+
+        {{ govukRadios({
+          name: "stagedCategorisedChecklist[" + thisPageAction.shortCode + "][status]",
+          fieldset: {
+            legend: {
+              text: "How is your organisation progressing with this practice?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: data.stagedCategorisedChecklist[thisPageAction.shortCode].status,
+          items: [
+            {
+              value: "embedded",
+              text: "We already do this routinely wherever possible",
+              hint: { text: "If you cannot do this for all employees, but do so for all those you can, then pick this option" }
+            },
+            {
+              value: "in-progress",
+              text: "We are already working on this but it is not yet routine"
+            },
+            {
+              value: "adopt",
+              text: "We would like to adopt this practice"
+            },
+            {
+              value: "considering",
+              text: "We are considering adopting this practice"
+            },
+            {
+              value: "ignore",
+              text: "We do not want to pursue this practice currently"
+            }
+          ]
+        }) }}
+
+        {{ govukTextarea({
+          id: "stagedCategorisedChecklist[" + thisPageAction.shortCode + "][narrative]",
+          name: "stagedCategorisedChecklist[" + thisPageAction.shortCode + "][narrative]",
+          label: {
+            text: "Supporting narrative",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "If you would like to give more details, you can do so here"
+          },
+          value: data.stagedCategorisedChecklist[thisPageAction.shortCode].narrative
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
