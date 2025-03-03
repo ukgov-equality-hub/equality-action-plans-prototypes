@@ -48,24 +48,8 @@
               {% endif %}
             </div>
             <div class="govuk-summary-card__content">
-              <dl class="govuk-summary-list action-plan-summary">
-                {% for action in data.db.actions %}
-                  {% set submittedStatus = data.stagedCategorisedChecklist[action.shortCode].status %}
-                  {% if action.category == category.shortCode and submittedStatus and submittedStatus != "ignore" %}
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        {{action.title}}
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        {{submittedStatus | statusToTag | safe}}
-                      </dd>
-                      <dd class="govuk-summary-list__actions">
-                        <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">Change</a>
-                      </dd>
-                    </div>
-                  {% endif %}
-                {% endfor %}
-                {% if actionCount == 0 %}
+              {% if actionCount == 0 %}
+                <div class="govuk-summary-list">
                   {% if hasSubmitted %}
                     No actions chosen
                   {% else %}
@@ -73,8 +57,15 @@
                       Assess this category
                     </a>
                   {% endif %}
-                {% endif %}
-              </dl>
+                </div>
+              {% else %}
+                {% set journeyShortCode = "stagedCategorisedChecklist" %}
+                {% set creatingNewActionPlan = true %}
+                {% set editUrl = "action-details" %}
+                {% set categoryCode = category.shortCode %}
+                {% set onlyShowSelectedActions = true %}
+                {% include "common/action-plan-in-progress.html" %}
+              {% endif %}
             </div>
           </div>
 

@@ -17,10 +17,17 @@
     {% set submittedNarrative = data[journeyShortCode][action.shortCode].narrative %}
 
     {#
+      Limit to actions in category if supplied.
+      Ignore unselected actions if instructed.
       If this is a new plan, display all actions.
-      Otherwise only display actions on the existing plan or added in this session
+      Otherwise only display actions on the existing plan
+        or added in this session.
     #}
-    {% if creatingNewActionPlan or (dbStatus and dbStatus != "ignore") or submittedStatus == "adopt" %}
+    {% if (not categoryCode or action.category == categoryCode)
+      and (not onlyShowSelectedActions or (submittedStatus and submittedStatus != "ignore"))
+      and (creatingNewActionPlan
+        or (dbStatus and dbStatus != "ignore")
+        or submittedStatus == "adopt") %}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
