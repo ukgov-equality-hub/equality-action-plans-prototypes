@@ -1,0 +1,43 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Staged, categorised checklist" %}
+{% set serviceName="Tailored action plans - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Action plan draft
+      </h1>
+
+      <p>
+        On the next page we will list the categories of actions that you can take.
+        Each category supports the others, so it is better to do the basics in every category
+        than to do everything possible in only one.
+      </p>
+      <p>
+        For each category, we will suggest some actions and ask whether your organisation:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>already does it routinely as far as possible</li>
+        <li>is already working on it, but it is not yet routine</li>
+        <li>would like to start working on it</li>
+        <li>is considering working on it</li>
+        <li>does not want to pursue this practice currently</li>
+      </ul>
+      <p>
+        Your action plan will consist of those actions you're already working on (but are not yet routine)
+        and those you would like to start working on.
+      </p>
+
+      {{ govukButton({
+        href: "overview",
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
