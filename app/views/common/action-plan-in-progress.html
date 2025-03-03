@@ -20,7 +20,7 @@
       If this is a new plan, display all actions.
       Otherwise only display actions on the existing plan or added in this session
     #}
-    {% if creatingNewActionPlan or (dbStatus and dbStatus != "ignore") or submittedStatus == "add-to-plan" %}
+    {% if creatingNewActionPlan or (dbStatus and dbStatus != "ignore") or submittedStatus == "adopt" %}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">

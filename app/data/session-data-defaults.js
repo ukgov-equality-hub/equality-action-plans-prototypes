@@ -32,7 +32,7 @@ module.exports = {
           status: 'in-progress'
         },
         'remuneration-transparency': {
-          status: 'add-to-plan'
+          status: 'adopt'
         },
         'promotion-application-by-default': {
           status: 'ignore'
@@ -44,7 +44,7 @@ module.exports = {
           status: 'in-progress'
         },
         'rest-areas': {
-          status: 'add-to-plan'
+          status: 'adopt'
         },
         'relax-uniform-policies': {
           status: 'ignore'

@@ -6,7 +6,7 @@
 
         {% if not addingToExistingPlan or (not dbStatus or dbStatus == "ignore") %}
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="{{journeyShortCode}}[{{action.shortCode}}][status]" name="{{journeyShortCode}}[{{action.shortCode}}][status]" type="checkbox" value="add-to-plan" {{"checked" if data[journeyShortCode][action.shortCode].status == 'add-to-plan'}} aria-describedby="{{journeyShortCode}}[actions]-item{{loop.index}}-hint">
+            <input class="govuk-checkboxes__input" id="{{journeyShortCode}}[{{action.shortCode}}][status]" name="{{journeyShortCode}}[{{action.shortCode}}][status]" type="checkbox" value="adopt" {{"checked" if data[journeyShortCode][action.shortCode].status == 'adopt'}} aria-describedby="{{journeyShortCode}}[actions]-item{{loop.index}}-hint">
             <label class="govuk-label govuk-checkboxes__label" for="{{journeyShortCode}}[{{action.shortCode}}][status]">
               {{ action.title }}
             </label>

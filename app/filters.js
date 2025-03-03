@@ -17,9 +17,9 @@ addFilter('statusToTag', function(status) {
   //      not recognise the supplied status code in certain contexts (but is fine in others).
   //      This does happen for other status codes too, but only this one is used in the
   //      failing contexts.
-  if (status == "add-to-plan")
+  if (status == "adopt")
   {
-    status = "add-to-plan";
+    status = "adopt";
   }
 
   switch (status) {
@@ -33,7 +33,7 @@ addFilter('statusToTag', function(status) {
       colour = "govuk-tag--blue";
       break;
   
-    case "add-to-plan":
+    case "adopt":
       title = "Add to plan";
       colour = "govuk-tag--orange";
       break;
