@@ -36,17 +36,21 @@
 
         <dl class="govuk-summary-list">
           {% for category in data.db.actionCategories %}
+            {% set actionCount = 0 %}
 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 {{category.title}}
               </dt>
               <dd class="govuk-summary-list__value">
-                {% if loop.index < 3 %}
-                  <p>1 action {{ "embedded" | statusToTag | safe }}</p>
-                  <p>2 actions {{ "in-progress" | statusToTag | safe }}</p>
-                  <p>1 action {{ "adopt" | statusToTag | safe }}</p>
-                {% else %}
+                {% for action in data.db.actions %}
+                  {% set submittedStatus = data.stagedCategorisedChecklist[action.shortCode].status %}
+                  {% if action.category == category.shortCode and submittedStatus and submittedStatus != "ignore" %}
+                    {% set actionCount = actionCount + 1 %}
+                    <p>{{action.title}}: {{submittedStatus | statusToTag | safe}}</p>
+                  {% endif %}
+                {% endfor %}
+                {% if actionCount == 0 %}
                   <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">
                     Assess this category
                   </a>
@@ -54,7 +58,7 @@
               </dd>
               {% if not viewOnly %}
                 <dd class="govuk-summary-list__actions">
-                  {% if loop.index < 3 %}
+                  {% if actionCount != 0 %}
                     <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">Change</a>
                   {% endif %}
                 </dd>
