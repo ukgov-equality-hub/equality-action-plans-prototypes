@@ -16,6 +16,13 @@
   color: $govuk-secondary-text-colour;
   font-style: italic;
 }
+.review-note p {
+  color: $govuk-secondary-text-colour;
+
+  &:last-child {
+    @include govuk-responsive-margin(0);
+  }
+}
 .user-note {
   background-color: mix(govuk-colour("turquoise"), white, 25%);
 }

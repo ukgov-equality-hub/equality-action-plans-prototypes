@@ -23,6 +23,23 @@
         {{thisPageAction.description}}
       </p>
 
+      {% if thisPageAction.level > 1 %}
+        <div class="review-note">
+          <p>
+            This action is in a higher "tier" and is only accessible because you have already fully embedded all actions in the previous tier.
+          </p>
+          <p>
+            However, this tiering system is not intended to be visible to the user - it exists only so we can suggest a manageable number
+            of actions at a time.
+          </p>
+          <p>
+            NOTE: We will need to be very careful when wording the action status choices, so that people don't get locked out of
+            higher tiers unnecessarily because their organisation is unable to fully implement lower-tier actions
+            (e.g. teachers and medical staff being unable to fully implement flexible working).
+          </p>
+        </div>
+      {% endif %}
+
       <form action="answer-action-details" method="post">
 
         <input type="hidden" name="stagedCategorisedChecklist[submittedActionShortCode]" value="{{thisPageAction.shortCode}}">
