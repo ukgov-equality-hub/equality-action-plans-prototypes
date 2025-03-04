@@ -36,3 +36,42 @@ router.post('/choosing-actions/suggested-actions/answer-additional-questions', f
         response.redirect("suggested-actions")
     }
 })
+
+router.post('/tailored-action-plans/staged-categorised-checklist/answer-action-details', function(request, response){
+    var submittedAction;
+    var nextAction;
+
+    request.session.data.db.actions.forEach(function (action) {
+        if (submittedAction && !nextAction) {
+            nextAction = action;
+        }
+
+        if (action.shortCode == request.session.data.stagedCategorisedChecklist.submittedActionShortCode) {
+            submittedAction = action;
+        }
+    })
+
+    var actionsOutstandingAtThisLevel = false;
+
+    request.session.data.db.actions.forEach(function (action) {
+        var submittedDataForThisAction = request.session.data.stagedCategorisedChecklist[action.shortCode];
+        var submittedStatus = submittedDataForThisAction ? submittedDataForThisAction.status : null;
+
+        if (action.category == submittedAction.category
+            && action.level <= submittedAction.level
+            && (!submittedStatus
+                || submittedStatus != "embedded"))
+        {
+            actionsOutstandingAtThisLevel = true;
+        }
+    })
+
+    if (request.session.data.assessingFullCategory
+        && nextAction.category == submittedAction.category
+        && (nextAction.level == submittedAction.level || !actionsOutstandingAtThisLevel))
+    {
+        response.redirect("action-details?actionShortCode=" + nextAction.shortCode);
+    } else {
+        response.redirect("overview?assessingFullCategory");
+    }
+})

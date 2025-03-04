@@ -4,13 +4,9 @@
 {% set serviceName="Tailored action plans - visualisations" %}
 
 {% set thisPageAction = {} %}
-{% set nextActionShortCode = "" %}
 {% for action in data.db.actions %}
   {% if action.shortCode == data.actionShortCode %}
     {% set thisPageAction = action %}
-    {% if data.continueToNextAction and data.db.actions[loop.index].category == thisPageAction.category %}
-      {% set nextActionShortCode = data.db.actions[loop.index].shortCode %}
-    {% endif %}
   {% endif %}
 {% endfor %}
 
@@ -27,8 +23,9 @@
         {{thisPageAction.description}}
       </p>
 
-      {% set nextPageUrl = ("action-details?actionShortCode=" + nextActionShortCode + "&continueToNextAction=true") if nextActionShortCode else "overview?continueToNextAction" %}
-      <form action="{{nextPageUrl}}" method="post">
+      <form action="answer-action-details" method="post">
+
+        <input type="hidden" name="stagedCategorisedChecklist[submittedActionShortCode]" value="{{thisPageAction.shortCode}}">
 
         {{ govukRadios({
           name: "stagedCategorisedChecklist[" + thisPageAction.shortCode + "][status]",

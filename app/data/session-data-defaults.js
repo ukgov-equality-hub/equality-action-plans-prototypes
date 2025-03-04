@@ -85,11 +85,14 @@ module.exports = {
         title: 'Support during menopause'
       }
     ],
-    
+
+    //  NOTE: Actions in this array MUST be ordered by category (any order) and then by level (ascending)
+    //        for various prototype features to work correctly.
     actions: [
       {
         shortCode: 'targets',
         category: 'leadership-and-accountability',
+        level: 1,
         targets: [],
         title: 'Set internal targets for gender representation and equality',
         description: 'Targets provide motivation and accountability, meaning that change is more likely to happen.'
@@ -99,6 +102,7 @@ module.exports = {
       {
         shortCode: 'equity-leads',
         category: 'leadership-and-accountability',
+        level: 1,
         targets: [],
         title: 'Appoint employment equity leads and/or task forces',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
@@ -108,6 +112,7 @@ module.exports = {
       {
         shortCode: 'measure-remuneration-gap',
         category: 'data',
+        level: 1,
         targets: [],
         title: 'Measure average remuneration gap women and men',
         description: 'You already collect this information as part of your legal responsibilities.'
@@ -119,6 +124,7 @@ module.exports = {
       {
         shortCode: 'measure-workforce-composition',
         category: 'data',
+        level: 1,
         targets: [],
         title: 'Measure the gender composition of the workforce',
         description: 'You already collect a basic breakdown of your workforce as part of your legal responsibilities.'
@@ -129,6 +135,7 @@ module.exports = {
       {
         shortCode: 'measure-flexible-working-utilisation',
         category: 'data',
+        level: 2,
         targets: [],
         title: 'Measure the availability and utilisation of flexible working',
         description: 'By understanding how many employees have access to flexible working, as well as how many of those'
@@ -138,6 +145,7 @@ module.exports = {
       {
         shortCode: 'flexible-working',
         category: 'recruitment',
+        level: 1,
         targets: [
           'lower-middle-quartile-percent-women',
           'upper-middle-quartile-percent-women'
@@ -150,6 +158,7 @@ module.exports = {
       {
         shortCode: 'structured-interviews',
         category: 'recruitment',
+        level: 1,
         targets: [
           'lower-middle-quartile-percent-women',
           'upper-middle-quartile-percent-women'
@@ -162,6 +171,7 @@ module.exports = {
       {
         shortCode: 'remuneration-transparency',
         category: 'promotion-and-retention',
+        level: 1,
         targets: [
           'median-hourly-pay-gap-percent',
           'mean-hourly-pay-gap-percent',
@@ -176,6 +186,7 @@ module.exports = {
       {
         shortCode: 'promotion-application-by-default',
         category: 'promotion-and-retention',
+        level: 1,
         targets: [
           'median-hourly-pay-gap-percent',
           'mean-hourly-pay-gap-percent',
@@ -190,6 +201,7 @@ module.exports = {
       {
         shortCode: 'share-local-support-for-flexible-working',
         category: 'flexibility',
+        level: 1,
         targets: [
           'median-hourly-pay-gap-percent',
           'mean-hourly-pay-gap-percent'
@@ -202,6 +214,7 @@ module.exports = {
       {
         shortCode: 'flexible-working-available-to-all',
         category: 'flexibility',
+        level: 1,
         targets: [
           'upper-quartile-percent-women',
           'upper-middle-quartile-percent-women',
@@ -215,6 +228,7 @@ module.exports = {
       {
         shortCode: 'rest-areas',
         category: 'menopause',
+        level: 1,
         targets: [
           'menopause'
         ],
@@ -226,6 +240,7 @@ module.exports = {
       {
         shortCode: 'relax-uniform-policies',
         category: 'menopause',
+        level: 1,
         targets: [
           'menopause'
         ],
