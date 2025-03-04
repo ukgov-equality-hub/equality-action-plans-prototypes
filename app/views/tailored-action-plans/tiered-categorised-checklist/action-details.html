@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Staged, categorised checklist" %}
+{% set pageName="Tiered, categorised checklist" %}
 {% set serviceName="Tailored action plans - visualisations" %}
 
 {% set thisPageAction = {} %}
@@ -42,10 +42,10 @@
 
       <form action="answer-action-details" method="post">
 
-        <input type="hidden" name="stagedCategorisedChecklist[submittedActionShortCode]" value="{{thisPageAction.shortCode}}">
+        <input type="hidden" name="tieredCategorisedChecklist[submittedActionShortCode]" value="{{thisPageAction.shortCode}}">
 
         {{ govukRadios({
-          name: "stagedCategorisedChecklist[" + thisPageAction.shortCode + "][status]",
+          name: "tieredCategorisedChecklist[" + thisPageAction.shortCode + "][status]",
           fieldset: {
             legend: {
               text: "How is your organisation progressing with this practice?",
@@ -53,7 +53,7 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data.stagedCategorisedChecklist[thisPageAction.shortCode].status,
+          value: data.tieredCategorisedChecklist[thisPageAction.shortCode].status,
           items: [
             {
               value: "embedded",
@@ -80,8 +80,8 @@
         }) }}
 
         {{ govukTextarea({
-          id: "stagedCategorisedChecklist[" + thisPageAction.shortCode + "][narrative]",
-          name: "stagedCategorisedChecklist[" + thisPageAction.shortCode + "][narrative]",
+          id: "tieredCategorisedChecklist[" + thisPageAction.shortCode + "][narrative]",
+          name: "tieredCategorisedChecklist[" + thisPageAction.shortCode + "][narrative]",
           label: {
             text: "Supporting narrative",
             classes: "govuk-label--s"
@@ -89,7 +89,7 @@
           hint: {
             text: "If you would like to give more details, you can do so here"
           },
-          value: data.stagedCategorisedChecklist[thisPageAction.shortCode].narrative
+          value: data.tieredCategorisedChecklist[thisPageAction.shortCode].narrative
         }) }}
 
         {{ govukButton({

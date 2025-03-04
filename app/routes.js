@@ -37,7 +37,7 @@ router.post('/choosing-actions/suggested-actions/answer-additional-questions', f
     }
 })
 
-router.post('/tailored-action-plans/staged-categorised-checklist/answer-action-details', function(request, response){
+router.post('/tailored-action-plans/tiered-categorised-checklist/answer-action-details', function(request, response){
     var submittedAction;
     var nextAction;
 
@@ -46,7 +46,7 @@ router.post('/tailored-action-plans/staged-categorised-checklist/answer-action-d
             nextAction = action;
         }
 
-        if (action.shortCode == request.session.data.stagedCategorisedChecklist.submittedActionShortCode) {
+        if (action.shortCode == request.session.data.tieredCategorisedChecklist.submittedActionShortCode) {
             submittedAction = action;
         }
     })
@@ -54,7 +54,7 @@ router.post('/tailored-action-plans/staged-categorised-checklist/answer-action-d
     var actionsOutstandingAtThisLevel = false;
 
     request.session.data.db.actions.forEach(function (action) {
-        var submittedDataForThisAction = request.session.data.stagedCategorisedChecklist[action.shortCode];
+        var submittedDataForThisAction = request.session.data.tieredCategorisedChecklist[action.shortCode];
         var submittedStatus = submittedDataForThisAction ? submittedDataForThisAction.status : null;
 
         if (action.category == submittedAction.category
