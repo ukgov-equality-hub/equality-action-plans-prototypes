@@ -11,9 +11,16 @@
 {% endfor %}
 
 {% set firstActionShortCode = "" %}
+{% set categoryHasMultipleTiers = false %}
 {% for action in data.db.actions %}
-  {% if firstActionShortCode == "" and action.category == thisPageCategory.shortCode %}
-    {% set firstActionShortCode = action.shortCode %}
+  {% if action.category == thisPageCategory.shortCode %}
+    {% if firstActionShortCode == "" %}
+      {% set firstActionShortCode = action.shortCode %}
+    {% endif %}
+
+    {% if action.level > 1 %}
+      {% set categoryHasMultipleTiers = true %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 
@@ -35,6 +42,19 @@
         foundational actions first. If your organisation already routinely does all of those then
         we will suggest further actions that can build on top of them.
       </p>
+
+      {% if categoryHasMultipleTiers %}
+        <div class="review-note">
+          <p>
+            This category has multiple tiers of actions. If you select "already embedded" for all the
+            actions in the first tier, you will be offered actions from the second tier as well.
+          </p>
+          <p>
+            However, if you do not select "embedded" for all the first-tier actions, we assume that
+            those actions are enough to consider for now, and do not suggest anything further (yet).
+          </p>
+        </div>
+      {% endif %}
 
       {{ govukButton({
         href: "action-details?actionShortCode=" + firstActionShortCode + "&assessingFullCategory=true",
