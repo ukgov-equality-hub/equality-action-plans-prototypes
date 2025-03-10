@@ -1,0 +1,23 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Action plan as prompt for data collection" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your action plan
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% include "common/categorised-action-plan" %}
+
+    </div>
+  </div>
+
+{% endblock %}
