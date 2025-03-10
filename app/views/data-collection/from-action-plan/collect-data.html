@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Flexible working uptake" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageAction.title}}
+      </h1>
+
+      <p>
+        {{thisPageAction.description}}
+      </p>
+      <p>
+        To complete this action, you will need the following information:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>How many male employees are able to take flexible working</li>
+        <li>How many female employees are able to take flexible working</li>
+      </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>How many male employees are <em>not</em> able to take flexible working, e.g. due to staffing obligations</li>
+        <li>How many female employees are <em>not</em> able to take flexible working, e.g. due to staffing obligations</li>
+      </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>How many male employees are taking advantage of flexible working currently</li>
+        <li>How many female employees are taking advantage flexible working currently</li>
+      </ul>
+      <p>
+        When you have this information available, you can enter it into this service.
+      </p>
+
+      {{ govukButton({
+        href: "flexible-working-availability",
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

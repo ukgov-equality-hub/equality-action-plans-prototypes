@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Flexible working availability" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      How many employees are <em>not</em> able to take flexible working?
+    </h1>
+
+    <p>
+      Employees might be unable to take flexible working because shift obligations or staffing requirements
+      make it impossible.
+    </p>
+
+    <form class="form" action="flexible-working-uptake" method="post">
+
+      {{ govukInput({
+        id: "dataCollectionFromActionPlan[flexible-working-unavailable-male]",
+        name: "dataCollectionFromActionPlan[flexible-working-unavailable-male]",
+        label: {
+          text: "Male",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.dataCollectionFromActionPlan["flexible-working-unavailable-male"]
+      }) }}
+
+      {{ govukInput({
+        id: "dataCollectionFromActionPlan[flexible-working-unavailable-female]",
+        name: "dataCollectionFromActionPlan[flexible-working-unavailable-female]",
+        label: {
+          text: "Female",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.dataCollectionFromActionPlan["flexible-working-unavailable-female"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

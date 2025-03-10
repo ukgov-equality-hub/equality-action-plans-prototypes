@@ -1,0 +1,48 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Flexible working availability" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      How many employees are able to take flexible working?
+    </h1>
+
+    <form class="form" action="flexible-working-unavailable" method="post">
+
+      {{ govukInput({
+        id: "dataCollectionFromActionPlan[flexible-working-available-male]",
+        name: "dataCollectionFromActionPlan[flexible-working-available-male]",
+        label: {
+          text: "Male",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.dataCollectionFromActionPlan["flexible-working-available-male"]
+      }) }}
+
+      {{ govukInput({
+        id: "dataCollectionFromActionPlan[flexible-working-available-female]",
+        name: "dataCollectionFromActionPlan[flexible-working-available-female]",
+        label: {
+          text: "Female",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.dataCollectionFromActionPlan["flexible-working-available-female"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

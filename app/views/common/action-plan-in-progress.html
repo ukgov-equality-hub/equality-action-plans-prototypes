@@ -66,9 +66,9 @@
               {% set unsubmittedLinkText = unsubmittedLinkText or "Change" %}
 
               <ul class="govuk-summary-list__actions-list">
-                {% if action.category == additionalActionCategory and additionalActionUrl %}
+                {% if action.category == "data" and enableDataCollectionJourney and (dbStatus == "adopt" or dbStatus == "in-progress") %}
                   <li class="govuk-summary-list__actions-list-item">
-                    <a class="govuk-link" href="{{additionalActionurl}}">{{additionalActionText}}</a>
+                    <a class="govuk-link" href="collect-data?actionShortCode={{action.shortCode}}">Do it</a>
                   </li>
                 {% endif %}
                 <li class="govuk-summary-list__actions-list-item">

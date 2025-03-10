@@ -1,0 +1,150 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Flexible working availability" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">How many employees are able to take flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Male"
+            },
+            value: {
+              text: data.dataCollectionFromActionPlan["flexible-working-available-male"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Female"
+            },
+            value: {
+              text: data.dataCollectionFromActionPlan["flexible-working-available-female"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees are <em>not</em> able to take flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Male"
+            },
+            value: {
+              text: data.dataCollectionFromActionPlan["flexible-working-unavailable-male"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Female"
+            },
+            value: {
+              text: data.dataCollectionFromActionPlan["flexible-working-unavailable-female"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees are currently taking advantage of flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Male"
+            },
+            value: {
+              text: data.dataCollectionFromActionPlan["flexible-working-uptake-male"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Female"
+            },
+            value: {
+              text: data.dataCollectionFromActionPlan["flexible-working-uptake-female"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">
+          On submission your data will be published on the Gender pay gap service.
+        </p>
+      </div>
+
+      <form action="/submitted" method="post">
+
+        {{ govukButton({
+          text: "Submit data"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -26,10 +26,10 @@ module.exports = {
           status: 'embedded'
         },
         'measure-remuneration-gap': {
-          status: 'adopt'
+          status: 'embedded'
         },
         'measure-workforce-composition': {
-          status: 'adopt'
+          status: 'embedded'
         },
         'measure-flexible-working-utilisation': {
           status: 'adopt'
