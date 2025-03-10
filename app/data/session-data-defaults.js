@@ -32,7 +32,7 @@ module.exports = {
           status: 'embedded'
         },
         'measure-flexible-working-utilisation': {
-          status: 'adopt'
+          status: 'in-progress'
         },
         'flexible-working': {
           status: 'embedded'
@@ -41,7 +41,7 @@ module.exports = {
           status: 'in-progress'
         },
         'remuneration-transparency': {
-          status: 'adopt'
+          status: 'in-progress'
         },
         'promotion-application-by-default': {
           status: 'ignore'
@@ -53,7 +53,7 @@ module.exports = {
           status: 'ignore'
         },
         'rest-areas': {
-          status: 'adopt'
+          status: 'in-progress'
         },
         'relax-uniform-policies': {
           status: 'ignore'
