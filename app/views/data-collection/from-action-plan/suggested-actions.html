@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Action plan as prompt for data collection" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Suggested actions
+      </h1>
+
+      <p>
+        Based on the data you've submitted, there are some actions we suggest adding to your action plan. These are:
+      </p>
+
+      <form class="govuk-!-margin-top-6" action="action-plan" method="post">
+
+        <span class="govuk-caption-l">Workplace flexibility</span>
+        <h2 class="govuk-heading-m">Make workplace or role adjustments available to everyone</h2>
+        <input type="hidden" name="dataCollectionFromActionPlan[flexible-working-available-to-all][status]" value="adopt"/>
+        {{ govukDetails({
+          summaryText: "Why are we suggesting this?",
+          html: "A significant proportion of your employees cannot access flexible working."
+            + " This is likely to hold female employees back disproportionately compared to male employees."
+            + " While in some sectors, staffing restrictions can make it difficult to offer flexible working"
+            + " universally, it may be possible to do more than you currently are. You can see our"
+            + " <a href=\"#\">case studies</a> for more information."
+        }) }}
+
+        <span class="govuk-caption-l">Data collection</span>
+        <h2 class="govuk-heading-m">Measure the availability and utilisation of flexible working</h2>
+        <input type="hidden" name="dataCollectionFromActionPlan[measure-flexible-working-utilisation][status]" value="adopt"/>
+        {{ govukDetails({
+          summaryText: "Why are we suggesting this?",
+          text: "Repeating this collection again in six months will let you see the impact of the other actions you've taken to encourage flexible working."
+        }) }}
+
+        <div class="govuk-button-group govuk-!-margin-top-8">
+          {{ govukButton({
+            text: "Add these to your action plan"
+          }) }}
+
+          {{ govukButton({
+            href: "action-plan",
+            text: "Continue without adding these actions",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

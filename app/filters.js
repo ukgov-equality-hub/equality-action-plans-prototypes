@@ -27,12 +27,17 @@ addFilter('statusToTag', function(status) {
       title = "Embedded";
       colour = "govuk-tag--turquoise";
       break;
-  
-    case "in-progress":
+
+      case "done":
+        title = "Done";
+        colour = "govuk-tag--turquoise";
+        break;
+
+      case "in-progress":
       title = "In progress";
       colour = "govuk-tag--orange";
       break;
-  
+
     case "adopt":
       title = "Add to plan";
       colour = "govuk-tag--orange";
@@ -46,7 +51,7 @@ addFilter('statusToTag', function(status) {
       case "ignore":
       title = "Not pursuing currently";
       break;
-  
+
     default:
       title = "Not pursuing currently";
       break;

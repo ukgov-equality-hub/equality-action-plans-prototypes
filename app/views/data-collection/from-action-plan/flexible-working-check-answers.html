@@ -131,13 +131,9 @@
         ]
       }) }}
 
-      <div class="govuk-inset-text">
-        <p class="govuk-body">
-          On submission your data will be published on the Gender pay gap service.
-        </p>
-      </div>
+      <form action="suggested-actions" method="post">
 
-      <form action="/submitted" method="post">
+        <input type="hidden" name="dataCollectionFromActionPlan[measure-flexible-working-utilisation][status]" value="done">
 
         {{ govukButton({
           text: "Submit data"
