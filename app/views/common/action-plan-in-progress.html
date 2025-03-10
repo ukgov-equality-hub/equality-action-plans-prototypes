@@ -50,11 +50,16 @@
               </a>
             {% endif %}
           {% else %}
-            {{ dbStatus | statusToTag | safe }}
-            {% if submittedStatus %}
-              {% if submittedStatus != dbStatus %}
-                changed to {{ submittedStatus | statusToTag | safe }}
-              {% elif highlightNoChange %}
+            {% if submittedStatus and submittedStatus != dbStatus %}
+              {# Status has changed - display full change if was on plan already, or just new status if not previously on plan #}
+              {% if dbStatus != "ignore" %}
+                {{ dbStatus | statusToTag | safe }} changed to
+              {% endif %}
+              {{ submittedStatus | statusToTag | safe }}
+            {% else %}
+              {# No change - just display dbStatus and highlight if requested and there is explicitly no change #}
+              {{ dbStatus | statusToTag | safe }}
+              {% if submittedStatus and highlightNoChange %}
                 <span class="hint">(no change)</span>
               {% endif %}
             {% endif %}

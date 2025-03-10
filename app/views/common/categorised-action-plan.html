@@ -12,7 +12,7 @@
         {% set hasSubmitted = true %}
       {% endif %}
 
-      {% if (creatingNewActionPlan and submittedStatus and submittedStatus != "ignore")
+      {% if (submittedStatus and submittedStatus != "ignore")
         or ((not creatingNewActionPlan) and dbStatus and dbStatus != "ignore") %}
 
         {% set actionCount = actionCount + 1 %}
