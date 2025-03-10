@@ -50,7 +50,7 @@ module.exports = {
           status: 'ignore'
         },
         'flexible-working-available-to-all': {
-          status: 'in-progress'
+          status: 'ignore'
         },
         'rest-areas': {
           status: 'adopt'
