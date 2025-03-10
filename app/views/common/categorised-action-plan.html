@@ -1,48 +1,54 @@
 {% for category in data.db.actionCategories %}
-{% set hasSubmitted = false %}
-{% set actionCount = 0 %}
-{% for action in data.db.actions %}
-  {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
-  {% if action.category == category.shortCode and submittedStatus %}
-    {% set hasSubmitted = true %}
-    {% if submittedStatus != "ignore" %}
-      {% set actionCount = actionCount + 1 %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
 
-<div class="govuk-summary-card">
-  <div class="govuk-summary-card__title-wrapper">
-    <h2 class="govuk-summary-card__title">
-      {{category.title}}
-    </h2>
-    {% if hasSubmitted %}
-      <ul class="govuk-summary-card__actions">
-        <li class="govuk-summary-card__action">
+  {% set hasSubmitted = false %}
+  {% set actionCount = 0 %}
+
+  {% for action in data.db.actions %}
+    {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
+    {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+
+    {% if action.category == category.shortCode %}
+      {% if submittedStatus %}
+        {% set hasSubmitted = true %}
+      {% endif %}
+
+      {% if (creatingNewActionPlan and submittedStatus and submittedStatus != "ignore")
+        or ((not creatingNewActionPlan) and dbStatus and dbStatus != "ignore") %}
+
+        {% set actionCount = actionCount + 1 %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+      <h2 class="govuk-summary-card__title">
+        {{category.title}}
+      </h2>
+      {% if creatingNewActionPlan and hasSubmitted %}
+        <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action">
           <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">Reassess category</a>
-        </li>
-      </ul>
-    {% endif %}
+          </li>
+        </ul>
+      {% endif %}
+    </div>
+    <div class="govuk-summary-card__content">
+      {% if actionCount == 0 %}
+        <div class="govuk-summary-list">
+          {% if hasSubmitted or (not creatingNewActionPlan) %}
+            No actions chosen
+          {% else %}
+            <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">
+              Assess this category
+            </a>
+          {% endif %}
+        </div>
+      {% else %}
+        {% set categoryCode = category.shortCode %}
+        {% include "common/action-plan-in-progress.html" %}
+      {% endif %}
+    </div>
   </div>
-  <div class="govuk-summary-card__content">
-    {% if actionCount == 0 %}
-      <div class="govuk-summary-list">
-        {% if hasSubmitted %}
-          No actions chosen
-        {% else %}
-          <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">
-            Assess this category
-          </a>
-        {% endif %}
-      </div>
-    {% else %}
-      {% set creatingNewActionPlan = true %}
-      {% set editUrl = "action-details" %}
-      {% set categoryCode = category.shortCode %}
-      {% set onlyShowSelectedActions = true %}
-      {% include "common/action-plan-in-progress.html" %}
-    {% endif %}
-  </div>
-</div>
 
 {% endfor %}

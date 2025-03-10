@@ -25,6 +25,15 @@ module.exports = {
         'equity-leads': {
           status: 'embedded'
         },
+        'measure-remuneration-gap': {
+          status: 'adopt'
+        },
+        'measure-workforce-composition': {
+          status: 'adopt'
+        },
+        'measure-flexible-working-utilisation': {
+          status: 'adopt'
+        },
         'flexible-working': {
           status: 'embedded'
         },

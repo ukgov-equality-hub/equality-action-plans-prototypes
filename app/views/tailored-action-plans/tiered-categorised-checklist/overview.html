@@ -18,10 +18,13 @@
 
     </div>
     <div class="govuk-grid-column-full">
-        
+
       <form class="govuk-!-margin-top-4" action="submitted" method="post">
 
         {% set journeyShortCode = "tieredCategorisedChecklist" %}
+        {% set creatingNewActionPlan = true %}
+        {% set editUrl = "action-details" %}
+        {% set onlyShowSelectedActions = true %}
         {% include "common/categorised-action-plan" %}
 
         <div class="govuk-inset-text">
