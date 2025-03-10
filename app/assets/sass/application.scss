@@ -59,6 +59,20 @@
   }
 }
 
+.action-plan-summary-with-changes-and-extra-action {
+  .govuk-summary-list__key {
+    width: 47%;
+  }
+
+  .govuk-summary-list__value {
+    width: 38%;
+  }
+
+  .govuk-summary-list__actions {
+    width: 15%;
+  }
+}
+
 .three-year-review-summary {
   .govuk-summary-list__key {
     width: 25%
