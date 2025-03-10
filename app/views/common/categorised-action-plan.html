@@ -2,7 +2,7 @@
 {% set hasSubmitted = false %}
 {% set actionCount = 0 %}
 {% for action in data.db.actions %}
-  {% set submittedStatus = data.tieredCategorisedChecklist[action.shortCode].status %}
+  {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
   {% if action.category == category.shortCode and submittedStatus %}
     {% set hasSubmitted = true %}
     {% if submittedStatus != "ignore" %}
@@ -36,7 +36,6 @@
         {% endif %}
       </div>
     {% else %}
-      {% set journeyShortCode = "tieredCategorisedChecklist" %}
       {% set creatingNewActionPlan = true %}
       {% set editUrl = "action-details" %}
       {% set categoryCode = category.shortCode %}
