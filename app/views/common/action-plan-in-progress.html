@@ -64,7 +64,17 @@
           <dd class="govuk-summary-list__actions">
             {% if submittedStatus or not creatingNewActionPlan %}
               {% set unsubmittedLinkText = unsubmittedLinkText or "Change" %}
-              <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">{{"Change" if submittedStatus else unsubmittedLinkText}}</a>
+
+              <ul class="govuk-summary-list__actions-list">
+                {% if action.category == additionalActionCategory and additionalActionUrl %}
+                  <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="{{additionalActionurl}}">{{additionalActionText}}</a>
+                  </li>
+                {% endif %}
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">{{"Change" if submittedStatus else unsubmittedLinkText}}</a>
+                </li>
+              </ul>
             {% endif %}
           </dd>
         {% endif %}
