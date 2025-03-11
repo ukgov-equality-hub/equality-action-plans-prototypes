@@ -9,7 +9,7 @@
   {% endfor %}
 {% endif %}
 
-<dl class="govuk-summary-list action-plan-summary{{ "-with-changes" if showChanges}}{{"-and-extra-action" if showChanges and enableDataCollectionJourney}}">
+<dl class="govuk-summary-list action-plan-summary{{"-with-changes" if showChanges}}{{"-and-extra-action" if showChanges and enableDataCollectionJourney}}">
   
   {% for action in data.db.actions %}
     {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
@@ -71,7 +71,9 @@
               {% set unsubmittedLinkText = unsubmittedLinkText or "Change" %}
 
               <ul class="govuk-summary-list__actions-list">
-                {% if action.category == "data" and enableDataCollectionJourney and (dbStatus == "adopt" or dbStatus == "in-progress") %}
+                {% if action.category == "data" and enableDataCollectionJourney
+                  and (dbStatus == "adopt" or dbStatus == "in-progress")
+                  and submittedStatus != "done" %}
                   <li class="govuk-summary-list__actions-list-item">
                     <a class="govuk-link" href="collect-data?actionShortCode={{action.shortCode}}">Do it</a>
                   </li>
