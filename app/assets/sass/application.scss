@@ -73,6 +73,27 @@
   }
 }
 
+.suggested-actions-with-checkboxes {
+  .govuk-summary-list__key {
+    width: 62%;
+    vertical-align: middle;
+  }
+
+  .govuk-summary-list__value {
+    width: 20%;
+    vertical-align: middle;
+  }
+
+  .govuk-summary-list__actions {
+    width: 18%;
+    vertical-align: middle;
+
+    .govuk-form-group {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .three-year-review-summary {
   .govuk-summary-list__key {
     width: 25%

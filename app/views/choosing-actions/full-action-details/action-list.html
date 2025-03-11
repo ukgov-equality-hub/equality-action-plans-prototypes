@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Full action details pages" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Suggested actions
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set journeyShortCode = "fullActionDetails" %}
+      {% include "common/suggested-actions" %}
+
+    </div>
+  </div>
+
+{% endblock %}

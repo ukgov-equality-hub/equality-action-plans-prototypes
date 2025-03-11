@@ -1,0 +1,44 @@
+{% for category in data.db.actionCategories %}
+  {% if category.shortCode != excludeCategory %}
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">
+          {{category.title}}
+        </h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list suggested-actions-with-checkboxes">
+          
+          {% for action in data.db.actions %}
+            {% if (action.category == category.shortCode) %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{action.title}}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">View full guidance</a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  {{ govukCheckboxes({
+                    name: "journeyShortCode[" + action.shortCode + "][selected]",
+                    values: data.journeyShortCode[action.shortCode],
+                    items: [
+                      {
+                        value: "Yes",
+                        text: "Select"
+                      }
+                    ]
+                  }) }}
+                </dd>
+              </div>
+
+            {% endif %}
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
+
+  {% endif %}
+{% endfor %}
