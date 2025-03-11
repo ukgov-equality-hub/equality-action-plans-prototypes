@@ -12,6 +12,19 @@
         Your action plan
       </h1>
 
+      {% if not data.dataCollectionFromActionPlan %}
+        <div class="user-note">
+          <p>
+            This prototype imagines that you have previously created an action plan including
+            some actions that involve collecting further data about your workforce.
+          </p>
+          <p>
+            You can collect that data on this service by clicking the "Do it" link next
+            to the third data collection action below.
+          </p>
+        </div>
+      {% endif %}
+
     </div>
     <div class="govuk-grid-column-full">
 
