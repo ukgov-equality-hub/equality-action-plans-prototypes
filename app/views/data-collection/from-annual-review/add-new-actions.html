@@ -1,0 +1,37 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Add actions to your plan
+    </h1>
+
+    <p>
+      The following lists all of our recommended actions that are not yet in your plan.
+      If you would like to add any of them to your plan at this stage, tick them below.
+    </p>
+
+    <form class="form" action="update-action-plan" method="post">
+
+      {% set journeyShortCode = "annualReview" %}
+      {% set addingToExistingPlan = true %}
+
+      {% include "common/action-checklist-details.html" %}
+
+      {{ govukButton({
+        text: "Add to plan",
+        classes: "govuk-!-margin-top-3"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

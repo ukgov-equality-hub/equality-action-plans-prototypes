@@ -1,0 +1,34 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      What progress have you made this year?
+    </h1>
+
+    <form class="form" action="measuring-impact" method="post">
+
+      {{ govukTextarea({
+        id: "annualReview[progress]",
+        name: "annualReview[progress]",
+        hint: {
+          text: "Please describe the progress your organisation has made in the last year on implementing your action plan"
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
