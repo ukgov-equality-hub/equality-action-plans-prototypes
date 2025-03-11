@@ -1,0 +1,137 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Full action details pages" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageAction.title}}
+      </h1>
+
+      <h2 class="govuk-heading-m">Summary</h2>
+
+      <p>
+        {{thisPageAction.description}}
+      </p>
+
+      <h2 class="govuk-heading-m">Choosing this action</h2>
+
+      <h3 class="govuk-heading-s">Purpose</h3>
+
+      <p class="placeholder">
+        A clear statement of the main purpose of this action, i.e. how it helps the main aim of closing
+        the gender pay gap or supporting employees going through the menopause.
+      </p>
+
+      <h3 class="govuk-heading-s">When to choose this?</h3>
+
+      <p class="placeholder">
+        Identify specific issues that this particular action would address, e.g.
+        If you find gendered composition of less than 40% men or women in a target role, team, or level.
+      </p>
+      <p class="placeholder">
+        We could potentially make this data-driven so that the relationship can be used
+        in reverse to search for appropriate actions to take given a specific issue.
+      </p>
+
+      <h3 class="govuk-heading-s">Benefits</h3>
+
+      <p class="placeholder">
+        Any benefits of this action that are more specific than the purpose above,
+        or that are additional to it - e.g. other groups that may be supported by the same action.
+      </p>
+
+      <h3 class="govuk-heading-s">Return on investment</h3>
+
+      <p class="placeholder">
+        A ballpark gauge of the cost and resource investment required to implement this action vs the expected impact.
+      </p>
+      <p class="placeholder">
+        These could be pseudo-quantified like those found on the
+        <a target="_blank" href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit">EEF toolkit</a>.
+        This helps users build a business case to take to their leadership.
+      </p>
+
+      <h3 class="govuk-heading-s">Common concerns</h3>
+
+      <p class="placeholder">
+        Where we are aware of common counterarguments against this action, address those.
+      </p>
+      <p class="placeholder">
+        e.g. "We cannot implement flexible working for our teachers because we need to cover classes,
+        so it would be unfair to implement flexible working for anyone else"
+        (from <b>Make workplace or role adjustments available to everyone</b>)
+      </p>
+      <p class="placeholder">
+        We might even be able to bring in data from the user's organisation here -
+        e.g. a common concern is "in our sector, the gender balance is such that we can't fix the pay gap"
+        but we may be able to say e.g. "your organisation has an above-average pay gap for your sector
+        (so there's still more you could do)"
+      </p>
+
+      <h3 class="govuk-heading-s">Evidence base</h3>
+
+      <p class="placeholder">
+        A summary of, and links to, the evidence demonstrating the value of this action.
+      </p>
+      <p class="placeholder">
+        Strength of evidence could be pseudo-quantified like the tools in the
+        <a target="_blank" href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit">EEF toolkit</a>.
+        This helps users build a business case to take to their leadership.
+      </p>
+
+      <h2 class="govuk-heading-m">In practice</h2>
+
+      <h3 class="govuk-heading-s">Detailed explanation</h3>
+
+      <p class="placeholder">
+        Text to clarify the intention, the terminology and the process
+      </p>
+      <p class="placeholder">
+        e.g. What exactly is an "equity lead"? (from <b>Appoint employment equity leads and/or task forces</b>)
+      </p>
+      <p class="placeholder">
+        or "If you have fixed pay scales and do not deviate from them, you have already embedded pay transparency
+        (from <b>Increase transparency to promotion, pay and reward processes</b>)"
+      </p class="placeholder">
+
+      <h3 class="govuk-heading-s">How to</h3>
+
+      <p class="placeholder">
+        Guidance on how to implement the action, including how to tailor it appropriately for
+        your own organisation.
+      </p>
+      <p class="placeholder">
+        e.g. "How to set targets that are appropriate for your organisation"
+        (from <b>Set internal targets for gender representation and equality</b>)
+        might include considerations for specific sectors and their typical gender balances,
+        considerations for organisations with a hiring freeze, etc.
+      </p>
+      <p class="placeholder">
+        Can also include how <b>not</b> to - common mistakes e.g. "general goals like 'be more
+        inclusive' are not targets and will not be effective" (from <b>Set internal targets for gender representation and equality</b>)
+      </p>
+
+      <h3 class="govuk-heading-s">Case studies</h3>
+
+      <p class="placeholder">
+        Stories of how other organisations have implemented this action. Could be best-practice
+        examples, or examples of overcoming specific issues with the implementation. Could be
+        short summaries or long-form content.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
