@@ -15,8 +15,16 @@
     </div>
     <div class="govuk-grid-column-full">
 
-      {% set journeyShortCode = "fullActionDetails" %}
-      {% include "common/suggested-actions-list" %}
+      <form action="action-list" method="post">
+
+        {% set journeyShortCode = "fullActionDetails" %}
+        {% include "common/suggested-actions-list" %}
+
+        {{ govukButton({
+          text: "Add selected actions to plan"
+        }) }}
+
+      </form>
 
     </div>
   </div>

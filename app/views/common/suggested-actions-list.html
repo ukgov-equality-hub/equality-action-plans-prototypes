@@ -39,11 +39,11 @@
                 <dd class="govuk-summary-list__actions">
                   {{ govukCheckboxes({
                     name: journeyShortCode + "[" + suggestedAction.shortCode + "][selected]",
-                    values: data.journeyShortCode[suggestedAction.shortCode],
                     items: [
                       {
                         value: "Yes",
-                        text: "Select"
+                        text: "Select",
+                        checked: data[journeyShortCode][suggestedAction.shortCode].selected
                       }
                     ]
                   }) }}
