@@ -59,6 +59,16 @@ module.exports = {
           status: 'ignore'
         }
       },
+
+      suggestedActions: [
+        'targets',
+        'equity-leads',
+        'flexible-working',
+        'remuneration-transparency',
+        'promotion-application-by-default',
+        'flexible-working-available-to-all',
+        'rest-areas'
+      ]
     },
 
     actionCategories: [

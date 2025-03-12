@@ -1,5 +1,21 @@
+{% set actionsList = [] %}
+{% for suggestedAction in data.db.company.suggestedActions %}
+  {% for action in data.db.actions %}
+    {% if action.shortCode == suggestedAction %}
+      {% set actionsList = (actionsList.push(action), actionsList) %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
 {% for category in data.db.actionCategories %}
-  {% if category.shortCode != excludeCategory %}
+  {% set categoryHasActions = false %}
+  {% for action in actionsList %}
+    {% if action.category == category.shortCode %}
+      {% set categoryHasActions = true %}
+    {% endif %}
+  {% endfor %}
+
+  {% if categoryHasActions %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -9,21 +25,21 @@
       </div>
       <div class="govuk-summary-card__content">
         <dl class="govuk-summary-list suggested-actions-with-checkboxes">
-          
-          {% for action in data.db.actions %}
-            {% if (action.category == category.shortCode) %}
+
+          {% for suggestedAction in actionsList %}
+            {% if suggestedAction.category == category.shortCode %}
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  {{action.title}}
+                  {{suggestedAction.title}}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  <a class="govuk-link" href="action-details?actionShortCode={{action.shortCode}}">View full guidance</a>
+                  <a class="govuk-link" href="action-details?actionShortCode={{suggestedAction.shortCode}}">View full guidance</a>
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   {{ govukCheckboxes({
-                    name: "journeyShortCode[" + action.shortCode + "][selected]",
-                    values: data.journeyShortCode[action.shortCode],
+                    name: journeyShortCode + "[" + suggestedAction.shortCode + "][selected]",
+                    values: data.journeyShortCode[suggestedAction.shortCode],
                     items: [
                       {
                         value: "Yes",
