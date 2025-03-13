@@ -156,10 +156,10 @@ module.exports = {
         category: 'data',
         level: 2,
         targets: [],
-        title: 'Measure the availability and utilisation of flexible working',
-        description: 'By understanding how many employees have access to flexible working, as well as how many of those'
-          + ' actually use it, you can understand the impact those policies are having and identify any problems that are'
-          + ' preventing people from using them.'
+        title: 'Measure the availability and uptake of flexible working',
+        description: 'Understand the impact of your flexible working policies and identify any problems'
+          + ' stopping people from using them. You can do this by finding out how many employees have access'
+          + ' to flexible working, and how many actually use it.'
       },
       {
         shortCode: 'flexible-working',

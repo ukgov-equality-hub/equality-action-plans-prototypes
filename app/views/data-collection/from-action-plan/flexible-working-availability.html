@@ -9,31 +9,31 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      How many employees are able to take flexible working?
+      How many employees are able to apply for flexible working?
     </h1>
 
     <form class="form" action="flexible-working-unavailable" method="post">
 
       {{ govukInput({
-        id: "dataCollectionFromActionPlan[flexible-working-available-male]",
-        name: "dataCollectionFromActionPlan[flexible-working-available-male]",
+        id: "dataCollectionFromActionPlan[flexible-working-available-men]",
+        name: "dataCollectionFromActionPlan[flexible-working-available-men]",
         label: {
-          text: "Male",
+          text: "Men",
           classes: "govuk-label--m"
         },
         classes: "govuk-input--width-5",
-        value: data.dataCollectionFromActionPlan["flexible-working-available-male"]
+        value: data.dataCollectionFromActionPlan["flexible-working-available-men"]
       }) }}
 
       {{ govukInput({
-        id: "dataCollectionFromActionPlan[flexible-working-available-female]",
-        name: "dataCollectionFromActionPlan[flexible-working-available-female]",
+        id: "dataCollectionFromActionPlan[flexible-working-available-women]",
+        name: "dataCollectionFromActionPlan[flexible-working-available-women]",
         label: {
-          text: "Female",
+          text: "Women",
           classes: "govuk-label--m"
         },
         classes: "govuk-input--width-5",
-        value: data.dataCollectionFromActionPlan["flexible-working-available-female"]
+        value: data.dataCollectionFromActionPlan["flexible-working-available-women"]
       }) }}
 
       {{ govukButton({

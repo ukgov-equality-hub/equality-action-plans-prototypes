@@ -15,25 +15,25 @@
     <form class="form" action="flexible-working-check-answers" method="post">
 
       {{ govukInput({
-        id: "dataCollectionFromActionPlan[flexible-working-uptake-male]",
-        name: "dataCollectionFromActionPlan[flexible-working-uptake-male]",
+        id: "dataCollectionFromActionPlan[flexible-working-uptake-men]",
+        name: "dataCollectionFromActionPlan[flexible-working-uptake-men]",
         label: {
-          text: "Male",
+          text: "Men",
           classes: "govuk-label--m"
         },
         classes: "govuk-input--width-5",
-        value: data.dataCollectionFromActionPlan["flexible-working-uptake-male"]
+        value: data.dataCollectionFromActionPlan["flexible-working-uptake-men"]
       }) }}
 
       {{ govukInput({
-        id: "dataCollectionFromActionPlan[flexible-working-uptake-female]",
-        name: "dataCollectionFromActionPlan[flexible-working-uptake-female]",
+        id: "dataCollectionFromActionPlan[flexible-working-uptake-women]",
+        name: "dataCollectionFromActionPlan[flexible-working-uptake-women]",
         label: {
-          text: "Female",
+          text: "Women",
           classes: "govuk-label--m"
         },
         classes: "govuk-input--width-5",
-        value: data.dataCollectionFromActionPlan["flexible-working-uptake-female"]
+        value: data.dataCollectionFromActionPlan["flexible-working-uptake-women"]
       }) }}
 
       {{ govukButton({

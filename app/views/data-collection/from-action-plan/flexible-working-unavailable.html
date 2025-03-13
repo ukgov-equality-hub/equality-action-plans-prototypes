@@ -9,36 +9,31 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      How many employees are <em>not</em> able to take flexible working?
+      How many employees are not able to apply for flexible working?
     </h1>
-
-    <p>
-      Employees might be unable to take flexible working because shift obligations or staffing requirements
-      make it impossible.
-    </p>
 
     <form class="form" action="flexible-working-uptake" method="post">
 
       {{ govukInput({
-        id: "dataCollectionFromActionPlan[flexible-working-unavailable-male]",
-        name: "dataCollectionFromActionPlan[flexible-working-unavailable-male]",
+        id: "dataCollectionFromActionPlan[flexible-working-unavailable-men]",
+        name: "dataCollectionFromActionPlan[flexible-working-unavailable-men]",
         label: {
-          text: "Male",
+          text: "Men",
           classes: "govuk-label--m"
         },
         classes: "govuk-input--width-5",
-        value: data.dataCollectionFromActionPlan["flexible-working-unavailable-male"]
+        value: data.dataCollectionFromActionPlan["flexible-working-unavailable-men"]
       }) }}
 
       {{ govukInput({
-        id: "dataCollectionFromActionPlan[flexible-working-unavailable-female]",
-        name: "dataCollectionFromActionPlan[flexible-working-unavailable-female]",
+        id: "dataCollectionFromActionPlan[flexible-working-unavailable-women]",
+        name: "dataCollectionFromActionPlan[flexible-working-unavailable-women]",
         label: {
-          text: "Female",
+          text: "Women",
           classes: "govuk-label--m"
         },
         classes: "govuk-input--width-5",
-        value: data.dataCollectionFromActionPlan["flexible-working-unavailable-female"]
+        value: data.dataCollectionFromActionPlan["flexible-working-unavailable-women"]
       }) }}
 
       {{ govukButton({

@@ -13,7 +13,7 @@
       </h1>
 
       <p>
-        Based on the data you've submitted, there are some actions we suggest adding to your action plan. These are:
+        There are some actions we suggest adding to your action plan based on the data submitted. These are:
       </p>
 
       <form class="govuk-!-margin-top-6" action="action-plan" method="post">
@@ -23,10 +23,10 @@
         <input type="hidden" name="dataCollectionFromActionPlan[share-local-support-for-flexible-working][status]" value="adopt"/>
         {{ govukDetails({
           summaryText: "Why are we suggesting this?",
-          html: "A substantial proportion of your employees are not taking advantage of flexible working"
-            + " even though it is available to them. By sharing local support resources, you may encourage"
-            + " more people to use flexible working, and thereby open up more progression paths for women,"
-            + " who are disproportionately affected if they cannot work flexibly. You can see our"
+          html: "A substantial number of your employees are not taking advantage of flexible working"
+            + " even though it is available to them. Sharing local support resources may encourage"
+            + " more people to apply for flexible working. This could open up more progression paths for women,"
+            + " who are disproportionately affected if they cannot work flexibly. See our"
             + " <a href=\"#\">guidance on this action</a> for more information on how to set up and share support."
         }) }}
 
@@ -35,19 +35,19 @@
         <input type="hidden" name="dataCollectionFromActionPlan[flexible-working-available-to-all][status]" value="adopt"/>
         {{ govukDetails({
           summaryText: "Why are we suggesting this?",
-          html: "A significant proportion of your employees cannot access flexible working."
-            + " This is likely to hold female employees back disproportionately compared to male employees."
-            + " While in some sectors, staffing restrictions can make it difficult to offer flexible working"
-            + " universally, it may be possible to do more than you currently are. You can see our"
+          html: "A significant number of your employees cannot access flexible working."
+            + " This is likely to disproportionately hold back women employees compared with men."
+            + " In some sectors, staffing restrictions can make it difficult to offer flexible working"
+            + " universally, but it may be possible to do more than you currently are. See our"
             + " <a href=\"#\">case studies</a> for more information."
         }) }}
 
         <span class="govuk-caption-l">Data collection</span>
-        <h2 class="govuk-heading-m">Measure the availability and utilisation of flexible working</h2>
+        <h2 class="govuk-heading-m">Measure the availability and uptake of flexible working</h2>
         <input type="hidden" name="dataCollectionFromActionPlan[measure-flexible-working-utilisation][status]" value="adopt"/>
         {{ govukDetails({
           summaryText: "Why are we suggesting this?",
-          text: "Repeating this collection again in six months will let you see the impact of the other actions you've taken to encourage flexible working."
+          text: "Repeat this action again in 6 months to see the impact of the other actions you've taken to encourage flexible working."
         }) }}
 
         <div class="govuk-button-group govuk-!-margin-top-8">

@@ -11,16 +11,16 @@
         Check your answers
       </h1>
 
-      <h2 class="govuk-heading-m">How many employees are able to take flexible working?</h2>
+      <h2 class="govuk-heading-m">How many employees are able to apply for flexible working?</h2>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Male"
+              text: "Men"
             },
             value: {
-              text: data.dataCollectionFromActionPlan["flexible-working-available-male"]
+              text: data.dataCollectionFromActionPlan["flexible-working-available-men"]
             },
             actions: {
               items: [
@@ -34,10 +34,10 @@
           ,
           {
             key: {
-              text: "Female"
+              text: "Women"
             },
             value: {
-              text: data.dataCollectionFromActionPlan["flexible-working-available-female"]
+              text: data.dataCollectionFromActionPlan["flexible-working-available-women"]
             },
             actions: {
               items: [
@@ -51,16 +51,16 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">How many employees are <em>not</em> able to take flexible working?</h2>
+      <h2 class="govuk-heading-m">How many employees are not able to apply for flexible working?</h2>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Male"
+              text: "Men"
             },
             value: {
-              text: data.dataCollectionFromActionPlan["flexible-working-unavailable-male"]
+              text: data.dataCollectionFromActionPlan["flexible-working-unavailable-men"]
             },
             actions: {
               items: [
@@ -74,10 +74,10 @@
           ,
           {
             key: {
-              text: "Female"
+              text: "Women"
             },
             value: {
-              text: data.dataCollectionFromActionPlan["flexible-working-unavailable-female"]
+              text: data.dataCollectionFromActionPlan["flexible-working-unavailable-women"]
             },
             actions: {
               items: [
@@ -97,10 +97,10 @@
         rows: [
           {
             key: {
-              text: "Male"
+              text: "Men"
             },
             value: {
-              text: data.dataCollectionFromActionPlan["flexible-working-uptake-male"]
+              text: data.dataCollectionFromActionPlan["flexible-working-uptake-men"]
             },
             actions: {
               items: [
@@ -114,10 +114,10 @@
           ,
           {
             key: {
-              text: "Female"
+              text: "Women"
             },
             value: {
-              text: data.dataCollectionFromActionPlan["flexible-working-uptake-female"]
+              text: data.dataCollectionFromActionPlan["flexible-working-uptake-women"]
             },
             actions: {
               items: [
