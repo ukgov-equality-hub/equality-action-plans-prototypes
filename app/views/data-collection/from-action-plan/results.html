@@ -81,17 +81,19 @@
       <p class="govuk-!-margin-top-7">
         Based on these results we have 3 suggested actions to add to your action plan.
       </p>
-    
-      {{ govukButton({
-        text: "See suggested actions",
-        href: "suggested-actions"
-      }) }}
-    
-      {{ govukButton({
-        text: "Back to action plan",
-        classes: "govuk-button--secondary",
-        href: "action-plan"
-      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "See suggested actions",
+          href: "suggested-actions"
+        }) }}
+      
+        {{ govukButton({
+          text: "Back to action plan",
+          classes: "govuk-button--secondary",
+          href: "action-plan"
+        }) }}
+      </div>
 
     </div>
   </div>
