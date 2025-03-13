@@ -6,36 +6,94 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
         Key results
       </h1>
 
-      <p>
-        QQQQQ
+      <p class="user-note">
+        NOTE: As this is a prototype, the results on this page are not based on the real numbers you entered.
       </p>
 
-      <div class="data-visualisation--flexible-working">
+      <p>
+        Based on the data submitted, we have extracted the following statistics:
+      </p>
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-7">
+        <li>31% of your employees cannot apply for flexible working</li>
+        <li>54% of your employees can apply for flexible working but are not currently taking advantage of it</li>
+        <li>15% of your employees are currently taking advantage of flexible working</li>
+      </ul>
 
+      <p>Overall</p>
+      <div class="data-visualisation--flexible-working overall">
+        <div class="no-access">31%</div><div class="access-but-not-using">54%</div><div class="using">15%</div>
       </div>
+      <div>
+        <div class="data-visualisation--key-block no-access"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">31%</div>
+        <div class="data-visualisation--key-block access-but-not-using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">54%</div>
+        <div class="data-visualisation--key-block using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">15%</div>
+      </div>
+
+      <p class="govuk-!-margin-top-6">Women</p>
+      <div class="data-visualisation--flexible-working women">
+        <div class="no-access">31%</div><div class="access-but-not-using">54%</div><div class="using">15%</div>
+      </div>
+      <div>
+        <div class="data-visualisation--key-block no-access"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">36%</div>
+        <div class="data-visualisation--key-block access-but-not-using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">46%</div>
+        <div class="data-visualisation--key-block using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">18%</div>
+      </div>
+
+      <p class="govuk-!-margin-top-6">Men</p>
+      <div class="data-visualisation--flexible-working men">
+        <div class="no-access">31%</div><div class="access-but-not-using">54%</div><div class="using">15%</div>
+      </div>
+      <div>
+        <div class="data-visualisation--key-block no-access"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">27%</div>
+        <div class="data-visualisation--key-block access-but-not-using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">63%</div>
+        <div class="data-visualisation--key-block using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">10%</div>
+      </div>
+
+      <p class="govuk-!-margin-top-6">Key</p>
+      <div>
+        <div class="data-visualisation--key-block no-access"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">Cannot apply for flexible working</div>
+      </div>
+      <div>
+        <div class="data-visualisation--key-block access-but-not-using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">Can apply for flexible working but not currently using it</div>
+      </div>
+      <div>
+        <div class="data-visualisation--key-block using"></div>
+        <div class="data-visualisation--key-label govuk-body govuk-!-margin-bottom-1">Currently using flexible working</div>
+      </div>
+
+      <p class="govuk-!-margin-top-7">
+        Based on these results we have 3 suggested actions to add to your action plan.
+      </p>
+    
+      {{ govukButton({
+        text: "See suggested actions",
+        href: "suggested-actions"
+      }) }}
+    
+      {{ govukButton({
+        text: "Back to action plan",
+        classes: "govuk-button--secondary",
+        href: "action-plan"
+      }) }}
 
     </div>
   </div>
-
-  <p>
-    Based on these results we have 3 suggested actions to add to your action plan.
-  </p>
-
-  {{ govukButton({
-    text: "See suggested actions",
-    href: "suggested-actions"
-  }) }}
-
-  {{ govukButton({
-    text: "Back to action plan",
-    classes: "govuk-button--secondary",
-    href: "action-plan"
-  }) }}
 
 {% endblock %}

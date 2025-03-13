@@ -116,3 +116,76 @@
 .actions-narrow {
   width: 10%;
 }
+
+.data-visualisation--flexible-working {
+  $bar-width: 400px;
+  width: $bar-width;
+  height: 50px;
+  @include govuk-responsive-margin(4, "bottom");
+
+  div {
+    display: inline-block;
+    color: transparent;
+    height: 100%;
+  }
+
+  &.overall {
+    .no-access {
+      width: 0.31 * $bar-width;
+    }
+    .access-but-not-using {
+      width: 0.54 * $bar-width;
+    }
+    .using {
+      width: 0.15 * $bar-width;
+    }
+  }
+
+  &.women {
+    .no-access {
+      width: 0.36 * $bar-width;
+    }
+    .access-but-not-using {
+      width: 0.46 * $bar-width;
+    }
+    .using {
+      width: 0.18 * $bar-width;
+    }
+  }
+
+  &.men {
+    .no-access {
+      width: 0.27 * $bar-width;
+    }
+    .access-but-not-using {
+      width: 0.63 * $bar-width;
+    }
+    .using {
+      width: 0.10 * $bar-width;
+    }
+  }
+}
+
+.data-visualisation--key-block {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.data-visualisation--key-label {
+  display: inline-block;
+  @include govuk-responsive-margin(2, "right");
+  position: relative;
+  top: -5px;
+}
+
+.no-access {
+  background-color: govuk-colour("orange");
+}
+
+.access-but-not-using {
+  background-color: govuk-colour("dark-blue");
+}
+
+.using {
+  background-color: mix(govuk-colour("turquoise"), white, 75%);
+}
