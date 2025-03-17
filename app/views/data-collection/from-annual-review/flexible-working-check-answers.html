@@ -1,0 +1,146 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data collection as part of annual review" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">How many employees are able to apply for flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["flexible-working-available-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["flexible-working-available-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees are not able to apply for flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["flexible-working-unavailable-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["flexible-working-unavailable-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees are currently taking advantage of flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["flexible-working-uptake-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["flexible-working-uptake-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="results" method="post">
+
+        <input type="hidden" name="dataCollectionFromAnnualReview[measure-flexible-working-utilisation][status]" value="done">
+
+        {{ govukButton({
+          text: "Submit data"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
