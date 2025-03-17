@@ -10,7 +10,7 @@
   {% endif %}
 {% endfor %}
 {% set dbStatus = data.db.company.actionsInProgress[thisPageAction.shortCode].status %}
-{% set submittedStatus = data.annualReview[thisPageAction.shortCode].status %}
+{% set submittedStatus = data.dataCollectionAnnualReview[thisPageAction.shortCode].status %}
 
 {% block content %}
 
@@ -28,7 +28,7 @@
       <form action="update-action-plan" method="post">
 
         {{ govukRadios({
-          name: "annualReview[" + thisPageAction.shortCode + "][status]",
+          name: "dataCollectionAnnualReview[" + thisPageAction.shortCode + "][status]",
           fieldset: {
             legend: {
               text: "How is your organisation progressing with this practice?",
@@ -58,8 +58,8 @@
         }) }}
 
         {{ govukTextarea({
-          id: "annualReview[" + thisPageAction.shortCode + "][narrative]",
-          name: "annualReview[" + thisPageAction.shortCode + "][narrative]",
+          id: "dataCollectionAnnualReview[" + thisPageAction.shortCode + "][narrative]",
+          name: "dataCollectionAnnualReview[" + thisPageAction.shortCode + "][narrative]",
           label: {
             text: "Supporting narrative",
             classes: "govuk-label--s"
@@ -67,7 +67,7 @@
           hint: {
             text: "If you would like to give more details, you can do so here"
           },
-          value: data.annualReview[thisPageAction.shortCode].narrative
+          value: data.dataCollectionAnnualReview[thisPageAction.shortCode].narrative
         }) }}
 
         {{ govukButton({
