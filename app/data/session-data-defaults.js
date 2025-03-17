@@ -31,10 +31,10 @@ module.exports = {
         'measure-workforce-composition': {
           status: 'embedded'
         },
-        'measure-flexible-working-utilisation': {
+        'measure-flexible-working-uptake': {
           status: 'in-progress'
         },
-        'flexible-working': {
+        'flexible-working-in-job-adverts': {
           status: 'embedded'
         },
         'structured-interviews': {
@@ -63,7 +63,7 @@ module.exports = {
       suggestedActions: [
         'targets',
         'equity-leads',
-        'flexible-working',
+        'flexible-working-in-job-adverts',
         'remuneration-transparency',
         'promotion-application-by-default',
         'flexible-working-available-to-all',
@@ -152,7 +152,7 @@ module.exports = {
           + ' promotions and appointments by gender.'
       },
       {
-        shortCode: 'measure-flexible-working-utilisation',
+        shortCode: 'measure-flexible-working-uptake',
         category: 'data',
         level: 2,
         targets: [],
@@ -162,7 +162,7 @@ module.exports = {
           + ' to flexible working, and how many actually use it.'
       },
       {
-        shortCode: 'flexible-working',
+        shortCode: 'flexible-working-in-job-adverts',
         category: 'recruitment',
         level: 1,
         targets: [
