@@ -20,45 +20,18 @@
       </h1>
 
       <h2 class="govuk-heading-m">Summary</h2>
-
-      <p>
-        {{thisPageAction.description}}
-      </p>
-      <p class="placeholder">
-        Rather than a summary at the start, Australia has a section "The bottom line" at the end.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/summary" %}
 
       <h2 class="govuk-heading-m">Choosing this action</h2>
 
       <h3 class="govuk-heading-s">Purpose</h3>
-
-      <p class="placeholder">
-        A clear statement of the main purpose of this action, i.e. how it helps the main aim of closing
-        the gender pay gap or supporting employees going through the menopause.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/purpose" %}
 
       <h3 class="govuk-heading-s">When to choose this?</h3>
-
-      <p class="placeholder">
-        Identify specific issues that this particular action would address, e.g.
-        If you find gendered composition of less than 40% men or women in a target role, team, or level.
-      </p>
-      <p class="placeholder">
-        We could potentially make this data-driven so that the relationship can be used
-        in reverse to search for appropriate actions to take given a specific issue.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/when-to-choose-this" %}
 
       <h3 class="govuk-heading-s">Benefits</h3>
-
-      <p class="placeholder">
-        Any benefits of this action that are more specific than the purpose above,
-        or that are additional to it - e.g. other groups that may be supported by the same action.
-      </p>
-      <p class="placeholder">
-        Australia has a section called "What could you achieve?" which might be a good framing for this section.
-        Inside it they have subheadings, e.g. "Improved attraction [to job applications]", "Increased retention"
-        with text explanations for each.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/benefits" %}
 
       <h3 class="govuk-heading-s">Return on investment</h3>
 
@@ -72,31 +45,10 @@
       </p>
 
       <h3 class="govuk-heading-s">Common concerns</h3>
-
-      <p class="placeholder">
-        Where we are aware of common counterarguments against this action, address those.
-      </p>
-      <p class="placeholder">
-        e.g. "We cannot implement flexible working for our teachers because we need to cover classes,
-        so it would be unfair to implement flexible working for anyone else"
-        (from <b>Make workplace or role adjustments available to everyone</b>)
-      </p>
-      <p class="placeholder">
-        We might even be able to bring in data from the user's organisation here -
-        e.g. a common concern is "in our sector, the gender balance is such that we can't fix the pay gap"
-        but we may be able to say e.g. "your organisation has an above-average pay gap for your sector
-        (so there's still more you could do)"
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/common-concerns" %}
 
       <h3 class="govuk-heading-s">Evidence base</h3>
-
-      <p class="placeholder">
-        A summary of, and links to, the evidence demonstrating the value of this action.
-      </p>
-      <p class="placeholder">
-        Strength of evidence could be pseudo-quantified like the tools in the
-        <a target="_blank" href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit">EEF toolkit</a>.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/evidence-base" %}
 
       <h2 class="govuk-heading-m">In practice</h2>
 
@@ -114,21 +66,7 @@
       </p class="placeholder">
 
       <h3 class="govuk-heading-s">How to</h3>
-
-      <p class="placeholder">
-        Guidance on how to implement the action, including how to tailor it appropriately for
-        your own organisation.
-      </p>
-      <p class="placeholder">
-        e.g. "How to set targets that are appropriate for your organisation"
-        (from <b>Set internal targets for gender representation and equality</b>)
-        might include considerations for specific sectors and their typical gender balances,
-        considerations for organisations with a hiring freeze, etc.
-      </p>
-      <p class="placeholder">
-        Can also include how <b>not</b> to - common mistakes e.g. "general goals like 'be more
-        inclusive' are not targets and will not be effective" (from <b>Set internal targets for gender representation and equality</b>)
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/how-to" %}
 
       <h3 class="govuk-heading-s">Tracking progress</h3>
 
@@ -138,19 +76,10 @@
       </p>
 
       <h3 class="govuk-heading-s">Case studies</h3>
-
-      <p class="placeholder">
-        Stories of how other organisations have implemented this action. Could be best-practice
-        examples, or examples of overcoming specific issues with the implementation. Could be
-        short summaries or long-form content.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/case-studies" %}
 
       <h3 class="govuk-heading-s">Useful resources</h3>
-
-      <p class="placeholder">
-        A list of links - perhaps collecting links from the above sections e.g. case studies,
-        evidence, etc.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/useful-resources" %}
 
     </div>
   </div>

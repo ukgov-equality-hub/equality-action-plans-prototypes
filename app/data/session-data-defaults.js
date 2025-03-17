@@ -170,9 +170,10 @@ module.exports = {
           'upper-middle-quartile-percent-women'
         ],
         title: 'Offer flexible working by default in job adverts',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        description: "Flexible working arrangements can help enable people with"
+          + " caring responsibilities to balance the competing demands of work and care."
+          + " Flexible working is attractive to both men and women, and increases the"
+          + " total number of applications to vacancies."
       },
       {
         shortCode: 'structured-interviews',
