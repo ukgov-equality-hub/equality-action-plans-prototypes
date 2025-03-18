@@ -34,15 +34,7 @@
       {% include "content/"+thisPageAction.shortCode+"/benefits" %}
 
       <h3 class="govuk-heading-s">Return on investment</h3>
-
-      <p class="placeholder">
-        A ballpark gauge of the cost and resource investment required to implement this action vs the expected impact.
-        This helps users build a business case to take to their leadership.
-      </p>
-      <p class="placeholder">
-        These could be pseudo-quantified like those found on the
-        <a target="_blank" href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit">EEF toolkit</a>.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/return-on-investment" %}
 
       <h3 class="govuk-heading-s">Common concerns</h3>
       {% include "content/"+thisPageAction.shortCode+"/common-concerns" %}
@@ -53,27 +45,13 @@
       <h2 class="govuk-heading-m">In practice</h2>
 
       <h3 class="govuk-heading-s">Detailed explanation</h3>
-
-      <p class="placeholder">
-        Text to clarify the intention, the terminology and the process
-      </p>
-      <p class="placeholder">
-        e.g. What exactly is an "equity lead"? (from <b>Appoint employment equity leads and/or task forces</b>)
-      </p>
-      <p class="placeholder">
-        or "If you have fixed pay scales and do not deviate from them, you have already embedded pay transparency
-        (from <b>Increase transparency to promotion, pay and reward processes</b>)"
-      </p class="placeholder">
+      {% include "content/"+thisPageAction.shortCode+"/detailed-explanation" %}
 
       <h3 class="govuk-heading-s">How to</h3>
       {% include "content/"+thisPageAction.shortCode+"/how-to" %}
 
       <h3 class="govuk-heading-s">Tracking progress</h3>
-
-      <p class="placeholder">
-        Guidance on how to monitor progress on this action - what metrics to collect
-        and what direction they should move in.
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/tracking-progress" %}
 
       <h3 class="govuk-heading-s">Case studies</h3>
       {% include "content/"+thisPageAction.shortCode+"/case-studies" %}
