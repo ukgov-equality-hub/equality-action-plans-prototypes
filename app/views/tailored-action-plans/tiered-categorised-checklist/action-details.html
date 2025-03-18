@@ -19,9 +19,7 @@
         {{thisPageAction.title}}
       </h1>
 
-      <p>
-        {{thisPageAction.description}}
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/summary" %}
 
       {% if thisPageAction.level > 1 %}
         <div class="review-note">

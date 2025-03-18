@@ -25,7 +25,8 @@
         {% for action in data.db.actions %}
           {% if action.category == category.shortCode %}
             <h3 class="govuk-heading-m">{{action.title}}</h3>
-            <p>{{action.description}}</p>
+            {% include "content/"+action.shortCode+"/summary" %}
+
             <h4 class="govuk-heading-s">Target metrics</h4>
             {% if not action.targets or action.targets.length == 0 %}
               <p>

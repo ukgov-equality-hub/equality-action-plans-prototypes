@@ -113,53 +113,35 @@ module.exports = {
         category: 'leadership-and-accountability',
         level: 1,
         targets: [],
-        title: 'Set internal targets for gender representation and equality',
-        description: 'Targets provide motivation and accountability, meaning that change is more likely to happen.'
-          + ' General goals such as “we will change our culture to be more inclusive” are not effective unless'
-          + ' they are accompanied by specific targets.'
+        title: 'Set internal targets for gender representation and equality'
       },
       {
         shortCode: 'equity-leads',
         category: 'leadership-and-accountability',
         level: 1,
         targets: [],
-        title: 'Appoint employment equity leads and/or task forces',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Appoint employment equity leads and/or task forces'
       },
       {
         shortCode: 'measure-remuneration-gap',
         category: 'data',
         level: 1,
         targets: [],
-        title: 'Measure average remuneration gap women and men',
-        description: 'You already collect this information as part of your legal responsibilities.'
-          + ' This measures the difference between the average and median remuneration of women and men.'
-          + ' The gender pay gap is the difference in average earnings between women and men in the workforce.'
-          + ' The gender pay gap is not to be confused with women and men being paid the same for the same,'
-          + ' or comparable, job - this is equal pay.'
+        title: 'Measure average remuneration gap women and men'
       },
       {
         shortCode: 'measure-workforce-composition',
         category: 'data',
         level: 1,
         targets: [],
-        title: 'Measure the gender composition of the workforce',
-        description: 'You already collect a basic breakdown of your workforce as part of your legal responsibilities.'
-          + ' However, you can enhance this information by adding rates of full-time, part-time and casual work,'
-          + ' gender split by industry and the proportion of each gender in leadership as well as the rates of resignations,'
-          + ' promotions and appointments by gender.'
+        title: 'Measure the gender composition of the workforce'
       },
       {
         shortCode: 'measure-flexible-working-uptake',
         category: 'data',
         level: 2,
         targets: [],
-        title: 'Measure the availability and uptake of flexible working',
-        description: 'Understand the impact of your flexible working policies and identify any problems'
-          + ' stopping people from using them. You can do this by finding out how many employees have access'
-          + ' to flexible working, and how many actually use it.'
+        title: 'Measure the availability and uptake of flexible working'
       },
       {
         shortCode: 'flexible-working-in-job-adverts',
@@ -169,11 +151,7 @@ module.exports = {
           'lower-middle-quartile-percent-women',
           'upper-middle-quartile-percent-women'
         ],
-        title: 'Offer flexible working by default in job adverts',
-        description: "Flexible working arrangements can help enable people with"
-          + " caring responsibilities to balance the competing demands of work and care."
-          + " Flexible working is attractive to both men and women, and increases the"
-          + " total number of applications to vacancies."
+        title: 'Offer flexible working by default in job adverts'
       },
       {
         shortCode: 'structured-interviews',
@@ -183,10 +161,7 @@ module.exports = {
           'lower-middle-quartile-percent-women',
           'upper-middle-quartile-percent-women'
         ],
-        title: 'Use structured interviews for recruitment and promotions',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Use structured interviews for recruitment and promotions'
       },
       {
         shortCode: 'remuneration-transparency',
@@ -198,10 +173,7 @@ module.exports = {
           'upper-quartile-percent-women',
           'upper-middle-quartile-percent-women'
         ],
-        title: 'Increase transparency to promotion, pay and reward processes',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Increase transparency to promotion, pay and reward processes'
       },
       {
         shortCode: 'promotion-application-by-default',
@@ -213,10 +185,7 @@ module.exports = {
           'upper-quartile-percent-women',
           'upper-middle-quartile-percent-women'
         ],
-        title: 'Default employees into applying for promotion or other competitive opportunities',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Default employees into applying for promotion or other competitive opportunities'
       },
       {
         shortCode: 'share-local-support-for-flexible-working',
@@ -226,10 +195,7 @@ module.exports = {
           'median-hourly-pay-gap-percent',
           'mean-hourly-pay-gap-percent'
         ],
-        title: 'Share local support for parental leave and flexible working',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Share local support for parental leave and flexible working'
       },
       {
         shortCode: 'flexible-working-available-to-all',
@@ -240,10 +206,7 @@ module.exports = {
           'upper-middle-quartile-percent-women',
           'lower-middle-quartile-percent-women'
         ],
-        title: 'Make workplace or role adjustments available to everyone',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Make workplace or role adjustments available to everyone'
       },
       {
         shortCode: 'rest-areas',
@@ -252,10 +215,7 @@ module.exports = {
         targets: [
           'menopause'
         ],
-        title: 'Provide rest areas or quiet rooms and fans/cooling systems',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Provide rest areas or quiet rooms and fans/cooling systems'
       },
       {
         shortCode: 'relax-uniform-policies',
@@ -264,10 +224,7 @@ module.exports = {
         targets: [
           'menopause'
         ],
-        title: 'Evaluate and relax uniform policies',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
-          + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
-          + ' aliquip ex ea commodo consequat.'
+        title: 'Evaluate and relax uniform policies'
       }
     ],
 

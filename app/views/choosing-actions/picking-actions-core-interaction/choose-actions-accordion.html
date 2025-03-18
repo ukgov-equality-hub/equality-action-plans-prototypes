@@ -46,7 +46,7 @@
                 </h2>
               </div>
               <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-                <p class="govuk-body">{{action.description}}</p>
+                {% include "content/"+action.shortCode+"/summary" %}
               </div>
             </div>
 

@@ -102,7 +102,6 @@ addFilter('actionSummariesFilteredByMetrics', function(data) {
             actionSummaries.push({
                 shortCode: action.shortCode,
                 title: action.title,
-                description: action.description,
                 metrics: metricSummaries
             });
         }

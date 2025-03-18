@@ -21,9 +21,7 @@
         {{thisPageAction.title}}
       </h1>
 
-      <p>
-        {{thisPageAction.description}}
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/summary" %}
 
       <form action="update-action-plan" method="post">
 

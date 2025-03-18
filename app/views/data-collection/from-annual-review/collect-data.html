@@ -19,9 +19,7 @@
         {{thisPageAction.title}}
       </h1>
 
-      <p>
-        {{thisPageAction.description}}
-      </p>
+      {% include "content/"+thisPageAction.shortCode+"/summary" %}
       <p>
         To complete this action, you will need to know how many men or women:
       </p>

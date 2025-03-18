@@ -38,12 +38,17 @@
                     {{ action.title }}
                   </label>
                   <div id="choosingActions[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
-                    {{ govukDetails({
-                      summaryText: "Why choose this?",
-                      text: action.description,
-                      classes: "govuk-!-margin-bottom-3"
-                    }) }}
-                  </div>
+                    <details class="govuk-details govuk-!-margin-bottom-3">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Why choose this?
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        {% include "content/"+action.shortCode+"/summary" %}
+                      </div>
+                    </details>
+                 </div>
                 </div>
               {% endfor %}
             </div>
