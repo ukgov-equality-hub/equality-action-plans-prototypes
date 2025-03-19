@@ -1,5 +1,10 @@
 <p class="placeholder">
-  Stories of how other organisations have implemented this action. Could be best-practice
-  examples, or examples of overcoming specific issues with the implementation. Could be
-  short summaries or long-form content.
+  Stories of how other organisations have implemented this action. These could be
+  best-practice examples, or examples of overcoming specific issues with the
+  implementation.
 </p>
+{% if not contentForUserResearch %}
+  <p class="placeholder">
+    This could be short summaries or long-form content.
+  </p>
+{% endif %}

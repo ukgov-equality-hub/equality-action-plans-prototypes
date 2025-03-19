@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Full action details pages" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageAction.title}}
+      </h1>
+
+      {% set contentForUserResearch = true %}
+
+      <h2 class="govuk-heading-m">Summary</h2>
+      {% include "content/"+thisPageAction.shortCode+"/summary" %}
+
+      <h2 class="govuk-heading-m">Choosing this action</h2>
+
+      <h3 class="govuk-heading-s">Purpose</h3>
+      {% include "content/"+thisPageAction.shortCode+"/purpose" %}
+
+      <h3 class="govuk-heading-s">When to choose this?</h3>
+      {% include "content/"+thisPageAction.shortCode+"/when-to-choose-this" %}
+
+      <h3 class="govuk-heading-s">Benefits</h3>
+      {% include "content/"+thisPageAction.shortCode+"/benefits" %}
+
+      <h3 class="govuk-heading-s">Return on investment</h3>
+      {% include "content/"+thisPageAction.shortCode+"/return-on-investment" %}
+
+      <h3 class="govuk-heading-s">Common concerns</h3>
+      {% include "content/"+thisPageAction.shortCode+"/common-concerns" %}
+
+      <h3 class="govuk-heading-s">Evidence base</h3>
+      {% include "content/"+thisPageAction.shortCode+"/evidence-base" %}
+
+      <h2 class="govuk-heading-m">In practice</h2>
+
+      <h3 class="govuk-heading-s">Detailed explanation</h3>
+      {% include "content/"+thisPageAction.shortCode+"/detailed-explanation" %}
+
+      <h3 class="govuk-heading-s">How to</h3>
+      {% include "content/"+thisPageAction.shortCode+"/how-to" %}
+
+      <h3 class="govuk-heading-s">Tracking progress</h3>
+      {% include "content/"+thisPageAction.shortCode+"/tracking-progress" %}
+
+      <h3 class="govuk-heading-s">Case studies</h3>
+      {% include "content/"+thisPageAction.shortCode+"/case-studies" %}
+
+      <h3 class="govuk-heading-s">Useful resources</h3>
+      {% include "content/"+thisPageAction.shortCode+"/useful-resources" %}
+
+    </div>
+  </div>
+
+{% endblock %}

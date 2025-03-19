@@ -1,14 +1,16 @@
 <p class="placeholder">
-  Where we are aware of common counterarguments against this action, address those.
+  Where we are aware of common concerns around this action, address those.
 </p>
-<p class="placeholder">
-  e.g. "We cannot implement flexible working for our teachers because we need to cover classes,
-  so it would be unfair to implement flexible working for anyone else"
-  (from <b>Make workplace or role adjustments available to everyone</b>)
-</p>
-<p class="placeholder">
-  We might even be able to bring in data from the user's organisation here -
-  e.g. a common concern is "in our sector, the gender balance is such that we can't fix the pay gap"
-  but we may be able to say e.g. "your organisation has an above-average pay gap for your sector
-  (so there's still more you could do)"
-</p>
+{% if not contentForUserResearch %}
+  <p class="placeholder">
+    e.g. "We cannot implement flexible working for our teachers because we need to cover classes,
+    so it would be unfair to implement flexible working for anyone else"
+    (from <b>Make workplace or role adjustments available to everyone</b>)
+  </p>
+  <p class="placeholder">
+    We might even be able to bring in data from the user's organisation here -
+    e.g. a common concern is "in our sector, the gender balance is such that we can't fix the pay gap"
+    but we may be able to say e.g. "your organisation has an above-average pay gap for your sector
+    (so there's still more you could do)"
+  </p>
+{% endif %}

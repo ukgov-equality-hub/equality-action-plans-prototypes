@@ -1,7 +1,9 @@
 <p class="placeholder">
   A summary of, and links to, the evidence demonstrating the value of this action.
 </p>
-<p class="placeholder">
-  Strength of evidence could be pseudo-quantified like the tools in the
-  <a target="_blank" href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit">EEF toolkit</a>.
-</p>
+{% if not contentForUserResearch %}
+  <p class="placeholder">
+    Strength of evidence could be pseudo-quantified like the tools in the
+    <a target="_blank" href="https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit">EEF toolkit</a>.
+  </p>
+{% endif %}

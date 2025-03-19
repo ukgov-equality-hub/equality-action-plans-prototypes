@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Full action details pages" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      {{ pageName }}
+    </h1>
+
+    <div class="user-note">
+      <p>
+        This prototype will start with some suggested actions to add to your action plan.
+      </p>
+      <p>
+        Imagine you have answered a short questionnaire about your organisation and workforce,
+        and based on your answers our service has suggested these actions for your plan.
+      </p>
+      <p>
+        What information would you need about each action in order to decide which ones to choose?
+      </p>
+    </div>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "full-action-details/action-list",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
