@@ -144,6 +144,13 @@ module.exports = {
         title: 'Measure the availability and uptake of flexible working'
       },
       {
+        shortCode: 'measure-promotions-by-gender',
+        category: 'data',
+        level: 2,
+        targets: [],
+        title: 'Measure the differences in promotion between women and men'
+      },
+      {
         shortCode: 'flexible-working-in-job-adverts',
         category: 'recruitment',
         level: 1,

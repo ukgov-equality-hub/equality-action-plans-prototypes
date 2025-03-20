@@ -11,7 +11,7 @@
         Check your answers
       </h1>
 
-      <h2 class="govuk-heading-m">How many employees are able to apply for flexible working?</h2>
+      <h2 class="govuk-heading-m">How many employees were promoted out of entry-level roles in this reporting period?</h2>
 
       {{ govukSummaryList({
         rows: [
@@ -20,7 +20,7 @@
               text: "Men"
             },
             value: {
-              text: data.dataCollectionFromAnnualReview["flexible-working-available-men"]
+              text: data.dataCollectionFromAnnualReview["promotions-out-of-entry-level-roles-men"]
             },
             actions: {
               items: [
@@ -37,7 +37,7 @@
               text: "Women"
             },
             value: {
-              text: data.dataCollectionFromAnnualReview["flexible-working-available-women"]
+              text: data.dataCollectionFromAnnualReview["promotions-out-of-entry-level-roles-women"]
             },
             actions: {
               items: [
@@ -51,7 +51,7 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">How many employees are not able to apply for flexible working?</h2>
+      <h2 class="govuk-heading-m">How many employees were promoted into managerial roles in this reporting period?</h2>
 
       {{ govukSummaryList({
         rows: [
@@ -60,7 +60,7 @@
               text: "Men"
             },
             value: {
-              text: data.dataCollectionFromAnnualReview["flexible-working-unavailable-men"]
+              text: data.dataCollectionFromAnnualReview["promotions-into-managerial-roles-men"]
             },
             actions: {
               items: [
@@ -77,7 +77,7 @@
               text: "Women"
             },
             value: {
-              text: data.dataCollectionFromAnnualReview["flexible-working-unavailable-women"]
+              text: data.dataCollectionFromAnnualReview["promotions-into-managerial-roles-women"]
             },
             actions: {
               items: [
@@ -91,7 +91,7 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">How many employees are currently taking advantage of flexible working?</h2>
+      <h2 class="govuk-heading-m">How many employees were promoted into executive roles in this reporting period?</h2>
 
       {{ govukSummaryList({
         rows: [
@@ -100,7 +100,7 @@
               text: "Men"
             },
             value: {
-              text: data.dataCollectionFromAnnualReview["flexible-working-uptake-men"]
+              text: data.dataCollectionFromAnnualReview["promotions-into-executive-roles-men"]
             },
             actions: {
               items: [
@@ -117,7 +117,7 @@
               text: "Women"
             },
             value: {
-              text: data.dataCollectionFromAnnualReview["flexible-working-uptake-women"]
+              text: data.dataCollectionFromAnnualReview["promotions-into-executive-roles-women"]
             },
             actions: {
               items: [
@@ -131,9 +131,9 @@
         ]
       }) }}
 
-      <form action="flexible-working-results" method="post">
+      <form action="promotions-results" method="post">
 
-        <input type="hidden" name="dataCollectionFromAnnualReview[measure-flexible-working-uptake][status]" value="done">
+        <input type="hidden" name="dataCollectionFromAnnualReview[measure-promotions-by-gender][status]" value="done">
 
         {{ govukButton({
           text: "Submit data"

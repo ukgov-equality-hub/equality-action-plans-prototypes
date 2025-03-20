@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data collection as part of annual review" %}
+{% set serviceName="Integrated data collection - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      How many employees were promoted into executive roles in this reporting period?
+    </h1>
+    <p class="hint">
+      Only count those who were not already in executive roles. The reporting period is 1st April 2024 to 31st March 2025.
+    </p>
+
+    <form class="form" action="promotions-check-answers" method="post">
+
+      {{ govukInput({
+        id: "dataCollectionFromAnnualReview[promotions-into-executive-roles-men]",
+        name: "dataCollectionFromAnnualReview[promotions-into-executive-roles-men]",
+        label: {
+          text: "Men",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.dataCollectionFromAnnualReview["promotions-into-executive-roles-men"]
+      }) }}
+
+      {{ govukInput({
+        id: "dataCollectionFromAnnualReview[promotions-into-executive-roles-women]",
+        name: "dataCollectionFromAnnualReview[promotions-into-executive-roles-women]",
+        label: {
+          text: "Women",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.dataCollectionFromAnnualReview["promotions-into-executive-roles-women"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
