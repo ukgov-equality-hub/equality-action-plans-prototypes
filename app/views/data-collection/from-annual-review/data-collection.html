@@ -27,10 +27,11 @@
           },
           href: "collect-data?actionShortCode=measure-promotions-by-gender&firstDataCollectionPage=promotions-from-entry-level-roles",
           status: {
+            text: "Completed" if data.dataCollectionFromAnnualReview['measure-promotions-by-gender']['status'] == "done" else null,
             tag: {
               text: "Incomplete",
               classes: "govuk-tag--blue"
-            }
+            }  if data.dataCollectionFromAnnualReview['measure-promotions-by-gender']['status'] != "done" else null
           }
         },
         {
@@ -39,10 +40,11 @@
           },
           href: "collect-data?actionShortCode=measure-flexible-working-uptake&firstDataCollectionPage=flexible-working-availability",
           status: {
+            text: "Completed" if data.dataCollectionFromAnnualReview['measure-flexible-working-uptake']['status'] == "done" else null,
             tag: {
               text: "Incomplete",
               classes: "govuk-tag--blue"
-            }
+            }  if data.dataCollectionFromAnnualReview['measure-flexible-working-uptake']['status'] != "done" else null
           }
         }
       ]
