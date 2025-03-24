@@ -1,5 +1,9 @@
+{% if not suggestedActionsList %}
+  {% set suggestedActionsList = data.db.company.suggestedActions %}
+{% endif %}
+
 {% set actionsList = [] %}
-{% for suggestedAction in data.db.company.suggestedActions %}
+{% for suggestedAction in suggestedActionsList %}
   {% for action in data.db.actions %}
     {% if action.shortCode == suggestedAction %}
       {% set actionsList = (actionsList.push(action), actionsList) %}
@@ -24,31 +28,47 @@
         </h2>
       </div>
       <div class="govuk-summary-card__content">
-        <dl class="govuk-summary-list suggested-actions-with-checkboxes">
+        <dl class="govuk-summary-list suggested-actions-with-checkboxes{{" show-reasons" if showReasons}}">
 
           {% for suggestedAction in actionsList %}
             {% if suggestedAction.category == category.shortCode %}
 
-              <div class="govuk-summary-list__row">
+              <div class="govuk-summary-list__row suggested-action">
                 <dt class="govuk-summary-list__key">
                   {{suggestedAction.title}}
                 </dt>
-                <dd class="govuk-summary-list__value">
-                  <a class="govuk-link" href="action-details?actionShortCode={{suggestedAction.shortCode}}">View full guidance</a>
-                </dd>
+                {% if showFullGuidance %}
+                  <dd class="govuk-summary-list__value">
+                    <a class="govuk-link" href="action-details?actionShortCode={{suggestedAction.shortCode}}">View full guidance</a>
+                  </dd>
+                {% endif %}
                 <dd class="govuk-summary-list__actions">
                   {{ govukCheckboxes({
-                    name: journeyShortCode + "[" + suggestedAction.shortCode + "][selected]",
+                    name: journeyShortCode + "[" + suggestedAction.shortCode + "][status]",
                     items: [
                       {
-                        value: "Yes",
+                        value: "adopt",
                         text: "Select",
-                        checked: data[journeyShortCode][suggestedAction.shortCode].selected
+                        checked: data[journeyShortCode][suggestedAction.shortCode].status == "adopt"
                       }
                     ]
                   }) }}
                 </dd>
               </div>
+              {% if showReasons %}
+                <div class="govuk-summary-list__row">
+                  <details class="govuk-details action-reason">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Why are we suggesting this?
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      {% include "content/"+suggestedAction.shortCode+"/why-are-we-suggesting-this" %}
+                    </div>
+                  </details>
+                </div>
+              {% endif %}
 
             {% endif %}
           {% endfor %}

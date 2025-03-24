@@ -18,6 +18,7 @@
       <form action="action-list" method="post">
 
         {% set journeyShortCode = "fullActionDetails" %}
+        {% set showFullGuidance = true %}
         {% include "common/suggested-actions-list" %}
 
         {{ govukButton({

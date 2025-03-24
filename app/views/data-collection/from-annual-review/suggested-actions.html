@@ -18,37 +18,18 @@
 
       <form class="govuk-!-margin-top-6" action="update-action-plan" method="post">
 
-        <span class="govuk-caption-l">Workplace flexibility</span>
-        <h2 class="govuk-heading-m">Share local support for parental leave and flexible working</h2>
-        <input type="hidden" name="dataCollectionFromAnnualReview[share-local-support-for-flexible-working][status]" value="adopt"/>
-        {{ govukDetails({
-          summaryText: "Why are we suggesting this?",
-          html: "A substantial number of your employees are not taking advantage of flexible working"
-            + " even though it is available to them. Sharing local support resources may encourage"
-            + " more people to apply for flexible working. This could open up more progression paths for women,"
-            + " who are disproportionately affected if they cannot work flexibly. See our"
-            + " <a href=\"#\">guidance on this action</a> for more information on how to set up and share support."
-        }) }}
-
-        <span class="govuk-caption-l">Workplace flexibility</span>
-        <h2 class="govuk-heading-m">Make workplace or role adjustments available to everyone</h2>
-        <input type="hidden" name="dataCollectionFromAnnualReview[flexible-working-available-to-all][status]" value="adopt"/>
-        {{ govukDetails({
-          summaryText: "Why are we suggesting this?",
-          html: "A significant number of your employees cannot access flexible working."
-            + " This is likely to disproportionately hold back women employees compared with men."
-            + " In some sectors, staffing restrictions can make it difficult to offer flexible working"
-            + " universally, but it may be possible to do more than you currently are. See our"
-            + " <a href=\"#\">case studies</a> for more information."
-        }) }}
-
-        <span class="govuk-caption-l">Data collection</span>
-        <h2 class="govuk-heading-m">Measure the availability and uptake of flexible working</h2>
-        <input type="hidden" name="dataCollectionFromAnnualReview[measure-flexible-working-uptake][status]" value="adopt"/>
-        {{ govukDetails({
-          summaryText: "Why are we suggesting this?",
-          text: "Repeat this action again in 6 months to see the impact of the other actions you've taken to encourage flexible working."
-        }) }}
+        {% set suggestedActionsList = [
+          'share-local-support-for-flexible-working',
+          'flexible-working-available-to-all',
+          'measure-flexible-working-uptake',
+          'measure-promotions-by-gender',
+          'structured-interviews',
+          'remuneration-transparency',
+          'promotion-application-by-default'
+        ] %}
+        {% set showReasons = true %}
+        {% set journeyShortCode = "dataCollectionFromAnnualReview" %}
+        {% include "common/suggested-actions-list" %}
 
         <div class="govuk-button-group govuk-!-margin-top-8">
           {{ govukButton({
