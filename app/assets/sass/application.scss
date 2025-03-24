@@ -123,9 +123,8 @@
   width: 10%;
 }
 
-.data-visualisation--flexible-working {
-  $bar-width: 400px;
-  width: $bar-width;
+.data-visualisation-bar {
+  width: 400px;
   height: 50px;
   @include govuk-responsive-margin(4, "bottom");
 
@@ -133,42 +132,6 @@
     display: inline-block;
     color: transparent;
     height: 100%;
-  }
-
-  &.overall {
-    .no-access {
-      width: 0.31 * $bar-width;
-    }
-    .access-but-not-using {
-      width: 0.54 * $bar-width;
-    }
-    .using {
-      width: 0.15 * $bar-width;
-    }
-  }
-
-  &.women {
-    .no-access {
-      width: 0.36 * $bar-width;
-    }
-    .access-but-not-using {
-      width: 0.46 * $bar-width;
-    }
-    .using {
-      width: 0.18 * $bar-width;
-    }
-  }
-
-  &.men {
-    .no-access {
-      width: 0.27 * $bar-width;
-    }
-    .access-but-not-using {
-      width: 0.63 * $bar-width;
-    }
-    .using {
-      width: 0.10 * $bar-width;
-    }
   }
 }
 
@@ -188,10 +151,53 @@
   background-color: govuk-colour("orange");
 }
 
-.access-but-not-using {
+.access-but-not-using, .men {
   background-color: govuk-colour("dark-blue");
 }
 
-.using {
+.using, .women {
   background-color: mix(govuk-colour("turquoise"), white, 75%);
+}
+
+.datavis-fw-overall {
+  .no-access { width: 31%; }
+  .access-but-not-using { width: 54%; }
+  .using { width: 15%; }
+}
+
+.datavis-fw-women {
+  .no-access { width: 36%; }
+  .access-but-not-using { width: 46%; }
+  .using { width: 18%; }
+}
+
+.datavis-fw-men {
+  .no-access { width: 27%; }
+  .access-but-not-using { width: 63%; }
+  .using { width: 10%; }
+}
+
+.datavis-prom-employees {
+  .women { width: 60%; }
+  .men { width: 40%; }
+}
+
+.datavis-prom-total {
+  .women { width: 24%; }
+  .men { width: 76%; }
+}
+
+.datavis-prom-entry-level {
+  .women { width: 29%; }
+  .men { width: 71%; }
+}
+
+.datavis-prom-managerial {
+  .women { width: 22%; }
+  .men { width: 78%; }
+}
+
+.datavis-prom-executive {
+  .women { width: 15%; }
+  .men { width: 85%; }
 }
