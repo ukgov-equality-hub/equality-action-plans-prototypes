@@ -21,36 +21,38 @@
       {% endif %}
     {% endfor %}
 
-    <div class="govuk-summary-card">
-      <div class="govuk-summary-card__title-wrapper">
-        <h2 class="govuk-summary-card__title">
-          {{category.title}}
-        </h2>
-        {% if creatingNewActionPlan and hasSubmitted %}
-          <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action">
-            <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">Reassess category</a>
-            </li>
-          </ul>
-        {% endif %}
+    {% if creatingNewActionPlan or actionCount > 0 %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            {{category.title}}
+          </h2>
+          {% if creatingNewActionPlan and hasSubmitted %}
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">Reassess category</a>
+              </li>
+            </ul>
+          {% endif %}
+        </div>
+        <div class="govuk-summary-card__content">
+          {% if actionCount == 0 %}
+            <div class="govuk-summary-list">
+              {% if hasSubmitted or (not creatingNewActionPlan) %}
+                No actions chosen
+              {% else %}
+                <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">
+                  Assess this category
+                </a>
+              {% endif %}
+            </div>
+          {% else %}
+            {% set categoryCode = category.shortCode %}
+            {% include "common/action-plan-in-progress.html" %}
+          {% endif %}
+        </div>
       </div>
-      <div class="govuk-summary-card__content">
-        {% if actionCount == 0 %}
-          <div class="govuk-summary-list">
-            {% if hasSubmitted or (not creatingNewActionPlan) %}
-              No actions chosen
-            {% else %}
-              <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">
-                Assess this category
-              </a>
-            {% endif %}
-          </div>
-        {% else %}
-          {% set categoryCode = category.shortCode %}
-          {% include "common/action-plan-in-progress.html" %}
-        {% endif %}
-      </div>
-    </div>
+    {% endif %}
 
   {% endif %}
 {% endfor %}
