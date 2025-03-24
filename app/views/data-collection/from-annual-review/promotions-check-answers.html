@@ -11,6 +11,46 @@
         Check your answers
       </h1>
 
+      <h2 class="govuk-heading-m">How many employees were promoted in this reporting period?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["promotions-total-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.dataCollectionFromAnnualReview["promotions-total-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
       <h2 class="govuk-heading-m">How many employees were promoted out of entry-level roles in this reporting period?</h2>
 
       {{ govukSummaryList({
