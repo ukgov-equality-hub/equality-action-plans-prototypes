@@ -120,7 +120,7 @@ module.exports = {
         category: 'leadership-and-accountability',
         level: 1,
         targets: [],
-        title: 'Appoint employment equity leads and/or task forces'
+        title: 'Appoint diversity leads and/or task forces'
       },
       {
         shortCode: 'measure-remuneration-gap',
