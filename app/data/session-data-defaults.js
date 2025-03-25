@@ -22,7 +22,7 @@ module.exports = {
         'targets': {
           status: 'embedded'
         },
-        'equity-leads': {
+        'diversity-leads-and-task-forces': {
           status: 'embedded'
         },
         'measure-remuneration-gap': {
@@ -62,7 +62,7 @@ module.exports = {
 
       suggestedActions: [
         'targets',
-        'equity-leads',
+        'diversity-leads-and-task-forces',
         'flexible-working-in-job-adverts',
         'remuneration-transparency',
         'promotion-application-by-default',
@@ -116,7 +116,7 @@ module.exports = {
         title: 'Set internal targets for gender representation and equality'
       },
       {
-        shortCode: 'equity-leads',
+        shortCode: 'diversity-leads-and-task-forces',
         category: 'leadership-and-accountability',
         level: 1,
         targets: [],
