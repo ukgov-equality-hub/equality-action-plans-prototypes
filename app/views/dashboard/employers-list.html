@@ -12,6 +12,15 @@
         Your employers
       </h1>
 
+      <p>
+        Add or select an employer so you can:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>enter gender pay gap information and save a draft for publication at a later date</li>
+        <li>report your gender pay gap information</li>
+        <li>change whether your employer is required to report for each reporting year</li>
+      </ul>
+
     </div>
     <div class="govuk-grid-column-full">
 
@@ -72,6 +81,21 @@
           ]
         ]
       }) }}
+
+      {{ govukButton({
+        text: "Add an employer",
+        href: "#"
+      }) }}
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Action statuses (not just registration status) and deadline information per employer</li>
+          <li>Tags updated to current GOV.UK style guide</li>
+          <li>Shorter title</li>
+          <li>Added "an" to button text for more natural language</li>
+        </ul>
+      </div>
 
     </div>
   </div>
