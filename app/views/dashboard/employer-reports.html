@@ -1,0 +1,160 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Your employers" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% set employerName = "Los Pollos Hermanos, Inc." if data.employer == "lospolloshermanos"
+  else ("Dunder Mifflin Paper Company, Inc." if data.employer == "dundermifflin"
+  else ("Weyland-Yutani Corporation" if data.employer == "weylandyutani"
+  else "Employer name")) %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{employerName}}</span>
+      <h1 class="govuk-heading-l">
+        Reports
+      </h1>
+
+      <h2 class="govuk-heading-m">Reports due</h2>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Reporting year"
+          },
+          {
+            text: "Report status"
+          },
+          {
+            text: "Deadline"
+          },
+          {
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "2023-24"
+            },
+            {
+              html: "<strong class=\"govuk-tag govuk-tag--red\">Report overdue</strong>"
+            },
+            {
+              text: "4th April 2024"
+            },
+            {
+              html: "<a href=\"#\">Draft report</a>"
+            }
+          ],
+          [
+            {
+              text: "2024-25"
+            },
+            {
+              html: "<strong class=\"govuk-tag govuk-tag--blue\">Ready to report</strong>"
+            },
+            {
+              text: "4th April 2025"
+            },
+            {
+              html: "<a href=\"#\">Draft report</a>"
+            }
+          ]
+        ]
+      }) }}
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m">Past reports</h2>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Reporting year"
+          },
+          {
+            text: "Report status"
+          },
+          {
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "2022-23"
+            },
+            {
+              text: "Reported on time"
+            },
+            {
+              html: "<a href=\"#\">Edit report</a>"
+            }
+          ],
+          [
+            {
+              text: "2021-22"
+            },
+            {
+              text: "Reported late on 16th April 2022"
+            },
+            {
+              html: "<span class=\"hint\">Edit window has passed</span>"
+            }
+          ],
+          [
+            {
+              text: "2020-21"
+            },
+            {
+              text: "Reported voluntarily - not required"
+            },
+            {
+              html: "<span class=\"hint\">Edit window has passed</span>"
+            }
+          ],
+          [
+            {
+              text: "2019-20"
+            },
+            {
+              text: "Not required to report (due to COVID)"
+            },
+            {
+              html: "<span class=\"hint\">Edit window has passed</span>"
+            }
+          ],
+          [
+            {
+              text: "2018-19"
+            },
+            {
+              text: "Not required to report"
+            },
+            {
+              html: "<span class=\"hint\">Edit window has passed</span>"
+            }
+          ]
+        ]
+      }) }}
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>TODO</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
