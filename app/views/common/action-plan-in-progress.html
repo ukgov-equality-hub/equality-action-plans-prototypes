@@ -9,7 +9,7 @@
   {% endfor %}
 {% endif %}
 
-<dl class="govuk-summary-list action-plan-summary{{"-with-changes" if showChanges}}{{"-and-extra-action" if showChanges and enableDataCollectionJourney}}">
+<dl class="govuk-summary-list action-plan-summary{{"-with-changes" if showChanges}}{{"-extra-action" if enableDataCollectionJourney}}">
   
   {% for action in data.db.actions %}
     {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
