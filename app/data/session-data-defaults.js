@@ -2,7 +2,7 @@ module.exports = {
 
   db: {
     company: {
-      name: "Dunder Mifflin Paper Company, Inc",
+      name: "Dunder Mifflin Paper Company, Inc.",
 
       report: {
         metrics: [

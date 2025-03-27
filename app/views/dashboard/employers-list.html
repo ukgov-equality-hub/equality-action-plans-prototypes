@@ -1,0 +1,79 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Your employers" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your employers
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Employer"
+          },
+          {
+            text: "Status"
+          },
+          {
+            text: "Details"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "AMALGAM LTD"
+            },
+            {
+              html: "<strong class=\"govuk-tag govuk-tag--yellow\">Awaiting approval</strong>"
+            },
+            {
+            }
+          ],
+          [
+            {
+              html: "<a href=\"#\">Los Pollos Hermanos, Inc.</a>"
+            },
+            {
+              text: "All reports complete"
+            },
+            {
+            }
+          ],
+          [
+            {
+              html: "<a href=\"#\">Dunder Mifflin Paper Company, Inc.</a>"
+            },
+            {
+              html: "<strong class=\"govuk-tag govuk-tag--blue\">Ready to report</strong>"
+            },
+            {
+              text: "Due in 11 months"
+            }
+          ],
+          [
+            {
+              html: "<a href=\"#\">Weyland-Yutani Corporation</a>"
+            },
+            {
+              html: "<strong class=\"govuk-tag govuk-tag--red\">Report overdue</strong>"
+            },
+            {
+              text: "Due 12 days ago"
+            }
+          ]
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
