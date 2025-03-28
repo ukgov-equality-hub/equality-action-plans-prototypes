@@ -1,4 +1,4 @@
-name: 'Terraform, Build, Deploy (all environments)'
+name: 'Terraform, Build, Deploy'
 
 on:
   workflow_dispatch:
@@ -44,6 +44,7 @@ jobs:
           -var-file "${{ env.TERRAFORM_TFVARS_FILE }}" \
           -var "github_url=https://github.com/${{ github.repository }}" \
           -var "APP_PASSWORD=${{ secrets.APP_PASSWORD }}" \
+          -var "USER_TESTING_PASSWORD=${{ secrets.USER_TESTING_PASSWORD }}" \
           -auto-approve
         working-directory: ./terraform
 
