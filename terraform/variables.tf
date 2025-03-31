@@ -41,3 +41,8 @@ variable "APP_PASSWORD" {
   default = ""
   sensitive = true
 }
+variable "USER_TESTING_PASSWORD" {
+  type = string
+  default = ""
+  sensitive = true
+}

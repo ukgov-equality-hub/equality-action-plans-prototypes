@@ -385,5 +385,15 @@ resource "aws_elastic_beanstalk_environment" "main_app_elastic_beanstalk_environ
     name      = "PASSWORD"
     value     = var.APP_PASSWORD
   }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "PASSWORD_KEYS"
+    value     = "USER_TESTING_PASSWORD"
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "USER_TESTING_PASSWORD"
+    value     = var.USER_TESTING_PASSWORD
+  }
 
 }
