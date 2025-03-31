@@ -1,0 +1,90 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Why do you think you are not overdue?" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% set employerName = "Los Pollos Hermanos, Inc." if data.employer == "lospolloshermanos"
+  else ("Dunder Mifflin Paper Company, Inc." if data.employer == "dundermifflin"
+  else ("Weyland-Yutani Corporation" if data.employer == "weylandyutani"
+  else "Employer name")) %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{employerName}}</span>
+      <h1 class="govuk-heading-l">
+        Tell us why your employer doesn't need to report
+      </h1>
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "Why is your employer not required to report gender pay gap information for the 2024-25 reporting year?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        name: "dashboardJourney[not-in-scope-reason]",
+        value: data.dashboardJourney["not-in-scope-reason"],
+        items: [
+          {
+            value: "under-250-employees",
+            text: "My employer had a head count of fewer than 250 employees on our snapshot date of 31 March 2024"
+          },
+          {
+            value: "other-reason",
+            text: "Other reason"
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "Have you read our guidance, which explains who needs to report?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        name: "dashboardJourney[read-guidance]",
+        value: data.dashboardJourney["read-guidance"],
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      <p>
+        Read more about <a href="#">who needs to report their gender pay gap</a>.
+      </p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue",
+          href: "#"
+        }) }}
+
+        <a class="govuk-link" href="employer-reports">Cancel and return to reports page</a>
+      </div>
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Added employer name as page heading caption</li>
+          <li>Express reporting years with dashes rather than slashes (2023-24 not 2023/24)</li>
+          <li>Put cancel link in button group with submit button to match GOV.UK styles</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

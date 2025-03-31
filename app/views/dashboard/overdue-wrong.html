@@ -1,0 +1,65 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Why do you think you are not overdue?" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% set employerName = "Los Pollos Hermanos, Inc." if data.employer == "lospolloshermanos"
+  else ("Dunder Mifflin Paper Company, Inc." if data.employer == "dundermifflin"
+  else ("Weyland-Yutani Corporation" if data.employer == "weylandyutani"
+  else "Employer name")) %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{employerName}}</span>
+      <h1 class="govuk-heading-l">
+        We believe your 2023-24 report is overdue
+      </h1>
+
+      <p>
+        We believe you were required to report for the 2023-24 reporting year
+        but we do not have your report and the deadline has now passed.
+      </p>
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "Why do you think you were not overdue with this report?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        name: "dashboardJourney[not-overdue-reason]",
+        value: data.dashboardJourney["not-overdue-reason"],
+        items: [
+          {
+            value: "out-of-scope",
+            text: "We were not required to report in the reporting year 2023-24"
+          },
+          {
+            value: "submitted-on-time",
+            text: "We submitted our report on time"
+          }
+        ]
+      }) }}
+
+      <p class="review-note">
+        The onward journeys from here are not yet fleshed out
+      </p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue",
+          href: "#"
+        }) }}
+
+        <a class="govuk-link" href="employer-reports">Cancel and return to reports page</a>
+      </div>
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Why do you think you are not overdue?" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% set employerName = "Los Pollos Hermanos, Inc." if data.employer == "lospolloshermanos"
+  else ("Dunder Mifflin Paper Company, Inc." if data.employer == "dundermifflin"
+  else ("Weyland-Yutani Corporation" if data.employer == "weylandyutani"
+  else "Employer name")) %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{employerName}}</span>
+      <h1 class="govuk-heading-l">
+        Confirm your employer is required to report for reporting year 2023-24
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Company number"
+            },
+            value: {
+              text: "01234567"
+            }
+          },
+          {
+            key: {
+              text: "Employer name"
+            },
+            value: {
+              text: employerName
+            }
+          },
+          {
+            key: {
+              text: "Reporting year"
+            },
+            value: {
+              text: "2023-24"
+            }
+          },
+          {
+            key: {
+              text: "Reporting status"
+            },
+            value: {
+              text: "Required to report"
+            }
+          }
+        ]
+      }) }}
+
+      <p>
+        By confirming this change of reporting requirement, you are acknowledging
+        that your employer is subject to the gender pay gap regulations for this
+        reporting year.
+      </p>
+
+      <div class="govuk-inset-text">
+        Before confirming this change, please read the guidance on
+        <a href="#">who needs to report their gender pay gap (opens in a new tab)</a>.
+      </div>
+
+      <p>
+        The information you provide may be shared with the Equality and Human
+        Rights Commission for the purposes of enforcing compliance with the
+        gender pay gap regulations.
+      </p>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Confirm",
+          href: "#"
+        }) }}
+
+        <a class="govuk-link" href="employer-reports">Cancel and return to reports page</a>
+      </div>
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Put reporting year in page heading, rather than generic "a reporting year"</li>
+          <li>Express reporting years with dashes rather than slashes (2023-24 not 2023/24)</li>
+          <li>Added employer name as page heading caption</li>
+          <li>Put cancel link in button group with submit button to match GOV.UK styles</li>
+          <li>Relabeled "Reporting requirement" to "Reporting status", slightly shorter and friendlier (?)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

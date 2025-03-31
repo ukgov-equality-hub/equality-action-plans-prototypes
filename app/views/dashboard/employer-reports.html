@@ -22,8 +22,8 @@
 
       <p class="review-note">
         Only one of the two current-year reports would be shown; both are shown
-        here to illustrate the differing labels between in and out of scope
-        employers.
+        here to illustrate the differing labels and correction journeys between
+        in and out of scope employers.
       </p>
 
     </div>
@@ -49,7 +49,9 @@
               text: "2023-24"
             },
             {
-              html: "<strong class=\"govuk-tag govuk-tag--red\">Report overdue</strong>"
+              html:
+                "<strong class=\"govuk-tag govuk-tag--red\">Report overdue</strong>
+                <p class=\"govuk-link change-scope-link\"><a href=\"overdue-wrong\">Think this is wrong?</a></p>"
             },
             {
               text: "4th April 2024"
@@ -63,8 +65,10 @@
               text: "2024-25"
             },
             {
-              html: "<strong class=\"govuk-tag govuk-tag--blue\">Report required</strong>"
-            },
+              html:
+                "<strong class=\"govuk-tag govuk-tag--blue\">Report required</strong>
+                <p class=\"govuk-link change-scope-link\"><a href=\"in-scope-wrong\">Think this is wrong?</a></p>"
+          },
             {
               text: "4th April 2025"
             },
@@ -77,8 +81,10 @@
               text: "2024-25"
             },
             {
-              html: "<strong class=\"govuk-tag govuk-tag--blue\">Report optional</strong>"
-            },
+              html:
+                "<strong class=\"govuk-tag govuk-tag--blue\">Report optional</strong>
+                <p class=\"govuk-link change-scope-link\"><a href=\"out-of-scope-wrong\">Think this is wrong?</a></p>"
+          },
             {
               text: "4th April 2025"
             },
@@ -213,7 +219,8 @@
           <li>Moved everything that isn't a report off this page <span class="todo">(TODO: will go in nav bar)</span></li>
           <li>Split reports between submitted and due</li>
           <li>Replaced index column (previously deadline) with reporting year, but added deadline column to due reports</li>
-          <li><span class="todo">WIP: Removed "Reporting requirement" column in anticipation of reviewing this workflow</span></li>
+          <li>Express reporting years with dashes rather than slashes (2023-24 not 2023/24)</li>
+          <li>Removed "Reporting requirement" column, clarifying this in report status instead</span></li>
           <li>Added "Edit window has passed" text for old reports that shouldn't be edited</li>
           <li>Added "See report" link for all submitted reports</li>
           <li>Moved company name to heading caption to match GOV styles</li>

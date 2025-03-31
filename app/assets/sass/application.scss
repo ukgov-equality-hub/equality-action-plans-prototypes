@@ -134,6 +134,11 @@
   }
 }
 
+.change-scope-link {
+  @include govuk-responsive-margin(2, "top");
+  @include govuk-responsive-margin(0, "bottom");
+}
+
 .actions-narrow {
   width: 10%;
 }
