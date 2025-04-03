@@ -24,63 +24,68 @@
     </div>
     <div class="govuk-grid-column-full">
 
-      {{ govukTable({
-        head: [
-          {
-            text: "Employer"
-          },
-          {
-            text: "Status"
-          },
-          {
-            text: "Details"
-          }
-        ],
-        rows: [
-          [
-            {
-              text: "Rent-A-Swag Ltd."
-            },
-            {
-              html: "<strong class=\"govuk-tag govuk-tag--yellow\">Awaiting approval</strong>"
-            },
-            {
-            }
-          ],
-          [
-            {
-              html: "<a href=\"employer-reports?employer=lospolloshermanos\">Los Pollos Hermanos, Inc.</a>"
-            },
-            {
-              text: "All reports complete"
-            },
-            {
-            }
-          ],
-          [
-            {
-              html: "<a href=\"employer-reports?employer=dundermifflin\">Dunder Mifflin Paper Company, Inc.</a>"
-            },
-            {
-              html: "<strong class=\"govuk-tag govuk-tag--blue\">Report required</strong>"
-            },
-            {
-              text: "Due in 11 months"
-            }
-          ],
-          [
-            {
-              html: "<a href=\"employer-reports?employer=weylandyutani\">Weyland-Yutani Corporation</a>"
-            },
-            {
-              html: "<strong class=\"govuk-tag govuk-tag--red\">Report overdue</strong>"
-            },
-            {
-              text: "Due 12 days ago"
-            }
-          ]
-        ]
-      }) }}
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Employer</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+            <th scope="col" class="govuk-table__header">Details</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for employer in data.db.dashboardEmployers %}
+            {% set status = "complete" %}
+            {% for report in employer.reports %}
+              {% if report.status == "overdue" %}
+                {% set status = "overdue" %}
+              {% elif status != "overdue" and report.status == "required" %}
+                {% set status = "required" %}
+              {% endif %}
+            {% endfor %}
+
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">
+                {% if employer.approved %}
+                  <a href="employer-reports?employer={{employer.shortCode}}">{{employer.name}}</a>
+                {% else %}
+                  {{employer.name}}
+                {% endif %}
+              </td>
+              <td class="govuk-table__cell">
+                {% if employer.approved %}
+                  {% if status == "overdue" %}
+                    {{ govukTag({
+                      text: "Report overdue",
+                      classes: "govuk-tag--red" 
+                    }) }}
+                  {% elif status == "required" %}
+                    {{ govukTag({
+                      text: "Report required",
+                      classes: "govuk-tag--blue" 
+                    }) }}
+                  {% else %}
+                    All reports complete
+                  {% endif %}
+                {% else %}
+                  {{ govukTag({
+                    text: "Awaiting approval",
+                    classes: "govuk-tag--yellow" 
+                  }) }}
+                {% endif %}
+              </td>
+              <td class="govuk-table__cell">
+                {% if employer.approved %}
+                  {% if status == "overdue" %}
+                    Due 12 days ago
+                  {% elif status == "required" %}
+                    Due in 11 months
+                  {% endif %}
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
       {{ govukButton({
         text: "Add an employer",

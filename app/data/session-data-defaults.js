@@ -71,6 +71,60 @@ module.exports = {
       ]
     },
 
+    dashboardEmployers: [
+      {
+        shortCode: 'rentaswag',
+        name: 'Rent-A-Swag Ltd.',
+        approved: false,
+        reports: []
+      },
+      {
+        shortCode: 'lospolloshermanos',
+        name: 'Los Pollos Hermanos, Inc.',
+        approved: true,
+        reports: [
+          {
+            year: 2023,
+            status: "complete"
+          },
+          {
+            year: 2024,
+            status: "complete"
+          }
+        ]
+      },
+      {
+        shortCode: 'dundermifflin',
+        name: 'Dunder Mifflin Paper Company, Inc.',
+        approved: true,
+        reports: [
+          {
+            year: 2023,
+            status: "complete"
+          },
+          {
+            year: 2024,
+            status: "required"
+          }
+        ]
+      },
+      {
+        shortCode: 'weylandyutani',
+        name: 'Weyland-Yutani Corporation',
+        approved: true,
+        reports: [
+          {
+            year: 2023,
+            status: "overdue"
+          },
+          {
+            year: 2024,
+            status: "required"
+          }
+        ]
+      }
+    ],
+
     actionCategories: [
       {
         shortCode: 'leadership-and-accountability',
