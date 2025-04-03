@@ -84,12 +84,14 @@ module.exports = {
         approved: true,
         reports: [
           {
-            year: 2023,
-            status: "complete"
+            year: "2023-24",
+            status: "complete",
+            deadline: "4th April 2024"
           },
           {
-            year: 2024,
-            status: "complete"
+            year: "2024-25",
+            status: "complete",
+            deadline: "4th April 2025"
           }
         ]
       },
@@ -99,12 +101,14 @@ module.exports = {
         approved: true,
         reports: [
           {
-            year: 2023,
-            status: "complete"
+            year: "2023-24",
+            status: "complete",
+            deadline: "4th April 2024"
           },
           {
-            year: 2024,
-            status: "required"
+            year: "2024-25",
+            status: "optional",
+            deadline: "4th April 2025"
           }
         ]
       },
@@ -114,12 +118,14 @@ module.exports = {
         approved: true,
         reports: [
           {
-            year: 2023,
-            status: "overdue"
+            year: "2023-24",
+            status: "overdue",
+            deadline: "4th April 2024"
           },
           {
-            year: 2024,
-            status: "required"
+            year: "2024-25",
+            status: "required",
+            deadline: "4th April 2025"
           }
         ]
       }

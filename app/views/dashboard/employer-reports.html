@@ -3,97 +3,95 @@
 {% set pageName="Your employers" %}
 {% set serviceName="Dashboard redesign - visualisations" %}
 
-{% set employerName = "Los Pollos Hermanos, Inc." if data.employer == "lospolloshermanos"
-  else ("Dunder Mifflin Paper Company, Inc." if data.employer == "dundermifflin"
-  else ("Weyland-Yutani Corporation" if data.employer == "weylandyutani"
-  else "Employer name")) %}
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == data.employerCode %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% set allReportsComplete = true %}
+{% for report in thisPageEmployer.reports %}
+  {% if report.status != "complete" %}
+    {% set allReportsComplete = false %}
+  {% endif %}
+{% endfor %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{employerName}}</span>
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
       <h1 class="govuk-heading-l">
         Reports
       </h1>
 
       <h2 class="govuk-heading-m">Reports due</h2>
 
-      <p class="review-note">
-        Only one of the two current-year reports would be shown; both are shown
-        here to illustrate the differing labels and correction journeys between
-        in and out of scope employers.
-      </p>
-
     </div>
     <div class="govuk-grid-column-full">
 
-      {{ govukTable({
-        head: [
-          {
-            text: "Reporting year"
-          },
-          {
-            text: "Report status"
-          },
-          {
-            text: "Deadline"
-          },
-          {
-          }
-        ],
-        rows: [
-          [
-            {
-              text: "2023-24"
-            },
-            {
-              html:
-                "<strong class=\"govuk-tag govuk-tag--red\">Report overdue</strong>
-                <p class=\"govuk-link change-scope-link\"><a href=\"overdue-wrong\">Think this is wrong?</a></p>"
-            },
-            {
-              text: "4th April 2024"
-            },
-            {
-              html: "<a href=\"#\">Draft report</a>"
-            }
-          ],
-          [
-            {
-              text: "2024-25"
-            },
-            {
-              html:
-                "<strong class=\"govuk-tag govuk-tag--blue\">Report required</strong>
-                <p class=\"govuk-link change-scope-link\"><a href=\"in-scope-wrong\">Think this is wrong?</a></p>"
-          },
-            {
-              text: "4th April 2025"
-            },
-            {
-              html: "<a href=\"#\">Draft report</a>"
-            }
-          ],
-          [
-            {
-              text: "2024-25"
-            },
-            {
-              html:
-                "<strong class=\"govuk-tag govuk-tag--blue\">Report optional</strong>
-                <p class=\"govuk-link change-scope-link\"><a href=\"out-of-scope-wrong\">Think this is wrong?</a></p>"
-          },
-            {
-              text: "4th April 2025"
-            },
-            {
-              html: "<a href=\"#\">Draft report</a>"
-            }
-          ]
-        ]
-      }) }}
+      {% if allReportsComplete %}
+        <p class="govuk-!-margin-bottom-6">
+          You have no outstanding reports for this employer.
+        </p>
+      {% else %}
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Reporting year</th>
+              <th scope="col" class="govuk-table__header">Report status</th>
+              <th scope="col" class="govuk-table__header">Deadline</th>
+              <th scope="col" class="govuk-table__header"></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for report in thisPageEmployer.reports %}
+              {% if report.status != "complete" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    {{report.year}}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {% if report.status == "overdue" %}
+                      {{ govukTag({
+                        text: "Report overdue",
+                        classes: "govuk-tag--red"
+                      }) }}
+                      <p class="govuk-link change-scope-link">
+                        <a href="overdue-wrong">Think this is wrong?</a>
+                      </p>
+                    {% elif report.status == "required" %}
+                      {{ govukTag({
+                        text: "Report required",
+                        classes: "govuk-tag--blue"
+                      }) }}
+                      <p class="govuk-link change-scope-link">
+                        <a href="in-scope-wrong">Think this is wrong?</a>
+                      </p>
+                    {% elif report.status == "optional" %}
+                      {{ govukTag({
+                        text: "Report optional",
+                        classes: "govuk-tag--blue"
+                      }) }}
+                      <p class="govuk-link change-scope-link">
+                        <a href="out-of-scope-wrong">Think this is wrong?</a>
+                      </p>
+                    {% endif %}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {{ report.deadline }}
+                  </td>
+                  <td class="govuk-table__cell">
+                    <a href="#">Draft report</a>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
 
     </div>
     <div class="govuk-grid-column-two-thirds">

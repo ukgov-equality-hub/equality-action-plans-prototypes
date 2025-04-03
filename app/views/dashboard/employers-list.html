@@ -40,13 +40,15 @@
                 {% set status = "overdue" %}
               {% elif status != "overdue" and report.status == "required" %}
                 {% set status = "required" %}
+              {% elif status != "overdue" and status != "required" and report.status == "optional" %}
+                {% set status = "optional" %}
               {% endif %}
             {% endfor %}
 
             <tr class="govuk-table__row">
               <td scope="row" class="govuk-table__cell">
                 {% if employer.approved %}
-                  <a href="employer-reports?employer={{employer.shortCode}}">{{employer.name}}</a>
+                  <a href="employer-reports?employerCode={{employer.shortCode}}">{{employer.name}}</a>
                 {% else %}
                   {{employer.name}}
                 {% endif %}
@@ -61,6 +63,11 @@
                   {% elif status == "required" %}
                     {{ govukTag({
                       text: "Report required",
+                      classes: "govuk-tag--blue" 
+                    }) }}
+                  {% elif status == "optional" %}
+                    {{ govukTag({
+                      text: "Report optional",
                       classes: "govuk-tag--blue" 
                     }) }}
                   {% else %}
