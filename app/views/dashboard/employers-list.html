@@ -3,6 +3,17 @@
 {% set pageName="Your employers" %}
 {% set serviceName="Dashboard redesign - visualisations" %}
 
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
 {% block content %}
 
   <div class="govuk-grid-row">

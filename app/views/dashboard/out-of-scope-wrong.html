@@ -10,6 +10,21 @@
   {% endif %}
 {% endfor %}
 
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-reports?employerCode=" + thisPageEmployer.shortCode
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
 {% block content %}
 
   <div class="govuk-grid-row">

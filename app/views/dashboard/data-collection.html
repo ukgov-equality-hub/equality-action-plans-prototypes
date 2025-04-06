@@ -3,6 +3,28 @@
 {% set pageName="Your employers" %}
 {% set serviceName="Dashboard redesign - visualisations" %}
 
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == data.employerCode %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-reports?employerCode=" + thisPageEmployer.shortCode
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
 {% block content %}
 
 <div class="govuk-grid-row">

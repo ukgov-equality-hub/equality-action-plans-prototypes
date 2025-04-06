@@ -21,8 +21,10 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     },
     text: "This is a prototype. It may not behave perfectly and it does not reflect a committed future plan."
   }) }}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+  {% block breadCrumbs %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back()"
+    }) }}
+  {% endblock breadCrumbs %}
 {% endblock %}
