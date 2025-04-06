@@ -88,7 +88,7 @@
                     {{ report.deadline }}
                   </td>
                   <td class="govuk-table__cell">
-                    <a href="#">Draft report</a>
+                    <a href="{{"data-collection" if report.type == "Additional data collection" else "#"}}">Draft report</a>
                   </td>
                 </tr>
               {% endif %}
