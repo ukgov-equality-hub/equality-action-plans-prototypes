@@ -85,11 +85,19 @@ module.exports = {
         reports: [
           {
             year: "2023-24",
+            type: "GPG data",
             status: "complete",
             deadline: "4th April 2024"
           },
           {
             year: "2024-25",
+            type: "GPG data",
+            status: "complete",
+            deadline: "4th April 2025"
+          },
+          {
+            year: "2024-25",
+            type: "Action plan",
             status: "complete",
             deadline: "4th April 2025"
           }
@@ -102,11 +110,19 @@ module.exports = {
         reports: [
           {
             year: "2023-24",
+            type: "GPG data",
             status: "complete",
             deadline: "4th April 2024"
           },
           {
             year: "2024-25",
+            type: "GPG data",
+            status: "optional",
+            deadline: "4th April 2025"
+          },
+          {
+            year: "2024-25",
+            type: "Action plan",
             status: "optional",
             deadline: "4th April 2025"
           }
@@ -119,11 +135,19 @@ module.exports = {
         reports: [
           {
             year: "2023-24",
+            type: "GPG data",
             status: "overdue",
             deadline: "4th April 2024"
           },
           {
             year: "2024-25",
+            type: "GPG data",
+            status: "required",
+            deadline: "4th April 2025"
+          },
+          {
+            year: "2024-25",
+            type: "Action plan",
             status: "required",
             deadline: "4th April 2025"
           }
