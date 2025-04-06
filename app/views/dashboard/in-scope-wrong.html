@@ -3,17 +3,19 @@
 {% set pageName="Why do you think you are not overdue?" %}
 {% set serviceName="Dashboard redesign - visualisations" %}
 
-{% set employerName = "Los Pollos Hermanos, Inc." if data.employer == "lospolloshermanos"
-  else ("Dunder Mifflin Paper Company, Inc." if data.employer == "dundermifflin"
-  else ("Weyland-Yutani Corporation" if data.employer == "weylandyutani"
-  else "Employer name")) %}
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == data.employerCode %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{employerName}}</span>
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
       <h1 class="govuk-heading-l">
         Tell us why your employer doesn't need to report
       </h1>
