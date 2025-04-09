@@ -59,7 +59,7 @@
             <tr class="govuk-table__row">
               <td scope="row" class="govuk-table__cell">
                 {% if employer.approved %}
-                  <a href="employer-reports?employerCode={{employer.shortCode}}">{{employer.name}}</a>
+                  <a href="employer-current-reports?employerCode={{employer.shortCode}}">{{employer.name}}</a>
                 {% else %}
                   {{employer.name}}
                 {% endif %}

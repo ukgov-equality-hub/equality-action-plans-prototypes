@@ -1,0 +1,92 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Your employers" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == data.employerCode %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% set allReportsComplete = true %}
+{% set overdueReports = false %}
+{% for report in thisPageEmployer.reports %}
+  {% if report.status == "overdue" %}
+    {% set overdueReports = true %}
+  {% endif %}
+  {% if report.status != "complete" %}
+    {% set allReportsComplete = false %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: thisPageEmployer.name
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Reports
+      </h1>
+
+      <p>
+        This page shows your current submissions. You can also
+        <a href="employer-past-reports">see all your submitted reports</a>,
+        or <a href="#">manage your employer's users and information</a>.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% if overdueReports %}
+        <h2 class="govuk-heading-m">Overdue submissions</h2>
+        {% set reportingYear = "2023-24" %}
+        {% include "common/submissions-due" %}
+      {% endif %}
+
+      <h2 class="govuk-heading-m">This year's submissions</h2>
+
+      {% if allReportsComplete %}
+        <p class="govuk-!-margin-bottom-6">
+          You have no outstanding submissions for this employer.
+        </p>
+      {% else %}
+        {% set reportingYear = "2024-25" %}
+        {% include "common/submissions-due" %}
+      {% endif %}
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Moved everything except current and overdue reports off this page</li>
+          <li>Created separate page for historical submitted reports</li>
+          <li>Added action plans and extra data collection as entries in the tables (on this page only)</li>
+          <li>Added reporting year column as the index column, moved deadline column later in the table</li>
+          <li>Express reporting years with dashes rather than slashes (2023-24 not 2023/24)</li>
+          <li>Removed "Reporting requirement" column, clarifying this in status instead</span></li>
+          <li>Moved company name to heading caption to match GOV styles</li>
+          <li>Simplified titling now there's less content on the page</li>
+          <li>Updated tags to new GOV styles</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

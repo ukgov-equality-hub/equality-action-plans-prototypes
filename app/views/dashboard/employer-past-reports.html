@@ -1,0 +1,167 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Your employers" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == data.employerCode %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-current-reports?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Submitted reports"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Submitted reports
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Reporting year"
+          },
+          {
+            text: "Status"
+          },
+          {
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "2022-23"
+            },
+            {
+              text: "Submitted on time"
+            },
+            {
+              html:
+                "<ul class=\"govuk-summary-list__actions-list\">
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a class=\"govuk-link\" href=\"#\">See submission</span></a>
+                  </li>
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a href=\"#\">Edit submission</a>
+                  </li>
+                </ul>"
+            }
+          ],
+          [
+            {
+              text: "2021-22"
+            },
+            {
+              text: "Submitted late on 16th April 2022"
+            },
+            {
+              html:
+                "<ul class=\"govuk-summary-list__actions-list\">
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a class=\"govuk-link\" href=\"#\">See submission</span></a>
+                  </li>
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <span class=\"hint\">Edit window has passed</span>
+                  </li>
+                </ul>"
+            }
+          ],
+          [
+            {
+              text: "2020-21"
+            },
+            {
+              text: "Submitted voluntarily - not required"
+            },
+            {
+              html:
+                "<ul class=\"govuk-summary-list__actions-list\">
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a class=\"govuk-link\" href=\"#\">See submission</span></a>
+                  </li>
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <span class=\"hint\">Edit window has passed</span>
+                  </li>
+                </ul>"
+            }
+          ],
+          [
+            {
+              text: "2019-20"
+            },
+            {
+              html: "<span class=\"hint\">Not required to report (due to COVID)</span>"
+            },
+            {
+              html:
+                "<ul class=\"govuk-summary-list__actions-list\">
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <span class=\"hint\">Edit window has passed</span>
+                  </li>
+                </ul>"
+            }
+          ],
+          [
+            {
+              text: "2018-19"
+            },
+            {
+              html: "<span class=\"hint\">Not required to report</span>"
+            },
+            {
+              html:
+                "<ul class=\"govuk-summary-list__actions-list\">
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <span class=\"hint\">Edit window has passed</span>
+                  </li>
+                </ul>"
+            }
+          ]
+        ]
+      }) }}
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Moved historical submitted reports to this separate page</li>
+          <li>Created sub-page for submission breakdown (into GPG report, action plans and extra data collection)</li>
+          <li>Replaced index column (previously deadline) with reporting year</li>
+          <li>Express reporting years with dashes rather than slashes (2023-24 not 2023/24)</li>
+          <li>Removed "Reporting requirement" column, clarifying this in status instead</span></li>
+          <li>Added "Edit window has passed" text for old reports that shouldn't be edited</li>
+          <li>Added "See report" link for all submitted reports</li>
+          <li>Moved company name to heading caption to match GOV styles</li>
+          <li>Simplified titling now there's less content on the page</li>
+          <li>Updated tags to new GOV styles</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

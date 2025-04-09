@@ -1,0 +1,67 @@
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Reporting year</th>
+      <th scope="col" class="govuk-table__header">Submission type</th>
+      <th scope="col" class="govuk-table__header">Status</th>
+      <th scope="col" class="govuk-table__header">Deadline</th>
+      <th scope="col" class="govuk-table__header"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for report in thisPageEmployer.reports %}
+      {% if report.year == reportingYear %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            {{report.year}}
+          </td>
+          <td class="govuk-table__cell">
+            {{report.type}}
+          </td>
+          <td class="govuk-table__cell">
+            {% if report.status == "overdue" %}
+              {{ govukTag({
+                text: "Overdue",
+                classes: "govuk-tag--red"
+              }) }}
+              <p class="govuk-link change-scope-link">
+                <a href="overdue-wrong">Think this is wrong?</a>
+              </p>
+            {% elif report.status == "required" %}
+              {{ govukTag({
+                text: "Required",
+                classes: "govuk-tag--blue"
+              }) }}
+              <p class="govuk-link change-scope-link">
+                <a href="in-scope-wrong">Think this is wrong?</a>
+              </p>
+            {% elif report.status == "optional" %}
+              {{ govukTag({
+                text: "Optional",
+                classes: "govuk-tag--blue"
+              }) }}
+              {% if report.type != "Additional data collection" %}
+                <p class="govuk-link change-scope-link">
+                  <a href="out-of-scope-wrong">Think this is wrong?</a>
+                </p>
+              {% endif %}
+            {% elif report.status == "complete" %}
+              {{ govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--green"
+              }) }}
+            {% endif %}
+          </td>
+          <td class="govuk-table__cell">
+            {{ report.deadline }}
+          </td>
+          <td class="govuk-table__cell">
+            <a href="{{"data-collection" if report.type == "Additional data collection" else "#"}}">
+              {{"Edit report" if report.status == "complete" else "Draft report" }}
+            </a>
+          </td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
