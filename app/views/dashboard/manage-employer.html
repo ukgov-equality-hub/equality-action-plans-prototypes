@@ -1,0 +1,137 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Your employers" %}
+{% set serviceName="Dashboard redesign - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == data.employerCode %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-current-reports?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Manage your employer's users and information"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Manage your employer
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Employer details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Employer name"
+            },
+            value: {
+              text: "Dunder Mifflin Paper Company, Inc."
+            }
+          },
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              html: "Dunder Mifflin Paper Company<br/>Scranton Business Park<br/>1725 Slough Avenue<br/>Scranton<br/>Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Nature of business (SIC codes)"
+            },
+            value: {
+              html: "<strong>5934</strong> Paper company"
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukInsetText({
+        html: "If you need to change the details above, please contact <a href=\"#\">gpg.reporting@cabinetoffice.gov.uk</a>"
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Registered users
+      </h2>
+
+      <p>
+        The following people are registered to report gender pay gap information for this employer:
+      </p>
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Name"
+          },
+          {
+            text: "Email address"
+          },
+          {
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Michael Scott"
+            },
+            {
+              text: "worldsbestboss@dundermifflin.com"
+            },
+            {
+              html: "<a href=\"#\">Remove user</a>"
+            }
+          ],
+          [
+            {
+              text: "Toby Flenderson"
+            },
+            {
+              text: "hr@dundermifflin.com"
+            },
+            {
+              html: "<a href=\"#\">Remove user</a>"
+            }
+          ]
+        ]
+      }) }}
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Moved these functions onto this separate page</li>
+          <li>Put employer details before users list</li>
+          <li>Put "need to change these details?" into inset text rather than a details component that has to be expanded</li>
+          <li>Moved company name to heading caption to match GOV styles</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
