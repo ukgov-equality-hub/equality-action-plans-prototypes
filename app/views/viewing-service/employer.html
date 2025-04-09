@@ -1,0 +1,114 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-current-reports?employerCode=" + thisPageEmployer.shortCode
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageEmployer.name}}
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              html: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Nature of business (SIC codes)"
+            },
+            value: {
+              html: "<strong>5934</strong> Paper company"
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukButton({
+        text: "Add to comparison",
+        href: "#"
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "Reporting requirements",
+        html:
+          "<p>Any employer who has a headcount of 250 or more on their ‘snapshot date’ at the end of the financial year must submit both:</p>"
+          + "<ul class=\"govuk-list--bullet\">"
+          + "<li>a gender pay gap report showing their breakdown of pay by gender</li>"
+          + "<li>an action plan outlining how they intend to address the gender pay gap and support employees going through menopause</li>"
+          + "</ul>"
+          + "<p>For more detail, see the <a href=\"#\">gender pay gap and action plan guidance</a>.</p>"
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Submitted reports
+      </h2>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set displayCurrentYear = true %}
+      {% set reportsAreEditable = false %}
+      {% include "common/submitted-reports" %}
+
+      <div class="review-note">
+        <p>Changes:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Moved historical submitted reports to this separate page</li>
+          <li>Added action plans into the table</li>
+          <li>Replaced index column (previously deadline) with reporting year</li>
+          <li>Express reporting years with dashes rather than slashes (2023-24 not 2023/24)</li>
+          <li>Removed "Reporting requirement" column, clarifying this in status instead</span></li>
+          <li>Added "Edit window has passed" text for old reports that shouldn't be edited</li>
+          <li>Added "See report" link for all submitted reports</li>
+          <li>Moved company name to heading caption to match GOV styles</li>
+          <li>Simplified titling now there's less content on the page</li>
+          <li>Updated tags to new GOV styles</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

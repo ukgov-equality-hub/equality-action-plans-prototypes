@@ -93,9 +93,18 @@
   }
 }
 
-.submitted-reports {
+.submitted-reports, .submitted-reports--editable {
+  .no-separator {
+    border-bottom: none;
+  }
+
+  .govuk-summary-list__actions-list-item {
+    min-width: 90px;
+  }
+}
+.submitted-reports--editable {
   .reporting-year {
-    width: 12%;
+    width: 16%;
   }
 
   .submission-type {
@@ -103,15 +112,11 @@
   }
 
   .submission-status {
-    width: 30%;
+    width: 32%;
   }
 
   .submission-actions {
-    width: 40%;
-  }
-
-  .no-separator {
-    border-bottom: none;
+    width: 34%;
   }
 }
 

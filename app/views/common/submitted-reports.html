@@ -1,0 +1,133 @@
+<table class="govuk-table submitted-reports{{"--editable" if reportsAreEditable}}">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header reporting-year">Reporting year</th>
+      <th scope="col" class="govuk-table__header submission-type">Submission type</th>
+      <th scope="col" class="govuk-table__header submission-status">Status</th>
+      <th scope="col" class="govuk-table__header submission-actions"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% if displayCurrentYear %}
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header no-separator">2024-25</th>
+        <td class="govuk-table__cell no-separator">GPG report</td>
+        <td class="govuk-table__cell no-separator">Due by 31st March 2025</td>
+        <td class="govuk-table__cell no-separator">
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header"></th>
+        <td class="govuk-table__cell">Action plan</td>
+        <td class="govuk-table__cell">Due by 31st March 2025</td>
+        <td class="govuk-table__cell">
+        </td>
+      </tr>
+    {% endif %}
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header no-separator">2023-24</th>
+      <td class="govuk-table__cell no-separator">GPG report</td>
+      <td class="govuk-table__cell no-separator">Submitted on time</td>
+      <td class="govuk-table__cell no-separator">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link" href="#">See report</span></a>
+          </li>
+          {% if reportsAreEditable %}
+            <li class="govuk-summary-list__actions-list-item">
+              <a href="#">Edit report</a>
+            </li>
+          {% endif %}
+        </ul>
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header"></th>
+      <td class="govuk-table__cell">Action plan</td>
+      <td class="govuk-table__cell">Submitted on time</td>
+      <td class="govuk-table__cell">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link" href="#">See plan</span></a>
+          </li>
+          {% if reportsAreEditable %}
+            <li class="govuk-summary-list__actions-list-item">
+              <a href="#">Edit plan</a>
+            </li>
+          {% endif %}
+        </ul>
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">2022-23</th>
+      <td class="govuk-table__cell">GPG report</td>
+      <td class="govuk-table__cell">Submitted on time</td>
+      <td class="govuk-table__cell">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link" href="#">See report</span></a>
+          </li>
+          {% if reportsAreEditable %}
+            <li class="govuk-summary-list__actions-list-item">
+              <a href="#">Edit report</a>
+            </li>
+          {% endif %}
+        </ul>
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">2021-22</th>
+      <td class="govuk-table__cell">GPG report</td>
+      <td class="govuk-table__cell">Submitted late on 16th April 2022</td>
+      <td class="govuk-table__cell">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link" href="#">See report</span></a>
+          </li>
+          {% if reportsAreEditable %}
+            <li class="govuk-summary-list__actions-list-item">
+              <span class="hint">Edit window has passed</span>
+            </li>
+          {% endif %}
+        </ul>
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">2020-21</th>
+      <td class="govuk-table__cell">GPG report</td>
+      <td class="govuk-table__cell">Submitted voluntarily - not required</td>
+      <td class="govuk-table__cell">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item">
+            <a class="govuk-link" href="#">See report</span></a>
+          </li>
+          {% if reportsAreEditable %}
+            <li class="govuk-summary-list__actions-list-item">
+              <span class="hint">Edit window has passed</span>
+            </li>
+          {% endif %}
+        </ul>
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">2019-20</th>
+      <td class="govuk-table__cell">GPG report</td>
+      <td class="govuk-table__cell"><span class="hint">Not required to report (due to COVID)</span></td>
+      <td class="govuk-table__cell">
+        {% if reportsAreEditable %}
+          <span class="hint">Edit window has passed</span>
+        {% endif %}
+      </td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">2018-19</th>
+      <td class="govuk-table__cell">GPG report</td>
+      <td class="govuk-table__cell"><span class="hint">Not required to report</span></td>
+      <td class="govuk-table__cell">
+        {% if reportsAreEditable %}
+          <span class="hint">Edit window has passed</span>
+        {% endif %}
+      </td>
+    </tr>
+  </tbody>
+</table>
