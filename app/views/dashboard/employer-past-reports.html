@@ -42,20 +42,79 @@
     <div class="govuk-grid-column-full">
 
       {{ govukTable({
+        firstCellIsHeader: true,
+        classes: "submitted-reports",
         head: [
           {
-            text: "Reporting year"
+            text: "Reporting year",
+            classes: "reporting-year"
           },
           {
-            text: "Status"
+            text: "Submission type",
+            classes: "submission-type"
           },
           {
+            text: "Status",
+            classes: "submission-status"
+          },
+          {
+            classes: "submission-actions"
           }
         ],
         rows: [
           [
             {
+              text: "2023-24",
+              classes: "no-separator"
+            },
+            {
+              text: "GPG report",
+              classes: "no-separator"
+            },
+            {
+              text: "Submitted on time",
+              classes: "no-separator"
+            },
+            {
+              html:
+                "<ul class=\"govuk-summary-list__actions-list\">
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a class=\"govuk-link\" href=\"#\">See submission</span></a>
+                  </li>
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a href=\"#\">Edit submission</a>
+                  </li>
+                </ul>",
+                classes: "no-separator"
+              }
+          ],
+          [
+            {
+            },
+            {
+              text: "Action plan"
+            },
+            {
+              text: "Submitted on time"
+            },
+            {
+              html:
+                "<ul class=\"govuk-summary-list__actions-list\">
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a class=\"govuk-link\" href=\"#\">See submission</span></a>
+                  </li>
+                  <li class=\"govuk-summary-list__actions-list-item\">
+                    <a href=\"#\">Edit submission</a>
+                  </li>
+                </ul>"
+            }
+          ],
+          [
+            {
               text: "2022-23"
+            },
+            {
+              text: "GPG report"
             },
             {
               text: "Submitted on time"
@@ -77,6 +136,9 @@
               text: "2021-22"
             },
             {
+              text: "GPG report"
+            },
+            {
               text: "Submitted late on 16th April 2022"
             },
             {
@@ -94,6 +156,9 @@
           [
             {
               text: "2020-21"
+            },
+            {
+              text: "GPG report"
             },
             {
               text: "Submitted voluntarily - not required"
@@ -115,6 +180,9 @@
               text: "2019-20"
             },
             {
+              text: "GPG report"
+            },
+            {
               html: "<span class=\"hint\">Not required to report (due to COVID)</span>"
             },
             {
@@ -129,6 +197,9 @@
           [
             {
               text: "2018-19"
+            },
+            {
+              text: "GPG report"
             },
             {
               html: "<span class=\"hint\">Not required to report</span>"
@@ -149,7 +220,7 @@
         <p>Changes:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>Moved historical submitted reports to this separate page</li>
-          <li>Created sub-page for submission breakdown (into GPG report, action plans and extra data collection)</li>
+          <li>Added action plans into the table</li>
           <li>Replaced index column (previously deadline) with reporting year</li>
           <li>Express reporting years with dashes rather than slashes (2023-24 not 2023/24)</li>
           <li>Removed "Reporting requirement" column, clarifying this in status instead</span></li>
