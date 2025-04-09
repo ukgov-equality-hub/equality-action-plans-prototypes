@@ -48,7 +48,7 @@
       <p>
         This page shows your current submissions. You can also
         <a href="employer-past-reports">see all your submitted reports</a>,
-        or <a href="manage-employer?employerCode={{thisPageEmployer.shortCode}}">manage your employer's users and information</a>.
+        or <a href="manage-employer">manage your employer's users and information</a>.
       </p>
 
     </div>
@@ -65,6 +65,9 @@
       {% if allReportsComplete %}
         <p class="govuk-!-margin-bottom-6">
           You have no outstanding submissions for this employer.
+        </p>
+        <p>
+          <a href="employer-past-reports">See your previously submitted reports</a>
         </p>
       {% else %}
         {% set reportingYear = "2024-25" %}
