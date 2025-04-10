@@ -1,0 +1,168 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Action plan submission 2023-24",
+        href: "employer-action-plan"
+      },
+      {
+        text: "Plan history"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set actionPlanHistoryExplanation %}
+  <p>
+    Once an employer has created an action plan, they are required to review it
+    annually, including a more detailed review every three years. They can also
+    change the plan at any time outside of the annual review process.
+  </p>
+  <p>
+    This view shows the changes that have been made over time to this organisation's action plan.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% set currentActionPlanContent %}
+  <p>
+    <a href="employer-action-plan">See {{thisPageEmployer.name}}'s current action plan.</a>
+  </p>
+{% endset %}
+{% set threeYearReviewContent %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      Moved 2 actions from
+      <strong class="govuk-tag govuk-tag--yellow">In progress</strong>
+      to
+      <strong class="govuk-tag govuk-tag--green">Embedded</strong>
+    </li>
+    <li>Removed 1 action from the plan</li>
+    <li>Added 3 actions to the plan</li>
+  </ul>
+  <p>
+    <a href="employer-action-plan-three-year-review">See the full review</a>
+  </p>
+{% endset %}
+{% set annualReviewContent %}
+  <p>
+    &ldquo;We are progressing well with these measures but they are not fully
+    embedded yet.&rdquo;
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Added 1 action to the plan</li>
+  </ul>
+  <p>
+    <a href="employer-action-plan-annual-review">See the full review</a>
+  </p>
+{% endset %}
+{% set actionPlanUpdatedContent %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      Moved 1 action from
+      <strong class="govuk-tag govuk-tag--yellow">In progress</strong>
+      to
+      <strong class="govuk-tag govuk-tag--green">Embedded</strong>
+    </li>
+  </ul>
+  <p>
+    <a href="employer-action-plan-update">See the changes</a>
+  </p>
+{% endset %}
+{% set actionPlanCreatedContent %}
+  <p>
+    7 actions added to the plan.
+  </p>
+  <p>
+    <a href="employer-action-plan-update">See the original plan</a>
+  </p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Action plan history
+      </h1>
+
+      {{ govukDetails({
+        summaryText: "What is an action plan history?",
+        html: actionPlanHistoryExplanation
+      }) }}
+
+      {{ hmrcTimeline({
+        headingLevel: 2,
+        events: [
+          {
+            title: 'Current action plan',
+            datetime: '2026-08-24',
+            time: '24 August 2026',
+            content: currentActionPlanContent
+          },
+          {
+            title: 'Three-year review',
+            datetime: '2026-03-31',
+            time: '31 March 2026',
+            content: threeYearReviewContent
+          },
+          {
+            title: 'Annual review',
+            datetime: '2025-03-31',
+            time: '31 March 2025',
+            content: annualReviewContent
+          },
+          {
+            title: 'Action plan updated',
+            datetime: '2024-07-15',
+            time: '15 July 2024',
+            content: actionPlanUpdatedContent
+          },
+          {
+            title: 'Annual review',
+            datetime: '2024-03-31',
+            time: '31 March 2024',
+            content: annualReviewContent
+          },
+          {
+            title: 'Action plan created',
+            datetime: '2023-03-31',
+            time: '31 March 2023',
+            content: actionPlanCreatedContent
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
