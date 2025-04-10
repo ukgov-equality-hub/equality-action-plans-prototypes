@@ -1,0 +1,73 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-current-reports?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Action plan submission 2023-24"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Action plan 2023-24
+      </h1>
+
+      <p>
+        Below is {{thisPageEmployer.name}}’s current action plan. You can also
+        <a href="#">see the history of this action plan.</a>
+      </p>
+
+      {{ govukDetails({
+        summaryText: "What is an action plan?",
+        html:
+          "<p>Any employer who has a headcount of 250 or more on their ‘snapshot"
+          + " date’ at the end of the financial year must submit an action plan"
+          + " outlining how they intend to address the gender pay gap and support"
+          + " employees going through menopause.</p>"
+          + "<p>Employers review actions from our database, identify any they"
+          + " already routinely do, and choose some new actions to focus on. You"
+          + " can also <a href=\"#\">see the full list of actions in our database</a>.</p>"
+          + "<p>For more detail on the process, see the"
+          + " <a href=\"#\">gender pay gap and action plan guidance</a>.</p>"
+      }) }}
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set viewOnly = true %}
+      {% include "common/categorised-action-plan" %}
+
+    </div>
+  </div>
+
+{% endblock %}
