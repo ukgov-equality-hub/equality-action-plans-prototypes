@@ -32,6 +32,24 @@
   }) }}
 {% endblock breadCrumbs %}
 
+{% set actionPlanExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit an action plan outlining how they
+    intend to address the gender pay gap and to support employees going through
+    menopause.
+  </p>
+  <p>
+    Employers review actions from our database, identify any they already routinely
+    do, and choose some new actions to focus on. You can also
+    <a href="#">see the full list of actions in our database</a>.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -49,16 +67,7 @@
 
       {{ govukDetails({
         summaryText: "What is an action plan?",
-        html:
-          "<p>Any employer who has a headcount of 250 or more on their ‘snapshot"
-          + " date’ at the end of the financial year must submit an action plan"
-          + " outlining how they intend to address the gender pay gap and support"
-          + " employees going through menopause.</p>"
-          + "<p>Employers review actions from our database, identify any they"
-          + " already routinely do, and choose some new actions to focus on. You"
-          + " can also <a href=\"#\">see the full list of actions in our database</a>.</p>"
-          + "<p>For more detail on the process, see the"
-          + " <a href=\"#\">gender pay gap and action plan guidance</a>.</p>"
+        html: actionPlanExplanation
       }) }}
 
     </div>
