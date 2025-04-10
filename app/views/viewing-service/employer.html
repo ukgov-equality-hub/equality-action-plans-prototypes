@@ -29,6 +29,20 @@
   }) }}
 {% endblock breadCrumbs %}
 
+{% set reportExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit both:
+  </p>
+  <ul class="govuk-list--bullet">
+    <li>a gender pay gap report showing their breakdown of pay by gender</li>
+    <li>an action plan outlining how they intend to address the gender pay gap and support employees going through menopause</li>
+  </ul>
+  <p>
+    For more detail, see the <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -72,13 +86,7 @@
 
       {{ govukDetails({
         summaryText: "What are employers required to submit?",
-        html:
-          "<p>Any employer who has a headcount of 250 or more on their ‘snapshot date’ at the end of the financial year must submit both:</p>"
-          + "<ul class=\"govuk-list--bullet\">"
-          + "<li>a gender pay gap report showing their breakdown of pay by gender</li>"
-          + "<li>an action plan outlining how they intend to address the gender pay gap and support employees going through menopause</li>"
-          + "</ul>"
-          + "<p>For more detail, see the <a href=\"#\">gender pay gap and action plan guidance</a>.</p>"
+        html: reportExplanation
       }) }}
 
       <h2 class="govuk-heading-m">
