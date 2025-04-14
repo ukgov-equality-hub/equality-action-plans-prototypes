@@ -1,0 +1,110 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Action plan history",
+        href: "employer-action-plan-history"
+      },
+      {
+        text: "Annual review 2025"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set annualReviewExplanation %}
+  <p>
+    Every year after their action plan is created, employers are asked to review it.
+  </p>
+  <p>
+    Every three years, this is a thorough evaluation of all actions and a
+    reselection of new actions for the action plan &mdash; known as a
+    &ldquo;three-year review&rdquo;. In the intervening years, only a brief
+    summary of progress and measurement is required &mdash; known as an
+    &ldquo;annual review&rdquo;.
+  </p>
+  <p>
+    As this is an interim year, this is a brief annual review.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Action plan annual review 2025
+      </h1>
+
+      {{ govukDetails({
+        summaryText: "What is an annual review?",
+        html: annualReviewExplanation
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        What progress have you made this year?
+      </h2>
+
+      <p>
+        We are progressing well with these measures but they are not fully
+        embedded yet.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        How are you measuring progress and impact?
+      </h2>
+
+      <p>
+        We have a monthly anonymous staff survey to cover the broad picture of
+        impact.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Action plan
+      </h2>
+
+      <p>
+        Any changes are indicated below.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set viewOnly = true %}
+      {% set journeyShortCode = "viewingServiceAnnualReview" %}
+      {% include "common/categorised-action-plan" %}
+
+    </div>
+  </div>
+
+{% endblock %}
