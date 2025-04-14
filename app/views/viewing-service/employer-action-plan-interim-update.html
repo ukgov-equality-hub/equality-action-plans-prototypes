@@ -1,0 +1,98 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Action plan history",
+        href: "employer-action-plan-history"
+      },
+      {
+        text: "Update 15 July 2024"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set actionPlanUpdateExplanation %}
+  <p>
+    Every year after their action plan is created, employers are asked to review
+    it. However, they can also update their plan at any time.
+  </p>
+  <p>
+    This update is a non-mandatory update that was made in between the mandatory
+    reviews.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% set actionPlanUpdateNote %}
+<p>
+  This is not the current action plan for {{thisPageEmployer.name}} This is a
+  snapshot of an update made on 15th July 2024. You can
+  <a href="employer-action-plan">see the current action plan here</a>.
+</p>
+<p>
+  The changes made in this update are shown below.
+</p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Action plan update 15 July 2024
+      </h1>
+
+      {{ govukDetails({
+        summaryText: "What is an action plan update?",
+        html: actionPlanUpdateExplanation
+      }) }}
+
+      {{ govukInsetText({
+        html: actionPlanUpdateNote
+      }) }}
+
+      <p>
+        The changes are indicated below.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set viewOnly = true %}
+      {% set journeyShortCode = "viewingServiceAnnualReview" %}
+      {% include "common/categorised-action-plan" %}
+
+    </div>
+  </div>
+
+{% endblock %}
