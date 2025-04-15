@@ -1,0 +1,91 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Action plan history",
+        href: "employer-action-plan-history"
+      },
+      {
+        text: "Original action plan 31 March 2023"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set actionPlanOriginalExplanation %}
+  <p>
+    Every year after their action plan is created, employers are asked to review
+    it and that may result in changes. They can also update their plan at any time.
+  </p>
+  <p>
+    This page shows the original action plan as it was first created, before any
+    annual reviews or interim updates.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% set actionPlanOriginalNote %}
+<p>
+  This is not the current action plan for {{thisPageEmployer.name}} This is a
+  snapshot of the plan as it was originally created on 31st March 2023. You can
+  <a href="employer-action-plan">see the current action plan here</a>.
+</p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Original action plan 31 March 2023
+      </h1>
+
+      {{ govukDetails({
+        summaryText: "What is an original action plan?",
+        html: actionPlanOriginalExplanation
+      }) }}
+
+      {{ govukInsetText({
+        html: actionPlanOriginalNote
+      }) }}
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set viewOnly = true %}
+      {% set journeyShortCode = "viewingServiceAnnualReview" %}
+      {% include "common/categorised-action-plan" %}
+
+    </div>
+  </div>
+
+{% endblock %}
