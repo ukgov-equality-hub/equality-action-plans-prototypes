@@ -16,6 +16,31 @@
     {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
     {% set submittedNarrative = data[journeyShortCode][action.shortCode].narrative %}
 
+    {% if fakeAllSupportingNarratives %}
+      {% if submittedStatus or dbStatus != "embedded" %}
+        {% set narrativeToDisplay = submittedNarrative or
+          ("We are satisfied that this is now a routine for us and no further action is needed."
+          if submittedStatus == "embedded" else
+          ("We are now ready to start doing this."
+          if submittedStatus == "adopt" else
+          "We have made good progress on this action but there is more to do."))
+        %}
+      {% else %}
+        {% set narrativeToDisplay = "" %}
+      {% endif %}
+    {% else %}
+      {% set narrativeToDisplay = submittedNarrative %}
+    {% endif %}
+
+    {% if fakeEvaluationInformation and narrativeToDisplay %}
+      {% set narrativeToDisplay %}
+        <h3 class="govuk-heading-s">How's this action going?</h3>
+        <p>{{narrativeToDisplay}}</p>
+        <h3 class="govuk-heading-s">What information have you used to evaluate this action?</h3>
+        <p>We used information from our HR system and an anonymous staff survey.</p>
+      {% endset %}
+    {% endif %}
+
     {#
       Limit to actions in category if supplied.
       Ignore unselected actions if instructed (only use when creating a new plan).
@@ -32,10 +57,10 @@
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           {{action.title}}
-          {% if submittedNarrative and submittedNarrative != "" %}
+          {% if narrativeToDisplay and narrativeToDisplay != "" %}
             {{ govukDetails({
-              summaryText: "Your supporting narrative",
-              text: submittedNarrative,
+              summaryText: "Supporting narrative" if viewingService else "Your supporting narrative",
+              html: narrativeToDisplay,
               classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-4"
             }) }}
           {% endif %}
@@ -59,7 +84,7 @@
             {% else %}
               {# No change - just display dbStatus and highlight if requested and there is explicitly no change #}
               {{ dbStatus | statusToTag | safe }}
-              {% if submittedStatus and highlightNoChange %}
+              {% if highlightNoChange and (submittedStatus or interpretNoSubmissionAsNoChange) %}
                 <span class="hint">(no change)</span>
               {% endif %}
             {% endif %}

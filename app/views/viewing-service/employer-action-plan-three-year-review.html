@@ -1,0 +1,101 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Action plan history",
+        href: "employer-action-plan-history"
+      },
+      {
+        text: "Three-year review 2026"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set annualReviewExplanation %}
+  <p>
+    Every year after their action plan is created, employers are asked to review it.
+  </p>
+  <p>
+    Every three years, this is a thorough evaluation of all actions and a
+    reselection of new actions for the action plan &mdash; known as a
+    &ldquo;three-year review&rdquo;. In the intervening years, only a brief
+    summary of progress and measurement is required &mdash; known as an
+    &ldquo;annual review&rdquo;.
+  </p>
+  <p>
+    This is a thorough three-year review.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% set actionPlanAnnualReviewNote %}
+<p>
+  This is not the current action plan for {{thisPageEmployer.name}} This is a
+  snapshot of their three-year review from 2026. You can
+  <a href="employer-action-plan">see the current action plan here</a>.
+</p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Action plan three-year review 2026
+      </h1>
+
+      {{ govukDetails({
+        summaryText: "What is a three-year review?",
+        html: annualReviewExplanation
+      }) }}
+
+      {{ govukInsetText({
+        html: actionPlanAnnualReviewNote
+      }) }}
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set viewOnly = true %}
+      {% set viewingService = true %}
+      {% set journeyShortCode = "viewingServiceThreeYearReview" %}
+      {% set highlightNoChange = true %}
+      {% set interpretNoSubmissionAsNoChange = true %}
+      {% set fakeAllSupportingNarratives = true %}
+      {% set fakeEvaluationInformation = true %}
+      {% include "common/categorised-action-plan" %}
+
+    </div>
+  </div>
+
+{% endblock %}
