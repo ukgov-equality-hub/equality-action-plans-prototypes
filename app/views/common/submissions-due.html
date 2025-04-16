@@ -10,7 +10,10 @@
   </thead>
   <tbody class="govuk-table__body">
     {% for report in thisPageEmployer.reports %}
-      {% if report.year == reportingYear %}
+      {% if report.year == reportingYear
+        and (showAdditionalDataCollectionPrompt
+          or report.type != "Additional data collection")
+      %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             {{report.year}}

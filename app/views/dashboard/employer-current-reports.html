@@ -57,6 +57,7 @@
       {% if overdueReports %}
         <h2 class="govuk-heading-m">Overdue submissions</h2>
         {% set reportingYear = "2023-24" %}
+        {% set showAdditionalDataCollectionPrompt = true %}
         {% include "common/submissions-due" %}
       {% endif %}
 
@@ -71,6 +72,7 @@
         </p>
       {% else %}
         {% set reportingYear = "2024-25" %}
+        {% set showAdditionalDataCollectionPrompt = true %}
         {% include "common/submissions-due" %}
       {% endif %}
 

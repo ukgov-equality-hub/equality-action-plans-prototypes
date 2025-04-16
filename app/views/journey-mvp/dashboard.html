@@ -1,0 +1,55 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Dashboard" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: thisPageEmployer.name
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Reports
+      </h1>
+
+      <p>
+        This page shows your current submissions. You can also
+        <a href="employer-past-reports">see all your submitted reports</a>,
+        or <a href="manage-employer">manage your employer's users and information</a>.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">This year's submissions</h2>
+
+      {% set reportingYear = "2024-25" %}
+      {% set showAdditionalDataCollectionPrompt = false %}
+      {% include "common/submissions-due" %}
+
+    </div>
+  </div>
+
+{% endblock %}
