@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ serviceName }}
+    </h1>
+
+    <p>
+      This journey illustrates the entire action plan process, including the
+      annual and three-year reviews. It does not include tailored suggestions
+      for the action plan as we still need more conclusions about how that
+      process will work, or if we will use it at all.
+    </p>
+
+    <p class="user-note">
+      This journey starts as if you have just logged into your account on the
+      gender pay gap service.
+    </p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "journey-mvp/employers-list",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
