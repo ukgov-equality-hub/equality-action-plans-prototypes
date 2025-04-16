@@ -117,6 +117,37 @@ module.exports = {
           {
             year: "2024-25",
             type: "GPG report",
+            status: "required",
+            deadline: "4 April 2025"
+          },
+          {
+            year: "2024-25",
+            type: "Action plan",
+            status: "required",
+            deadline: "4 April 2025"
+          },
+          {
+            year: "2024-25",
+            type: "Additional data collection",
+            status: "optional",
+            deadline: "4 April 2025"
+          }
+        ]
+      },
+      {
+        shortCode: 'lumon',
+        name: 'Lumon Industries, PLC.',
+        approved: true,
+        reports: [
+          {
+            year: "2023-24",
+            type: "GPG report",
+            status: "complete",
+            deadline: "4 April 2024"
+          },
+          {
+            year: "2024-25",
+            type: "GPG report",
             status: "complete",
             deadline: "4 April 2025"
           },
