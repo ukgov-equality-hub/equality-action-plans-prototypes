@@ -63,7 +63,7 @@
               {{ ("Edit plan" if report.type == "Action plan" else "Edit report")
                 if report.status == "complete"
                 else
-                ("Draft plan" if report.type == "Action plan" else "Draft report") }}
+                ("Create plan" if report.type == "Action plan" else "Draft report") }}
             </a>
           </td>
         </tr>
