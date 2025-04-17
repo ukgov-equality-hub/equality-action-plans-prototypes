@@ -93,8 +93,6 @@
         {% if not viewOnly %}
           <dd class="govuk-summary-list__actions">
             {% if submittedStatus or not creatingNewActionPlan %}
-              {% set unsubmittedLinkText = unsubmittedLinkText or "Change" %}
-
               <ul class="govuk-summary-list__actions-list">
                 {% if action.category == "data" and enableDataCollectionJourney
                   and (dbStatus == "adopt" or dbStatus == "in-progress")
@@ -104,7 +102,7 @@
                   </li>
                 {% endif %}
                 <li class="govuk-summary-list__actions-list-item">
-                  <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">{{"Change" if submittedStatus else unsubmittedLinkText}}</a>
+                  <a class="govuk-link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">{{"Change" if submittedStatus else (unsubmittedLinkText or "Change")}}</a>
                 </li>
               </ul>
             {% endif %}
