@@ -1,0 +1,56 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Actions list" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Tell us what you're already doing
+      </h1>
+
+      <p>
+        Below is the list of actions in our service.
+        For each, we will ask you whether your organisation:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>has already embedded it in your working culture</li>
+        <li>is already working on embedding it but has not yet made it routine</li>
+      </ul>
+      <p>
+        If your organisation is not already working on an action, but you would
+        like to start, you can also choose to add it to your plan provisionally.
+        You will have a chance to review your plan and change these choices before
+        you submit it.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
+
+        {% set journeyShortCode = "endToEndMVP" %}
+        {% set creatingNewActionPlan = true %}
+        {% set assessWholeCategoryAtOnce = false %}
+        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set editUrl = "action-details" %}
+        {% set excludeCategory = "data" %}
+        {% include "common/categorised-action-plan.html" %}
+
+        <p class="govuk-body">
+          When you are ready, continue to review your provisional action plan.
+        </p>
+
+        {{ govukButton({
+          text: "Review provisional plan"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

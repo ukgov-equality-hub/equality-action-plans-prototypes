@@ -27,7 +27,7 @@
           <h2 class="govuk-summary-card__title">
             {{category.title}}
           </h2>
-          {% if creatingNewActionPlan and hasSubmitted %}
+          {% if creatingNewActionPlan and hasSubmitted and assessWholeCategoryAtOnce %}
             <ul class="govuk-summary-card__actions">
               <li class="govuk-summary-card__action">
               <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">Reassess category</a>
@@ -36,19 +36,28 @@
           {% endif %}
         </div>
         <div class="govuk-summary-card__content">
-          {% if actionCount == 0 %}
-            <div class="govuk-summary-list">
-              {% if hasSubmitted or (not creatingNewActionPlan) %}
+          {% if hasSubmitted or (not creatingNewActionPlan) %}
+            {# We have plan data to display #}
+            {% if actionCount == 0 %}
+              <div class="govuk-summary-list">
                 No actions chosen
-              {% else %}
+              </div>
+            {% else %}
+              {% set categoryCode = category.shortCode %}
+              {% include "common/action-plan-in-progress.html" %}
+            {% endif %}
+          {% else %}
+            {# This is a clean slate #}
+            {% if assessWholeCategoryAtOnce %}
+              <div class="govuk-summary-list">
                 <a class="govuk-link" href="assess-category?categoryShortCode={{category.shortCode}}">
                   Assess this category
                 </a>
-              {% endif %}
-            </div>
-          {% else %}
-            {% set categoryCode = category.shortCode %}
-            {% include "common/action-plan-in-progress.html" %}
+              </div>
+            {% else %}
+              {% set categoryCode = category.shortCode %}
+              {% include "common/action-plan-in-progress.html" %}
+            {% endif %}
           {% endif %}
         </div>
       </div>
