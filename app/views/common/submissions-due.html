@@ -59,7 +59,9 @@
             {{ report.deadline }}
           </td>
           <td class="govuk-table__cell">
-            <a href="{{"data-collection" if report.type == "Additional data collection" else "action-plan-intro"}}">
+            {% set reportLink = "action-plan-intro" if report.type == "Action plan" else
+              ("data-collection" if report.type == "Additional data collection" else "#") %}
+            <a href="{{reportLink}}">
               {{ ("Edit plan" if report.type == "Action plan" else "Edit report")
                 if report.status == "complete"
                 else
