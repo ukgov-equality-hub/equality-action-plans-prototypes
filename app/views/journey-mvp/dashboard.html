@@ -3,13 +3,6 @@
 {% set pageName="Dashboard" %}
 {% set serviceName="MVP action plan journey" %}
 
-{% set thisPageEmployer = {} %}
-{% for employer in data.db.dashboardEmployers %}
-  {% if employer.shortCode == "dundermifflin" %}
-    {% set thisPageEmployer = employer %}
-  {% endif %}
-{% endfor %}
-
 {% block breadCrumbs %}
   {{ govukBreadcrumbs({
     items: [
@@ -18,7 +11,7 @@
         href: "employers-list"
       },
       {
-        text: thisPageEmployer.name
+        text: data.db.company.name
       }
     ]
   }) }}
@@ -29,7 +22,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <span class="govuk-caption-l">{{data.db.company.name}}</span>
       <h1 class="govuk-heading-l">
         Reports
       </h1>
