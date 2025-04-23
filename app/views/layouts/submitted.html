@@ -12,22 +12,13 @@
       }) }}
 
       <p>
-        Your gender pay gap information has now been published on the Gender pay gap service.
+        Your action plan has now been published on the Gender pay gap service.
       </p>
 
       {% if not skipDetails %}
         
         <p>
-          <a href="#">View your published gender pay gap information</a>
-        </p>
-
-        <h2 class="govuk-heading-s">
-          Next steps
-        </h2>
-
-        <p>
-          You must also publish your gender pay gap information (and <a href="#">written statement (opens in a new tab)</a>
-          if applicable) in a prominent place on your employer's public facing website.
+          <a href="{{viewLinkUrl or "#"}}">View your published action plan</a>
         </p>
 
         <p class="govuk-body govuk-!-margin-top-6">
