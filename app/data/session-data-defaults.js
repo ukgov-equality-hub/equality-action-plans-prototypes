@@ -266,7 +266,7 @@ module.exports = {
         category: 'data',
         level: 1,
         targets: [],
-        title: 'Measure average remuneration gap women and men'
+        title: 'Measure the average remuneration gap between women and men'
       },
       {
         shortCode: 'measure-workforce-composition',
