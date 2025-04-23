@@ -1,0 +1,67 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Published action plan" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Your employers",
+        href: "#"
+      },
+      {
+        text: data.db.company.name,
+        href: "#"
+      },
+      {
+        text: "Action plan"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Your action plan
+      </h1>
+
+      <p>
+        You can also
+        <a href="plan-history">see the history of your action plan</a>.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set journeyShortCode = "endToEndMVP" %}
+      {% set creatingNewActionPlan = true %}
+      {# The above is not really the case but we want to use submitted data, not DB data #}
+      {% set onlyShowSelectedActions = true %}
+      {% set viewOnly = true %}
+      {% set excludeCategory = "data" %}
+      {% include "common/categorised-action-plan.html" %}
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukButton({
+        text: "Edit action plan",
+        href: "edit-action-plan"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
