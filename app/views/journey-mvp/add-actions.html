@@ -1,0 +1,45 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Add actions to your provisional plan" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Add actions to your provisional plan
+    </h1>
+
+    <p>
+      All of our recommended actions that are not yet in your plan are listed
+      below. Select any that you would like to add to your plan.
+    </p>
+
+    <form class="form" action="provisional-plan" method="post">
+
+      {% set journeyShortCode = "endToEndMVP" %}
+      {% set addingToExistingPlan = true %}
+      {% set useSubmittedPlanData = true %}
+      {% set excludeCategory = "data" %}
+
+      {% include "common/action-checklist-details.html" %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Add selected actions to plan"
+        }) }}
+        {{ govukButton({
+          text: "Go back without adding any actions",
+          classes: "govuk-button--secondary",
+          href: "provisional-plan"
+        }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

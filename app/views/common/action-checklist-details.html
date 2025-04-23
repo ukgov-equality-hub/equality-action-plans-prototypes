@@ -1,30 +1,58 @@
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset">
-    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      {% for action in data.db.actions %}
+{% for category in data.db.actionCategories %}
+  {% if category.shortCode != excludeCategory %}
+    {% set actionCount = 0 %}
+    {% for action in data.db.actions %}
+      {% if action.category == category.shortCode %}
+        {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
         {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
 
-        {% if not addingToExistingPlan or (not dbStatus or dbStatus == "ignore") %}
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="{{journeyShortCode}}[{{action.shortCode}}][status]" name="{{journeyShortCode}}[{{action.shortCode}}][status]" type="checkbox" value="adopt" {{"checked" if data[journeyShortCode][action.shortCode].status == 'adopt'}} aria-describedby="{{journeyShortCode}}[actions]-item{{loop.index}}-hint">
-            <label class="govuk-label govuk-checkboxes__label" for="{{journeyShortCode}}[{{action.shortCode}}][status]">
-              {{ action.title }}
-            </label>
-            <div id="{{journeyShortCode}}[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
-              <details class="govuk-details govuk-!-margin-bottom-3">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    Why choose this?
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-                  {% include "content/"+action.shortCode+"/summary" %}
-                </div>
-              </details>
-            </div>
-          </div>
+        {% if (useSubmittedPlanData and (not submittedStatus or submittedStatus == "ignore"))
+          or (not useSubmittedPlanData and (not dbStatus or dbStatus == "ignore")) %}
+          {% set actionCount = actionCount + 1 %}
         {% endif %}
-      {% endfor %}
-    </div>
-  </fieldset>
-</div>
+      {% endif %}
+    {% endfor %}
+
+    {% if actionCount > 0 %}
+      <h2 class="govuk-heading-m">{{category.title}}</h2>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            {% for action in data.db.actions %}
+              {% if action.category == category.shortCode %}
+                {% set actionStatus = "" %}
+                {% if useSubmittedPlanData %}
+                  {% set actionStatus = data[journeyShortCode][action.shortCode].status %}
+                {% else %}
+                  {% set actionStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+                {% endif %}
+      
+                {% if not addingToExistingPlan or (not actionStatus or actionStatus == "ignore") %}
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="{{journeyShortCode}}[{{action.shortCode}}][status]" name="{{journeyShortCode}}[{{action.shortCode}}][status]" type="checkbox" value="adopt" {{"checked" if data[journeyShortCode][action.shortCode].status == 'adopt'}} aria-describedby="{{journeyShortCode}}[actions]-item{{loop.index}}-hint">
+                    <label class="govuk-label govuk-checkboxes__label" for="{{journeyShortCode}}[{{action.shortCode}}][status]">
+                      {{ action.title }}
+                    </label>
+                    <div id="{{journeyShortCode}}[actions]-item{{loop.index}}-hint" class="govuk-hint govuk-checkboxes__hint">
+                      <details class="govuk-details govuk-!-margin-bottom-3">
+                        <summary class="govuk-details__summary">
+                          <span class="govuk-details__summary-text">
+                            Why choose this?
+                          </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                          {% include "content/"+action.shortCode+"/summary" %}
+                        </div>
+                      </details>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}
