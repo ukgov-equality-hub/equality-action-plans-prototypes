@@ -21,7 +21,7 @@
       {% endif %}
     {% endfor %}
 
-    {% if creatingNewActionPlan or actionCount > 0 %}
+    {% if (creatingNewActionPlan and showEmptyCategories) or actionCount > 0 %}
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">

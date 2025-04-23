@@ -1,0 +1,62 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Provisional action plan" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Your provisional action plan
+      </h1>
+
+      <p>
+        Your provisional action plan is below. You can change the status of
+        the actions on your plan, or add new actions.
+      </p>
+
+      {{ govukInsetText({
+        html: "Before submitting your plan, it must have at least one action"
+          + " from the &ldquo;Support during menopause&rdquo; category and at"
+          + " least one action from any other category."
+      }) }}
+
+    </div>
+    <form class="govuk-!-margin-top-4" action="submitted" method="post">
+
+      <div class="govuk-grid-column-full">
+
+        {% set journeyShortCode = "endToEndMVP" %}
+        {% set creatingNewActionPlan = true %}
+        {% set showEmptyCategories = false %}
+        {% set onlyShowSelectedActions = true %}
+        {% set assessWholeCategoryAtOnce = false %}
+        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set editUrl = "action-details" %}
+        {% set excludeCategory = "data" %}
+        {% include "common/categorised-action-plan.html" %}
+
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukInsetText({
+          text: "When you submit your plan it will be publicly visible on this"
+            + " service. You will still be able to edit it.",
+          classes: "govuk-!-margin-top-0"
+        }) }}
+
+        {{ govukButton({
+          text: "Submit action plan"
+        }) }}
+
+      </div>
+
+    </form>
+  </div>
+
+{% endblock %}
