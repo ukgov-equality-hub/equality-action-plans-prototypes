@@ -16,14 +16,20 @@
       </h1>
 
       <p>
-        Your provisional action plan is below. You can change the status of
-        the actions on your plan, or add new actions.
+        This plan is saved in your account so you can log out and come back to
+        it later, but it is not yet published on the service.
       </p>
 
       {{ govukInsetText({
         html: "Before you can publish your plan, it must have at least one"
           + " action from the &ldquo;Support during menopause&rdquo; category"
           + " and at least one action from any other category."
+      }) }}
+
+      {{ govukButton({
+        text: "Add more actions",
+        href: "add-actions",
+        classes: "govuk-button--secondary"
       }) }}
 
     </div>
