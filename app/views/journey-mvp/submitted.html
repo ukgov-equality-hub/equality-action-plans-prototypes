@@ -5,3 +5,10 @@
 {% set confirmationTitle = "Action plan submitted" %}
 {% set confirmationText = "We have received your action plan." %}
 {% set viewLinkUrl = "viewing-service-action-plan" %}
+
+{% block extraContent %}
+  <p class="user-note">
+    <strong>Prototype users:</strong>
+    <a href="annual-review-user-note">click here to go to the next stage of the prototype</a>
+  </p>
+{% endblock %}
