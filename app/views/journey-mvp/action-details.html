@@ -1,0 +1,81 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Action details" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageAction.title}}
+      </h1>
+
+      {% include "content/"+thisPageAction.shortCode+"/summary" %}
+
+      <form action="actions-list" method="post">
+
+        {{ govukRadios({
+          name: "endToEndMVP[" + thisPageAction.shortCode + "][status]",
+          fieldset: {
+            legend: {
+              text: "How is your organisation progressing with this practice?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: data.endToEndMVP[thisPageAction.shortCode].status,
+          items: [
+            {
+              value: "embedded",
+              text: "We have already embedded this in our working culture"
+            },
+            {
+              value: "in-progress",
+              text: "We are working on embedding this but it is not yet routine",
+              hint: {
+                text: "Continuing work on this will count as an action on your action plan"
+              }
+            },
+            {
+              value: "adopt",
+              text: "We would like to adopt this practice and add it to our action plan"
+            },
+            {
+              value: "ignore",
+              text: "We are not currently pursuing this practice"
+            }
+          ]
+        }) }}
+
+        {{ govukTextarea({
+          id: "endToEndMVP[" + thisPageAction.shortCode + "][narrative]",
+          name: "endToEndMVP[" + thisPageAction.shortCode + "][narrative]",
+          label: {
+            text: "Supporting narrative",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "If you would like to give more details, you can do so here"
+          },
+          value: data.endToEndMVP[thisPageAction.shortCode].narrative
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
