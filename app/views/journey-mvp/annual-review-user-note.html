@@ -1,0 +1,35 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Note for prototype users - annual review" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="user-note">
+        <h1 class="govuk-heading-l">Annual reviews</h1>
+        <p>
+          You have completed the first stage of this prototype by creating and
+          publishing your action plan. In the real world that would be all you
+          were asked to do for now.
+        </p>
+        <p>
+          After a year, you would be asked to review your action plan and the
+          progress you've made on it. The next stage of this prototype will
+          illustrate that process. Imagine a year has passed since you submitted
+          the plan on the previous pages.
+        </p>
+        {{ govukButton({
+          text: "Go to annual review",
+          href: "dashboard?endToEndMVP[annualReview]=true",
+          isStartButton: true,
+          classes: "govuk-!-margin-bottom-1"
+        }) }}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
