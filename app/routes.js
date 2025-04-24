@@ -76,7 +76,7 @@ router.post('/tailored-action-plans/tiered-categorised-checklist/answer-action-d
     }
 })
 
-router.post('/journey-mvp/validate-provisional-plan', function(request, response){
+router.post('/journey-mvp/publish-provisional-plan', function(request, response){
   var atLeastOneGPGAction = false;
   var atLeastOneMenopauseAction = false;
   var journeyData = request.session.data.endToEndMVP;
@@ -98,8 +98,20 @@ router.post('/journey-mvp/validate-provisional-plan', function(request, response
   }
 
   if (atLeastOneGPGAction && atLeastOneMenopauseAction) {
+    // Plan is successfully published.
+    // "Add to plan" actions become "In progress", since "Add to plan" doesn't
+    // make sense after plan creation.
+    request.session.data.db.actions.forEach((action) => {
+      var submittedData = journeyData[action.shortCode];
+
+      if (submittedData && submittedData.status && submittedData.status == "adopt") {
+        request.session.data.endToEndMVP[action.shortCode].status = "in-progress";
+      }
+    })
+
     response.redirect("submitted?planValidationFailure=false");
   } else {
+    // Plan fails validation
     response.redirect("provisional-plan?planValidationFailure=true")
   }
 })
