@@ -15,6 +15,25 @@
         Your provisional action plan
       </h1>
 
+      {% if data.planValidationFailure == "true" %}
+        {% set errorHtml %}
+          <span class="error">
+            You must select at least one action from the &ldquo;Support during
+            menopause&rdquo; category and at least one action from any other
+            category.
+          </span>
+        {% endset %}
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              html: errorHtml
+            }
+          ]
+        }) }}
+      {% endif %}
+
       <p>
         This plan is saved in your account so you can log out and come back to
         it later, but it is not yet published on the service.
@@ -33,7 +52,7 @@
       }) }}
 
     </div>
-    <form class="govuk-!-margin-top-4" action="submitted" method="post">
+    <form class="govuk-!-margin-top-4" action="validate-provisional-plan" method="post">
 
       <div class="govuk-grid-column-full">
 

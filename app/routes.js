@@ -75,3 +75,31 @@ router.post('/tailored-action-plans/tiered-categorised-checklist/answer-action-d
         response.redirect("overview?assessingFullCategory");
     }
 })
+
+router.post('/journey-mvp/validate-provisional-plan', function(request, response){
+  var atLeastOneGPGAction = false;
+  var atLeastOneMenopauseAction = false;
+  var journeyData = request.session.data.endToEndMVP;
+
+  if (journeyData) {
+    request.session.data.db.actions.forEach((action) => {
+      var submittedData = journeyData[action.shortCode]
+
+      if (action.category == "menopause") {
+        if (submittedData && submittedData.status && submittedData.status != "ignore") {
+          atLeastOneMenopauseAction = true;
+        }
+      } else {
+        if (submittedData && submittedData.status && submittedData.status != "ignore") {
+          atLeastOneGPGAction = true;
+        }
+      }
+    })
+  }
+
+  if (atLeastOneGPGAction && atLeastOneMenopauseAction) {
+    response.redirect("submitted?planValidationFailure=false");
+  } else {
+    response.redirect("provisional-plan?planValidationFailure=true")
+  }
+})

@@ -2,6 +2,11 @@
   color: $govuk-secondary-text-colour;
 }
 
+.error {
+  color: $govuk-error-colour;
+  font-weight: 700;
+}
+
 .placeholder {
   color: $govuk-secondary-text-colour;
   font-style: italic;

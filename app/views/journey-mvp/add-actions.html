@@ -17,7 +17,7 @@
       below. Select any that you would like to add to your plan.
     </p>
 
-    <form class="form" action="provisional-plan" method="post">
+    <form class="form" action="provisional-plan?planValidationFailure=false" method="post">
 
       {% set journeyShortCode = "endToEndMVP" %}
       {% set addingToExistingPlan = true %}
@@ -33,7 +33,7 @@
         {{ govukButton({
           text: "Go back without adding any actions",
           classes: "govuk-button--secondary",
-          href: "provisional-plan"
+          href: "provisional-plan?planValidationFailure=false"
         }) }}
       </div>
 
