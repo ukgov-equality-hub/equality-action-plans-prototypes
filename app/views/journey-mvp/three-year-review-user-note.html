@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Note for prototype users - three-year review" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="user-note">
+        <h1 class="govuk-heading-l">Three-year reviews</h1>
+        <p>
+          The third stage of this prototype is the three-year review. This is
+          similar to the annual review but more in-depth, and only required
+          every three years after plan creation.
+        </p>
+        <p>
+          Imagine two more years have passed since the annual review you just
+          submitted, so your three-year review is now due.
+        </p>
+        {{ govukButton({
+          text: "Go to three-year review",
+          href: "dashboard?endToEndMVP[threeYearReview]=true",
+          isStartButton: true,
+          classes: "govuk-!-margin-bottom-1"
+        }) }}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
