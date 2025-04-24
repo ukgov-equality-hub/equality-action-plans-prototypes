@@ -131,6 +131,18 @@ module.exports = {
             type: "Additional data collection",
             status: "optional",
             deadline: "4 April 2025"
+          },
+          {
+            year: "2025-26",
+            type: "GPG report",
+            status: "required",
+            deadline: "4 April 2026"
+          },
+          {
+            year: "2025-26",
+            type: "Action plan annual review",
+            status: "required",
+            deadline: "4 April 2026"
           }
         ]
       },

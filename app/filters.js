@@ -64,6 +64,66 @@ addFilter('statusToTag', function(status) {
   }
 })
 
+addFilter('reportTypeToUrl', function(reportType) {
+  var reportLinkUrl;
+
+  switch (reportType) {
+    case "Action plan":
+      reportLinkUrl = "action-plan-intro";
+      break;
+    case "Action plan annual review":
+      reportLinkUrl = "annual-review-intro";
+      break;
+    case "Additional data collection":
+      reportLinkUrl = "data-collection";
+      break;
+    default:
+      reportLinkUrl = "#";
+  }
+
+  return reportLinkUrl;
+})
+
+addFilter('reportTypeToCreateLinkText', function(reportType) {
+  var reportLinkText;
+
+  switch (reportType) {
+    case "Action plan":
+      reportLinkText = "Create plan";
+      break;
+    case "Action plan annual review":
+      reportLinkText = "Review action plan";
+      break;
+    case "Additional data collection":
+      reportLinkText = "Collect data";
+      break;
+    default:
+      reportLinkText = "Draft report";
+  }
+
+  return reportLinkText;
+})
+
+addFilter('reportTypeToEditLinkText', function(reportType) {
+  var reportLinkText;
+
+  switch (reportType) {
+    case "Action plan":
+      reportLinkText = "Edit plan";
+      break;
+    case "Action plan annual review":
+      reportLinkText = "Edit review";
+      break;
+    case "Additional data collection":
+      reportLinkText = "Edit data";
+      break;
+    default:
+      reportLinkText = "Edit report";
+  }
+
+  return reportLinkText;
+})
+
 addFilter('search', function (data) {
     var matches = [];
 
