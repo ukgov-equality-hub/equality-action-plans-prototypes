@@ -10,6 +10,8 @@
   {% endif %}
 {% endfor %}
 
+{% set journeyShortCode = "endToEndMVPAnnualReview" if data.endToEndMVP.annualReview == "true" else "endToEndMVP" %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -21,10 +23,11 @@
 
       {% include "content/"+thisPageAction.shortCode+"/summary" %}
 
-      <form action="actions-list" method="post">
+      {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.annualReview == "true" else "actions-list" %}
+      <form action="{{formAction}}" method="post">
 
         {{ govukRadios({
-          name: "endToEndMVP[" + thisPageAction.shortCode + "][status]",
+          name: journeyShortCode + "[" + thisPageAction.shortCode + "][status]",
           fieldset: {
             legend: {
               text: "How is your organisation progressing with this practice?",
@@ -32,7 +35,7 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data.endToEndMVP[thisPageAction.shortCode].status,
+          value: data[journeyShortCode][thisPageAction.shortCode].status,
           items: [
             {
               value: "embedded",
@@ -60,8 +63,8 @@
         }) }}
 
         {{ govukTextarea({
-          id: "endToEndMVP[" + thisPageAction.shortCode + "][narrative]",
-          name: "endToEndMVP[" + thisPageAction.shortCode + "][narrative]",
+          id: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
+          name: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
           label: {
             text: "Supporting narrative",
             classes: "govuk-label--s"
@@ -69,7 +72,7 @@
           hint: {
             text: "If you would like to give more details, you can do so here"
           },
-          value: data.endToEndMVP[thisPageAction.shortCode].narrative
+          value: data[journeyShortCode][thisPageAction.shortCode].narrative
         }) }}
 
         {{ govukButton({

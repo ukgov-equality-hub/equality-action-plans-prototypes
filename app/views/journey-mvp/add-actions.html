@@ -17,11 +17,12 @@
       below. Select any that you would like to add to your plan.
     </p>
 
-    <form class="form" action="provisional-plan?planValidationFailure=false" method="post">
+    {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.annualReview == "true" else "provisional-plan?planValidationFailure=false" %}
+    <form class="form" action="{{formAction}}" method="post">
 
-      {% set journeyShortCode = "endToEndMVP" %}
+      {% set journeyShortCode = "endToEndMVP" + ("AnnualReview" if data.endToEndMVP.annualReview == "true" else "") %}
       {% set addingToExistingPlan = true %}
-      {% set useSubmittedPlanData = true %}
+      {% set useSubmittedPlanData = data.endToEndMVP.annualReview != "true" %}
       {% set excludeCategory = "data" %}
 
       {% include "common/action-checklist-details.html" %}
@@ -33,7 +34,7 @@
         {{ govukButton({
           text: "Go back without adding any actions",
           classes: "govuk-button--secondary",
-          href: "provisional-plan?planValidationFailure=false"
+          href: formAction
         }) }}
       </div>
 

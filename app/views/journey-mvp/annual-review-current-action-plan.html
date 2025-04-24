@@ -36,13 +36,16 @@
       if you want to.
     </p>
 
+    <p class="user-note">
+      As this is a prototype, the plan displayed below will not match the plan
+      you submitted in the previous stage.
+    </p>
+
   </div>
   <div class="govuk-grid-column-full">
 
-    {% set journeyShortCode = "endToEndMVP" %}
-    {% set creatingNewActionPlan = true %}
-    {# The above is not really the case but we want to use submitted data, not DB data #}
-    {% set onlyShowSelectedActions = true %}
+    {% set journeyShortCode = "endToEndMVPAnnualReview" %}
+    {% set creatingNewActionPlan = false %}
     {% set viewOnly = true %}
     {% set excludeCategory = "data" %}
     {% include "common/categorised-action-plan.html" %}

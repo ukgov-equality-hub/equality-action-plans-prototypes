@@ -1,0 +1,72 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review: update action plan" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan annual review 2025-26"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Would you like to update your action plan?
+    </h1>
+
+    <p>
+      This is a good time to look over your action plan below and update it if anything
+      has changed. However, this is not required. You can also
+      <a href="add-actions">add new actions to your plan</a>.
+    </p>
+    <p>
+      When you are ready, submit your annual review comments, along with your action plan
+      updates, using the button below.
+    </p>
+
+  </div>
+  <form action="submitted" method="post">
+
+    <div class="govuk-grid-column-full">
+
+      {% set journeyShortCode = "endToEndMVPAnnualReview" %}
+      {% set creatingNewActionPlan = false %}
+      {% set excludeCategory = "data" %}
+      {% set editUrl = "action-details" %}
+      {% include "common/categorised-action-plan.html" %}
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukInsetText({
+        text: "On submission your annual review and updated action plan will be"
+          + " published on the Gender pay gap service.",
+        classes: "govuk-!-margin-top-0"
+      }) }}
+
+      {{ govukButton({
+        text: "Publish review"
+      }) }}
+
+    </div>
+
+  </form>
+</div>
+
+{% endblock %}
