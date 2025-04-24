@@ -1,0 +1,58 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review: current action plan" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan annual review 2025-26"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Your current action plan
+    </h1>
+
+    <p>
+      Below is your current action plan. We will ask you two brief summary questions
+      about the last year, and then you will have an opportunity to update the plan
+      if you want to.
+    </p>
+
+  </div>
+  <div class="govuk-grid-column-full">
+
+    {% set journeyShortCode = "endToEndMVP" %}
+    {% set creatingNewActionPlan = true %}
+    {# The above is not really the case but we want to use submitted data, not DB data #}
+    {% set onlyShowSelectedActions = true %}
+    {% set viewOnly = true %}
+    {% set excludeCategory = "data" %}
+    {% include "common/categorised-action-plan.html" %}
+
+    {{ govukButton({
+      text: "Continue",
+      href: "annual-review-implementation-progress"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

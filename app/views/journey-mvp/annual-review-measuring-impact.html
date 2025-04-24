@@ -1,0 +1,54 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review: measuring progress" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan annual review 2025-26"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      How are you measuring progress and impact?
+    </h1>
+
+    <form class="form" action="annual-review-update-action-plan" method="post">
+
+      {{ govukTextarea({
+        id: "endToEndMVP[annualReviewMeasuringImpact]",
+        name: "endToEndMVP[annualReviewMeasuringImpact]",
+        hint: {
+          text: "Please describe what measures your organisation has put in"
+            + " place to track the progress and impact of your action plan. Just"
+            + " a sentence or two is enough."
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Annual review: implementation progress" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan annual review 2025-26"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      What progress have you made this year?
+    </h1>
+
+    <form class="form" action="annual-review-measuring-impact" method="post">
+
+      {{ govukTextarea({
+        id: "endToEndMVP[annualReviewProgress]",
+        name: "endToEndMVP[annualReviewProgress]",
+        hint: {
+          text: "Please describe the progress your organisation has made in the"
+            + " last year on implementing your action plan. Just a sentence or"
+            + " two is enough."
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
