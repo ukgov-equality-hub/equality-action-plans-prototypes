@@ -12,13 +12,13 @@
       }) }}
 
       <p>
-        Your action plan has now been published on the Gender pay gap service.
+        Your {{reportType or "action plan"}} has now been published on the Gender pay gap service.
       </p>
 
       {% if not skipDetails %}
         
         <p>
-          <a href="{{viewLinkUrl or "#"}}">View your published action plan</a>
+          <a href="{{viewLinkUrl or "#"}}">View your published {{reportType or "action plan"}}</a>
         </p>
 
         <p class="govuk-body govuk-!-margin-top-6">
