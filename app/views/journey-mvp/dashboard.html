@@ -45,7 +45,8 @@
 
       <h2 class="govuk-heading-m">This year's submissions</h2>
 
-      {% set reportingYear = "2025-26" if data.endToEndMVP.lifecycleStage == "annualReview" else "2024-25" %}
+      {% set reportingYear = "2027-28" if data.endToEndMVP.lifecycleStage == "threeYearReview"
+        else ("2025-26" if data.endToEndMVP.lifecycleStage == "annualReview" else "2024-25") %}
       {% set showAdditionalDataCollectionPrompt = false %}
       {% include "common/submissions-due" %}
 

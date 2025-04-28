@@ -74,6 +74,9 @@ addFilter('reportTypeToUrl', function(reportType) {
     case "Action plan annual review":
       reportLinkUrl = "annual-review-intro";
       break;
+    case "Action plan three-year review":
+      reportLinkUrl = "three-year-review-intro";
+      break;
     case "Additional data collection":
       reportLinkUrl = "data-collection";
       break;
@@ -92,6 +95,7 @@ addFilter('reportTypeToCreateLinkText', function(reportType) {
       reportLinkText = "Create plan";
       break;
     case "Action plan annual review":
+    case "Action plan three-year review":
       reportLinkText = "Review action plan";
       break;
     case "Additional data collection":
@@ -112,6 +116,7 @@ addFilter('reportTypeToEditLinkText', function(reportType) {
       reportLinkText = "Edit plan";
       break;
     case "Action plan annual review":
+    case "Action plan three-year review":
       reportLinkText = "Edit review";
       break;
     case "Additional data collection":

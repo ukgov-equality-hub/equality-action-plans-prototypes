@@ -143,6 +143,18 @@ module.exports = {
             type: "Action plan annual review",
             status: "required",
             deadline: "4 April 2026"
+          },
+          {
+            year: "2027-28",
+            type: "GPG report",
+            status: "required",
+            deadline: "4 April 2028"
+          },
+          {
+            year: "2027-28",
+            type: "Action plan three-year review",
+            status: "required",
+            deadline: "4 April 2028"
           }
         ]
       },
