@@ -2,15 +2,21 @@
 
 {% set pageName="Submitted" %}
 {% set serviceName="MVP action plan journey" %}
-{% set confirmationTitle = "Annual review published" if data.endToEndMVP.lifecycleStage == "annualReview" else "Action plan published" %}
-{% set reportType = "annual review" if data.endToEndMVP.lifecycleStage == "annualReview" else "action plan" %}
+{% set confirmationTitle = "Three-year review published" if data.endToEndMVP.lifecycleStage == "threeYearReview"
+  else ("Annual review published" if data.endToEndMVP.lifecycleStage == "annualReview"
+    else "Action plan published") %}
+{% set reportType = "three-year review" if data.endToEndMVP.lifecycleStage == "threeYearReview"
+  else ("annual review" if data.endToEndMVP.lifecycleStage == "annualReview"
+    else "action plan") %}
 {% set confirmationText = "We have received your " + reportType + "." %}
 {% set viewLinkUrl = "#" if data.endToEndMVP.lifecycleStage == "annualReview" else "published-action-plan" %}
 
 {% block extraContent %}
-  <p class="user-note">
-    <strong>Prototype users:</strong>
-    {% set nextStageUrl = "three-year-review-user-note" if data.endToEndMVP.lifecycleStage == "annualReview" else "annual-review-user-note" %}
-    <a href="{{nextStageUrl}}">click here to go to the next stage of the prototype</a>
-  </p>
+  {% if data.endToEndMVP.lifecycleStage != "threeYearReview" %}
+    <p class="user-note">
+      <strong>Prototype users:</strong>
+      {% set nextStageUrl = "three-year-review-user-note" if data.endToEndMVP.lifecycleStage == "annualReview" else "annual-review-user-note" %}
+      <a href="{{nextStageUrl}}">click here to go to the next stage of the prototype</a>
+    </p>
+  {% endif %}
 {% endblock %}
