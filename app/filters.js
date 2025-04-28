@@ -28,12 +28,12 @@ addFilter('statusToTag', function(status) {
       colour = "govuk-tag--green";
       break;
 
-      case "done":
-        title = "Done";
-        colour = "govuk-tag--green";
-        break;
+    case "done":
+      title = "Done";
+      colour = "govuk-tag--green";
+      break;
 
-      case "in-progress":
+    case "in-progress":
       title = "In progress";
       colour = "govuk-tag--yellow";
       break;
@@ -47,8 +47,8 @@ addFilter('statusToTag', function(status) {
       title = "Considering";
       colour = "govuk-tag--grey";
       break;
-  
-      case "ignore":
+
+    case "ignore":
       title = "Not pursuing currently";
       break;
 
