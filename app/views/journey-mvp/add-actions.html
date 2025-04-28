@@ -17,7 +17,7 @@
       below. Select any that you would like to add to your plan.
     </p>
 
-    {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.annualReview == "true" else "provisional-plan?planValidationFailure=false" %}
+    {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.annualReview == "true" else "provisional-plan" %}
     <form class="form" action="{{formAction}}" method="post">
 
       {% set journeyShortCode = "endToEndMVP" + ("AnnualReview" if data.endToEndMVP.annualReview == "true" else "") %}
@@ -27,6 +27,8 @@
 
       {% include "common/action-checklist-details.html" %}
 
+      <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">
+
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Add selected actions to plan"
@@ -34,7 +36,7 @@
         {{ govukButton({
           text: "Go back without adding any actions",
           classes: "govuk-button--secondary",
-          href: formAction
+          href: formAction + ("?endToEndMVP[planValidationFailure]=false" if data.endToEndMVP.annualReview != "true" else "")
         }) }}
       </div>
 

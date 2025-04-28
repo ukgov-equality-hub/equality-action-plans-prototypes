@@ -109,9 +109,9 @@ router.post('/journey-mvp/publish-provisional-plan', function(request, response)
       }
     })
 
-    response.redirect("submitted?planValidationFailure=false");
+    response.redirect("submitted?endToEndMVP[planValidationFailure]=false");
   } else {
     // Plan fails validation
-    response.redirect("provisional-plan?planValidationFailure=true")
+    response.redirect("provisional-plan?endToEndMVP[planValidationFailure]=true")
   }
 })

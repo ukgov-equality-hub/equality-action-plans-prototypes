@@ -38,7 +38,7 @@
         Your provisional action plan
       </h1>
 
-      {% if data.planValidationFailure == "true" %}
+      {% if data.endToEndMVP.planValidationFailure == "true" %}
         {{ govukErrorSummary({
           titleText: "There is a problem",
           errorList: [
