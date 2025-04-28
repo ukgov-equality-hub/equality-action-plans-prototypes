@@ -10,7 +10,7 @@
   {% endif %}
 {% endfor %}
 {% set dbStatus = data.db.company.actionsInProgress[thisPageAction.shortCode].status %}
-{% set submittedStatus = data.threeYearReview[thisPageAction.shortCode].status %}
+{% set submittedStatus = data.endToEndMVPthreeYearReview[thisPageAction.shortCode].status %}
 
 {% block content %}
 
@@ -24,7 +24,7 @@
     <form class="form" action="three-year-review-evaluate-your-plan" method="post">
 
       {{ govukRadios({
-        name: "threeYearReview[" + thisPageAction.shortCode + "][status]",
+        name: "endToEndMVPthreeYearReview[" + thisPageAction.shortCode + "][status]",
         fieldset: {
           legend: {
             text: "What's the current status of this action?",
@@ -52,9 +52,9 @@
       }) }}
 
       {{ govukTextarea({
-        id: "threeYearReview["+thisPageAction.shortCode+"][evaluation]",
-        name: "threeYearReview["+thisPageAction.shortCode+"][evaluation]",
-        value: data.threeYearReview[thisPageAction.shortCode].evaluation,
+        id: "endToEndMVPthreeYearReview["+thisPageAction.shortCode+"][evaluation]",
+        name: "endToEndMVPthreeYearReview["+thisPageAction.shortCode+"][evaluation]",
+        value: data.endToEndMVPthreeYearReview[thisPageAction.shortCode].evaluation,
         label: {
           text: "How's this action going?",
           classes: "govuk-label--m"
@@ -65,9 +65,9 @@
       }) }}
 
       {{ govukTextarea({
-        id: "threeYearReview["+thisPageAction.shortCode+"][supportingInformation]",
-        name: "threeYearReview["+thisPageAction.shortCode+"][supportingInformation]",
-        value: data.threeYearReview[thisPageAction.shortCode].supportingInformation,
+        id: "endToEndMVPthreeYearReview["+thisPageAction.shortCode+"][supportingInformation]",
+        name: "endToEndMVPthreeYearReview["+thisPageAction.shortCode+"][supportingInformation]",
+        value: data.endToEndMVPthreeYearReview[thisPageAction.shortCode].supportingInformation,
         label: {
           text: "What information have you used to evaluate this action?",
           classes: "govuk-label--m"

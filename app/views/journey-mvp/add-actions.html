@@ -1,6 +1,6 @@
 {% extends "layouts/menu-bar.html" %}
 
-{% set pageName="Add actions to your provisional plan" %}
+{% set pageName="Add actions to your " + ("provisional " if not data.endToEndMVP.lifecycleStage or data.endToEndMVP.lifecycleStage == "" else "") + "plan" %}
 {% set serviceName="MVP action plan journey" %}
 
 {% block content %}
@@ -9,7 +9,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Add actions to your provisional plan
+      Add actions to your {{"provisional " if not data.endToEndMVP.lifecycleStage or data.endToEndMVP.lifecycleStage == ""}}plan
     </h1>
 
     <p>
@@ -17,12 +17,13 @@
       below. Select any that you would like to add to your plan.
     </p>
 
-    {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview" else "provisional-plan" %}
+    {% set formAction = "three-year-review-check-your-evaluation" if data.endToEndMVP.lifecycleStage == "threeYearReview"
+      else ("annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview" else "provisional-plan") %}
     <form class="form" action="{{formAction}}" method="post">
 
       {% set journeyShortCode = "endToEndMVP" + data.endToEndMVP.lifecycleStage %}
       {% set addingToExistingPlan = true %}
-      {% set useSubmittedPlanData = data.endToEndMVP.lifecycleStage != "annualReview" %}
+      {% set useSubmittedPlanData = (not data.endToEndMVP.lifecycleStage or data.endToEndMVP.lifecycleStage == "") %}
       {% set excludeCategory = "data" %}
 
       {% include "common/action-checklist-details.html" %}
@@ -33,11 +34,13 @@
         {{ govukButton({
           text: "Add selected actions to plan"
         }) }}
-        {{ govukButton({
-          text: "Go back without adding any actions",
-          classes: "govuk-button--secondary",
-          href: formAction + ("?endToEndMVP[planValidationFailure]=false" if data.endToEndMVP.lifecycleStage != "annualReview" else "")
-        }) }}
+        {% if data.endToEndMVP.lifecycleStage != "threeYearReview" %}
+          {{ govukButton({
+            text: "Go back without adding any actions",
+            classes: "govuk-button--secondary",
+            href: formAction + ("?endToEndMVP[planValidationFailure]=false" if data.endToEndMVP.lifecycleStage != "annualReview" else "")
+          }) }}
+        {% endif %}
       </div>
 
     </form>
