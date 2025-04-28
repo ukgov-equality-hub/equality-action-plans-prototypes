@@ -23,7 +23,8 @@
 
       {% include "content/"+thisPageAction.shortCode+"/summary" %}
 
-      {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.annualReview == "true" else "actions-list" %}
+      {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.annualReview == "true"
+        else ("provisional-plan" if data.endToEndMVP.provisionalPlanSubmitted == "true" else "actions-list") %}
       <form action="{{formAction}}" method="post">
 
         {{ govukRadios({
