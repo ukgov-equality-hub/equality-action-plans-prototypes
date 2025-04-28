@@ -13,7 +13,7 @@
     </h1>
 
     <p>
-      Please check your report below and submit it when you are ready.
+      Please check your evaluation below and submit it when you are ready.
     </p>
 
   </div>
@@ -21,66 +21,79 @@
 
     <div class="govuk-grid-column-two-thirds">
 
-      {% for action in data.db.actions %}
-        {% set submittedStatus = data.endToEndMVPthreeYearReview[action.shortCode].status %}
-        {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+      {% for category in data.db.actionCategories %}
+        {% if category.shortCode != "data" %}
 
-        <h2 class="govuk-heading-m">{{action.title}}</h2>
+          <h2 class="govuk-heading-m">{{category.title}}</h2>
 
-        {{ govukSummaryList({
-          classes: "three-year-review-summary",
-          rows: [
-            {
-              key: {
-                text: "Status change"
-              },
-              value: {
-                html: "No change" if not submittedStatus or submittedStatus == dbStatus
-                  else dbStatus | statusToTag + " changed to " + submittedStatus | statusToTag
-              },
-              actions: {
-                items: [
+          {% for action in data.db.actions %}
+            {% if action.category == category.shortCode %}
+              {% set submittedStatus = data.endToEndMVPthreeYearReview[action.shortCode].status %}
+              {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+
+              {{ govukSummaryList({
+                card: {
+                  title: {
+                    text: action.title
+                  }
+                },
+                classes: "three-year-review-summary",
+                rows: [
                   {
-                    href: "#",
-                    text: "Change"
+                    key: {
+                      text: "Status change"
+                    },
+                    value: {
+                      html: "No change" if not submittedStatus or submittedStatus == dbStatus
+                        else dbStatus | statusToTag + " changed to " + submittedStatus | statusToTag
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "#",
+                          text: "Change"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Evaluation"
+                    },
+                    value: {
+                      text: data.endToEndMVPthreeYearReview[action.shortCode].evaluation
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "#",
+                          text: "Change"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Supporting information"
+                    },
+                    value: {
+                      text: data.endToEndMVPthreeYearReview[action.shortCode].supportingInformation
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "#",
+                          text: "Change"
+                        }
+                      ]
+                    }
                   }
                 ]
-              }
-            },
-            {
-              key: {
-                text: "Evaluation"
-              },
-              value: {
-                text: data.endToEndMVPthreeYearReview[action.shortCode].evaluation
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Supporting information"
-              },
-              value: {
-                text: data.endToEndMVPthreeYearReview[action.shortCode].supportingInformation
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change"
-                  }
-                ]
-              }
-            }
-          ]
-        }) }}
+              }) }}
+            {% endif %}
+          {% endfor %}
+
+        {% endif %}
       {% endfor %}
 
     </div>
