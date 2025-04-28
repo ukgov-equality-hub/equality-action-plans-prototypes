@@ -1,0 +1,46 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Three-year review: evaluate your plan" %}
+{% set serviceName="Action Plan lifecycle - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Evaluate your plan
+    </h1>
+
+    <p>
+      Below is your current action plan. Please evaluate each action by updating the status
+      and commenting on your progress.
+    </p>
+
+    <p class="user-note">
+      As this is a prototype, the plan displayed below will not match the plan
+      you submitted in the previous stages.
+    </p>
+
+  </div>
+  <div class="govuk-grid-column-full">
+
+    <form class="form" action="add-new-actions" method="post">
+
+      {% set journeyShortCode = "threeYearReview" %}
+      {% set creatingNewActionPlan = false %}
+      {% set unsubmittedLinkText = "Evaluate" %}
+      {% set highlightNoChange = true %}
+      {% set editUrl = "evaluate-action" %}
+      {% include "common/categorised-action-plan.html" %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
