@@ -1,0 +1,105 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Three-year review: check your evaluation" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Check your evaluation
+    </h1>
+
+    <p>
+      Please check your report below and submit it when you are ready.
+    </p>
+
+  </div>
+  <form class="form" action="submitted" method="post">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {% for action in data.db.actions %}
+        {% set submittedStatus = data.endToEndMVPthreeYearReview[action.shortCode].status %}
+        {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+
+        <h2 class="govuk-heading-m">{{action.title}}</h2>
+
+        {{ govukSummaryList({
+          classes: "three-year-review-summary",
+          rows: [
+            {
+              key: {
+                text: "Status change"
+              },
+              value: {
+                html: "No change" if not submittedStatus or submittedStatus == dbStatus
+                  else dbStatus | statusToTag + " changed to " + submittedStatus | statusToTag
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Evaluation"
+              },
+              value: {
+                text: data.endToEndMVPthreeYearReview[action.shortCode].evaluation
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Supporting information"
+              },
+              value: {
+                text: data.endToEndMVPthreeYearReview[action.shortCode].supportingInformation
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      {% endfor %}
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">
+          On submission your three-year review and updated action plan will be
+          published on the Gender pay gap service.
+        </p>
+      </div>
+
+      {{ govukButton({
+        text: "Submit review"
+      }) }}
+
+    </div>
+
+  </form>
+</div>
+
+{% endblock %}
