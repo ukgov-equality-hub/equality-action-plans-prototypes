@@ -3,6 +3,29 @@
 {% set pageName="Provisional action plan" %}
 {% set serviceName="MVP action plan journey" %}
 
+{% set minimumPlanExplanation %}
+  <p>
+    Before you can publish your plan, it must have at least one action from the
+    &ldquo;Support during menopause&rdquo; category and at least one action from
+    any other category.
+  </p>
+  <p>
+    Actions that are already fully embedded do not count for this purpose. Your
+    plan must have actions with which you can make further progress.
+  </p>
+{% endset %}
+
+{% set errorHtml %}
+  <p class="error">
+    You must select at least one action from the &ldquo;Support during
+    menopause&rdquo; category and at least one action from any other category.
+  </p>
+  <p class="error">
+    Actions that are already fully embedded do not count for this purpose. Your
+    plan must have actions with which you can make further progress.
+  </p>
+{% endset %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -16,14 +39,6 @@
       </h1>
 
       {% if data.planValidationFailure == "true" %}
-        {% set errorHtml %}
-          <span class="error">
-            You must select at least one action from the &ldquo;Support during
-            menopause&rdquo; category and at least one action from any other
-            category.
-          </span>
-        {% endset %}
-
         {{ govukErrorSummary({
           titleText: "There is a problem",
           errorList: [
@@ -40,9 +55,7 @@
       </p>
 
       {{ govukInsetText({
-        html: "Before you can publish your plan, it must have at least one"
-          + " action from the &ldquo;Support during menopause&rdquo; category"
-          + " and at least one action from any other category."
+        html: minimumPlanExplanation
       }) }}
 
       {{ govukButton({

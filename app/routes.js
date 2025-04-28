@@ -86,11 +86,11 @@ router.post('/journey-mvp/publish-provisional-plan', function(request, response)
       var submittedData = journeyData[action.shortCode]
 
       if (action.category == "menopause") {
-        if (submittedData && submittedData.status && submittedData.status != "ignore") {
+        if (submittedData && submittedData.status && submittedData.status != "ignore" && submittedData.status != "embedded") {
           atLeastOneMenopauseAction = true;
         }
       } else {
-        if (submittedData && submittedData.status && submittedData.status != "ignore") {
+        if (submittedData && submittedData.status && submittedData.status != "ignore" && submittedData.status != "embedded") {
           atLeastOneGPGAction = true;
         }
       }
