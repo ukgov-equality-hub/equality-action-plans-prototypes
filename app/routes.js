@@ -109,6 +109,7 @@ router.post('/journey-mvp/publish-provisional-plan', function(request, response)
       }
     })
 
+    // Plan is acceptable; publish and reset state variables
     response.redirect("submitted?endToEndMVP[planValidationFailure]=false");
   } else {
     // Plan fails validation
