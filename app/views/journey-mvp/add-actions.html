@@ -21,7 +21,7 @@
       else ("annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview" else "provisional-plan") %}
     <form class="form" action="{{formAction}}" method="post">
 
-      {% set journeyShortCode = "endToEndMVP" + data.endToEndMVP.lifecycleStage %}
+      {% set journeyShortCode = "endToEndMVP" + (data.endToEndMVP.lifecycleStage or "") %}
       {% set addingToExistingPlan = true %}
       {% set useSubmittedPlanData = (not data.endToEndMVP.lifecycleStage or data.endToEndMVP.lifecycleStage == "") %}
       {% set excludeCategory = "data" %}

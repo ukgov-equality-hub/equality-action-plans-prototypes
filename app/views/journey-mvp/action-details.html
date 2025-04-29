@@ -10,7 +10,7 @@
   {% endif %}
 {% endfor %}
 
-{% set journeyShortCode = "endToEndMVP" + data.endToEndMVP.lifecycleStage %}
+{% set journeyShortCode = "endToEndMVP" + (data.endToEndMVP.lifecycleStage or "") %}
 
 {% block content %}
 
