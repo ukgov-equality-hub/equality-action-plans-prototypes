@@ -117,7 +117,7 @@ module.exports = {
           {
             year: "2024-25",
             type: "GPG report",
-            status: "required",
+            status: "complete",
             deadline: "4 April 2025"
           },
           {
@@ -135,7 +135,7 @@ module.exports = {
           {
             year: "2025-26",
             type: "GPG report",
-            status: "required",
+            status: "complete",
             deadline: "4 April 2026"
           },
           {
@@ -147,7 +147,7 @@ module.exports = {
           {
             year: "2027-28",
             type: "GPG report",
-            status: "required",
+            status: "complete",
             deadline: "4 April 2028"
           },
           {

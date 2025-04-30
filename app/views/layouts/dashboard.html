@@ -1,91 +1,78 @@
 {% extends "layouts/menu-bar.html" %}
 
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == employerCode %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% set allReportsComplete = true %}
+{% set overdueReports = false %}
+{% for report in thisPageEmployer.reports %}
+  {% if report.status == "overdue" %}
+    {% set overdueReports = true %}
+  {% endif %}
+  {% if report.status != "complete" %}
+    {% set allReportsComplete = false %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: thisPageEmployer.name
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-      <h1 class="govuk-heading-xl">
-        Manage your employer's reporting
-        <br />
-        <span class="govuk-!-font-size-27">
-          for {{data.db.company.name}}
-        </span>
-      </h1>
-
-    </div>
     <div class="govuk-grid-column-two-thirds">
 
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Reports
+      </h1>
+
       <p>
-        These are the reports that are still current for your organisation, including those
-        that are due and those that are completed.
-      </p>
-      <p>
-        You can also see <a href="#">all your historical reports</a>.
+        This page shows your current submissions. You can also
+        <a href="employer-past-reports">see all your submitted reports</a>,
+        or <a href="manage-employer">manage your employer's users and information</a>.
       </p>
 
     </div>
     <div class="govuk-grid-column-full">
 
-      {% if reportsDueRows %}
-
-        <h2 class="govuk-heading-l">
-          Reports due
-        </h2>
-
-        {{ govukTable({
-          firstCellIsHeader: true,
-          head: [
-            {
-              text: "Deadline"
-            },
-            {
-              text: "Report type"
-            },
-            {
-              text: "Reporting requirement"
-            },
-            {
-              text: "Report status"
-            },
-            {
-              text: ""
-            }
-          ],
-          rows: reportsDueRows
-        }) }}
-
+      {% if overdueReports %}
+        <h2 class="govuk-heading-m">Overdue submissions</h2>
+        {% set reportingYear = "2023-24" %}
+        {% include "common/submissions-due" %}
       {% endif %}
 
-      {% if completedReportsRows %}
+      <h2 class="govuk-heading-m">This year's submissions</h2>
 
-        <h2 class="govuk-heading-l">
-          Completed current reports
-        </h2>
-
-        {{ govukTable({
-          firstCellIsHeader: true,
-          head: [
-            {
-              text: "Deadline"
-            },
-            {
-              text: "Report type"
-            },
-            {
-              text: "Reporting requirement"
-            },
-            {
-              text: "Report status"
-            },
-            {
-              text: ""
-            }
-          ],
-          rows: completedReportsRows
-        }) }}
-
+      {% if allReportsComplete %}
+        <p class="govuk-!-margin-bottom-6">
+          You have no outstanding submissions for this employer.
+        </p>
+        <p>
+          <a href="employer-past-reports">See your previously submitted reports</a>
+        </p>
+      {% else %}
+        {% set reportingYear = currentReportingYear %}
+        {% include "common/submissions-due" %}
       {% endif %}
+
+      {% block endNote %}
+      {% endblock %}
 
     </div>
   </div>
