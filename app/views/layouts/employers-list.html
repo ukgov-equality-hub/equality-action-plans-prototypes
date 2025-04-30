@@ -1,0 +1,123 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your employers
+      </h1>
+
+      <p>
+        Add or select an employer so you can:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>enter gender pay gap information and save a draft for publication at a later date</li>
+        <li>report your gender pay gap information</li>
+        <li>change whether your employer is required to report for each reporting year</li>
+      </ul>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Employer</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+            <th scope="col" class="govuk-table__header">Details</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for employer in data.db.dashboardEmployers %}
+            {% if not restrictToEmployerCode or employer.shortCode == restrictToEmployerCode %}
+
+              {% set status = "complete" %}
+              {% for report in employer.reports %}
+                {% if report.status == "overdue" %}
+                  {% set status = "overdue" %}
+                {% elif status != "overdue" and report.status == "required" %}
+                  {% set status = "required" %}
+                {% elif status != "overdue" and status != "required" and report.status == "optional" %}
+                  {% set status = "optional" %}
+                {% endif %}
+              {% endfor %}
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">
+                  {% if employer.approved %}
+                    <a href="{{dashboardUrl}}?employerCode={{employer.shortCode}}">{{employer.name}}</a>
+                  {% else %}
+                    {{employer.name}}
+                  {% endif %}
+                </td>
+                <td class="govuk-table__cell">
+                  {% if employer.approved %}
+                    {% if status == "overdue" %}
+                      {{ govukTag({
+                        text: "Report overdue",
+                        classes: "govuk-tag--red" 
+                      }) }}
+                    {% elif status == "required" %}
+                      {{ govukTag({
+                        text: "Report required",
+                        classes: "govuk-tag--blue" 
+                      }) }}
+                    {% elif status == "optional" %}
+                      {{ govukTag({
+                        text: "Report optional",
+                        classes: "govuk-tag--blue" 
+                      }) }}
+                    {% else %}
+                      All reports complete
+                    {% endif %}
+                  {% else %}
+                    {{ govukTag({
+                      text: "Awaiting approval",
+                      classes: "govuk-tag--yellow" 
+                    }) }}
+                  {% endif %}
+                </td>
+                <td class="govuk-table__cell">
+                  {% if employer.approved %}
+                    {% if forceDueDate %}
+                      {{forceDueDate}}
+                    {% elif status == "overdue" %}
+                      Due 12 days ago
+                    {% elif status == "required" %}
+                      Due in 11 months
+                    {% elif status == "optional" %}
+                      Submissions open until March 2025
+                    {% endif %}
+                  {% endif %}
+                </td>
+              </tr>
+
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {{ govukButton({
+        text: "Add an employer",
+        href: "#"
+      }) }}
+
+      {% block endNote %}
+      {% endblock %}
+
+    </div>
+  </div>
+
+{% endblock %}

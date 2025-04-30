@@ -1,75 +1,8 @@
-{% extends "layouts/menu-bar.html" %}
+{% extends "layouts/employers-list.html" %}
 
 {% set pageName="Your employers" %}
 {% set serviceName="MVP action plan journey" %}
 
-{% block breadCrumbs %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Your employers"
-      }
-    ]
-  }) }}
-{% endblock breadCrumbs %}
-
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-l">
-        Your employers
-      </h1>
-
-      <p>
-        Add or select an employer so you can:
-      </p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>enter gender pay gap information and save a draft for publication at a later date</li>
-        <li>report your gender pay gap information</li>
-        <li>change whether your employer is required to report for each reporting year</li>
-      </ul>
-
-    </div>
-    <div class="govuk-grid-column-full">
-
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Employer</th>
-            <th scope="col" class="govuk-table__header">Status</th>
-            <th scope="col" class="govuk-table__header">Details</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          {% for employer in data.db.dashboardEmployers %}
-            {% if employer.shortCode == "dundermifflin" %}
-              <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__cell">
-                  <a href="dashboard?employerCode={{employer.shortCode}}">{{employer.name}}</a>
-                </td>
-                <td class="govuk-table__cell">
-                  {{ govukTag({
-                    text: "Report required",
-                    classes: "govuk-tag--blue" 
-                  }) }}
-                </td>
-                <td class="govuk-table__cell">
-                  Due in 2 weeks
-                </td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-        </tbody>
-      </table>
-
-      {{ govukButton({
-        text: "Add an employer",
-        href: "#"
-      }) }}
-
-    </div>
-  </div>
-
-{% endblock %}
+{% set restrictToEmployerCode = "dundermifflin" %}
+{% set forceDueDate = "Due in 2 weeks" %}
+{% set dashboardUrl = "dashboard" %}
