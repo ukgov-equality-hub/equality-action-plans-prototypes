@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ serviceName }}
+    </h1>
+
+    <p>
+      This demonstrates how our service might suggest tailored actions to the
+      user based on data from their organisation specifically.
+    </p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "suggestion-engine/dashboard",
+      isStartButton: true
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
