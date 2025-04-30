@@ -3,6 +3,29 @@
 {% set pageName="Add actions to your " + ("provisional " if not data.endToEndMVP.lifecycleStage or data.endToEndMVP.lifecycleStage == "" else "") + "plan" %}
 {% set serviceName="MVP action plan journey" %}
 
+{% set annualReview = data.endToEndMVP.lifecycleStage == "annualReview" %}
+{% set threeYearReview = data.endToEndMVP.lifecycleStage == "threeYearReview" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan three-year review 2027-28" if threeYearReview
+          else ("Action plan annual review 2025-26" if annualReview
+            else "Action plan 2024-25")
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
 {% block content %}
 
 <div class="govuk-grid-row">

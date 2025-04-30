@@ -3,6 +3,24 @@
 {% set pageName="Actions list" %}
 {% set serviceName="MVP action plan journey" %}
 
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024-25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
