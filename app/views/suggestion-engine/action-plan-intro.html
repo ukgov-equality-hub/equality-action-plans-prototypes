@@ -1,0 +1,114 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Introduction to action plans" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024-25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Action plans
+      </h1>
+
+      <div class="warning">
+        <p>TODO: This page should link to either (or both, with option):</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a href="data-collection">Suggestion Engine</a>
+          </li>
+          <li>
+            <a href="asdf">Tell us what you're already doing</a>
+          </li>
+        </ul>
+      </div>
+
+      <p>
+        From 2027 onwards, if you have over 250 employees, you must submit an
+        action plan alongside your gender pay gap report. This action plan must
+        show how you intend to address your gender pay gap, and to support
+        employees going through the menopause. (In future years, you will
+        conduct a review of your existing plan rather than creating a new one
+        from scratch.)
+      </p>
+      <p>
+        The actions on your plan must be selected from our list of actions, all
+        of which are backed by evidence demonstrating their effectiveness.
+      </p>
+      <p>
+        This service will guide you through the selection of actions for your plan.
+      </p>
+
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: "dont-show-again",
+            text: "Don't show this explanation again"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Start now",
+        href: "actions-list?endToEndMVP[provisionalPlanSubmitted]=false",
+        isStartButton: true
+      }) }}
+
+      <form class="form" action="answer-help-requested" method="post">
+
+        {{ govukRadios({
+          name: "suggestedActions[help-requested]",
+          fieldset: {
+            legend: {
+              text: "Would you like help constructing your action plan?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Our service can guide you to selecting actions appropriate to your situation."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

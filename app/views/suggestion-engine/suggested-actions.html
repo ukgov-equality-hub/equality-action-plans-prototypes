@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Full action details pages" %}
+{% set serviceName="Choosing actions - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Suggested actions
+      </h1>
+
+      <p>
+        Based on the data you submitted, we suggest adding the following actions
+        to your plan.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form action="action-list" method="post">
+
+        {% set journeyShortCode = "suggestionEngine" %}
+        {% set showReasons = true %}
+        {% set showFullGuidance = true %}
+        {% include "common/suggested-actions-list" %}
+
+        {{ govukButton({
+          text: "Add selected actions to your action plan"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
