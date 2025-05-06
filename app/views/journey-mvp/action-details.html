@@ -46,6 +46,11 @@
 
       {% include "content/"+thisPageAction.shortCode+"/summary" %}
 
+      <p>
+        For more information,
+        <a href="action-guidance">see the full guidance for this action</a>.
+      </p>
+
       {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview"
         else ("provisional-plan" if data.endToEndMVP.provisionalPlanSubmitted == "true" else "actions-list") %}
       <form action="{{formAction}}" method="post">
