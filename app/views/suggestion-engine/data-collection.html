@@ -10,7 +10,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Collect extra data about your workforce
+      Tell us about your workforce
     </h1>
 
     <p>
@@ -24,13 +24,26 @@
     </p>
 
     {{ govukInsetText({
-      text: "The information you give us here will not be publicly visible"
-        + " unless you choose to publish it."
+      text: "The information you give us will not be stored or published beyond"
+        + " this browser session."
     }) }}
 
     {{ govukTaskList({
       idPrefix: "dataset",
       items: [
+        {
+          title: {
+            text: "Gender pay gap analysis"
+          },
+          href: "collect-data?actionShortCode=measure-gpg-analysis&firstDataCollectionPage=have-you-done-a-gpg-analysis",
+          status: {
+            text: "Completed" if data.suggestionEngine['gpg-analysis']['status'] == "done" else null,
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }  if data.suggestionEngine['gpg-analysis']['status'] != "done" else null
+          }
+        },
         {
           title: {
             text: "Promotions by gender"
@@ -42,6 +55,19 @@
               text: "Incomplete",
               classes: "govuk-tag--blue"
             }  if data.suggestionEngine['measure-promotions-by-gender']['status'] != "done" else null
+          }
+        },
+        {
+          title: {
+            text: "Board composition"
+          },
+          href: "collect-data?actionShortCode=measure-board-composition&firstDataCollectionPage=board-composition",
+          status: {
+            text: "Completed" if data.suggestionEngine['measure-board-composition']['status'] == "done" else null,
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }  if data.suggestionEngine['measure-board-composition']['status'] != "done" else null
           }
         },
         {
