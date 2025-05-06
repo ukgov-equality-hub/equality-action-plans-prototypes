@@ -3,18 +3,6 @@
 {% set pageName="Provisional action plan" %}
 {% set serviceName="MVP action plan journey" %}
 
-{% set minimumPlanExplanation %}
-  <p>
-    Before you can publish your plan, it must have at least one action from the
-    &ldquo;Support during menopause&rdquo; category and at least one action from
-    any other category.
-  </p>
-  <p>
-    Actions that are already fully embedded do not count for this purpose. Your
-    plan must have actions with which you can make further progress.
-  </p>
-{% endset %}
-
 {% set errorHtml %}
   <p class="error">
     You must select at least one action from the &ldquo;Support during
@@ -69,12 +57,30 @@
       {% endif %}
 
       <p>
-        This plan is saved in your account so you can log out and come back to
-        it later, but it is not yet published on the service.
+        Before you can publish your plan, it must have:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          at least one action from the &ldquo;Support during menopause&rdquo; category
+        </li>
+        <li>
+          at least one action from any other category
+        </li>
+      </ul>
+
+      <p>
+        For a full explanation, please
+        <a href="#">see the guidance on the action plan regulations</a>.
+      </p>
+
+      <p>
+        Actions that are already fully embedded do not count for this purpose. Your
+        plan must have actions with which you can make further progress.
       </p>
 
       {{ govukInsetText({
-        html: minimumPlanExplanation
+        text: "This plan is saved in your account so you can log out and come"
+          + " back to it later, but it is not yet published on the service."
       }) }}
 
       {{ govukButton({
