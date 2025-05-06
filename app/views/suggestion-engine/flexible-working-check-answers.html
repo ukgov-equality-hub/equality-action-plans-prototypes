@@ -1,0 +1,146 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data collection: Flexible working uptake" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">How many employees are able to apply for flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["flexible-working-available-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["flexible-working-available-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees are not able to apply for flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["flexible-working-unavailable-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["flexible-working-unavailable-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees are currently taking advantage of flexible working?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["flexible-working-uptake-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["flexible-working-uptake-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="data-collection" method="post">
+
+        <input type="hidden" name="suggestionEngine[measure-flexible-working-uptake][status]" value="done">
+
+        {{ govukButton({
+          text: "Submit data"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
