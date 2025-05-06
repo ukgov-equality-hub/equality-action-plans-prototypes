@@ -33,15 +33,15 @@
       items: [
         {
           title: {
-            text: "Gender pay gap analysis"
+            text: "Have you done a gender pay gap analysis?"
           },
-          href: "collect-data?actionShortCode=measure-gpg-analysis&firstDataCollectionPage=have-you-done-a-gpg-analysis",
+          href: "have-you-done-a-gpg-analysis",
           status: {
-            text: "Completed" if data.suggestionEngine['gpg-analysis']['status'] == "done" else null,
+            text: data.suggestionEngine['have-you-done-a-gpg-analysis'],
             tag: {
               text: "Incomplete",
               classes: "govuk-tag--blue"
-            }  if data.suggestionEngine['gpg-analysis']['status'] != "done" else null
+            }  if not data.suggestionEngine['have-you-done-a-gpg-analysis'] else null
           }
         },
         {
