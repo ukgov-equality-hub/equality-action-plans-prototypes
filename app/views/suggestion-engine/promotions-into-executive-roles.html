@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data collection: Promotions by gender" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      How many employees were promoted into executive roles in this reporting period?
+    </h1>
+    <p class="hint">
+      Only count those who were not already in executive roles. The reporting period is 1 April 2024 to 31 March 2025.
+    </p>
+
+    <form class="form" action="promotions-check-answers" method="post">
+
+      {% set promotionsDefinitions %}
+        <p>
+          Promotion refers to a permanent change when an employee advances or
+          rises to a higher office or rank on an ongoing basis or fixed-term
+          contract and does not return to the previous role.
+        </p>
+        <p>
+          This includes when employees are promoted from one managerial role to
+          another.
+        </p>
+        <p>
+          Temporary changes, employees relocating to overseas offices, and those
+          that transfer to a position of equal rank (despite an increase in
+          duties) are not considered promotions.
+        </p>
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: "See exact definitions",
+        html: promotionsDefinitions
+      }) }}
+
+      {{ govukInput({
+        id: "suggestionEngine[promotions-into-executive-roles-men]",
+        name: "suggestionEngine[promotions-into-executive-roles-men]",
+        label: {
+          text: "Men",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.suggestionEngine["promotions-into-executive-roles-men"]
+      }) }}
+
+      {{ govukInput({
+        id: "suggestionEngine[promotions-into-executive-roles-women]",
+        name: "suggestionEngine[promotions-into-executive-roles-women]",
+        label: {
+          text: "Women",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.suggestionEngine["promotions-into-executive-roles-women"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

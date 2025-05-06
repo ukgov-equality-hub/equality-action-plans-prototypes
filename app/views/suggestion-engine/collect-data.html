@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% set pageName="Data collection: " + thisPageAction.title %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageAction.title}}
+      </h1>
+
+      {% include "content/"+thisPageAction.shortCode+"/summary" %}
+      {% include "content/"+thisPageAction.shortCode+"/data-collection" %}
+
+      <p>
+        When you have this information available, you can enter it into this service.
+      </p>
+
+      {{ govukButton({
+        href: data.firstDataCollectionPage,
+        text: "Continue"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
