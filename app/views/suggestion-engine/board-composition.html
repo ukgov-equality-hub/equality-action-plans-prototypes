@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Board composition" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Board composition
+      </h1>
+
+      <form class="form" action="data-collection" method="post">
+
+        {{ govukInput({
+          id: "suggestionEngine[measure-board-composition][men]",
+          name: "suggestionEngine[measure-board-composition][men]",
+          label: {
+            text: "How many men are on your board?",
+            classes: "govuk-label--m"
+          },
+          value: data.suggestionEngine['measure-board-composition'].men,
+          classes: "govuk-input--width-2"
+        }) }}
+
+        {{ govukInput({
+          id: "suggestionEngine[measure-board-composition][women]",
+          name: "suggestionEngine[measure-board-composition][women]",
+          label: {
+            text: "How many women are on your board?",
+            classes: "govuk-label--m"
+          },
+          value: data.suggestionEngine['measure-board-composition'].women,
+          classes: "govuk-input--width-2"
+        }) }}
+
+        <input type="hidden" name="suggestionEngine[measure-board-composition][status]" value="done">
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
