@@ -65,6 +65,10 @@
                     </summary>
                     <div class="govuk-details__text">
                       {% include "content/"+suggestedAction.shortCode+"/why-are-we-suggesting-this" %}
+                      <p>
+                        For more details,
+                        <a href="action-guidance?actionShortCode={{suggestedAction.shortCode}}">see the full guidance on this action</a>.
+                      </p>
                     </div>
                   </details>
                 </div>
