@@ -18,6 +18,16 @@
         to your plan.
       </p>
       <p>
+        You can download a PDF file containing the full guidance for all of
+        these actions. This may help to guide internal discussions about your
+        action plan.
+      </p>
+
+      {{ govukButton({
+        text: "Download these actions in PDF format"
+      }) }}
+
+      <p>
         You can also
         <a href="all-actions">browse all the actions on our service</a>.
       </p>
@@ -38,10 +48,6 @@
         {% set journeyShortCode = "suggestionEngine" %}
         {% set showReasons = true %}
         {% include "common/suggested-actions-list" %}
-
-        {{ govukButton({
-          text: "Add selected actions to your action plan"
-        }) }}
 
       </form>
 

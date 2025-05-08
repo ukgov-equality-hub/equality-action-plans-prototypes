@@ -42,18 +42,20 @@
                     <a class="govuk-link" href="action-details?actionShortCode={{suggestedAction.shortCode}}">View full guidance</a>
                   </dd>
                 {% endif %}
-                <dd class="govuk-summary-list__actions">
-                  {{ govukCheckboxes({
-                    name: journeyShortCode + "[" + suggestedAction.shortCode + "][status]",
-                    items: [
-                      {
-                        value: "adopt",
-                        text: "Select",
-                        checked: data[journeyShortCode][suggestedAction.shortCode].status == "adopt"
-                      }
-                    ]
-                  }) }}
-                </dd>
+                {% if showCheckboxes %}
+                  <dd class="govuk-summary-list__actions">
+                    {{ govukCheckboxes({
+                      name: journeyShortCode + "[" + suggestedAction.shortCode + "][status]",
+                      items: [
+                        {
+                          value: "adopt",
+                          text: "Select",
+                          checked: data[journeyShortCode][suggestedAction.shortCode].status == "adopt"
+                        }
+                      ]
+                    }) }}
+                  </dd>
+                {% endif %}
               </div>
               {% if showReasons %}
                 <div class="govuk-summary-list__row">
