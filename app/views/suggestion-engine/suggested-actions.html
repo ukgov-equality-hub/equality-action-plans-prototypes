@@ -23,6 +23,14 @@
 
       <form action="action-list" method="post">
 
+        {% set suggestedActionsList = [
+          'conduct-gender-pay-gap-analysis',
+          'share-local-support-for-flexible-working',
+          'flexible-working-available-to-all',
+          'structured-interviews',
+          'remuneration-transparency',
+          'promotion-application-by-default'
+        ] %}
         {% set journeyShortCode = "suggestionEngine" %}
         {% set showReasons = true %}
         {% include "common/suggested-actions-list" %}
