@@ -63,6 +63,7 @@ module.exports = {
       suggestedActions: [
         'targets',
         'diversity-leads-and-task-forces',
+        'conduct-gender-pay-gap-analysis',
         'flexible-working-in-job-adverts',
         'remuneration-transparency',
         'promotion-application-by-default',
@@ -251,6 +252,10 @@ module.exports = {
           + ' changes can be targeted.'
       },
       {
+        shortCode: 'analysis',
+        title: 'Essential analysis',
+      },
+      {
         shortCode: 'recruitment',
         title: 'Hiring and selection'
       },
@@ -284,6 +289,11 @@ module.exports = {
         level: 1,
         targets: [],
         title: 'Appoint diversity leads and/or task forces'
+      },
+      {
+        shortCode: 'conduct-gender-pay-gap-analysis',
+        category: 'analysis',
+        title: 'Conduct a gender pay gap analysis'
       },
       {
         shortCode: 'measure-remuneration-gap',
