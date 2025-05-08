@@ -34,18 +34,6 @@
         Action plans
       </h1>
 
-      <div class="warning">
-        <p>TODO: This page should link to either (or both, with option):</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            <a href="data-collection">Suggestion Engine</a>
-          </li>
-          <li>
-            <a href="asdf">Tell us what you're already doing</a>
-          </li>
-        </ul>
-      </div>
-
       <p>
         From 2027 onwards, if you have over 250 employees, you must submit an
         action plan alongside your gender pay gap report. This action plan must
@@ -59,7 +47,10 @@
         of which are backed by evidence demonstrating their effectiveness.
       </p>
       <p>
-        This service will guide you through the selection of actions for your plan.
+        If you are not sure which actions to select for your plan, you may want
+        to explore our
+        <a href="intro" target="_blank">suggested actions tool (opens in a new window)</a>
+        first and come back later to input your plan on this service.
       </p>
 
       {{ govukCheckboxes({
@@ -73,41 +64,8 @@
 
       {{ govukButton({
         text: "Start now",
-        href: "actions-list?endToEndMVP[provisionalPlanSubmitted]=false",
         isStartButton: true
       }) }}
-
-      <form class="form" action="answer-help-requested" method="post">
-
-        {{ govukRadios({
-          name: "suggestedActions[help-requested]",
-          fieldset: {
-            legend: {
-              text: "Would you like help constructing your action plan?",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          hint: {
-            text: "Our service can guide you to selecting actions appropriate to your situation."
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-      </form>
 
     </div>
   </div>
