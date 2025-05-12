@@ -11,7 +11,7 @@
     {% if displayCurrentYear %}
       <tr class="govuk-table__row">
         <th scope="row" class="govuk-table__header no-separator">2024-25</th>
-        <td class="govuk-table__cell no-separator">Gender pay gap report</td>
+        <td class="govuk-table__cell no-separator">{{"Pay gaps report" if includeEDPG else "Gender pay gap report"}}</td>
         <td class="govuk-table__cell no-separator">Due by 31 March 2025</td>
         <td class="govuk-table__cell no-separator">
         </td>
@@ -26,7 +26,7 @@
     {% endif %}
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header no-separator">2023-24</th>
-      <td class="govuk-table__cell no-separator">Gender pay gap report</td>
+      <td class="govuk-table__cell no-separator">{{"Pay gaps report" if includeEDPG else "Gender pay gap report"}}</td>
       <td class="govuk-table__cell no-separator">Submitted on time</td>
       <td class="govuk-table__cell no-separator">
         <ul class="govuk-summary-list__actions-list">
