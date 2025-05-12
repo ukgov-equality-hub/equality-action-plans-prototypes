@@ -1,0 +1,109 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Employer page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-current-reports?employerCode=" + thisPageEmployer.shortCode
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set reportExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit:
+  </p>
+  <ul class="govuk-list--bullet">
+    <li>a gender pay gap report showing their breakdown of pay by gender</li>
+    <li>an ethnicity pay gap report, or a declaration that not enough employees reported their ethnicity</li>
+    <li>a disability pay gap report, or a declaration that not enough employees reported their disability status</li>
+    <li>an action plan outlining how they intend to address their pay gaps and support employees going through menopause</li>
+  </ul>
+  <p>
+    For more detail, see the <a href="#">pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageEmployer.name}}
+      </h1>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              html: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Nature of business (SIC codes)"
+            },
+            value: {
+              html: "<strong>5934</strong> Paper company"
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukButton({
+        text: "Add to comparison",
+        href: "#"
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "What are employers required to submit?",
+        html: reportExplanation
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Submitted reports
+      </h2>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      {% set displayCurrentYear = true %}
+      {% set reportsAreEditable = false %}
+      {% set actionPlanUrl = "employer-action-plan" %}
+      {% include "common/submitted-reports" %}
+
+    </div>
+  </div>
+
+{% endblock %}
