@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Suggestion engine introduction" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Action plans: Suggested actions tool
+      </h1>
+
+      <p>
+        From 2027 onwards, employers with over 250 employees must submit an
+        action plan alongside their gender pay gap report. This action plan must
+        show how they intend to address their gender pay gap, and to support
+        employees going through the menopause.
+      </p>
+      <p>
+        The actions on your plan must be selected from our list of actions, all
+        of which are backed by evidence demonstrating their effectiveness.
+      </p>
+      <p>
+        You can use this suggested actions tool to tell us about your
+        organisation and workforce and get tailored recommendations for actions
+        to put on your action plan.
+      </p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "data-collection",
+        isStartButton: true
+      }) }}
+
+      <p>
+        Alternatively, you can
+        <a href="all-actions">browse all the actions in the service</a>.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

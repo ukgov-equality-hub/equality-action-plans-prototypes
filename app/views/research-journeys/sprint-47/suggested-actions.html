@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Suggested actions" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Suggested actions
+      </h1>
+
+      <p>
+        Based on the data you submitted, we suggest adding the following actions
+        to your plan.
+      </p>
+      <p>
+        You can download a PDF file containing the full guidance for all of
+        these actions. This may help to guide internal discussions about your
+        action plan.
+      </p>
+
+      {{ govukButton({
+        text: "Download these actions in PDF format"
+      }) }}
+
+      <p>
+        You can also
+        <a href="all-actions">browse all the actions on our service</a>.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="action-list" method="post">
+
+        {% set suggestedActionsList = [
+          'conduct-gender-pay-gap-analysis',
+          'share-local-support-for-flexible-working',
+          'flexible-working-available-to-all',
+          'structured-interviews',
+          'remuneration-transparency',
+          'promotion-application-by-default'
+        ] %}
+        {% set journeyShortCode = "suggestionEngine" %}
+        {% set showReasons = true %}
+        {% include "common/suggested-actions-list" %}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data collection: Flexible working uptake" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      How many employees are able to apply for flexible working?
+    </h1>
+
+    <form class="form" action="flexible-working-unavailable" method="post">
+
+      {{ govukInput({
+        id: "suggestionEngine[flexible-working-available-men]",
+        name: "suggestionEngine[flexible-working-available-men]",
+        label: {
+          text: "Men",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.suggestionEngine["flexible-working-available-men"]
+      }) }}
+
+      {{ govukInput({
+        id: "suggestionEngine[flexible-working-available-women]",
+        name: "suggestionEngine[flexible-working-available-women]",
+        label: {
+          text: "Women",
+          classes: "govuk-label--m"
+        },
+        classes: "govuk-input--width-5",
+        value: data.suggestionEngine["flexible-working-available-women"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

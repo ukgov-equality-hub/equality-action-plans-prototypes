@@ -1,0 +1,186 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data collection: Promotions by gender" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">How many employees were promoted in this reporting period?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-total-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-total-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees were promoted out of entry-level roles in this reporting period?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-out-of-entry-level-roles-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-out-of-entry-level-roles-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees were promoted into managerial roles in this reporting period?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-into-managerial-roles-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-into-managerial-roles-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">How many employees were promoted into executive roles in this reporting period?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-into-executive-roles-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-into-executive-roles-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="data-collection" method="post">
+
+        <input type="hidden" name="suggestionEngine[measure-promotions-by-gender][status]" value="done">
+
+        {{ govukButton({
+          text: "Submit data"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

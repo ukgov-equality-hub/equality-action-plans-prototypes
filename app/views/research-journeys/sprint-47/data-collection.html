@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Datasets list" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Tell us about your workforce
+    </h1>
+
+    <p>
+      To help us make suggestions for your action plan, we&rsquo;ll need to know
+      a bit more about your organisation and your workforce.
+    </p>
+    <p>
+      Below are some extra sets of data you can collect. The more information
+      you can give us, the better we can tailor our suggestions to your specific
+      circumstances.
+    </p>
+
+    {{ govukInsetText({
+      text: "The information you give us will not be stored or published beyond"
+        + " this browser session."
+    }) }}
+
+    {{ govukTaskList({
+      idPrefix: "dataset",
+      items: [
+        {
+          title: {
+            text: "Have you done a gender pay gap analysis?"
+          },
+          href: "have-you-done-a-gpg-analysis",
+          status: {
+            text: data.suggestionEngine['have-you-done-a-gpg-analysis'],
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }  if not data.suggestionEngine['have-you-done-a-gpg-analysis'] else null
+          }
+        },
+        {
+          title: {
+            text: "Promotions by gender"
+          },
+          href: "collect-data?actionShortCode=measure-promotions-by-gender&firstDataCollectionPage=promotions-total",
+          status: {
+            text: "Completed" if data.suggestionEngine['measure-promotions-by-gender']['status'] == "done" else null,
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }  if data.suggestionEngine['measure-promotions-by-gender']['status'] != "done" else null
+          }
+        },
+        {
+          title: {
+            text: "Board composition"
+          },
+          href: "board-composition",
+          status: {
+            text: "Completed" if data.suggestionEngine['measure-board-composition']['status'] == "done" else null,
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }  if data.suggestionEngine['measure-board-composition']['status'] != "done" else null
+          }
+        },
+        {
+          title: {
+            text: "Availability and uptake of flexible working"
+          },
+          href: "collect-data?actionShortCode=measure-flexible-working-uptake&firstDataCollectionPage=flexible-working-availability",
+          status: {
+            text: "Completed" if data.suggestionEngine['measure-flexible-working-uptake']['status'] == "done" else null,
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }  if data.suggestionEngine['measure-flexible-working-uptake']['status'] != "done" else null
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue",
+      href: "suggested-actions"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Introduction to action plans" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024-25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Action plans
+      </h1>
+
+      <p>
+        From 2027 onwards, if you have over 250 employees, you must submit an
+        action plan alongside your gender pay gap report. This action plan must
+        show how you intend to address your gender pay gap, and to support
+        employees going through the menopause. (In future years, you will
+        conduct a review of your existing plan rather than creating a new one
+        from scratch.)
+      </p>
+      <p>
+        The actions on your plan must be selected from our list of actions, all
+        of which are backed by evidence demonstrating their effectiveness.
+      </p>
+      <p>
+        If you are not sure which actions to select for your plan, you may want
+        to explore our
+        <a href="intro" target="_blank">suggested actions tool (opens in a new window)</a>
+        first and come back later to input your plan on this service.
+      </p>
+
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: "dont-show-again",
+            text: "Don't show this explanation again"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Start now",
+        isStartButton: true
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

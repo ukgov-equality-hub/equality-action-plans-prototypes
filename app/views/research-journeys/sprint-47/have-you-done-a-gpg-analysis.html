@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Have you done a gender pay gap analysis?" %}
+{% set serviceName="Action suggestion engine - visualisations" %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Gender pay gap analysis
+      </h1>
+
+      {% include "content/conduct-gender-pay-gap-analysis/summary" %}
+
+      <p>
+        For more information,
+        <a href="#">see the full guidance on conducting a gender pay gap analysis</a>.
+      </p>
+
+      <form class="form" action="data-collection" method="post">
+
+        {{ govukRadios({
+          name: "suggestionEngine[have-you-done-a-gpg-analysis]",
+          fieldset: {
+            legend: {
+              text: "Have you conducted a gender pay gap analysis?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: data.suggestionEngine['have-you-done-a-gpg-analysis'],
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
