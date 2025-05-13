@@ -1,7 +1,13 @@
+{% if not comparisonPay %}
+  {% set comparisonPay = 50 %}
+{% endif %}
+{# Setting this here is necessary to avoid false-positive code warnings in my IDE 
+   which occur if using inline {{comparisonPay}} in the style statement in the HTML tag. #}
+{% set styleStatement = "style=height:" + comparisonPay + "%;" %}
 <figure class="pay-comparison-vertical-bar-chart" aria-hidden="true">
     <div class="pay-comparison-vertical-bar-chart-more-or-less">
         <div class="pay-comparison-vertical-bar-chart-more-or-less-inner">
-            34p
+            {{100-comparisonPay}}p
             <br>
             less
             <br>
@@ -11,14 +17,14 @@
         </div>
     </div>
     <div class="pay-comparison-vertical-bar-chart-bars">
-        <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--women" style="height: 66%;">
+        <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--women" {{styleStatement}}>
         </div>
         <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--men" style="height: 100%;">
         </div>
     </div>
     <div class="pay-comparison-vertical-bar-chart-coins">
         <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--women">
-            66p
+            {{comparisonPay}}p
         </div>
         <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--men">
             £1
