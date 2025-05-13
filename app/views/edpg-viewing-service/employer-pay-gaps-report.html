@@ -84,6 +84,38 @@
   </ul>
 {% endset %}
 
+{% set ethnicityHourlyPay %}
+  <p>In this organisation, of those who declared their ethnicity:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>the largest ethnic group was White British (78%)</li>
+    <li>
+      the median hourly pay for people in smaller ethnic groups was 28.0% lower
+      than for White British people &mdash; this means they earned 72p for every
+      £1 that White British people earn when comparing median hourly pay
+      {% set comparisonPay = 72 %}
+      {% set hourlyPayReportType = "ethnicity" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      the mean (average) hourly pay for people in smaller ethnic groups was
+      11.2% lower than for White British people
+    </li>
+  </ul>
+{% endset %}
+
+{% set disabilityHourlyPay %}
+  <p>
+    Not enough people disclosed their disability status to publish disability
+    pay gap data.
+  </p>
+  <p>
+    Out of 544 employees, only 13 disclosed their disability status. As a result,
+    this employer is not required to publish their disability pay gap data as it
+    might be possible to identify specific individuals.
+  </p>
+{% endset %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -122,10 +154,10 @@
           women made up 70.0% of employees in the highest paid quarter, and 88.0% of employees in the lowest paid quarter
         </li>
         <li>
-          people from minority ethnic groups earned 72p for every £1 that White British people earned (comparing median hourly pay)
+          people from smaller ethnic groups earned 72p for every £1 that White British people earned (comparing median hourly pay)
         </li>
         <li>
-          White British people made up 78.0% of employees in the highest paid quarter, and 62.0% of employees in the lowest paid quarter
+          White British people made up 85.0% of employees in the highest paid quarter, and 62.0% of employees in the lowest paid quarter
         </li>
         <li>
           not enough people disclosed their disability status to publish disability pay gap data
@@ -137,7 +169,8 @@
         text: "If only a small number of people report their disability status,"
           + " it becomes to easy to personally identify individuals in the data."
           + " As a result, employers are only required to publish disability pay"
-          + " gap data if 10 or more people disclose their disability status."
+          + " gap data if 10 or more people, and a minimum of 5% of the employees,"
+          + " disclose their disability status."
       }) }}
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">

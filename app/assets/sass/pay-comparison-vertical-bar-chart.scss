@@ -3,6 +3,11 @@
 	word-wrap: break-word;
   margin: 10px 0;
 
+  * {
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+
   .pay-comparison-vertical-bar-chart-more-or-less {
     display: flex;
     justify-content: center;
@@ -46,6 +51,16 @@
         background-color: #12436D;
         height: 100%;
       }
+
+      &.pay-comparison-vertical-bar-chart-bar--notwb {
+        background-color: #801650;
+        height: 50%;
+      }
+
+      &.pay-comparison-vertical-bar-chart-bar--wb {
+        background-color: #F46A25;
+        height: 50%;
+      }
     }
   }
 
@@ -70,6 +85,12 @@
       &.pay-comparison-vertical-bar-chart-coin--men {
         border-color: #12436D;
       }
+      &.pay-comparison-vertical-bar-chart-coin--notwb {
+        border-color: #801650;
+      }
+      &.pay-comparison-vertical-bar-chart-coin--wb {
+        border-color: #F46A25;
+      }
     }
   }
 
@@ -82,12 +103,11 @@
       margin: 3px;
       font-size: 16px;
       text-align: center;
-      white-space: nowrap;
+      /*
+        NOTE: I've removed a "white-space: nowrap;" here compared to the live site!
+        This is to allow longer captions like "White British" and "Smaller groups"
+        to display.
+      */
     }
   }
-}
-
-* {
-	box-sizing: border-box;
-	word-wrap: break-word;
 }

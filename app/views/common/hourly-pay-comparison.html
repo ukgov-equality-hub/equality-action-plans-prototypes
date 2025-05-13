@@ -1,6 +1,16 @@
 {% if not comparisonPay %}
   {% set comparisonPay = 50 %}
 {% endif %}
+{% set leftDataLabel = "Women" %}
+{% set rightDataLabel = "Men" %}
+{% set leftCssLabel = "women" %}
+{% set rightCssLabel = "men" %}
+{% if hourlyPayReportType == "ethnicity" %}
+  {% set leftDataLabel = "Smaller groups" %}
+  {% set rightDataLabel = "White British" %}
+  {% set leftCssLabel = "notwb" %}
+  {% set rightCssLabel = "wb" %}
+{% endif %}
 {# Setting this here is necessary to avoid false-positive code warnings in my IDE 
    which occur if using inline {{comparisonPay}} in the style statement in the HTML tag. #}
 {% set styleStatement = "style=height:" + comparisonPay + "%;" %}
@@ -17,25 +27,25 @@
     </div>
   </div>
   <div class="pay-comparison-vertical-bar-chart-bars">
-    <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--women" {{styleStatement}}>
+    <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--{{leftCssLabel}}" {{styleStatement}}>
     </div>
-    <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--men" style="height: 100%;">
+    <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--{{rightCssLabel}}" style="height: 100%;">
     </div>
   </div>
   <div class="pay-comparison-vertical-bar-chart-coins">
-    <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--women">
+    <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--{{leftCssLabel}}">
       {{comparisonPay}}p
     </div>
-    <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--men">
+    <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--{{rightCssLabel}}">
       £1
     </div>
   </div>
   <div class="pay-comparison-vertical-bar-chart-captions">
     <div class="pay-comparison-vertical-bar-chart-caption">
-      Women
+      {{leftDataLabel}}
     </div>
     <div class="pay-comparison-vertical-bar-chart-caption">
-      Men
+      {{rightDataLabel}}
     </div>
   </div>
 </figure>
