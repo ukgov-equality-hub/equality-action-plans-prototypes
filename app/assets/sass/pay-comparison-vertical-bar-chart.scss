@@ -1,11 +1,9 @@
 .pay-comparison-vertical-bar-chart {
 	box-sizing: border-box;
-	word-wrap: break-word;
   margin: 10px 0;
 
   * {
     box-sizing: border-box;
-    word-wrap: break-word;
   }
 
   .pay-comparison-vertical-bar-chart-more-or-less {
@@ -61,6 +59,16 @@
         background-color: #F46A25;
         height: 50%;
       }
+
+      &.pay-comparison-vertical-bar-chart-bar--disabled {
+        background-color: #A285D1;
+        height: 50%;
+      }
+
+      &.pay-comparison-vertical-bar-chart-bar--not-disabled {
+        background-color: #3D3D3D;
+        height: 50%;
+      }
     }
   }
 
@@ -90,6 +98,12 @@
       }
       &.pay-comparison-vertical-bar-chart-coin--wb {
         border-color: #F46A25;
+      }
+      &.pay-comparison-vertical-bar-chart-coin--disabled {
+        border-color: #A285D1;
+      }
+      &.pay-comparison-vertical-bar-chart-coin--not-disabled {
+        border-color: #3D3D3D;
       }
     }
   }

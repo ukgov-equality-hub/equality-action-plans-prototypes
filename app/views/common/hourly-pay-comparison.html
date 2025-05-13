@@ -11,6 +11,13 @@
   {% set leftCssLabel = "notwb" %}
   {% set rightCssLabel = "wb" %}
 {% endif %}
+{% if hourlyPayReportType == "disability" %}
+  {% set leftDataLabel = "Disabled" %}
+  {% set rightDataLabel = "Not disabled" %}
+  {% set leftCssLabel = "disabled" %}
+  {% set rightCssLabel = "not-disabled" %}
+{% endif %}
+
 {# Setting this here is necessary to avoid false-positive code warnings in my IDE 
    which occur if using inline {{comparisonPay}} in the style statement in the HTML tag. #}
 {% set styleStatement = "style=height:" + comparisonPay + "%;" %}
