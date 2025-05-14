@@ -5,10 +5,10 @@
     {% set actionCount = 0 %}
 
     {% for action in data.db.actions %}
-      {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
-      {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
-
       {% if action.category == category.shortCode %}
+        {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
+        {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+
         {% if submittedStatus %}
           {% set hasSubmitted = true %}
         {% endif %}
