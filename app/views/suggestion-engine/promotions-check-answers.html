@@ -11,6 +11,45 @@
         Check your answers
       </h1>
 
+      <h2 class="govuk-heading-m">How many employees did you have on your snapshot date?</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Men"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-employees-men"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Women"
+            },
+            value: {
+              text: data.suggestionEngine["promotions-employees-women"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
       <h2 class="govuk-heading-m">How many employees were promoted in this reporting period?</h2>
 
       {{ govukSummaryList({
@@ -30,8 +69,7 @@
                 }
               ]
             }
-          }
-          ,
+          },
           {
             key: {
               text: "Women"
@@ -70,8 +108,7 @@
                 }
               ]
             }
-          }
-          ,
+          },
           {
             key: {
               text: "Women"
@@ -110,8 +147,7 @@
                 }
               ]
             }
-          }
-          ,
+          },
           {
             key: {
               text: "Women"
@@ -150,8 +186,7 @@
                 }
               ]
             }
-          }
-          ,
+          },
           {
             key: {
               text: "Women"
