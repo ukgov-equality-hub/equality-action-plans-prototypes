@@ -3,6 +3,27 @@
 {% set pageName="Published action plan" %}
 {% set serviceName="MVP action plan journey" %}
 
+{% set numberOfActions = 0 %}
+{% set numberOfCategories = 0 %}
+{% for category in data.db.actionCategories %}
+  {% set categoryHasActions = false %}
+
+  {% for action in data.db.actions %}
+    {% if action.category == category.shortCode %}
+      {% set submittedStatus = data.endToEndMVP[action.shortCode].status %}
+
+      {% if submittedStatus and submittedStatus != "ignore" %}
+        {% set numberOfActions = numberOfActions + 1 %}
+        {% set categoryHasActions = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if categoryHasActions %}
+    {% set numberOfCategories = numberOfCategories + 1 %}
+  {% endif %}
+{% endfor %}
+
 {% block breadCrumbs %}
   {{ govukBreadcrumbs({
     items: [
@@ -36,6 +57,11 @@
       <h1 class="govuk-heading-l">
         Your action plan
       </h1>
+
+      <p>
+        Your action plan contains {{numberOfActions}} actions across
+        {{numberOfCategories}} categories.
+      </p>
 
       <p>
         You can also see
