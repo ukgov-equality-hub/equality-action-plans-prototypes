@@ -5,8 +5,8 @@
 
 {% set errorHtml %}
   <p class="error">
-    You must select at least one action from the &ldquo;Support during
-    menopause&rdquo; category and at least one action from any other category.
+    You must select at least one action from the &lsquo;Support during
+    menopause&rsquo; category and at least one action from any other category.
   </p>
   <br />
   <p class="error">
@@ -61,7 +61,7 @@
       </p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          at least one action from the &ldquo;Support during menopause&rdquo; category
+          at least one action from the &lsquo;Support during menopause&rsquo; category
         </li>
         <li>
           at least one action from any other category
@@ -69,18 +69,19 @@
       </ul>
 
       <p>
-        For a full explanation, please
-        <a href="#">see the guidance on the action plan regulations</a>.
+        Read the
+        <a href="#">guidance on action plan regulations</a>
+        for more details.
       </p>
 
       <p>
-        Actions that are already fully embedded do not count for this purpose. Your
-        plan must have actions with which you can make further progress.
+        Your plan must include actions with which you can make further progress.
+        Actions already fully embedded do not count for this purpose.
       </p>
 
       {{ govukInsetText({
-        text: "This plan is saved in your account so you can log out and come"
-          + " back to it later, but it is not yet published on the service."
+        text: "This plan is saved in your account but not yet published on the"
+          + " service. You can log out and come back to it at any time."
       }) }}
 
       {{ govukButton({
@@ -108,7 +109,7 @@
       <div class="govuk-grid-column-two-thirds">
 
         {{ govukInsetText({
-          text: "When you publish your plan it will be publicly visible on this"
+          text: "When you publish your plan, it will be publicly visible on this"
             + " service. You will still be able to edit it.",
           classes: "govuk-!-margin-top-0"
         }) }}
