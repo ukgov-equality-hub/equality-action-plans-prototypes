@@ -85,19 +85,19 @@ module.exports = {
         approved: true,
         reports: [
           {
-            year: "2023-24",
+            year: "2023/24",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2024"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2025"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "Action plan",
             status: "complete",
             deadline: "4 April 2025"
@@ -110,49 +110,49 @@ module.exports = {
         approved: true,
         reports: [
           {
-            year: "2023-24",
+            year: "2023/24",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2024"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2025"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "Action plan",
             status: "required",
             deadline: "4 April 2025"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "Additional data collection",
             status: "optional",
             deadline: "4 April 2025"
           },
           {
-            year: "2025-26",
+            year: "2025/26",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2026"
           },
           {
-            year: "2025-26",
+            year: "2025/26",
             type: "Action plan annual review",
             status: "required",
             deadline: "4 April 2026"
           },
           {
-            year: "2027-28",
+            year: "2027/28",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2028"
           },
           {
-            year: "2027-28",
+            year: "2027/28",
             type: "Action plan three-year review",
             status: "required",
             deadline: "4 April 2028"
@@ -165,25 +165,25 @@ module.exports = {
         approved: true,
         reports: [
           {
-            year: "2023-24",
+            year: "2023/24",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2024"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2025"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "Action plan",
             status: "optional",
             deadline: "4 April 2025"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "Additional data collection",
             status: "optional",
             deadline: "4 April 2025"
@@ -196,37 +196,37 @@ module.exports = {
         approved: true,
         reports: [
           {
-            year: "2023-24",
+            year: "2023/24",
             type: "GPG report",
             status: "complete",
             deadline: "4 April 2024"
           },
           {
-            year: "2023-24",
+            year: "2023/24",
             type: "Action plan",
             status: "overdue",
             deadline: "4 April 2024"
           },
           {
-            year: "2023-24",
+            year: "2023/24",
             type: "Additional data collection",
             status: "optional",
             deadline: "4 April 2024"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "GPG report",
             status: "required",
             deadline: "4 April 2025"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "Action plan",
             status: "required",
             deadline: "4 April 2025"
           },
           {
-            year: "2024-25",
+            year: "2024/25",
             type: "Additional data collection",
             status: "optional",
             deadline: "4 April 2025"

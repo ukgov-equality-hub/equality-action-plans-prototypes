@@ -4,6 +4,6 @@
 {% set serviceName="MVP action plan journey" %}
 
 {% set employerCode = "dundermifflin" %}
-{% set currentReportingYear = "2027-28" if data.endToEndMVP.lifecycleStage == "threeYearReview"
-  else ("2025-26" if data.endToEndMVP.lifecycleStage == "annualReview" else "2024-25") %}
+{% set currentReportingYear = "2027/28" if data.endToEndMVP.lifecycleStage == "threeYearReview"
+  else ("2025/26" if data.endToEndMVP.lifecycleStage == "annualReview" else "2024/25") %}
 {% set showAdditionalDataCollectionPrompt = false %}
