@@ -127,10 +127,38 @@
   </p>
 {% endset %}
 
-{% set genderPayQuartersTable %}
-  <p class="user-note">
-    The data table is not shown in this prototype.
-  </p>
+{% set genderPayQuarters %}
+  <p>In this organisation, women made up:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      46.4% of employees in the upper hourly pay quarter (highest paid jobs)
+    </li>
+    <li>
+      60.3% of employees in the upper middle hourly pay quarter
+    </li>
+    <li>
+      59.8% of employees in the lower middle hourly pay quarter
+    </li>
+    <li>
+      52.3% of employees in the lower hourly pay quarter (lowest paid jobs)
+    </li>
+  </ul>
+
+  {% include "common/pay-quarters-visualisation" %}
+
+  <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Table: pay quarters by gender
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="user-note">
+        The data table is not shown in this prototype.
+      </p>
+    </div>
+  </details>
 {% endset %}
 
 {% block content %}
@@ -198,21 +226,21 @@
         items: [
           {
             label: "Gender",
-            id: "gender",
+            id: "genderHourlyPay",
             panel: {
               html: genderHourlyPay
             }
           },
           {
             label: "Ethnicity",
-            id: "ethnicity",
+            id: "ethnicityHourlyPay",
             panel: {
               html: ethnicityHourlyPay
             }
           },
           {
             label: "Disability",
-            id: "disability",
+            id: "disabilityHourlyPay",
             panel: {
               html: disabilityHourlyPay
             }
@@ -229,29 +257,30 @@
 
       <h2 id="hourly-pay" class="govuk-heading-m">Pay quarters</h2>
 
-      <p>In this organisation, women made up:</p>
-
-      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-        <li>
-          46.4% of employees in the upper hourly pay quarter (highest paid jobs)
-        </li>
-        <li>
-          60.3% of employees in the upper middle hourly pay quarter
-        </li>
-        <li>
-          59.8% of employees in the lower middle hourly pay quarter
-        </li>
-        <li>
-          52.3% of employees in the lower hourly pay quarter (lowest paid jobs)
-        </li>
-      </ul>
-
-      {% include "common/pay-quarters-visualisation" %}
-
-      {{ govukDetails({
-        summaryText: "Table: pay quarters by gender",
-        html: genderPayQuartersTable,
-        classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
+      {{ govukTabs({
+        items: [
+          {
+            label: "Gender",
+            id: "genderPayQuarters",
+            panel: {
+              html: genderPayQuarters
+            }
+          },
+          {
+            label: "Ethnicity",
+            id: "ethnicityPayQuarters",
+            panel: {
+              html: genderPayQuarters
+            }
+          },
+          {
+            label: "Disability",
+            id: "disabilityPayQuarters",
+            panel: {
+              html: genderPayQuarters
+            }
+          }
+        ]
       }) }}
 
       {{ govukDetails({
