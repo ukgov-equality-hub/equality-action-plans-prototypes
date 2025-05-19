@@ -1,6 +1,15 @@
+{% set upperQuarterPercentage = upperQuarterPercentage or 46.4 %}
+{% set upperMiddleQuarterPercentage = upperMiddleQuarterPercentage or 60.3 %}
+{% set lowerMiddleQuarterPercentage = lowerMiddleQuarterPercentage or 59.8 %}
+{% set lowerQuarterPercentage = lowerQuarterPercentage or 52.3 %}
+{% set leftComparisonLabel = "smaller groups" if payQuartersReportType == "ethnicity" else "women" %}
+{% set rightComparisonLabel = "White British" if payQuartersReportType == "ethnicity" else "men" %}
+
 <figure class="pay-comparison-quarters-vis govuk-body" aria-hidden="true">
     <figcaption class="govuk-visually-hidden">
-        A visualisation showing the proportions of men and women in each pay quarter of this organisation
+        A visualisation showing the proportions of
+        {{ "White British people and those from smaller ethnic groups" if payQuartersReportType == "ethnicity" else "men and women" }}
+        in each pay quarter of this organisation
     </figcaption>
     <div id="pay-comparison-quarters-show-explanation-container" class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
         <div class="govuk-checkboxes__item" style="float: unset;">
@@ -10,19 +19,19 @@
             </label>
         </div>
     </div>
-    
+
     <div class="pay-comparison-quarters-vis-arrow pay-comparison-quarters-vis-arrow--up">
         Highest paid jobs
     </div>
     <div class="pay-comparison-quarters-vis-quarter pay-comparison-quarters-vis-quarter--captions">
         <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--left">
             <div class="pay-comparison-quarters-vis-quarter-caption">
-                Women
+                {{"Smaller groups" if payQuartersReportType == "ethnicity" else "Women"}}
             </div>
         </div>
         <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--right">
             <div class="pay-comparison-quarters-vis-quarter-caption">
-                Men
+                {{"White British" if payQuartersReportType == "ethnicity" else "Men"}}
             </div>
         </div>
     </div>
@@ -33,83 +42,83 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-explanation-sides">
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--left">
-                    46.4% women
+                    {{upperQuarterPercentage}}% {{leftComparisonLabel}}
                 </div>
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--right">
-                    53.6% men
+                    {{100 - upperQuarterPercentage}}% {{rightComparisonLabel}}
                 </div>
             </div>
         </div>
         <div class="pay-comparison-quarters-vis-quarter pay-comparison-quarters-vis-quarter--bottom-border">
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--left">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--women">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="40.500" width="59.500" clip-path="circle(47px at 9.500px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -119,85 +128,85 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--right">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--men">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="40.500" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -212,101 +221,101 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-explanation-sides">
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--left">
-                    60.3% women
+                    {{upperMiddleQuarterPercentage}}% {{leftComparisonLabel}}
                 </div>
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--right">
-                    39.7% men
+                    {{100-upperMiddleQuarterPercentage}}% {{rightComparisonLabel}}
                 </div>
             </div>
         </div>
         <div class="pay-comparison-quarters-vis-quarter pay-comparison-quarters-vis-quarter--bottom-border">
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--left">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--women">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -316,61 +325,61 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--right">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--men">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="91.7500" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -385,101 +394,101 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-explanation-sides">
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--left">
-                    59.8% women
+                    {{lowerMiddleQuarterPercentage}}% {{leftComparisonLabel}}
                 </div>
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--right">
-                    40.2% men
+                    {{100-lowerMiddleQuarterPercentage}}% {{rightComparisonLabel}}
                 </div>
             </div>
         </div>
         <div class="pay-comparison-quarters-vis-quarter pay-comparison-quarters-vis-quarter--bottom-border">
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--left">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--women">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="4.2500" width="95.7500" clip-path="circle(47px at 45.7500px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -489,61 +498,61 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--right">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--men">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -558,89 +567,89 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-explanation-sides">
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--left">
-                    52.3% women
+                    {{lowerQuarterPercentage}}% {{leftComparisonLabel}}
                 </div>
                 <div class="pay-comparison-quarters-vis-quarter-explanation-side pay-comparison-quarters-vis-quarter-explanation-side--right">
-                    47.7% men
+                    {{100-lowerQuarterPercentage}}% {{rightComparisonLabel}}
                 </div>
             </div>
         </div>
         <div class="pay-comparison-quarters-vis-quarter ">
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--left">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--women">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -650,73 +659,73 @@
             </div>
             <div class="pay-comparison-quarters-vis-quarter-side pay-comparison-quarters-vis-quarter-side--right">
                 <div class="pay-comparison-quarters-vis-quarter-faces pay-comparison-quarters-vis-quarter-faces--men">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
             </g>
         </svg>
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--man">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--wb" if payQuartersReportType == "ethnicity" else "--man"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="93.2500" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>
@@ -732,7 +741,7 @@
     <div class="pay-comparison-quarters-vis-caption">
         Each
         <span style="display: inline-block; vertical-align: middle;">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face--woman">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="pay-comparison-quarters-vis-face pay-comparison-quarters-vis-face{{"--notwb" if payQuartersReportType == "ethnicity" else "--woman"}}">
             <g>
                 <circle cx="50" cy="50" r="47" stroke-width="6" class="pay-comparison-quarters-vis-face--face-outline" style="fill: none;"></circle>
                 <rect y="0" height="100" x="0" width="100" clip-path="circle(47px at 50px 50px)" style="stroke: none;" class="pay-comparison-quarters-vis-face--face-outline"></rect>

@@ -101,6 +101,14 @@
       fill: #12436d;
       stroke: #12436d;
     }
+    &.pay-comparison-quarters-vis-face--notwb .pay-comparison-quarters-vis-face--face-outline {
+      fill: #801650;
+      stroke: #801650;
+    }
+    &.pay-comparison-quarters-vis-face--wb .pay-comparison-quarters-vis-face--face-outline {
+      fill: #F46A25;
+      stroke: #F46A25;
+    }
   }
 
   .pay-comparison-quarters-vis-quarter-explanation {
