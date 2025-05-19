@@ -326,7 +326,7 @@
         <li><a href="#hourly-pay">Hourly pay</a></li>
         <li><a href="#pay-quarters">Pay quarters</a></li>
         <li><a href="#bonus-pay">Bonus pay</a></li>
-        <li><a href="#">About {{thisPageEmployer.name}}</a></li>
+        <li><a href="#about">About {{thisPageEmployer.name}}</a></li>
       </ol>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -462,6 +462,57 @@
           }
         ]
       }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="about" class="govuk-heading-m">About {{thisPageEmployer.name}}</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              text: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Sector"
+            },
+            value: {
+              text: "Manufacturing"
+            }
+          },
+          {
+            key: {
+              text: "Snapshot date"
+            },
+            value: {
+              text: "5 April 2025"
+            }
+          },
+          {
+            key: {
+              text: "Employee headcount"
+            },
+            value: {
+              text: "500 to 999 employees"
+            }
+          },
+          {
+            key: {
+              text: "Person responsible"
+            },
+            value: {
+              text: "Toby Flenderson (HR manager)"
+            }
+          }
+        ]
+      }) }}
+
+      <p><a href="#">What this employer says about their gender pay gap (opens in a new window)</a></p>
 
     </div>
   </div>
