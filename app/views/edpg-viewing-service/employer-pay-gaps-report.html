@@ -201,6 +201,46 @@
   </details>
 {% endset %}
 
+{% set disabilityPayQuarters %}
+  <p>In this organisation, disabled people made up:</p>
+
+  {% set upperQuarterPercentage = 2.4 %}
+  {% set upperMiddleQuarterPercentage = 5.2 %}
+  {% set lowerMiddleQuarterPercentage = 6.2 %}
+  {% set lowerQuarterPercentage = 8.3 %}
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      {{upperQuarterPercentage}}% of employees in the upper hourly pay quarter (highest paid jobs)
+    </li>
+    <li>
+      {{upperMiddleQuarterPercentage}}% of employees in the upper middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerMiddleQuarterPercentage}}% of employees in the lower middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerQuarterPercentage}}% of employees in the lower hourly pay quarter (lowest paid jobs)
+    </li>
+  </ul>
+
+  {% set payQuartersReportType = "disability" %}
+  {% include "common/pay-quarters-visualisation" %}
+
+  <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Table: pay quarters by disability
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="user-note">
+        The data table is not shown in this prototype.
+      </p>
+    </div>
+  </details>
+{% endset %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -317,7 +357,7 @@
             label: "Disability",
             id: "disabilityPayQuarters",
             panel: {
-              html: genderPayQuarters
+              html: disabilityPayQuarters
             }
           }
         ]
