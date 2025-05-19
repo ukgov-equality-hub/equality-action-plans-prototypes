@@ -162,7 +162,7 @@
 {% endset %}
 
 {% set ethnicityPayQuarters %}
-  <p>In this organisation, ethnic groups other than White British made up:</p>
+  <p>In this organisation, of those who declared their ethnicity, ethnic groups other than White British made up:</p>
 
   {% set upperQuarterPercentage = 41.5 %}
   {% set upperMiddleQuarterPercentage = 54.1 %}
@@ -202,7 +202,7 @@
 {% endset %}
 
 {% set disabilityPayQuarters %}
-  <p>In this organisation, disabled people made up:</p>
+  <p>In this organisation, of those who declared their disability status, disabled people made up:</p>
 
   {% set upperQuarterPercentage = 2.4 %}
   {% set upperMiddleQuarterPercentage = 5.2 %}
@@ -260,7 +260,7 @@
       <ol class="govuk-list govuk-list--number">
         <li><a href="#main-facts-and-figures">Main facts and figures</a></li>
         <li><a href="#hourly-pay">Hourly pay</a></li>
-        <li><a href="#">Pay quarters</a></li>
+        <li><a href="#pay-quarters">Pay quarters</a></li>
         <li><a href="#">Bonus pay</a></li>
         <li><a href="#">About {{thisPageEmployer.name}}</a></li>
       </ol>
@@ -335,7 +335,7 @@
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-      <h2 id="hourly-pay" class="govuk-heading-m">Pay quarters</h2>
+      <h2 id="pay-quarters" class="govuk-heading-m">Pay quarters</h2>
 
       {{ govukTabs({
         items: [
