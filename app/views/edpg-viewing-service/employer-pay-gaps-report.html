@@ -241,6 +241,70 @@
   </details>
 {% endset %}
 
+{% set genderBonusPay %}
+  <p>In this organisation:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      women’s median bonus pay was 38.7% lower than men’s &mdash; this means they earned 61p for every £1 that men earn when comparing median bonus pay
+      {% set comparisonPay = 61.3 %}
+      {% set hourlyPayReportType = "gender" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      women’s mean (average) bonus pay was 53.7% lower than men’s
+    </li>
+    <li>
+      9.2% of women and 9.3% of men received bonus pay
+    </li>
+  </ul>
+{% endset %}
+
+{% set ethnicityBonusPay %}
+  <p>In this organisation, of those who declared their ethnicity:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>the largest ethnic group was White British (78%)</li>
+    <li>
+      the median bonus pay for people in smaller ethnic groups was 31.8% lower
+      than for White British people &mdash; this means they earned 68p for every
+      £1 that White British people earn when comparing median bonus pay
+      {% set comparisonPay = 67.2 %}
+      {% set hourlyPayReportType = "ethnicity" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      the mean (average) bonus pay for people in smaller ethnic groups was 39.7%
+      lower than for White British people
+    </li>
+    <li>
+      10.2% of people from smaller ethnic groups and 10.3% of White British people
+      received bonus pay
+    </li>
+  </ul>
+{% endset %}
+
+{% set disabilityBonusPay %}
+  <p>In this organisation, of those who declared their disability status:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      disabled people’s median bonus pay was 49.7% lower than non-disabled
+      people’s &mdash; this means they earned 50p for every £1 that non-disabled
+      people earn when comparing median bonus pay
+      {% set comparisonPay = 50.3 %}
+      {% set hourlyPayReportType = "disability" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      disabled people’s mean (average) bonus pay was 58.7% lower than non-disabled people’s
+    </li>
+    <li>
+      5.4% of disabled people and 9.3% of non-disabled people received bonus pay
+    </li>
+  </ul>
+{% endset %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -261,7 +325,7 @@
         <li><a href="#main-facts-and-figures">Main facts and figures</a></li>
         <li><a href="#hourly-pay">Hourly pay</a></li>
         <li><a href="#pay-quarters">Pay quarters</a></li>
-        <li><a href="#">Bonus pay</a></li>
+        <li><a href="#bonus-pay">Bonus pay</a></li>
         <li><a href="#">About {{thisPageEmployer.name}}</a></li>
       </ol>
 
@@ -367,6 +431,36 @@
         summaryText: "Read more about pay quarters",
         html: payQuartersExplanation,
         classes: "govuk-!-margin-top-6"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="bonus-pay" class="govuk-heading-m">Bonus pay</h2>
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Gender",
+            id: "genderBonusPay",
+            panel: {
+              html: genderBonusPay
+            }
+          },
+          {
+            label: "Ethnicity",
+            id: "ethnicityBonusPay",
+            panel: {
+              html: ethnicityBonusPay
+            }
+          },
+          {
+            label: "Disability",
+            id: "disabilityBonusPay",
+            panel: {
+              html: disabilityBonusPay
+            }
+          }
+        ]
       }) }}
 
     </div>
