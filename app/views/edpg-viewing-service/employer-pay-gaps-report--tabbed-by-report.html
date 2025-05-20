@@ -116,15 +116,22 @@
 {% endset %}
 
 {% set disabilityHourlyPay %}
-  <p>
-    Not enough people disclosed their disability status to publish disability
-    pay gap data.
-  </p>
-  <p>
-    Out of 544 employees, only 13 disclosed their disability status. As a result,
-    this employer is not required to publish their disability pay gap data as it
-    might be possible to identify specific individuals.
-  </p>
+  <p>In this organisation, of those who declared their disability status:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      the median hourly pay for disabled people was 40.6% lower
+      than for non-disabled people &mdash; this means they earned 59p for every
+      £1 that non-disabled people earn when comparing median hourly pay
+      {% set comparisonPay = 59.4 %}
+      {% set hourlyPayReportType = "disability" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      the mean (average) hourly pay for disabled people was
+      20.9% lower than for non-disabled people
+    </li>
+  </ul>
 {% endset %}
 
 {% set genderPayQuarters %}
@@ -202,15 +209,43 @@
 {% endset %}
 
 {% set disabilityPayQuarters %}
-  <p>
-    Not enough people disclosed their disability status to publish disability
-    pay gap data.
-  </p>
-  <p>
-    Out of 544 employees, only 13 disclosed their disability status. As a result,
-    this employer is not required to publish their disability pay gap data as it
-    might be possible to identify specific individuals.
-  </p>
+  <p>In this organisation, of those who declared their disability status, disabled people made up:</p>
+
+  {% set upperQuarterPercentage = 2.4 %}
+  {% set upperMiddleQuarterPercentage = 5.2 %}
+  {% set lowerMiddleQuarterPercentage = 6.2 %}
+  {% set lowerQuarterPercentage = 8.3 %}
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      {{upperQuarterPercentage}}% of employees in the upper hourly pay quarter (highest paid jobs)
+    </li>
+    <li>
+      {{upperMiddleQuarterPercentage}}% of employees in the upper middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerMiddleQuarterPercentage}}% of employees in the lower middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerQuarterPercentage}}% of employees in the lower hourly pay quarter (lowest paid jobs)
+    </li>
+  </ul>
+
+  {% set payQuartersReportType = "disability" %}
+  {% include "common/pay-quarters-visualisation" %}
+
+  <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Table: pay quarters by disability
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="user-note">
+        The data table is not shown in this prototype.
+      </p>
+    </div>
+  </details>
 {% endset %}
 
 {% set genderBonusPay %}
@@ -257,15 +292,24 @@
 {% endset %}
 
 {% set disabilityBonusPay %}
-  <p>
-    Not enough people disclosed their disability status to publish disability
-    pay gap data.
-  </p>
-  <p>
-    Out of 544 employees, only 13 disclosed their disability status. As a result,
-    this employer is not required to publish their disability pay gap data as it
-    might be possible to identify specific individuals.
-  </p>
+  <p>In this organisation, of those who declared their disability status:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      disabled people’s median bonus pay was 49.7% lower than non-disabled
+      people’s &mdash; this means they earned 50p for every £1 that non-disabled
+      people earn when comparing median bonus pay
+      {% set comparisonPay = 50.3 %}
+      {% set hourlyPayReportType = "disability" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      disabled people’s mean (average) bonus pay was 58.7% lower than non-disabled people’s
+    </li>
+    <li>
+      5.4% of disabled people and 9.3% of non-disabled people received bonus pay
+    </li>
+  </ul>
 {% endset %}
 
 {% block content %}
@@ -312,18 +356,12 @@
           White British people made up 85.0% of employees in the highest paid quarter, and 62.0% of employees in the lowest paid quarter
         </li>
         <li>
-          not enough people disclosed their disability status to publish disability pay gap data
+          disabled people earned 59p for every £1 that non-disabled people earned (comparing median hourly pay)
+        </li>
+        <li>
+          disabled people made up 2.4% of employees in the highest paid quarter, and 8.3% of employees in the lowest paid quarter
         </li>
       </ul>
-
-      {{ govukDetails({
-        summaryText: "Why is there no disability pay gap data?",
-        text: "If only a small number of people report their disability status,"
-          + " it becomes to easy to personally identify individuals in the data."
-          + " As a result, employers are only required to publish disability pay"
-          + " gap data if 10 or more people, and a minimum of 5% of the employees,"
-          + " disclose their disability status."
-      }) }}
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
