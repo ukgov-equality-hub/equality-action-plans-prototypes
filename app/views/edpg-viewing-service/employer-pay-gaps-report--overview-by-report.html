@@ -1,0 +1,180 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Employer pay gaps report - overview" %}
+{% set serviceName="Equality and disability pay gaps on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Pay gaps report 2023/24"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Pay gaps report 2023/24
+      </h1>
+
+      {{ govukButton({
+        text: "Add to comparison"
+      }) }}
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+
+      <h2 class="govuk-heading-m">Gender</h2>
+
+      <div class="govuk-body">
+        {% set hourlyPayReportType = "gender" %}
+        {% set comparisonPay = 66 %}
+        {% include "common/hourly-pay-comparison" %}
+      </div>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          Women earned 66p for every £1 that men earned
+          (comparing median hourly pay)
+        </li>
+      </ul>
+      <p>
+        See the <a href="employer-pay-gaps-report--gender">full gender pay gap report</a>
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <h2 class="govuk-heading-m">Ethnicity</h2>
+
+      <div class="govuk-body">
+        {% set hourlyPayReportType = "ethnicity" %}
+        {% set comparisonPay = 72 %}
+        {% include "common/hourly-pay-comparison" %}
+      </div>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          77% of people disclosed their ethnicity
+        </li>
+        <li>
+          Of those who disclosed, the largest group was White British
+        </li>
+        <li>
+          Of those who disclosed, people from smaller ethnic groups earned 72p
+          for every £1 that White British people earned (comparing median hourly pay)
+        </li>
+      </ul>
+      <p>
+        See the <a href="employer-pay-gaps-report--ethnicity">full ethnicity pay gap report</a>
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <h2 class="govuk-heading-m">Disability</h2>
+
+      <div class="govuk-body">
+        {% set hourlyPayReportType = "disability" %}
+        {% set comparisonPay = 59 %}
+        {% include "common/hourly-pay-comparison" %}
+      </div>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          32% of people disclosed their disability status
+        </li>
+        <li>
+          Of those who disclosed, disabled people earned 59p for every £1 that
+          non-disabled people earned (comparing median hourly pay)
+        </li>
+      </ul>
+      <p>
+        See the <a href="employer-pay-gaps-report--disability">full disability pay gap report</a>
+      </p>
+
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 id="about" class="govuk-heading-m govuk-!-margin-top-6">About {{thisPageEmployer.name}}</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              text: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Sector"
+            },
+            value: {
+              text: "Manufacturing"
+            }
+          },
+          {
+            key: {
+              text: "Snapshot date"
+            },
+            value: {
+              text: "5 April 2025"
+            }
+          },
+          {
+            key: {
+              text: "Employee headcount"
+            },
+            value: {
+              text: "500 to 999 employees"
+            }
+          },
+          {
+            key: {
+              text: "Person responsible"
+            },
+            value: {
+              text: "Toby Flenderson (HR manager)"
+            }
+          }
+        ]
+      }) }}
+
+      <p><a href="#">What this employer says about their pay gaps (opens in a new window)</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

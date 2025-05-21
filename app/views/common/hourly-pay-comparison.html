@@ -1,8 +1,9 @@
 {% if not comparisonPay %}
   {% set comparisonPay = 50 %}
 {% endif %}
-{% set leftDataLabel = "Women" %}
-{% set rightDataLabel = "Men" %}
+{% set leftDataLabel = "Women<br/><br/>" %}
+{% set rightDataLabel = "Men<br/><br/>" %}
+{# (Line breaks help with alignment when several charts are displayed side-by-side) #}
 {% set leftCssLabel = "women" %}
 {% set rightCssLabel = "men" %}
 {% if hourlyPayReportType == "ethnicity" %}
@@ -49,10 +50,10 @@
   </div>
   <div class="pay-comparison-vertical-bar-chart-captions">
     <div class="pay-comparison-vertical-bar-chart-caption">
-      {{leftDataLabel}}
+      {{leftDataLabel | safe}}
     </div>
     <div class="pay-comparison-vertical-bar-chart-caption">
-      {{rightDataLabel}}
+      {{rightDataLabel | safe}}
     </div>
   </div>
 </figure>
