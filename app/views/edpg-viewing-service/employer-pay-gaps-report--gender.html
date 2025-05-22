@@ -1,0 +1,265 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Employer pay gaps report - gender" %}
+{% set serviceName="Equality and disability pay gaps on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Pay gaps report 2023/24",
+        href: "employer-pay-gaps-report--overview-by-report"
+      },
+      {
+        text: "Gender pay gap report"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set medianVsMeanExplanation %}
+  <h3 class="govuk-heading-s">The median gender pay gap figure</h3>
+  <p>
+    This is the difference between the hourly pay of the median man and the
+    hourly pay of the median woman. The median for each is the man or woman in
+    the middle of a list of hourly pay, ordered from highest to lowest paid.
+  </p>
+  <p>
+    A median involves listing all of the numbers in numerical order. If there is
+    an odd number of results, the median is the middle number. If there is an
+    even number of results, the median will be the mean of the 2 central numbers.
+  </p>
+  <p>
+    Medians are useful to indicate what the ‘typical’ situation is. They are not
+    distorted by very high or low hourly pay, or bonuses. However, this means
+    that not all gender pay gap issues will be picked up. They could also fail
+    to pick up as effectively where the gender pay gap issues are most
+    pronounced in the lowest paid or highest paid employees.
+  </p>
+  <h3 class="govuk-heading-s">The mean (average) gender pay gap figure</h3>
+  <p>
+    The mean gender pay gap figure uses hourly pay of all employees to calculate
+    the difference between the mean hourly pay of men, and the mean hourly pay
+    of women.
+  </p>
+  <p>
+    A mean involves adding up all of the numbers and dividing the result by how
+    many numbers were in the list.
+  </p>
+  <p>
+    Mean averages are useful because they place the same value on every number
+    they use, giving a good overall indication of the gender pay gap. Very high
+    or low hourly pay can ‘dominate’ and distort the figure.
+  </p>
+{% endset %}
+
+{% set payQuartersExplanation %}
+  <p>
+    Pay quarters show the percentage of employees in different groups in 4
+    equally-sized bands based on their hourly pay.
+  </p>
+  <p>
+    Pay quarters give an indication of representation at different
+    levels of the organisation.
+  </p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Gender pay gap report 2023/24
+      </h1>
+
+      {{ govukButton({
+        text: "Add to comparison"
+      }) }}
+
+      <h2 class="govuk-heading-m">Contents</h2>
+
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#main-facts-and-figures">Main facts and figures</a></li>
+        <li><a href="#hourly-pay">Hourly pay</a></li>
+        <li><a href="#pay-quarters">Pay quarters</a></li>
+        <li><a href="#bonus-pay">Bonus pay</a></li>
+        <li><a href="#about">About {{thisPageEmployer.name}}</a></li>
+      </ol>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="main-facts-and-figures" class="govuk-heading-m">1. Main facts and figures</h2>
+
+      <p>In this organisation:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          women earned 66p for every £1 that men earned (comparing median hourly pay)
+        </li>
+        <li>
+          women made up 70.0% of employees in the highest paid quarter, and 88.0% of employees in the lowest paid quarter
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="hourly-pay" class="govuk-heading-m">2. Hourly pay</h2>
+
+      <p>In this organisation:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          women’s median hourly pay was 34.0% lower than men’s &mdash; this means
+          they earned 66p for every £1 that men earn when comparing median hourly pay
+          {% set comparisonPay = 66 %}
+          {% include "common/hourly-pay-comparison" %}
+        </li>
+        <li>
+          women’s mean (average) hourly pay was 14.8% lower than men’s
+        </li>
+      </ul>
+
+      {{ govukDetails({
+        summaryText: "Read more about median and mean",
+        html: medianVsMeanExplanation
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="pay-quarters" class="govuk-heading-m">3. Pay quarters</h2>
+
+      <p>In this organisation, women made up:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          46.4% of employees in the upper hourly pay quarter (highest paid jobs)
+        </li>
+        <li>
+          60.3% of employees in the upper middle hourly pay quarter
+        </li>
+        <li>
+          59.8% of employees in the lower middle hourly pay quarter
+        </li>
+        <li>
+          52.3% of employees in the lower hourly pay quarter (lowest paid jobs)
+        </li>
+      </ul>
+
+      {% include "common/pay-quarters-visualisation" %}
+
+      <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Table: pay quarters by gender
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="user-note">
+            The data table is not shown in this prototype.
+          </p>
+        </div>
+      </details>
+
+      {{ govukDetails({
+        summaryText: "Read more about pay quarters",
+        html: payQuartersExplanation,
+        classes: "govuk-!-margin-top-6"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="bonus-pay" class="govuk-heading-m">4. Bonus pay</h2>
+
+      <p>In this organisation:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          women’s median bonus pay was 38.7% lower than men’s &mdash; this means they earned 61p for every £1 that men earn when comparing median bonus pay
+          {% set comparisonPay = 61.3 %}
+          {% set hourlyPayReportType = "gender" %}
+          {% include "common/hourly-pay-comparison" %}
+        </li>
+        <li>
+          women’s mean (average) bonus pay was 53.7% lower than men’s
+        </li>
+        <li>
+          9.2% of women and 9.3% of men received bonus pay
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="about" class="govuk-heading-m">5. About {{thisPageEmployer.name}}</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              text: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Sector"
+            },
+            value: {
+              text: "Manufacturing"
+            }
+          },
+          {
+            key: {
+              text: "Snapshot date"
+            },
+            value: {
+              text: "5 April 2025"
+            }
+          },
+          {
+            key: {
+              text: "Employee headcount"
+            },
+            value: {
+              text: "500 to 999 employees"
+            }
+          },
+          {
+            key: {
+              text: "Person responsible"
+            },
+            value: {
+              text: "Toby Flenderson (HR manager)"
+            }
+          }
+        ]
+      }) }}
+
+      <p><a href="#">What this employer says about their pay gaps (opens in a new window)</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
