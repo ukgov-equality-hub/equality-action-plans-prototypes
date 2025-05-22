@@ -10,6 +10,10 @@
   font-weight: 700;
 }
 
+.govuk-list--bullet .govuk-list--bullet {
+  list-style-type: circle;
+}
+
 .placeholder {
   color: $govuk-secondary-text-colour;
   font-style: italic;
