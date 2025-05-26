@@ -206,6 +206,52 @@
   top: -5px;
 }
 
+.data-visualisation-vertical-bar-chart {
+  display: flex;
+  flex-flow: wrap-reverse;
+
+  .data-visualisation-vertical-bar {
+    $bar-max-height: 200px;
+    $percent-wb: 46;
+    $percent-white-other: 13;
+    $percent-asian: 12;
+    $percent-black: 5;
+    $percent-undisclosed: 23;
+
+    width: 60px;
+    height: $bar-max-height;
+    display: inline-block;
+    margin-right: 10px;
+
+    &.wb {
+      height: $bar-max-height;
+    }
+    &.white-other {
+      height: $bar-max-height * $percent-white-other / $percent-wb;
+    }
+    &.asian {
+      height: $bar-max-height * $percent-asian / $percent-wb;
+    }
+    &.black {
+      height: $bar-max-height * $percent-black / $percent-wb;
+    }
+    &.undisclosed {
+      height: $bar-max-height * $percent-undisclosed / $percent-wb;
+    }
+  }
+}
+
+.data-visualisation-vertical-bar-chart-captions {
+  display: flex;
+
+  div {
+    font-size: 16px;
+    width: 60px;
+    margin-right: 10px;
+    text-align: center;
+  }
+}
+
 .no-access {
   background-color: govuk-colour("orange");
 }
@@ -216,6 +262,22 @@
 
 .using, .women {
   background-color: mix(govuk-colour("turquoise"), white, 75%);
+}
+
+.wb {
+  background-color: #F46A25;
+}
+.not-wb, .white-other {
+  background-color: #801650;
+}
+.asian {
+  background-color: mix(#801650, white, 75%);;
+}
+.black {
+  background-color: mix(#801650, white, 50%);
+}
+.undisclosed {
+  background-color: #BFBFBF;
 }
 
 .datavis-fw-overall {
