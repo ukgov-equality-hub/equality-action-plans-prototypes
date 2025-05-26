@@ -209,6 +209,7 @@
 .data-visualisation-vertical-bar-chart {
   display: flex;
   flex-flow: wrap-reverse;
+  justify-content: center;
 
   .data-visualisation-vertical-bar {
     $bar-max-height: 200px;
@@ -243,6 +244,7 @@
 
 .data-visualisation-vertical-bar-chart-captions {
   display: flex;
+  justify-content: center;
 
   div {
     font-size: 16px;
