@@ -7,9 +7,19 @@
 {% set leftCssLabel = "women" %}
 {% set rightCssLabel = "men" %}
 {% if hourlyPayReportType == "ethnicity" %}
-  {% set leftDataLabel = "Smaller groups" %}
+  {% if multipleGroups %}
+    {% set leftDataLabel  = "Other White groups" %}
+    {% set dataLabel2     = "Asian groups" %}
+    {% set dataLabel3     = "Black groups" %}
+    {% set leftCssLabel   = "white-other" %}
+    {% set cssLabel2      = "asian" %}
+    {% set cssLabel3      = "black" %}
+  {% else %}
+    {% set leftDataLabel = "Smaller groups" %}
+    {% set leftCssLabel = "notwb" %}
+  {% endif %}
+
   {% set rightDataLabel = "White British" %}
-  {% set leftCssLabel = "notwb" %}
   {% set rightCssLabel = "wb" %}
 {% endif %}
 {% if hourlyPayReportType == "disability" %}
@@ -19,9 +29,11 @@
   {% set rightCssLabel = "not-disabled" %}
 {% endif %}
 
-{# Setting this here is necessary to avoid false-positive code warnings in my IDE 
+{# Setting these here is necessary to avoid false-positive code warnings in my IDE 
    which occur if using inline {{comparisonPay}} in the style statement in the HTML tag. #}
-{% set styleStatement = "style=height:" + comparisonPay + "%;" %}
+{% set styleStatement  = "style=height:" + comparisonPay  + "%;" %}
+{% set styleStatement2 = "style=height:" + comparisonPay2 + "%;" %}
+{% set styleStatement3 = "style=height:" + comparisonPay3 + "%;" %}
 <figure class="pay-comparison-vertical-bar-chart" aria-hidden="true">
   <div class="pay-comparison-vertical-bar-chart-more-or-less">
     <div class="pay-comparison-vertical-bar-chart-more-or-less-inner">
@@ -31,12 +43,34 @@
       <br>
       <span class="pay-comparison-vertical-bar-chart-more-or-less-arrow" style="transform: rotate(135deg)"></span>
     </div>
+    {% if multipleGroups %}
+      <div class="pay-comparison-vertical-bar-chart-more-or-less-inner">
+        {{100-comparisonPay2}}p
+        <br>
+        less
+        <br>
+        <span class="pay-comparison-vertical-bar-chart-more-or-less-arrow" style="transform: rotate(135deg)"></span>
+      </div>
+      <div class="pay-comparison-vertical-bar-chart-more-or-less-inner">
+        {{100-comparisonPay3}}p
+        <br>
+        less
+        <br>
+        <span class="pay-comparison-vertical-bar-chart-more-or-less-arrow" style="transform: rotate(135deg)"></span>
+      </div>
+    {% endif %}
     <div class="pay-comparison-vertical-bar-chart-more-or-less-inner">
     </div>
   </div>
   <div class="pay-comparison-vertical-bar-chart-bars">
     <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--{{leftCssLabel}}" {{styleStatement}}>
     </div>
+    {% if multipleGroups %}
+      <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--{{cssLabel2}}" {{styleStatement2}}>
+      </div>
+      <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--{{cssLabel3}}" {{styleStatement3}}>
+      </div>
+    {% endif %}
     <div class="pay-comparison-vertical-bar-chart-bar pay-comparison-vertical-bar-chart-bar--{{rightCssLabel}}" style="height: 100%;">
     </div>
   </div>
@@ -44,6 +78,14 @@
     <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--{{leftCssLabel}}">
       {{comparisonPay}}p
     </div>
+    {% if multipleGroups %}
+      <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--{{cssLabel2}}">
+        {{comparisonPay2}}p
+      </div>
+      <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--{{cssLabel3}}">
+        {{comparisonPay3}}p
+      </div>
+    {% endif %}
     <div class="pay-comparison-vertical-bar-chart-coin pay-comparison-vertical-bar-chart-coin--{{rightCssLabel}}">
       £1
     </div>
@@ -52,6 +94,14 @@
     <div class="pay-comparison-vertical-bar-chart-caption">
       {{leftDataLabel | safe}}
     </div>
+    {% if multipleGroups %}
+      <div class="pay-comparison-vertical-bar-chart-caption">
+        {{dataLabel2 | safe}}
+      </div>
+      <div class="pay-comparison-vertical-bar-chart-caption">
+        {{dataLabel3 | safe}}
+      </div>
+    {% endif %}
     <div class="pay-comparison-vertical-bar-chart-caption">
       {{rightDataLabel | safe}}
     </div>

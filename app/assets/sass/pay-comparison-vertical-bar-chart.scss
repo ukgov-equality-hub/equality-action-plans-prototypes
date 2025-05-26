@@ -55,6 +55,21 @@
         height: 50%;
       }
 
+      &.pay-comparison-vertical-bar-chart-bar--white-other {
+        background-color: #801650;
+        height: 50%;
+      }
+
+      &.pay-comparison-vertical-bar-chart-bar--asian {
+        background-color: mix(#801650, white, 75%);
+        height: 50%;
+      }
+
+      &.pay-comparison-vertical-bar-chart-bar--black {
+        background-color: mix(#801650, white, 50%);
+        height: 50%;
+      }
+
       &.pay-comparison-vertical-bar-chart-bar--wb {
         background-color: #F46A25;
         height: 50%;
@@ -95,6 +110,15 @@
       }
       &.pay-comparison-vertical-bar-chart-coin--notwb {
         border-color: #801650;
+      }
+      &.pay-comparison-vertical-bar-chart-coin--white-other {
+        border-color: #801650;
+      }
+      &.pay-comparison-vertical-bar-chart-coin--asian {
+        border-color: mix(#801650, white, 75%);
+      }
+      &.pay-comparison-vertical-bar-chart-coin--black {
+        border-color: mix(#801650, white, 50%);
       }
       &.pay-comparison-vertical-bar-chart-coin--wb {
         border-color: #F46A25;

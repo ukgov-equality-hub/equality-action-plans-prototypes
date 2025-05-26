@@ -1,0 +1,288 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Data visualisations with multiple groups" %}
+{% set serviceName="Equality and disability pay gaps on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Pay gaps report 2023/24",
+        href: "employer-pay-gaps-report--overview-by-report"
+      },
+      {
+        text: "Ethnicity pay gap report"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set medianVsMeanExplanation %}
+  <h3 class="govuk-heading-s">The median ethnicity pay gap figure</h3>
+  <p>
+    This is the difference between the hourly pay of the median person in the
+    largest ethnic group (in this case White British) and the hourly pay of the
+    median person in other ethnic groups. The median for each group is the
+    person in the middle of a list of hourly pay, ordered from highest to lowest paid.
+  </p>
+  <p>
+    A median involves listing all of the numbers in numerical order. If there is
+    an odd number of results, the median is the middle number. If there is an
+    even number of results, the median will be the mean of the 2 central numbers.
+  </p>
+  <p>
+    Medians are useful to indicate what the ‘typical’ situation is. They are not
+    distorted by very high or low hourly pay, or bonuses. However, this means
+    that not all ethnicity pay gap issues will be picked up. They could also fail
+    to pick up as effectively where the ethnicity pay gap issues are most
+    pronounced in the lowest paid or highest paid employees.
+  </p>
+  <h3 class="govuk-heading-s">The mean (average) ethnicity pay gap figure</h3>
+  <p>
+    The mean ethnicity pay gap figure uses hourly pay of all employees to calculate
+    the difference between the mean hourly pay of men, and the mean hourly pay
+    of women.
+  </p>
+  <p>
+    A mean involves adding up all of the numbers and dividing the result by how
+    many numbers were in the list.
+  </p>
+  <p>
+    Mean averages are useful because they place the same value on every number
+    they use, giving a good overall indication of the ethnicity pay gap. Very high
+    or low hourly pay can ‘dominate’ and distort the figure.
+  </p>
+{% endset %}
+
+{% set payQuartersExplanation %}
+  <p>
+    Pay quarters show the percentage of employees in different groups in 4
+    equally-sized bands based on their hourly pay.
+  </p>
+  <p>
+    Pay quarters give an indication of representation at different
+    levels of the organisation.
+  </p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Ethnicity pay gap report 2023/24
+      </h1>
+
+      {{ govukButton({
+        text: "Add to comparison"
+      }) }}
+
+      <h2 class="govuk-heading-m">Contents</h2>
+
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#main-facts-and-figures">Main facts and figures</a></li>
+        <li><a href="#workforce-breakdown">Workforce breakdown</a></li>
+        <li><a href="#hourly-pay">Hourly pay</a></li>
+        <li><a href="#pay-quarters">Pay quarters</a></li>
+        <li><a href="#bonus-pay">Bonus pay</a></li>
+      </ol>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="main-facts-and-figures" class="govuk-heading-m">1. Main facts and figures</h2>
+
+      <p>In this organisation:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          77% of people disclosed their ethnicity
+        </li>
+        <li>
+          Of those who disclosed:
+          <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+            <li>
+              the largest group was White British
+            </li>
+            <li>
+              people from smaller ethnic groups earned 72p for every £1 that
+              White British people earned (comparing median hourly pay)
+            </li>
+            <li>
+              White British people made up 85.0% of employees in the highest
+              paid quarter, and 62.0% of employees in the lowest paid quarter
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="workforce-breakdown" class="govuk-heading-m">2. Workforce breakdown</h2>
+
+      <p>In this organisation:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          51% of people declared themselves as White British, making it the
+          largest ethnic group
+        </li>
+        <li>
+          13% declared themselves as within other White ethnic groups
+        </li>
+        <li>
+          12% declared themselves as within Asian ethnic groups
+        </li>
+        <li>
+          5% declared themselves as within Black ethnic groups
+        </li>
+        <li>
+          23% of people did not disclose their ethnicity
+        </li>
+      </ul>
+
+      <div class="data-visualisation-vertical-bar-chart govuk-!-margin-top-6 govuk-!-margin-bottom-4">
+        <div class="data-visualisation-vertical-bar wb"></div>
+        <div class="data-visualisation-vertical-bar white-other"></div>
+        <div class="data-visualisation-vertical-bar asian"></div>
+        <div class="data-visualisation-vertical-bar black"></div>
+        <div class="data-visualisation-vertical-bar undisclosed"></div>
+      </div>
+      <div class="data-visualisation-vertical-bar-chart-captions govuk-body">
+        <div>White British</div>
+        <div>Other White groups</div>
+        <div>Asian groups</div>
+        <div>Black groups</div>
+        <div>Undisclosed</div>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="hourly-pay" class="govuk-heading-m">3. Hourly pay</h2>
+
+      <p>In this organisation, of those who declared their ethnicity:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          the median hourly pay for people in smaller ethnic groups was 28.0% lower
+          than for White British people &mdash; this means they earned 72p for every
+          £1 that White British people earn when comparing median hourly pay
+          {% set comparisonPay = 70 %}
+          {% set comparisonPay2 = 75 %}
+          {% set comparisonPay3 = 65 %}
+          {% set hourlyPayReportType = "ethnicity" %}
+          {% set multipleGroups = true %}
+          {% include "common/hourly-pay-comparison" %}
+        </li>
+        <li>
+          the mean (average) hourly pay for people in smaller ethnic groups was
+          11.2% lower than for White British people
+        </li>
+      </ul>
+
+      {{ govukDetails({
+        summaryText: "Read more about median and mean",
+        html: medianVsMeanExplanation
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="pay-quarters" class="govuk-heading-m">4. Pay quarters</h2>
+
+      <p>In this organisation, of those who declared their ethnicity, ethnic groups other than White British made up:</p>
+
+      {% set upperQuarterPercentage = 41.5 %}
+      {% set upperMiddleQuarterPercentage = 54.1 %}
+      {% set lowerMiddleQuarterPercentage = 51.3 %}
+      {% set lowerQuarterPercentage = 50.2 %}
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          {{upperQuarterPercentage}}% of employees in the upper hourly pay quarter (highest paid jobs)
+        </li>
+        <li>
+          {{upperMiddleQuarterPercentage}}% of employees in the upper middle hourly pay quarter
+        </li>
+        <li>
+          {{lowerMiddleQuarterPercentage}}% of employees in the lower middle hourly pay quarter
+        </li>
+        <li>
+          {{lowerQuarterPercentage}}% of employees in the lower hourly pay quarter (lowest paid jobs)
+        </li>
+      </ul>
+
+      {% set payQuartersReportType = "ethnicity" %}
+      {% include "common/pay-quarters-visualisation" %}
+
+      <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Table: pay quarters by ethnicity
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="user-note">
+            The data table is not shown in this prototype.
+          </p>
+        </div>
+      </details>
+
+      {{ govukDetails({
+        summaryText: "Read more about pay quarters",
+        html: payQuartersExplanation,
+        classes: "govuk-!-margin-top-6"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="bonus-pay" class="govuk-heading-m">5. Bonus pay</h2>
+
+      <p>In this organisation, of those who declared their ethnicity:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          the median bonus pay for people in smaller ethnic groups was 31.8% lower
+          than for White British people &mdash; this means they earned 67p for every
+          £1 that White British people earn when comparing median bonus pay
+          {% set comparisonPay = 67.2 %}
+          {% set hourlyPayReportType = "ethnicity" %}
+          {% include "common/hourly-pay-comparison" %}
+        </li>
+        <li>
+          the mean (average) bonus pay for people in smaller ethnic groups was 39.7%
+          lower than for White British people
+        </li>
+        <li>
+          10.2% of people from smaller ethnic groups and 10.3% of White British people
+          received bonus pay
+        </li>
+      </ul>
+
+      <p>
+        Go back to the <a href="employer-pay-gaps-report--overview-by-report">pay gaps report overview</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
