@@ -54,6 +54,15 @@
 
     <h2 class="govuk-heading-m">Company information</h2>
 
+    {# For some reason this rule does not apply correctly inside task lists
+      selected by class, only when applied globally. However, we don't want
+      it to apply globally, so just specify it "globally" for this one page. #}
+    <style>
+      .govuk-task-list__name-and-hint {
+        width: 70% !important;
+      }
+    </style>
+
     {{ govukTaskList({
       idPrefix: "company-info",
       items: [
@@ -164,54 +173,45 @@
               text: "Incomplete",
               classes: "govuk-tag--blue"
             }
+          },
+          hint: {
+            text: "You must complete your workforce breakdown before the other sections"
           }
         },
         {
           title: {
             text: "Mean and median ethnicity pay gap using hourly pay"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         },
         {
           title: {
             text: "Percentage of different ethnic groups in each hourly pay quarter"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         },
         {
           title: {
             text: "Percentage of different ethnic groups who received bonus pay"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         },
         {
           title: {
             text: "Mean and median ethnicity pay gap using bonus pay"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         }
       ]
@@ -228,58 +228,47 @@
           },
           href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Complete"
+          },
+          hint: {
+            text: "Your disclosure rates on disability status are too low to"
+              + " report on your disability pay gap."
           }
         },
         {
           title: {
             text: "Mean and median disability pay gap using hourly pay"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Not required",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         },
         {
           title: {
             text: "Percentage of disabled and non-disabled people in each hourly pay quarter"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Not required",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         },
         {
           title: {
             text: "Percentage of disabled and non-disabled people who received bonus pay"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Not required",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         },
         {
           title: {
             text: "Mean and median disability pay gap using bonus pay"
           },
-          href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+            text: "Not required",
+            classes: "govuk-task-list__status--cannot-start-yet"
           }
         }
       ]
