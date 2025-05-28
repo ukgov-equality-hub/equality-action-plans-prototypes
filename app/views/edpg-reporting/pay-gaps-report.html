@@ -21,40 +21,56 @@
   }) }}
 {% endblock breadCrumbs %}
 
+{% set preSubmissionInfo %}
+  <p>
+    On submission your gender pay gap information will be published on the
+    Gender pay gap service.
+  </p>
+  <p>
+    Submission of inaccurate data will mean your employer has not complied with
+    the gender pay gap reporting regulations.
+  </p>
+{% endset %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
     <h1 class="govuk-heading-l">
-      {{ pageName }}
+      Pay gaps report
     </h1>
 
     <p>
-      You must submit pay gap reports covering gender, ethnicity and disability.
+      You must submit pay gap data covering gender, ethnicity and disability.
     </p>
     <p>
-      For full details of what these reports include, see the
+      For full details of how to report these figures, see the
       <a href="#">pay gap reporting guidance</a>.
     </p>
 
+    <h2 class="govuk-heading-m">Company information</h2>
+
     {{ govukTaskList({
-      idPrefix: "pay-gap-report",
+      idPrefix: "company-info",
       items: [
         {
           title: {
-            text: "Gender pay gap report"
+            text: "Person responsible"
           },
-          href: "gender-pay-gap-report",
+          href: "#",
           status: {
-            text: "Completed"
+            text: "Toby Flenderson"
           }
         },
         {
           title: {
-            text: "Ethnicity pay gap report"
+            text: "Employee headcount"
           },
-          href: "ethnicity-pay-gap-report",
+          href: "#",
           status: {
             tag: {
               text: "Incomplete",
@@ -64,9 +80,9 @@
         },
         {
           title: {
-            text: "Disability pay gap report"
+            text: "Link to your supporting narrative"
           },
-          href: "disability-pay-gap-report",
+          href: "#",
           status: {
             tag: {
               text: "Incomplete",
@@ -76,6 +92,218 @@
         }
       ]
     }) }}
+
+    <h2 class="govuk-heading-m">Gender pay gap</h2>
+
+    {{ govukTaskList({
+      idPrefix: "gender-pay-gap-report",
+      items: [
+        {
+          title: {
+            text: "Mean and median gender pay gap using hourly pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentage of men and women in each hourly pay quarter"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentage of men and women who received bonus pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Mean and median gender pay gap using bonus pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Ethnicity pay gap</h2>
+
+    {{ govukTaskList({
+      idPrefix: "ethnicity-pay-gap-report",
+      items: [
+        {
+          title: {
+            text: "Workforce breakdown by ethnicity, and disclosure rates"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Mean and median ethnicity pay gap using hourly pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentage of different ethnic groups in each hourly pay quarter"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentage of different ethnic groups who received bonus pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Mean and median ethnicity pay gap using bonus pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Disability pay gap</h2>
+
+    {{ govukTaskList({
+      idPrefix: "disability-pay-gap-report",
+      items: [
+        {
+          title: {
+            text: "Workforce breakdown by disability status, and disclosure rates"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Mean and median disability pay gap using hourly pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentage of disabled and non-disabled people in each hourly pay quarter"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentage of disabled and non-disabled people who received bonus pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Mean and median disability pay gap using bonus pay"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukInsetText({
+      html: preSubmissionInfo
+    }) }}
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Discard draft",
+        classes: "govuk-button--secondary"
+      }) }}
+
+      {{ govukButton({
+        text: "Submit",
+        disabled: true
+      }) }}
+    </div>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
 
   </div>
 </div>
