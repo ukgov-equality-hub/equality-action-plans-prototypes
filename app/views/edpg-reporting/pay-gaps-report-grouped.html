@@ -1,0 +1,132 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set preSubmissionInfo %}
+  <p>
+    On submission your gender pay gap information will be published on the
+    Gender pay gap service.
+  </p>
+  <p>
+    Submission of inaccurate data will mean your employer has not complied with
+    the gender pay gap reporting regulations.
+  </p>
+{% endset %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-l">
+      Pay gaps report
+    </h1>
+
+    <p>
+      You must submit pay gap data covering gender, ethnicity and disability.
+    </p>
+    <p>
+      For full details of how to report these figures, see the
+      <a href="#">pay gap reporting guidance</a>.
+    </p>
+
+    {{ govukTaskList({
+      idPrefix: "pay-gaps-report",
+      items: [
+        {
+          title: {
+            text: "Company information"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Gender pay gap"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Ethnicity pay gap"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Disability pay gap"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukInsetText({
+      html: preSubmissionInfo
+    }) }}
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Discard draft",
+        classes: "govuk-button--secondary"
+      }) }}
+
+      {{ govukButton({
+        text: "Submit",
+        disabled: true
+      }) }}
+    </div>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
