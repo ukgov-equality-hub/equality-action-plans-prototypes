@@ -118,7 +118,7 @@ module.exports = {
           {
             year: "2024/25",
             type: "GPG report",
-            status: "complete",
+            status: "required",
             deadline: "4 April 2025"
           },
           {

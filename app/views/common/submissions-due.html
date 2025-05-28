@@ -19,7 +19,11 @@
             {{report.year}}
           </td>
           <td class="govuk-table__cell">
-            {{report.type}}
+            {% if useTriplePayGapReport and report.type == "GPG report" %}
+              Pay gaps report
+            {% else %}
+              {{report.type}}
+            {% endif %}
           </td>
           <td class="govuk-table__cell">
             {% if report.status == "overdue" %}

@@ -1,0 +1,83 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+
+    <p>
+      You must submit pay gap reports covering gender, ethnicity and disability.
+    </p>
+    <p>
+      For full details of what these reports include, see the
+      <a href="#">pay gap reporting guidance</a>.
+    </p>
+
+    {{ govukTaskList({
+      idPrefix: "pay-gap-report",
+      items: [
+        {
+          title: {
+            text: "Gender pay gap report"
+          },
+          href: "gender-pay-gap-report",
+          status: {
+            text: "Completed"
+          }
+        },
+        {
+          title: {
+            text: "Ethnicity pay gap report"
+          },
+          href: "ethnicity-pay-gap-report",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Disability pay gap report"
+          },
+          href: "disability-pay-gap-report",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

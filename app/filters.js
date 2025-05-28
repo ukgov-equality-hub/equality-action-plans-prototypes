@@ -80,6 +80,9 @@ addFilter('reportTypeToUrl', function(reportType) {
     case "Additional data collection":
       reportLinkUrl = "data-collection";
       break;
+    case "GPG report":
+      reportLinkUrl = "pay-gaps-report";
+      break;
     default:
       reportLinkUrl = "#";
   }
