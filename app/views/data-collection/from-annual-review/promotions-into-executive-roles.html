@@ -3,6 +3,22 @@
 {% set pageName="Data collection as part of annual review" %}
 {% set serviceName="Integrated data collection - visualisations" %}
 
+{% set promotionDefinitions %}
+  <p>
+    Promotion refers to a permanent change when an employee advances or rises to
+    a higher office or rank on an ongoing basis or fixed-term contract and does
+    not return to the previous role.
+  </p>
+  <p>
+    This includes when employees are promoted from one managerial role to another.
+  </p>
+  <p>
+    Temporary changes, employees relocating to overseas offices, and those that
+    transfer to a position of equal rank (despite an increase in duties) are not
+    considered promotions.
+  </p>
+{% endset %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -19,14 +35,7 @@
 
       {{ govukDetails({
         summaryText: "See exact definitions",
-        html: "<p>Promotion refers to a permanent change when an employee advances"
-          + " or rises to a higher office or rank on an ongoing basis or fixed-term"
-          + " contract and does not return to the previous role.</p>"
-          + "<p>This includes when employees are promoted from one managerial"
-          + " role to another.</p>"
-          + "<p>Temporary changes, employees relocating to overseas offices, and"
-          + " those that transfer to a position of equal rank (despite an increase"
-          + " in duties) are not considered promotions.</p>"
+        html: promotionDefinitions
       }) }}
 
       {{ govukInput({
