@@ -1,17 +1,18 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %}
-  Complete list of possible suggested actions – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-{% set serviceName="Choosing actions - visualisations" %}
+{% set pageName = "Action plans reference list of actions" %}
+{% set serviceName="Action plans public reference" %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <span class="govuk-caption-xl">
+        Action plans
+      </span>
       <h1 class="govuk-heading-xl">
-        Suggested actions - reference
+        Reference list of actions
       </h1>
 
       <p>
@@ -20,31 +21,22 @@
       </p>
 
       {% for category in data.db.actionCategories %}
-        <h2 class="govuk-heading-l">{{category.title}}</h2>
+        {% if category.shortCode != "data" %}
+          <h2 class="govuk-heading-m">{{category.title}}</h2>
 
-        {% for action in data.db.actions %}
-          {% if action.category == category.shortCode %}
-            <h3 class="govuk-heading-m">{{action.title}}</h3>
-            {% include "content/"+action.shortCode+"/summary" %}
+          {% for action in data.db.actions %}
+            {% if action.category == category.shortCode %}
+              <h3 class="govuk-heading-s">{{action.title}}</h3>
 
-            <h4 class="govuk-heading-s">Target metrics</h4>
-            {% if not action.targets or action.targets.length == 0 %}
+              {% include "content/"+action.shortCode+"/summary" %}
+
               <p>
-                This action is a strategic action overseeing the improvement process as a whole.
-                As a result, it should lead to a positive impact on all metrics.
+                For more information,
+                <a href="action-guidance?actionShortCode={{action.shortCode}}">see the full guidance for this action</a>.
               </p>
-            {% else %}
-              <p>This action should improve the following metrics:</p>
-              <ul class="govuk-list govuk-list--bullet">
-                {% for metricShortCode in action.targets %}
-                  {% for dbMetric in data.db.metrics %}{% if dbMetric.shortCode == metricShortCode %}
-                    <li>{{dbMetric.title.toLowerCase()}}</li>
-                  {% endif %}{% endfor %}
-                {% endfor %}
-              </ul>
             {% endif %}
-          {% endif %}
-        {% endfor %}
+          {% endfor %}
+        {% endif %}
       {% endfor %}
 
     </div>
