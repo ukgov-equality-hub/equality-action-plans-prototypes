@@ -32,6 +32,51 @@
   </p>
 {% endset %}
 
+{# Data  exists#}
+{% if data.workforce['disabled'] or data.workforce['nonDisabled'] or data.workforce['disabilityStatusNotDisclosed'] %}
+  {% set disabilityEligibilityStatus = {text: "Completed"} %}
+
+  {# Needs to report #}
+  {% if data.workforce['disabled'] >= 10 and data.workforce['nonDisabled'] >= 10 %}
+    {% set disabledGpgTasksStatus = {
+      tag: {
+        text: "Incomplete",
+        classes: "govuk-tag--blue"
+      }
+    } %}
+
+  {# Shouldn't report #}
+  {% else %}
+    {% set disabilityEligibilityHint = {
+      text: "Your disclosure rates on disability status are too low to"
+              + " report on your disability pay gap."
+            }
+            %}
+    {% set disabledGpgTasksStatus = {
+      text: "Not required"
+    } %}
+  {% endif %}
+
+{# No data #}
+{% else %}
+  {% set disabilityEligibilityStatus = {
+    tag: {
+      text: "Incomplete",
+      classes: "govuk-tag--blue"
+    }
+  } %}
+  {% set disabilityEligibilityHint = {
+        text: "You must complete your workforce breakdown before the other sections"
+      }
+      %}
+  {% set disabledGpgTasksStatus = {
+      text: "Cannot start yet",
+      classes: "govuk-task-list__status--cannot-start-yet"
+    }
+  %}
+{% endif %}
+
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -227,58 +272,32 @@
             text: "Workforce breakdown by disability status, and disclosure rates"
           },
           href: "dpg-questions/eligibility",
-
-          status: {
-            text: "Completed" if (data.workforce['disabled'] or data.workforce['notDisabled'] or data.workforce['disabilityStatusNotDisclosed']) else null,
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }  if not (data.workforce['disabled'] or data.workforce['notDisabled'] or data.workforce['disabilityStatusNotDisclosed']) else null
-          },
-
-          hint: {
-            text: "Your disclosure rates on disability status are too low to"
-              + " report on your disability pay gap."
-          }
+          status: disabilityEligibilityStatus,
+          hint: disabilityEligibilityHint
         },
         {
           title: {
             text: "Mean and median disability pay gap using hourly pay"
           },
-          status: {
-            text: "Cannot start yet" if not (data.workforce['disabled'] or data.workforce['notDisabled'] or data.workforce['disabilityStatusNotDisclosed']) else null,
-            text: "Not required" if (
-              (data.workforce['disabled'] or data.workforce['notDisabled'] or data.workforce['disabilityStatusNotDisclosed']) 
-              and not (data.workforce['disabled'] >= 10 and data.workforce['notDisabled'] >= 10)),
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: disabledGpgTasksStatus
         },
         {
           title: {
             text: "Percentage of disabled and non-disabled people in each hourly pay quarter"
           },
-          status: {
-            text: "Not required",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: disabledGpgTasksStatus
         },
         {
           title: {
             text: "Percentage of disabled and non-disabled people who received bonus pay"
           },
-          status: {
-            text: "Not required",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: disabledGpgTasksStatus
         },
         {
           title: {
             text: "Mean and median disability pay gap using bonus pay"
           },
-          status: {
-            text: "Not required",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: disabledGpgTasksStatus
         }
       ]
     }) }}
