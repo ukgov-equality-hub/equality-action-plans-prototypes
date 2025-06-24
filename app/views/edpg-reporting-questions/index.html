@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ serviceName }}
+    </h1>
+
+    <p>
+      This is an illustrative visualisation of how employers might report their
+      three pay gaps and action plans.
+    </p>
+
+    <p><a href="edpg-reporting-questions/dashboard">Dashboard</a></p>
+
+    <p><a href="edpg-reporting-questions/pay-gaps-report">Pay gaps report</a> (now with separate pages per question)</p>
+
+    <!-- <p><a href="edpg-reporting-questions/pay-gaps-report-grouped">Pay gaps report</a> (one long data page per report, closer to the current system)</p> -->
+
+  </div>
+</div>
+
+{% endblock %}
