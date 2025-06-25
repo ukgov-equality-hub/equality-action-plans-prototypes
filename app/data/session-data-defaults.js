@@ -253,23 +253,23 @@ module.exports = {
       },
       {
         shortCode: 'analysis',
-        title: 'Essential analysis',
+        title: 'Analysing your data',
       },
       {
         shortCode: 'recruitment',
-        title: 'Hiring and selection'
+        title: 'Recruiting staff'
       },
       {
         shortCode: 'promotion-and-retention',
-        title: 'Promotion and retention'
+        title: 'Promoting and retaining staff'
       },
       {
         shortCode: 'flexibility',
-        title: 'Workplace flexibility'
+        title: 'Creating a more flexible workplace'
       },
       {
         shortCode: 'menopause',
-        title: 'Support during menopause'
+        title: 'Supporting staff during menopause'
       }
     ],
 
