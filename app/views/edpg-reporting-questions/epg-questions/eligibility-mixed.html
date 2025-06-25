@@ -1,0 +1,83 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Employees with a Mixed ethnic background
+      </h1>
+
+      <form class="form" action="../pay-gaps-report" method="post">
+
+        {{ govukInput({
+          label: {
+            text: "White and Black Caribbean",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-white-black-caribbean-employees",
+          name: "workforce[mixed-white-black-caribbean]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "White and Black African",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-white-black-african-employees",
+          name: "workforce[mixed-white-black-african]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "White and Asian",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-white-asian-employees",
+          name: "workforce[mixed-white-asian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Any other Mixed / Multiple ethnic background",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-other-employees",
+          name: "workforce[mixed-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <p>or</p>
+
+        {{ govukInput({
+          label: {
+            text: "Mixed / Multiple ethnic groups",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-employees",
+          name: "workforce[mixed]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
