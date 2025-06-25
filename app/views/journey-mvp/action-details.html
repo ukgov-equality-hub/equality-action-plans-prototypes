@@ -59,7 +59,7 @@
           name: journeyShortCode + "[" + thisPageAction.shortCode + "][status]",
           fieldset: {
             legend: {
-              text: "How is your organisation progressing with this practice?",
+              text: "Choose a status for this action",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
@@ -68,25 +68,25 @@
           items: [
             {
               value: "embedded",
-              text: "We have already embedded this in our working culture"
+              text: "We have already included this in our working culture"
             },
             {
               value: "in-progress",
-              text: "We are working on embedding this but it is not yet routine",
+              text: "We are working on including this but it is not yet routine practice",
               hint: {
-                text: "Continuing work on this will count as an action on your action plan."
+                text: "Continuing work on this will count towards your action plan."
               }
             },
             {
               value: "adopt",
-              text: "We would like to consider this practice - provisionally add it to our action plan",
+              text: "We would like to provisionally add this to our action plan",
               hint: {
-                text: "You will be able to review your plan and change this choice before submitting it."
+                text: "You will be able to review and edit this choice before submitting your full action plan."
               }
             },
             {
               value: "ignore",
-              text: "We are not currently pursuing this practice"
+              text: "We are not including this action"
             }
           ]
         }) }}
