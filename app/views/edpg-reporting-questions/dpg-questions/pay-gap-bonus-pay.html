@@ -1,0 +1,59 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Disability pay gap - bonus pay" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Disability pay gap - bonus pay
+      </h1>
+
+			<p class="govuk-body">
+				Enter your figures as whole percentages or rounded to one decimal place.</p>
+
+			<p class="govuk-body">If disabled people in your organisation are paid more than non-disabled people, enter a negative percentage figure – for example -12%.</p>
+
+      <form class="form" action="../pay-gaps-report" method="post">
+
+        {{ govukInput({
+          label: {
+              html: "Enter the <b>mean (average)</b> disability pay gap for bonus pay"
+          },
+          classes: "govuk-input--width-5",
+          id: "dpg-mean-bonus",
+          name: "dpg[meanBonus]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+          {{ govukInput({
+          label: {
+              html: "Enter the <b>median</b> disability pay gap for bonus pay"
+          },
+          classes: "govuk-input--width-5",
+          id: "dpg-median-bonus",
+          name: "dpg[medianBonus]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+					
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+        

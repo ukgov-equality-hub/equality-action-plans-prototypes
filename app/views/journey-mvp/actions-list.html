@@ -30,22 +30,39 @@
         {{data.db.company.name}}
       </span>
       <h1 class="govuk-heading-l">
-        Tell us what you're already doing
+        Create your action plan
       </h1>
 
       <p>
-        Below is the list of actions in our service.
-        For each one, we will ask if your organisation:
+        Below is the list of actions you can choose from.
+        For each action, we will ask if your organisation:
       </p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>has already embedded it in its working culture</li>
-        <li>is working on embedding it but has not yet made it routine</li>
+        <li>is already doing it as part of its working culture</li>
+        <li>is doing it but not routinely</li>
+        <li>wants to include it in your action plan – you plan to start doing it in the next year</li>
+        <li>does not want to include it in your action plan</li>
       </ul>
       <p>
-        You can also provisionally add actions, for example if your organisation
-        is yet to commit to a specific action. You will be able to review and
-        edit your plan before you submit it.
+        You must add a status for every action. You can also add a 
+        supporting narrative for each action to explain what your organisation 
+        is doing or plans to do in this area.
       </p>
+
+      <p>
+        Your plan must include actions with which you can show further progress. 
+        For example, if your organisation is updating its workplace flexibility 
+        practices then this can be included. Actions already fully embedded 
+        within your organisation and not currently being progressed do not count 
+        for this purpose.
+      </p>
+      <p>Your action plan must include:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>at least one action from the ‘Supporting staff during menopause’ category</li>
+        <li>at least one action from any other category, for example ‘Creating a more flexible workplace’</li>
+      </ul>
+
+      <p>You will be able to review and edit your full action plan before you submit it.</p>
 
       <p class="review-note">
         In the real service users will have to assess every action in every
@@ -63,7 +80,7 @@
         {% set creatingNewActionPlan = true %}
         {% set showEmptyCategories = true %}
         {% set assessWholeCategoryAtOnce = false %}
-        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set unsubmittedLinkText = "Add status" %}
         {% set editUrl = "action-details" %}
         {% set excludeCategory = "data" %}
         {% include "common/categorised-action-plan.html" %}

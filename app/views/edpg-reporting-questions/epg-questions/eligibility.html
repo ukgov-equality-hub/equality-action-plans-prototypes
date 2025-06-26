@@ -9,36 +9,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Which ethnicities do you collect in your workforce data?
+        Workforce breakdown by ethnicity, and disclosure rates
       </h1>
 
-      <form class="form" action="answer-action-plan-external" method="post">
+      <p><a href="eligibility-long">One long form</a></p>
 
-        {{ govukRadios({
-          name: "edpgReportingQuestions.collectWhite",
-          fieldset: {
-          },
-          hint: {
-            text: "If you already have an action plan hosted elsewhere, e.g. on your website,
-          then you do not need to enter it in full on our service."
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
+      <p><a href="eligibility-white">Page per top-level ethnic group</a></p>
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-      </form>
 
     </div>
   </div>

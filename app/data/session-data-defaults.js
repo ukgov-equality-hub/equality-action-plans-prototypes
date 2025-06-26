@@ -238,7 +238,7 @@ module.exports = {
     actionCategories: [
       {
         shortCode: 'leadership-and-accountability',
-        title: 'Leadership and accountability',
+        title: 'Building diversity into your organisation',
         description: 'Action plans will not be effective unless there are individuals with authority'
           + ' who are accountable for the outcome. These actions lay a foundation of accountability in'
           + ' the organisation, which supports all other actions to have more impact.'
@@ -253,23 +253,23 @@ module.exports = {
       },
       {
         shortCode: 'analysis',
-        title: 'Essential analysis',
+        title: 'Analysing your data',
       },
       {
         shortCode: 'recruitment',
-        title: 'Hiring and selection'
+        title: 'Recruiting staff'
       },
       {
         shortCode: 'promotion-and-retention',
-        title: 'Promotion and retention'
+        title: 'Promoting and retaining staff'
       },
       {
         shortCode: 'flexibility',
-        title: 'Workplace flexibility'
+        title: 'Creating a more flexible workplace'
       },
       {
         shortCode: 'menopause',
-        title: 'Support during menopause'
+        title: 'Supporting staff during menopause'
       }
     ],
 

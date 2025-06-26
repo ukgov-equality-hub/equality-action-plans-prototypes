@@ -38,7 +38,7 @@
 
         {{ govukInput({
           label: {
-            text: "Status not disclosed",
+            text: "Prefer not to say",
             classes: "govuk-label--m"
           },
           classes: "govuk-input--width-10",
@@ -46,6 +46,18 @@
           name: "workforce[disabilityStatusNotDisclosed]",
           inputmode: "numeric"
         }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Unknown",
+            classes: "govuk-label--m"
+          },
+          classes: "govuk-input--width-10",
+          id: "disability-status-unknown",
+          name: "workforce[disabilityStatusUnknown]",
+          inputmode: "numeric"
+        }) }}
+
 
         {{ govukButton({
           text: "Submit"
