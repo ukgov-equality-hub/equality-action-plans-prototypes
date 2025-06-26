@@ -238,7 +238,7 @@ module.exports = {
     actionCategories: [
       {
         shortCode: 'leadership-and-accountability',
-        title: 'Leadership and accountability',
+        title: 'Building diversity into your organisation',
         description: 'Action plans will not be effective unless there are individuals with authority'
           + ' who are accountable for the outcome. These actions lay a foundation of accountability in'
           + ' the organisation, which supports all other actions to have more impact.'
