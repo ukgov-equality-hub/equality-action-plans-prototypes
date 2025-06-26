@@ -1,0 +1,85 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        White employees
+      </h1>
+
+      <form class="form" action="eligibility-mixed" method="post">
+
+
+        {{ govukInput({
+          label: {
+            text: "English / Welsh / Scottish / Northern Irish / British",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-british-employees",
+          name: "workforce[white-british]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Irish",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-irish-employees",
+          name: "workforce[white-irish]",
+          inputmode: "numeric"
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Gypsy or Irish Traveller",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-gypsy-irish-traveller-employees",
+          name: "workforce[white-gypsy-irish-traveller]",
+          inputmode: "numeric"
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Any other White background",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-other-employees",
+          name: "workforce[white-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <p>or</p>
+
+        {{ govukInput({
+          label: {
+            text: "White",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-employees",
+          name: "workforce[white]",
+          inputmode: "numeric"
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

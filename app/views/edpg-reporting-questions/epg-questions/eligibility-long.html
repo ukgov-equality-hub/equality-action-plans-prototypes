@@ -1,0 +1,239 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Workforce breakdown by ethnicity
+      </h1>
+
+      <form class="form" action="../pay-gaps-report" method="post">
+
+        <h3 class="govuk-heading-s">White</h3>
+
+        {{ govukInput({
+          label: {
+            text: "English / Welsh / Scottish / Northern Irish / British"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-british-employees",
+          name: "workforce[white-british]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Irish"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-irish-employees",
+          name: "workforce[white-irish]",
+          inputmode: "numeric"
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Gypsy or Irish Traveller"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-gypsy-irish-traveller-employees",
+          name: "workforce[white-gypsy-irish-traveller]",
+          inputmode: "numeric"
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Any other White background"
+          },
+          classes: "govuk-input--width-10",
+          id: "white-other-employees",
+          name: "workforce[white-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <h3 class="govuk-heading-s">Mixed / Multiple ethnic groups</h3>
+
+        {{ govukInput({
+          label: {
+            text: "White and Black Caribbean"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-white-black-caribbean-employees",
+          name: "workforce[mixed-white-black-caribbean]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "White and Black African"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-white-black-african-employees",
+          name: "workforce[mixed-white-black-african]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "White and Asian"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-white-asian-employees",
+          name: "workforce[mixed-white-asian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Any other Mixed / Multiple ethnic background"
+          },
+          classes: "govuk-input--width-10",
+          id: "mixed-other-employees",
+          name: "workforce[mixed-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <h3 class="govuk-heading-s">Asian / Asian British</h3>
+
+        {{ govukInput({
+          label: {
+            text: "Indian"
+          },
+          classes: "govuk-input--width-10",
+          id: "asian-indian-employees",
+          name: "workforce[asian-indian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Pakistani"
+          },
+          classes: "govuk-input--width-10",
+          id: "asian-pakistani-employees",
+          name: "workforce[asian-pakistani]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Bangladeshi"
+          },
+          classes: "govuk-input--width-10",
+          id: "asian-bangladeshi-employees",
+          name: "workforce[asian-bangladeshi]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Chinese"
+          },
+          classes: "govuk-input--width-10",
+          id: "asian-chinese-employees",
+          name: "workforce[asian-chinese]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Any other Asian background"
+          },
+          classes: "govuk-input--width-10",
+          id: "asian-other-employees",
+          name: "workforce[asian-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <h3 class="govuk-heading-s">Black / African / Caribbean / Black British</h3>
+
+        {{ govukInput({
+          label: {
+            text: "African"
+          },
+          classes: "govuk-input--width-10",
+          id: "black-african-employees",
+          name: "workforce[black-african]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Caribbean"
+          },
+          classes: "govuk-input--width-10",
+          id: "black-caribbean-employees",
+          name: "workforce[black-caribbean]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Any other Black / African / Caribbean background"
+          },
+          classes: "govuk-input--width-10",
+          id: "black-other-employees",
+          name: "workforce[black-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <h3 class="govuk-heading-s">Other ethnic group</h3>
+        
+        {{ govukInput({
+          label: {
+            text: "Arab"
+          },
+          classes: "govuk-input--width-10",
+          id: "other-arab-employees",
+          name: "workforce[other-arab]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Any other ethnic group"
+          },
+          classes: "govuk-input--width-10",
+          id: "other-other-employees",
+          name: "workforce[other-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <h3 class="govuk-heading-s">Other</h3>
+
+        {{ govukInput({
+          label: {
+            html: "<b>Prefer not to say</b>"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-not-disclosed",
+          name: "workforce[ethnicitysNotDisclosed]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            html: "<b>Unknown</b>"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-unknown",
+          name: "workforce[ethnicityUnknown]",
+          inputmode: "numeric"
+        }) }}
+
+
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
