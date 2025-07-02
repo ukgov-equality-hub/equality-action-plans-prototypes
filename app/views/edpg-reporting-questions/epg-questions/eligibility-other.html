@@ -9,41 +9,30 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Employees with a Black background
+        Employees with any other background
       </h1>
 
-      <form class="form" action="eligibility-other" method="post">
+      <form class="form" action="eligibility-unknown" method="post">
         
         {{ govukInput({
           label: {
-            text: "African",
+            text: "Arab",
             classes: "govuk-label--s"
           },
           classes: "govuk-input--width-10",
-          id: "black-african-employees",
-          name: "workforce[black-african]",
+          id: "other-arab-employees",
+          name: "workforce[other-arab]",
           inputmode: "numeric"
         }) }}
 
         {{ govukInput({
           label: {
-            text: "Caribbean",
+            text: "Any other ethnic group",
             classes: "govuk-label--s"
           },
           classes: "govuk-input--width-10",
-          id: "black-caribbean-employees",
-          name: "workforce[black-caribbean]",
-          inputmode: "numeric"
-        }) }}
-
-        {{ govukInput({
-          label: {
-            text: "Any other Black / African / Caribbean background",
-            classes: "govuk-label--s"
-          },
-          classes: "govuk-input--width-10",
-          id: "black-other-employees",
-          name: "workforce[black-other]",
+          id: "other-other-employees",
+          name: "workforce[other-other]",
           inputmode: "numeric"
         }) }}
 
@@ -51,12 +40,12 @@
 
         {{ govukInput({
           label: {
-            text: "Black",
+            text: "Other ethnic group",
             classes: "govuk-label--s"
           },
           classes: "govuk-input--width-10",
-          id: "black-employees",
-          name: "workforce[black]",
+          id: "other-employees",
+          name: "workforce[other]",
           inputmode: "numeric"
         }) }}
 

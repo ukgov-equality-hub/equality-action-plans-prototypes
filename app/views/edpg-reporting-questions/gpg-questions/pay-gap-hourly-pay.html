@@ -1,0 +1,59 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Disability pay gap - hourly pay" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Gender pay gap - hourly pay
+      </h1>
+
+			<p class="govuk-body">
+				Enter your figures as whole percentages or rounded to one decimal place.</p>
+
+			<p class="govuk-body">If women in your organisation are paid more than men, enter a negative percentage figure – for example -12%.</p>
+
+      <form class="form" action="pay-quarters" method="post">
+
+        {{ govukInput({
+          label: {
+              html: "Enter the <b>mean (average)</b> gender pay gap for hourly pay"
+          },
+          classes: "govuk-input--width-5",
+          id: "gpg-mean-hourly",
+          name: "gpg[meanHourly]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+          {{ govukInput({
+          label: {
+              html: "Enter the <b>median</b> gender pay gap for hourly pay"
+          },
+          classes: "govuk-input--width-5",
+          id: "gpg-median-hourly",
+          name: "gpg[medianHourly]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+					
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+        

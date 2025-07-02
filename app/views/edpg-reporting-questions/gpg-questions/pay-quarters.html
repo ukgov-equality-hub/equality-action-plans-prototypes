@@ -1,0 +1,149 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Disability pay gap - pay quarters" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Gender pay gap - pay quarters
+      </h1>
+
+			<p class="govuk-body">
+				Enter your figures as whole percentages or rounded to one decimal place.</p>
+
+      <form class="form" action="bonus-pay-received" method="post">
+
+        <h3 class="govuk-heading-s">Upper hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-upper-pay-quarter",
+          name: "gpg[upperPayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-upper-pay-quarter",
+          name: "gpg[upperPayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Upper middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-upper-middle-pay-quarter",
+          name: "gpg[upperMiddlePayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-upper-middle-pay-quarter",
+          name: "gpg[upperMiddlePayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Lower middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-lower-middle-pay-quarter",
+          name: "gpg[lowerMiddlePayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-lower-middle-pay-quarter",
+          name: "gpg[lowerMiddlePayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+        
+        <h3 class="govuk-heading-s">Lower hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-lower-pay-quarter",
+          name: "gpg[lowerPayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-lower-pay-quarter",
+          name: "gpg[lowerPayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+       
+       
+       
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+        

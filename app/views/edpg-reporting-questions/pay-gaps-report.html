@@ -127,6 +127,65 @@
 {% endif %}
 
 
+{% if data.gpg['medianHourly'] and data.gpg['meanHourly'] %}
+  {% set gpgHourlyStatus = {text: "Completed"} %}
+{% else %}
+  {% set disabledPayQuarterStatus = {
+    tag: {
+      text: "Incomplete",
+      classes: "govuk-tag--blue"
+    }
+  } %}
+{% endif %}
+
+{% if data.gpg['upperPayQuarter']['women'] and data.gpg['upperPayQuarter']['men']
+      and data.gpg['upperMiddlePayQuarter']['women'] and data.gpg['upperMiddlePayQuarter']['men']
+      and data.gpg['lowerMiddlePayQuarter']['women'] and data.gpg['lowerMiddlePayQuarter']['men']
+      and data.gpg['lowerPayQuarter']['women'] and data.gpg['lowerPayQuarter']['men'] %}
+  {% set gpgPayQuarterStatus = {text: "Completed"} %}
+{% else %}
+  {% set gpgPayQuarterStatus = {
+    tag: {
+      text: "Incomplete",
+      classes: "govuk-tag--blue"
+    }
+  } %}
+{% endif %}
+
+
+{% if data.gpg['bonusReceived']['women'] and data.gpg['bonusReceived']['men'] %}
+  {% set gpgBonusReceivedStatus = {text: "Completed"} %}
+  {% set gpgBonusStatus = {text: "Not required"} %} 
+
+  {% if data.gpg['bonusReceived']['women'] > 0 and data.gpg['bonusReceived']['men'] > 0 %}
+    {% set gpgBonusLink = "gpg-questions/pay-gap-bonus-pay" %}
+
+    {% if data.gpg['medianBonus'] and data.gpg['meanBonus'] %}
+      {% set gpgBonusStatus = {text: "Completed"} %}
+    {% else %}
+      {% set gpgBonusStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+    {% endif %}
+  {% endif %}
+    
+{% else %}
+  {% set gpgBonusStatus = {
+    text: "Cannot start yet",
+    classes: "govuk-task-list__status--cannot-start-yet"
+    }
+  %}
+  {% set gpgBonusReceivedStatus = {
+    tag: {
+      text: "Incomplete",
+      classes: "govuk-tag--blue"
+    }
+  } %}
+{% endif %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -218,49 +277,29 @@
           title: {
             text: "Mean and median gender pay gap using hourly pay"
           },
-          href: "#",
-          status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          }
+          href: "gpg-questions/pay-gap-hourly-pay",
+          status: gpgHourlyStatus
         },
         {
           title: {
             text: "Percentage of men and women in each hourly pay quarter"
           },
-          href: "#",
-          status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          }
+          href: "gpg-questions/pay-quarters",
+          status: gpgPayQuarterStatus
         },
         {
           title: {
             text: "Percentage of men and women who received bonus pay"
           },
-          href: "#",
-          status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          }
+          href: "gpg-questions/bonus-pay-received",
+          status: gpgBonusReceivedStatus
         },
         {
           title: {
             text: "Mean and median gender pay gap using bonus pay"
           },
-          href: "#",
-          status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          }
+          href: gpgBonusLink,
+          status: gpgBonusStatus
         }
       ]
     }) }}
