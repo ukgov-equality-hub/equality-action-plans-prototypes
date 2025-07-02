@@ -24,8 +24,8 @@
               html: "Disabled employees"
           },
           classes: "govuk-input--width-5",
-          id: "disabled-upper-pay-quarter",
-          name: "dpg[upperPayQuarter][disabled]",
+          id: "disabled-bonus-received",
+          name: "dpg[bonusReceived][disabled]",
           suffix: {
               text: "%"
           },
@@ -37,104 +37,14 @@
               html: "Non-disabled employees"
           },
           classes: "govuk-input--width-5",
-          id: "non-disabled-upper-pay-quarter",
-          name: "dpg[upperPayQuarter][nonDisabled]",
+          id: "non-disabled-bonus-received",
+          name: "dpg[bonusReceived][nonDisabled]",
           suffix: {
               text: "%"
           },
           spellcheck: false
           }) }}
 
-        <h3 class="govuk-heading-s">Upper middle hourly pay quarter</h3>
-
-        {{ govukInput({
-          label: {
-              html: "Disabled employees"
-          },
-          classes: "govuk-input--width-5",
-          id: "disabled-upper-middle-pay-quarter",
-          name: "dpg[upperMiddlePayQuarter][disabled]",
-          suffix: {
-              text: "%"
-          },
-          spellcheck: false
-          }) }}
-
-        {{ govukInput({
-          label: {
-              html: "Non-disabled employees"
-          },
-          classes: "govuk-input--width-5",
-          id: "non-disabled-upper-middle-pay-quarter",
-          name: "dpg[upperMiddlePayQuarter][nonDisabled]",
-          suffix: {
-              text: "%"
-          },
-          spellcheck: false
-          }) }}
-
-        <h3 class="govuk-heading-s">Lower middle hourly pay quarter</h3>
-
-        {{ govukInput({
-          label: {
-              html: "Disabled employees"
-          },
-          classes: "govuk-input--width-5",
-          id: "disabled-lower-middle-pay-quarter",
-          name: "dpg[lowerMiddlePayQuarter][disabled]",
-          suffix: {
-              text: "%"
-          },
-          spellcheck: false
-          })
-        }}
-
-        {{ govukInput({
-          label: {
-              html: "Non-disabled employees"
-          },
-          classes: "govuk-input--width-5",
-          id: "non-disabled-lower-middle-pay-quarter",
-          name: "dpg[lowerMiddlePayQuarter][nonDisabled]",
-          suffix: {
-              text: "%"
-          },
-          spellcheck: false
-          })
-        }}
-        
-        <h3 class="govuk-heading-s">Lower hourly pay quarter</h3>
-
-        {{ govukInput({
-          label: {
-              html: "Disabled employees"
-          },
-          classes: "govuk-input--width-5",
-          id: "disabled-lower-pay-quarter",
-          name: "dpg[lowerPayQuarter][disabled]",
-          suffix: {
-              text: "%"
-          },
-          spellcheck: false
-          })
-        }}
-
-
-        {{ govukInput({
-          label: {
-              html: "Non-disabled employees"
-          },
-          classes: "govuk-input--width-5",
-          id: "non-disabled-lower-pay-quarter",
-          name: "dpg[lowerPayQuarter][nonDisabled]",
-          suffix: {
-              text: "%"
-          },
-          spellcheck: false
-          }) }}
-       
-       
-       
         {{ govukButton({
           text: "Submit"
         }) }}

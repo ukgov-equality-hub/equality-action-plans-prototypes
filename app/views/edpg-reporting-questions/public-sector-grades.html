@@ -1,0 +1,33 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Public sector grades" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="pay-gaps-report" method="post">
+        
+        {{ govukInput({
+          label: {
+            text: "Number of grades in your organisation",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-10",
+          id: "public-sector-grades",
+          name: "workforce[grades]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

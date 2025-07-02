@@ -1,0 +1,70 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Employees with an Asian background
+      </h1>
+
+      <form class="form" action="eligibility-mixed" method="post">
+        
+        {{ govukInput({
+          label: {
+            text: "African"
+          },
+          classes: "govuk-input--width-10",
+          id: "black-african-employees",
+          name: "workforce[black-african]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Caribbean"
+          },
+          classes: "govuk-input--width-10",
+          id: "black-caribbean-employees",
+          name: "workforce[black-caribbean]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Any other Black / African / Caribbean background"
+          },
+          classes: "govuk-input--width-10",
+          id: "black-other-employees",
+          name: "workforce[black-other]",
+          inputmode: "numeric"
+        }) }}
+
+        <p>or</p>
+
+        {{ govukInput({
+          label: {
+            text: "Black",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-10",
+          id: "black-employees",
+          name: "workforce[black]",
+          inputmode: "numeric"
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
