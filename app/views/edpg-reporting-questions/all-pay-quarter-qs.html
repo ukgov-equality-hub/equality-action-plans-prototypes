@@ -1,0 +1,384 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Pay quarters" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Pay quarters
+      </h1>
+
+        <p class="govuk-body">
+            Enter your figures as whole percentages or rounded to one decimal place.</p>
+
+      <form class="form" action="pay-gaps-report" method="post">
+
+    <h2 class="govuk-heading-m">Gender</h2>
+        <h3 class="govuk-heading-s">Upper hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-upper-pay-quarter",
+          name: "gpg[upperPayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-upper-pay-quarter",
+          name: "gpg[upperPayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Upper middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-upper-middle-pay-quarter",
+          name: "gpg[upperMiddlePayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-upper-middle-pay-quarter",
+          name: "gpg[upperMiddlePayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Lower middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-lower-middle-pay-quarter",
+          name: "gpg[lowerMiddlePayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-lower-middle-pay-quarter",
+          name: "gpg[lowerMiddlePayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+        
+        <h3 class="govuk-heading-s">Lower hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Women"
+          },
+          classes: "govuk-input--width-5",
+          id: "women-lower-pay-quarter",
+          name: "gpg[lowerPayQuarter][women]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+
+        {{ govukInput({
+          label: {
+              html: "Men"
+          },
+          classes: "govuk-input--width-5",
+          id: "men-lower-pay-quarter",
+          name: "gpg[lowerPayQuarter][men]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+        
+        <h2 class="govuk-heading-m">Disability</h2>
+
+       <h3 class="govuk-heading-s">Upper hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-upper-pay-quarter",
+          name: "dpg[upperPayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-upper-pay-quarter",
+          name: "dpg[upperPayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Upper middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-upper-middle-pay-quarter",
+          name: "dpg[upperMiddlePayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-upper-middle-pay-quarter",
+          name: "dpg[upperMiddlePayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Lower middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-lower-middle-pay-quarter",
+          name: "dpg[lowerMiddlePayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-lower-middle-pay-quarter",
+          name: "dpg[lowerMiddlePayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+        
+        <h3 class="govuk-heading-s">Lower hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-lower-pay-quarter",
+          name: "dpg[lowerPayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+        <h2 class="govuk-heading-m">Ethnicity</h2>
+
+       <h3 class="govuk-heading-s">Upper hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "White employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-upper-pay-quarter",
+          name: "epg[upperPayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "All other ethnic groups combined"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-white-upper-pay-quarter",
+          name: "epg[upperPayQuarter][nonWhite]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Upper middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "White employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-upper-middle-pay-quarter",
+          name: "epg[upperMiddlePayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "All other ethnic groups combined"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-white-upper-middle-pay-quarter",
+          name: "epg[upperMiddlePayQuarter][nonWhite]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Lower middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "White employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-lower-middle-pay-quarter",
+          name: "epg[lowerMiddlePayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+        {{ govukInput({
+          label: {
+              html: "All other ethnic groups combined"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-white-lower-middle-pay-quarter",
+          name: "epg[lowerMiddlePayQuarter][nonWhite]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+        
+        <h3 class="govuk-heading-s">Lower hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "White employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-lower-pay-quarter",
+          name: "epg[lowerPayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+
+        {{ govukInput({
+          label: {
+              html: "All other ethnic groups combined"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-white-lower-pay-quarter",
+          name: "epg[lowerPayQuarter][nonWhite]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "All other ethnic groups combined"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-white-lower-pay-quarter",
+          name: "epg[lowerPayQuarter][nonWhite]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+       
+       
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+        

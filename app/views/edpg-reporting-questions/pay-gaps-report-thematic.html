@@ -255,6 +255,29 @@
         },
         {
           title: {
+            text: "Workforce breakdown by ethnicity, and disclosure rates"
+          },
+          href: "epg-questions/eligibility",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          },
+          hint: {
+            text: "You must complete your workforce breakdowns before the other sections"
+          }
+        },
+        {
+          title: {
+            text: "Workforce breakdown by disability status, and disclosure rates"
+          },
+          href: "dpg-questions/eligibility",
+          status: disabilityEligibilityStatus,
+          hint: disabilityEligibilityHint
+        },
+        {
+          title: {
             text: "Number of grades in your organisation"
           },
           href: "public-sector-grades",
@@ -267,6 +290,8 @@
         }
       ]
     }) }}
+
+    
 
     <h2 class="govuk-heading-m">Gender pay gap</h2>
 
@@ -309,21 +334,7 @@
     {{ govukTaskList({
       idPrefix: "ethnicity-pay-gap-report",
       items: [
-        {
-          title: {
-            text: "Workforce breakdown by ethnicity, and disclosure rates"
-          },
-          href: "epg-questions/eligibility",
-          status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          },
-          hint: {
-            text: "You must complete your workforce breakdown before the other sections"
-          }
-        },
+        
         {
           title: {
             text: "Mean and median ethnicity pay gap using hourly pay"
@@ -380,14 +391,7 @@
     {{ govukTaskList({
       idPrefix: "disability-pay-gap-report",
       items: [
-        {
-          title: {
-            text: "Workforce breakdown by disability status, and disclosure rates"
-          },
-          href: "dpg-questions/eligibility",
-          status: disabilityEligibilityStatus,
-          hint: disabilityEligibilityHint
-        },
+        
         {
           title: {
             text: "Mean and median disability pay gap using hourly pay"
