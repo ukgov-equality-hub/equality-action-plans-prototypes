@@ -293,10 +293,10 @@
 
     
 
-    <h2 class="govuk-heading-m">Gender pay gap</h2>
+    <h2 class="govuk-heading-m">Hourly pay gap</h2>
 
     {{ govukTaskList({
-      idPrefix: "gender-pay-gap-report",
+      idPrefix: "hourly-pay-gap-report",
       items: [
         {
           title: {
@@ -305,36 +305,6 @@
           href: "gpg-questions/pay-gap-hourly-pay",
           status: gpgHourlyStatus
         },
-        {
-          title: {
-            text: "Percentage of men and women in each hourly pay quarter"
-          },
-          href: "gpg-questions/pay-quarters",
-          status: gpgPayQuarterStatus
-        },
-        {
-          title: {
-            text: "Percentage of men and women who received bonus pay"
-          },
-          href: "gpg-questions/bonus-pay-received",
-          status: gpgBonusReceivedStatus
-        },
-        {
-          title: {
-            text: "Mean and median gender pay gap using bonus pay"
-          },
-          href: gpgBonusLink,
-          status: gpgBonusStatus
-        }
-      ]
-    }) }}
-
-    <h2 class="govuk-heading-m">Ethnicity pay gap</h2>
-
-    {{ govukTaskList({
-      idPrefix: "ethnicity-pay-gap-report",
-      items: [
-        
         {
           title: {
             text: "Mean and median ethnicity pay gap using hourly pay"
@@ -346,12 +316,75 @@
         },
         {
           title: {
+            text: "Mean and median disability pay gap using hourly pay"
+          },
+          href: dpgHourlyLink,
+          status: dpgHourlyStatus
+        },
+        {
+          title: {
+            text: "Ethnicity pay gap by grade using hourly pay"
+          },
+          status: {
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
+          }
+        },
+        {
+          title: {
+            text: "Disability pay gap by grade using hourly pay"
+          },
+          status: {
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Pay quarters</h2>
+
+    {{ govukTaskList({
+      idPrefix: "pay-quarters-report",
+      items: [
+        {
+          title: {
+            text: "Percentage of men and women in each hourly pay quarter"
+          },
+          href: "gpg-questions/pay-quarters",
+          status: gpgPayQuarterStatus
+        },
+        {
+          title: {
+            text: "Percentage of disabled and non-disabled people in each hourly pay quarter"
+          },
+          href: disabledPayQuartersLink,
+          status: disabledPayQuarterStatus
+        },
+        {
+          title: {
             text: "Percentage of different ethnic groups in each hourly pay quarter"
           },
           status: {
             text: "Cannot start yet",
             classes: "govuk-task-list__status--cannot-start-yet"
           }
+        }
+        
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Bonus pay received</h2>
+
+    {{ govukTaskList({
+      idPrefix: "bonus-pay-received-report",
+      items: [
+        {
+          title: {
+            text: "Percentage of men and women who received bonus pay"
+          },
+          href: "gpg-questions/bonus-pay-received",
+          status: gpgBonusReceivedStatus
         },
         {
           title: {
@@ -361,6 +394,29 @@
             text: "Cannot start yet",
             classes: "govuk-task-list__status--cannot-start-yet"
           }
+        },
+        
+        {
+          title: {
+            text: "Percentage of disabled and non-disabled people who received bonus pay"
+          },
+          href: disabledBonusPayReceivedLink,
+          status: dpgBonusReceivedStatus
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Bonus pay gap</h2>
+
+    {{ govukTaskList({
+      idPrefix: "bonus-pay-gap-report",
+      items: [
+        {
+          title: {
+            text: "Mean and median gender pay gap using bonus pay"
+          },
+          href: gpgBonusLink,
+          status: gpgBonusStatus
         },
         {
           title: {
@@ -373,58 +429,46 @@
         },
         {
           title: {
-            text: "Ethnicity pay gap by grade"
-          },
-          status: dpgBonusStatus
-        },
-        {
-          title: {
-            text: "Recruitment, retention and progression by ethnicity"
-          },
-          status: dpgBonusStatus
-        }
-      ]
-    }) }}
-
-    <h2 class="govuk-heading-m">Disability pay gap</h2>
-
-    {{ govukTaskList({
-      idPrefix: "disability-pay-gap-report",
-      items: [
-        
-        {
-          title: {
-            text: "Mean and median disability pay gap using hourly pay"
-          },
-          href: dpgHourlyLink,
-          status: dpgHourlyStatus
-        },
-        {
-          title: {
-            text: "Percentage of disabled and non-disabled people in each hourly pay quarter"
-          },
-          href: disabledPayQuartersLink,
-          status: disabledPayQuarterStatus
-        },
-        {
-          title: {
-            text: "Percentage of disabled and non-disabled people who received bonus pay"
-          },
-          href: disabledBonusPayReceivedLink,
-          status: dpgBonusReceivedStatus
-        },
-        {
-          title: {
             text: "Mean and median disability pay gap using bonus pay"
           },
           href: dpgBonusLink,
           status: dpgBonusStatus
         },
+           {
+          title: {
+            text: "Ethnicity pay gap by grade using bonus pay"
+          },
+          status: {
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
+          }
+        },
         {
           title: {
-            text: "Disability pay gap by grade"
+            text: "Disability pay gap by grade using bonus pay"
           },
-          status: dpgBonusStatus
+          status: {
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
+          }
+        }
+
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Recruitment, retention and progression</h2>
+
+    {{ govukTaskList({
+      idPrefix: "recruitment-retention-progression-report",
+      items: [
+        {
+          title: {
+            text: "Recruitment, retention and progression by ethnicity"
+          },
+          status: {
+            text: "Cannot start yet",
+            classes: "govuk-task-list__status--cannot-start-yet"
+          }
         },
         {
           title: {
