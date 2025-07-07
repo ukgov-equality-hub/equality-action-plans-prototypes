@@ -23,12 +23,8 @@
 
 {% set preSubmissionInfo %}
   <p>
-    On submission your gender pay gap information will be published on the
-    Gender pay gap service.
-  </p>
-  <p>
-    Submission of inaccurate data will mean your employer has not complied with
-    the gender pay gap reporting regulations.
+    Your gender pay gap data will be published on the Gender pay gap service 
+    after it is submitted.
   </p>
 {% endset %}
 
@@ -195,16 +191,23 @@
       {{data.db.company.name}}
     </span>
     <h1 class="govuk-heading-l">
-      Pay gaps report
+      Your pay gaps report
     </h1>
 
     <p>
-      You must submit pay gap data covering gender, ethnicity and disability.
+      You must submit pay gap data which covers:
     </p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>gender</li>
+        <li>ethnicity</li>
+        <li>disability</li>
+    </ul> 
     <p>
-      For full details of how to report these figures, see the
-      <a href="#">pay gap reporting guidance</a>.
+      Read the
+      <a href="#">pay gap reporting guidance</a> for more details on how to report this data.
     </p>
+    <p>Aim to be as accurate as possible – submitting inaccurate data will mean your employer has not complied with the gender pay gap reporting regulations.</p>
+
 
     <h2 class="govuk-heading-m">Company information</h2>
 

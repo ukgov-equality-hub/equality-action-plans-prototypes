@@ -13,7 +13,12 @@
       </h1>
 
         <p class="govuk-body">
-            Enter your figures as whole percentages or rounded to one decimal place.</p>
+            Enter your figures as:
+            <ul class="govuk-list govuk-list--bullet">
+                <li>whole percentages</li>
+                <li>percentages rounded to one decimal place</li>
+            </ul> 
+        </p>
 
       <form class="form" action="pay-gaps-report" method="post">
 
@@ -238,6 +243,20 @@
           })
         }}
 
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-lower-pay-quarter",
+          name: "dpg[lowerPayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
         <h2 class="govuk-heading-m">Ethnicity</h2>
 
        <h3 class="govuk-heading-s">Upper hourly pay quarter</h3>
@@ -356,19 +375,6 @@
           spellcheck: false
           }) }}
 
-        {{ govukInput({
-          label: {
-              html: "All other ethnic groups combined"
-          },
-          classes: "govuk-input--width-5",
-          id: "non-white-lower-pay-quarter",
-          name: "epg[lowerPayQuarter][nonWhite]",
-          suffix: {
-              text: "%"
-          },
-          spellcheck: false
-          }) }}
-       
        
         {{ govukButton({
           text: "Continue"

@@ -1,0 +1,238 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set preSubmissionInfo %}
+  <p>
+    Your gender pay gap data will be published on the Gender pay gap service 
+    after it is submitted.
+  </p>
+{% endset %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-l">
+      Your pay gaps report
+    </h1>
+
+    <p>
+      You must submit pay gap data which covers:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>gender</li>
+        <li>ethnicity</li>
+        <li>disability</li>
+    </ul> 
+    <p>
+      Read the
+      <a href="#">pay gap reporting guidance</a> for more details on how to report this data.
+    </p>
+    <p>Aim to be as accurate as possible – submitting inaccurate data will mean your employer has not complied with the gender pay gap reporting regulations.</p>
+
+    <h2 class="govuk-heading-m">Company information</h2>
+
+    {# For some reason this rule does not apply correctly inside task lists
+      selected by class, only when applied globally. However, we don't want
+      it to apply globally, so just specify it "globally" for this one page. #}
+    <style>
+      .govuk-task-list__name-and-hint {
+        width: 70% !important;
+      }
+    </style>
+
+    {{ govukTaskList({
+      idPrefix: "company-info",
+      items: [
+        {
+          title: {
+            text: "Person responsible"
+          },
+          href: "#",
+          status: {
+            text: "Toby Flenderson"
+          }
+        },
+        {
+          title: {
+            text: "Employee headcount"
+          },
+          href: "#",
+          status: {
+            text: "Completed"
+          }
+        },
+        {
+          title: {
+            text: "Link to your supporting narrative"
+          },
+          href: "#",
+          status: {
+            text: "Completed"
+          }
+        },
+        {
+          title: {
+            text: "Workforce breakdown, and disclosure rates"
+          },
+          href: "epg-questions/eligibility",
+          status: {
+            text: "Completed"
+          },
+          hint: {
+            text: "You must complete your workforce breakdowns before the other sections"
+          }
+        },
+        {
+          title: {
+            text: "Number of grades in your organisation"
+          },
+          href: "public-sector-grades",
+          status: {
+            text: "Completed"
+          }
+        }
+      ]
+    }) }}
+
+    
+
+    <h2 class="govuk-heading-m">Pay gap information</h2>
+
+    {{ govukTaskList({
+      idPrefix: "pay-gap-info-report",
+      items: [
+        {
+          title: {
+            text: "Mean and median pay gaps using hourly pay"
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Pay gaps by grade using hourly pay"
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentages of people in each hourly pay quarter"
+          },
+          href: "all-pay-quarter-qs",
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Percentages of people who received bonus pay"
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Mean and median pay gaps using bonus pay"
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Pay gaps by grade using bonus pay"
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Recruitment, retention and progression"
+          },
+          status: {
+            tag: {
+              text: "Incomplete",
+              classes: "govuk-tag--blue"
+            }
+          }
+        }
+      ]
+    }) }}
+
+
+
+
+
+
+    {{ govukInsetText({
+      html: preSubmissionInfo
+    }) }}
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Discard draft",
+        classes: "govuk-button--secondary"
+      }) }}
+
+      {{ govukButton({
+        text: "Submit",
+        disabled: true
+      }) }}
+    </div>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
