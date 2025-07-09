@@ -308,7 +308,7 @@
     }) }}
 
     <h2 class="govuk-heading-m">Ethnicity pay gap</h2>
-
+    <p>You must complete your workforce breakdown before you start the other sections</p>
     {{ govukTaskList({
       idPrefix: "ethnicity-pay-gap-report",
       items: [
@@ -322,9 +322,6 @@
               text: "Incomplete",
               classes: "govuk-tag--blue"
             }
-          },
-          hint: {
-            text: "You must complete your workforce breakdown before the other sections"
           }
         },
         {
@@ -385,7 +382,7 @@
     }) }}
 
     <h2 class="govuk-heading-m">Disability pay gap</h2>
-
+    <p>You must complete your workforce breakdown before you start the other sections</p>
     {{ govukTaskList({
       idPrefix: "disability-pay-gap-report",
       items: [
@@ -394,8 +391,7 @@
             text: "Workforce breakdown by disability status, and disclosure rates"
           },
           href: "dpg-questions/eligibility",
-          status: disabilityEligibilityStatus,
-          hint: disabilityEligibilityHint
+          status: disabilityEligibilityStatus
         },
         {
           title: {
