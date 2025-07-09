@@ -20,13 +20,17 @@
             </ul> 
         </p>
 
-			<p class="govuk-body">If disabled people in your organisation are paid more than non-disabled people, enter a negative percentage figure – for example -12%.</p>
+			<p class="govuk-body">If disabled people in your organisation are paid more than non-disabled people,
+         enter a negative percentage figure &mdash; for example, -12%.</p>
 
       <form class="form" action="../pay-gaps-report" method="post">
 
         {{ govukInput({
           label: {
               html: "Enter the <b>mean (average)</b> disability pay gap for hourly pay"
+          },
+          hint: {
+            text: "The mean is the 'average' value in a set of numbers."
           },
           classes: "govuk-input--width-5",
           id: "dpg-mean-hourly",
@@ -40,6 +44,11 @@
           {{ govukInput({
           label: {
               html: "Enter the <b>median</b> disability pay gap for hourly pay"
+                     
+          },
+          hint: {
+            text: "The median is the middle point of a range of numbers arranged in order.
+                     If there is an even number in the range, the median is the mean (average) of the 2 middle numbers."
           },
           classes: "govuk-input--width-5",
           id: "dpg-median-hourly",

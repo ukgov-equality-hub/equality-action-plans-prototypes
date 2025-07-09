@@ -40,8 +40,9 @@
     {% set dpgHourlyLink = "dpg-questions/pay-gap-hourly-pay" %}
     {% set disabledPayQuartersLink = "dpg-questions/pay-quarters" %}
     {% set disabledBonusPayReceivedLink = "dpg-questions/bonus-pay-received" %}
+    {% set disabledGradePayGapLink = "dpg-questions/public-sector-grade-pg" %}
 
-    {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusReceivedStatus = {
+    {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
       tag: {
         text: "Incomplete",
         classes: "govuk-tag--blue"
@@ -56,6 +57,15 @@
       and data.dpg['lowerPayQuarter']['disabled'] and data.dpg['lowerPayQuarter']['nonDisabled'] %}
       {% set disabledPayQuarterStatus = {text: "Completed"} %}
     {% endif %}
+
+    {% if data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
+      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
+      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
+      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
+      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
+      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly'] %}
+      {% set dpgGradeStatus = {text: "Completed"} %}
+    {% endif%}
 
     {% if data.dpg['bonusReceived']['disabled'] and data.dpg['bonusReceived']['nonDisabled'] %}
       {% set dpgBonusReceivedStatus = {text: "Completed"} %}
@@ -114,7 +124,7 @@
         text: "You must complete your workforce breakdown before the other sections"
       }
       %}
-  {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusStatus, dpgBonusReceivedStatus = {
+  {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
       text: "Cannot start yet",
       classes: "govuk-task-list__status--cannot-start-yet"
     }
@@ -261,12 +271,7 @@
             text: "Number of grades in your organisation"
           },
           href: "public-sector-grades",
-          status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          }
+          status: {text: "Completed"}
         }
       ]
     }) }}
@@ -425,13 +430,14 @@
           title: {
             text: "Disability pay gap by grade"
           },
-          status: dpgBonusStatus
+          href: disabledGradePayGapLink,
+          status: dpgGradeStatus 
         },
         {
           title: {
             text: "Recruitment, retention and progression by disability status"
           },
-          status: dpgBonusStatus
+          status: dpgRecRetStatus
         }
       ]
     }) }}
