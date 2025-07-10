@@ -111,7 +111,7 @@
               + " report on your disability pay gap."
             }
             %}
-    {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusStatus, dpgBonusReceivedStatus = {
+    {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
       text: "Not required"
     } %}
     {% set dpgHourlyLink, disabledPayQuartersLink, dpgBonusLink, disabledBonusPayReceivedLink = null %}
@@ -127,16 +127,14 @@
       classes: "govuk-tag--blue"
     }
   } %}
-  {% set disabilityEligibilityHint = {
-        text: "You must complete your workforce breakdown before the other sections"
-      }
+  {% set disabilityEligibilityHint = null
       %}
   {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
       text: "Cannot start yet",
       classes: "govuk-task-list__status--cannot-start-yet"
     }
   %}
-  {% set dpgHourlyLink, disabledPayQuartersLink, dpgBonusLink, disabledBonusPayReceivedLink = null %}
+  {% set dpgHourlyLink, disabledPayQuartersLink, dpgBonusLink, disabledBonusPayReceivedLink, disabledGradePayGapLink, disabledRecruitmentRetentionLink = null %}
 {% endif %}
 
 
@@ -403,7 +401,8 @@
             text: "Workforce breakdown by disability status, and disclosure rates"
           },
           href: "dpg-questions/eligibility",
-          status: disabilityEligibilityStatus
+          status: disabilityEligibilityStatus,
+          hint: disabilityEligibilityHint
         },
         {
           title: {

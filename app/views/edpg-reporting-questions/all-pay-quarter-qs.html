@@ -374,10 +374,15 @@
           },
           spellcheck: false
           }) }}
-
-       
+        
+        <div class="govuk-button-group">
         {{ govukButton({
-          text: "Continue"
+            text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+            text: "Save and exit",
+            classes: "govuk-button--secondary"
         }) }}
 
       </form>

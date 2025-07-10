@@ -59,9 +59,14 @@
           spellcheck: false
           }) }}
 					
-        {{ govukButton({
-          text: "Submit"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <a class="govuk-link" href="../pay-gaps-report">Save and exit</a>
+        </div>
+
 
       </form>
 
