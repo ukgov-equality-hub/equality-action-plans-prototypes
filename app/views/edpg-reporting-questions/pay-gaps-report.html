@@ -41,6 +41,7 @@
     {% set disabledPayQuartersLink = "dpg-questions/pay-quarters" %}
     {% set disabledBonusPayReceivedLink = "dpg-questions/bonus-pay-received" %}
     {% set disabledGradePayGapLink = "dpg-questions/public-sector-grade-pg" %}
+    {% set disabledRecruitmentRetentionLink = "dpg-questions/public-sector-recruitment-retention" %}
 
     {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
       tag: {
@@ -59,13 +60,19 @@
     {% endif %}
 
     {% if data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
-      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
-      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
-      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
-      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
-      and data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly'] %}
+      and data.dpg['gradeTwoMeanHourly'] and data.dpg['gradeTwoMedianHourly']
+      and data.dpg['gradeThreeMeanHourly'] and data.dpg['gradeThreeMedianHourly']
+      and data.dpg['gradeFourMeanHourly'] and data.dpg['gradeFourMedianHourly']
+      and data.dpg['gradeFiveMeanHourly'] and data.dpg['gradeFiveMedianHourly']
+      and data.dpg['gradeSixMeanHourly'] and data.dpg['gradeSixMedianHourly'] %}
       {% set dpgGradeStatus = {text: "Completed"} %}
     {% endif%}
+
+    {% if data.dpg['recruitment']['disabled'] and data.dpg['recruitment']['nonDisabled']
+      and data.dpg['churn']['disabled'] and data.dpg['churn']['nonDisabled']
+      and data.dpg['promoted']['disabled'] and data.dpg['promoted']['nonDisabled'] %}
+      {% set dpgRecRetStatus = {text: "Completed"} %}
+    {% endif %}
 
     {% if data.dpg['bonusReceived']['disabled'] and data.dpg['bonusReceived']['nonDisabled'] %}
       {% set dpgBonusReceivedStatus = {text: "Completed"} %}
@@ -437,6 +444,7 @@
           title: {
             text: "Recruitment, retention and progression by disability status"
           },
+          href: disabledRecruitmentRetentionLink,
           status: dpgRecRetStatus
         }
       ]

@@ -1,0 +1,96 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Disability pay gap - recruitment, retention and progression" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Disability pay gap &mdash; recruitment, retention and progression
+      </h1>
+
+      <form class="form" action="../pay-gaps-report" method="post">
+
+
+        <h3 class="govuk-heading-s">How many employees has your organisation recruited this year?</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled new hires"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-recruitment",
+          name: "dpg[recruitment][disabled]",
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled new hires"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-recruitment",
+          name: "dpg[recruitment][nonDisabled]",
+          spellcheck: false
+          }) }}
+        
+        <h3 class="govuk-heading-s">How many employees have left your organisation this year?</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled leavers"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-churn",
+          name: "dpg[churn][disabled]",
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled leavers"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-churn",
+          name: "dpg[churn][nonDisabled]",
+          spellcheck: false
+          }) }}
+        
+        <h3 class="govuk-heading-s">How many employees have ben promoted within your organisation this year?</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-promoted",
+          name: "dpg[promoted][disabled]",
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-promoted",
+          name: "dpg[promoted][nonDisabled]",
+          spellcheck: false
+          }) }}
+
+					
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+        
