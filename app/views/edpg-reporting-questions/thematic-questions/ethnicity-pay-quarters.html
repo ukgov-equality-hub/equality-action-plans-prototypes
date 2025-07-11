@@ -1,0 +1,154 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Ethnicity pay gap - pay quarters" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Ethnicity pay gap - pay quarters
+      </h1>
+
+			<p class="govuk-body">
+            Enter your figures as:
+            <ul class="govuk-list govuk-list--bullet">
+                <li>whole percentages</li>
+                <li>percentages rounded to one decimal place</li>
+            </ul> 
+        </p>
+      
+      <form class="form" action="../pay-gaps-report" method="post">
+
+        <h3 class="govuk-heading-s">Upper hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Ethnic minority employees (excluding white minorities)"
+          },
+          classes: "govuk-input--width-5",
+          id: "ethnicity-other-upper-pay-quarter",
+          name: "epg[upperPayQuarter][ethnicity-other]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "White"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-upper-pay-quarter",
+          name: "epg[upperPayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Upper middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Ethnic minority employees (excluding white minorities)"
+          },
+          classes: "govuk-input--width-5",
+          id: "ethnicity-other-upper-middle-pay-quarter",
+          name: "epg[upperMiddlePayQuarter][ethnicity-other]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "White employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-upper-middle-pay-quarter",
+          name: "epg[upperMiddlePayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Lower middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Ethnic minority employees (excluding white minorities)"
+          },
+          classes: "govuk-input--width-5",
+          id: "ethnicity-other-lower-middle-pay-quarter",
+          name: "epg[lowerMiddlePayQuarter][ethnicity-other]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+        {{ govukInput({
+          label: {
+              html: "White employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-lower-middle-pay-quarter",
+          name: "epg[lowerMiddlePayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+        
+        <h3 class="govuk-heading-s">Lower hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Ethnic minority employees (excluding white minorities)"
+          },
+          classes: "govuk-input--width-5",
+          id: "ethnicity-other-lower-pay-quarter",
+          name: "epg[lowerPayQuarter][ethnicity-other]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+
+        {{ govukInput({
+          label: {
+              html: "White employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "white-lower-pay-quarter",
+          name: "epg[lowerPayQuarter][white]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+       
+       
+       
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+        

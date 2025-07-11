@@ -23,7 +23,7 @@
 			<p class="govuk-body">If disabled people in your organisation are paid more than non-disabled people,
          enter a negative percentage figure &mdash; for example, -12%.</p>
 
-      <form class="form" action="../pay-gaps-report" method="post">
+      <form class="form" action="pay-quarters" method="post">
 
         {{ govukInput({
           label: {
@@ -59,9 +59,13 @@
           spellcheck: false
           }) }}
 					
-        {{ govukButton({
-          text: "Submit"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <a class="govuk-link" href="../pay-gaps-report">Save and exit</a>
+        </div>
 
       </form>
 

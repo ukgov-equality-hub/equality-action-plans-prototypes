@@ -1,0 +1,158 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Disability pay gap - pay quarters" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Disability pay gap - pay quarters
+      </h1>
+
+			<p class="govuk-body">
+            Enter your figures as:
+            <ul class="govuk-list govuk-list--bullet">
+                <li>whole percentages</li>
+                <li>percentages rounded to one decimal place</li>
+            </ul> 
+        </p>
+      
+      <form class="form" action="ethnicity-pay-quarters" method="post">
+
+        <h3 class="govuk-heading-s">Upper hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-upper-pay-quarter",
+          name: "dpg[upperPayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-upper-pay-quarter",
+          name: "dpg[upperPayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Upper middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-upper-middle-pay-quarter",
+          name: "dpg[upperMiddlePayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-upper-middle-pay-quarter",
+          name: "dpg[upperMiddlePayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+
+        <h3 class="govuk-heading-s">Lower middle hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-lower-middle-pay-quarter",
+          name: "dpg[lowerMiddlePayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-lower-middle-pay-quarter",
+          name: "dpg[lowerMiddlePayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+        
+        <h3 class="govuk-heading-s">Lower hourly pay quarter</h3>
+
+        {{ govukInput({
+          label: {
+              html: "Disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "disabled-lower-pay-quarter",
+          name: "dpg[lowerPayQuarter][disabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          })
+        }}
+
+
+        {{ govukInput({
+          label: {
+              html: "Non-disabled employees"
+          },
+          classes: "govuk-input--width-5",
+          id: "non-disabled-lower-pay-quarter",
+          name: "dpg[lowerPayQuarter][nonDisabled]",
+          suffix: {
+              text: "%"
+          },
+          spellcheck: false
+          }) }}
+       
+       
+       
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <a class="govuk-link" href="../pay-gaps-report">Save and exit</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+        

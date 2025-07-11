@@ -32,125 +32,8 @@
 
 {# Data  exists#}
 
-{% if data.workforce['disabled'] or data.workforce['nonDisabled'] or data.workforce['disabilityStatusNotDisclosed'] or data.workforce['disabilityStatusUnknown'] %}
-  {% set disabilityEligibilityStatus = {text: "Completed"} %}
-
-  {# Needs to report #}
-  {% if data.workforce['disabled'] >= 10 and data.workforce['nonDisabled'] >= 10 %}
-    {% set dpgHourlyLink = "dpg-questions/pay-gap-hourly-pay" %}
-    {% set disabledPayQuartersLink = "dpg-questions/pay-quarters" %}
-    {% set disabledBonusPayReceivedLink = "dpg-questions/bonus-pay-received" %}
-    {% set disabledGradePayGapLink = "dpg-questions/public-sector-grade-pg" %}
-    {% set disabledRecruitmentRetentionLink = "dpg-questions/public-sector-recruitment-retention" %}
-
-    {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
-      tag: {
-        text: "Incomplete",
-        classes: "govuk-tag--blue"
-      }
-    } %}
-    {% if data.dpg['medianHourly'] and data.dpg['meanHourly'] %}
-      {% set dpgHourlyStatus = {text: "Completed"} %}
-    {% endif %}
-    {% if data.dpg['upperPayQuarter']['disabled'] and data.dpg['upperPayQuarter']['nonDisabled']
-      and data.dpg['upperMiddlePayQuarter']['disabled'] and data.dpg['upperMiddlePayQuarter']['nonDisabled']
-      and data.dpg['lowerMiddlePayQuarter']['disabled'] and data.dpg['lowerMiddlePayQuarter']['nonDisabled']
-      and data.dpg['lowerPayQuarter']['disabled'] and data.dpg['lowerPayQuarter']['nonDisabled'] %}
-      {% set disabledPayQuarterStatus = {text: "Completed"} %}
-    {% endif %}
-
-    {% if data.dpg['gradeOneMeanHourly'] and data.dpg['gradeOneMedianHourly']
-      and data.dpg['gradeTwoMeanHourly'] and data.dpg['gradeTwoMedianHourly']
-      and data.dpg['gradeThreeMeanHourly'] and data.dpg['gradeThreeMedianHourly']
-      and data.dpg['gradeFourMeanHourly'] and data.dpg['gradeFourMedianHourly']
-      and data.dpg['gradeFiveMeanHourly'] and data.dpg['gradeFiveMedianHourly']
-      and data.dpg['gradeSixMeanHourly'] and data.dpg['gradeSixMedianHourly'] %}
-      {% set dpgGradeStatus = {text: "Completed"} %}
-    {% endif%}
-
-    {% if data.dpg['recruitment']['disabled'] and data.dpg['recruitment']['nonDisabled']
-      and data.dpg['churn']['disabled'] and data.dpg['churn']['nonDisabled']
-      and data.dpg['promoted']['disabled'] and data.dpg['promoted']['nonDisabled'] %}
-      {% set dpgRecRetStatus = {text: "Completed"} %}
-    {% endif %}
 
 
-    {% if data.dpg['bonusReceived']['disabled'] and data.dpg['bonusReceived']['nonDisabled'] %}
-      {% set dpgBonusReceivedStatus = {text: "Completed"} %}
-      {% set dpgBonusStatus = {text: "Not required"} %} 
-
-      {% if data.dpg['bonusReceived']['disabled'] > 0 and data.dpg['bonusReceived']['nonDisabled'] > 0 %}
-        {% set dpgBonusLink = "dpg-questions/pay-gap-bonus-pay" %}
-
-        {% if data.dpg['medianBonus'] and data.dpg['meanBonus'] %}
-          {% set dpgBonusStatus = {text: "Completed"} %}
-        {% else %}
-          {% set dpgBonusStatus = {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          } %}
-        {% endif %}
-      {% endif %}
-       
-    {% else %}
-      {% set dpgBonusStatus = {
-        text: "Cannot start yet",
-        classes: "govuk-task-list__status--cannot-start-yet"
-        }
-      %}
-      
-    {% endif %}
-    
-
-  {# Shouldn't report #}
-
-  {% else %}
-    {% set disabilityEligibilityHint = {
-      text: "Your disclosure rates on disability status are too low to"
-              + " report on your disability pay gap."
-            }
-            %}
-    {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
-      text: "Not required"
-    } %}
-    {% set dpgHourlyLink, disabledPayQuartersLink, dpgBonusLink, disabledBonusPayReceivedLink, disabledGradePayGapLink, disabledRecruitmentRetentionLink = null %}
-  {% endif %}
-
-
-{# No data #}
-
-{% else %}
-  {% set disabilityEligibilityStatus = {
-    tag: {
-      text: "Incomplete",
-      classes: "govuk-tag--blue"
-    }
-  } %}
-  {% set disabilityEligibilityHint = {
-        text: "You must complete your workforce breakdown before the other sections"
-      }
-      %}
-  {% set dpgHourlyStatus, disabledPayQuarterStatus, dpgBonusStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus = {
-      text: "Cannot start yet",
-      classes: "govuk-task-list__status--cannot-start-yet"
-    }
-  %}
-  {% set dpgHourlyLink, disabledPayQuartersLink, dpgBonusLink, disabledBonusPayReceivedLink, disabledGradePayGapLink, disabledRecruitmentRetentionLink = null %}
-{% endif %}
-
-
-{% if data.gpg['medianHourly'] and data.gpg['meanHourly'] %}
-  {% set gpgHourlyStatus = {text: "Completed"} %}
-{% else %}
-  {% set gpgHourlyStatus = {
-    tag: {
-      text: "Incomplete",
-      classes: "govuk-tag--blue"
-    }
-  } %}
-{% endif %}
 
 {% if data.gpg['upperPayQuarter']['women'] and data.gpg['upperPayQuarter']['men']
       and data.gpg['upperMiddlePayQuarter']['women'] and data.gpg['upperMiddlePayQuarter']['men']
@@ -166,39 +49,41 @@
   } %}
 {% endif %}
 
-
-{% if data.gpg['bonusReceived']['women'] and data.gpg['bonusReceived']['men'] %}
-  {% set gpgBonusReceivedStatus = {text: "Completed"} %}
-  {% set gpgBonusStatus = {text: "Not required"} %} 
-
-  {% if data.gpg['bonusReceived']['women'] > 0 and data.gpg['bonusReceived']['men'] > 0 %}
-    {% set gpgBonusLink = "gpg-questions/pay-gap-bonus-pay" %}
-
-    {% if data.gpg['medianBonus'] and data.gpg['meanBonus'] %}
-      {% set gpgBonusStatus = {text: "Completed"} %}
-    {% else %}
-      {% set gpgBonusStatus = {
-        tag: {
-          text: "Incomplete",
-          classes: "govuk-tag--blue"
-        }
-      } %}
-    {% endif %}
-  {% endif %}
-    
+{% if data.dpg['upperPayQuarter']['disabled'] and data.dpg['upperPayQuarter']['nonDisabled']
+  and data.dpg['upperMiddlePayQuarter']['disabled'] and data.dpg['upperMiddlePayQuarter']['nonDisabled']
+  and data.dpg['lowerMiddlePayQuarter']['disabled'] and data.dpg['lowerMiddlePayQuarter']['nonDisabled']
+  and data.dpg['lowerPayQuarter']['disabled'] and data.dpg['lowerPayQuarter']['nonDisabled'] %}
+  {% set disabledPayQuarterStatus = {text: "Completed"} %}
 {% else %}
-  {% set gpgBonusStatus = {
-    text: "Cannot start yet",
-    classes: "govuk-task-list__status--cannot-start-yet"
-    }
-  %}
-  {% set gpgBonusReceivedStatus = {
+  {% set disabledPayQuarterStatus = {
     tag: {
       text: "Incomplete",
       classes: "govuk-tag--blue"
     }
   } %}
 {% endif %}
+
+{% if data.epg['upperPayQuarter']['ethnicity-other'] and data.epg['upperPayQuarter']['white']
+  and data.epg['upperMiddlePayQuarter']['ethnicity-other'] and data.epg['upperMiddlePayQuarter']['white']
+  and data.epg['lowerMiddlePayQuarter']['ethnicity-other'] and data.epg['lowerMiddlePayQuarter']['white']
+  and data.epg['lowerPayQuarter']['ethnicity-other'] and data.epg['lowerPayQuarter']['white'] %}
+  {% set ethnicityPayQuarterStatus = {text: "Completed"} %}
+{% else %}
+  {% set ethnicityPayQuarterStatus = {
+    tag: {
+      text: "Incomplete",
+      classes: "govuk-tag--blue"
+    }
+  } %}
+{% endif %}
+
+{% set disabilityEligibilityStatus, ethnicityEligibilityStatus, gpgHourlyStatus,
+   dpgHourlyStatus, dpgBonusReceivedStatus, dpgGradeStatus, dpgRecRetStatus,
+   ethnicityHourlyStatus, ethnicityHourlyGradeStatus,
+   gpgBonusReceivedStatus, epgBonusReceivedStatus,
+   gpgBonusStatus, dpgBonusStatus, epgBonusStatus,
+   dpgGradeBonusStatus, epgGradeBonusStatus, epgRecRetStatus = {text: "Completed"} %}
+
 
 {% block content %}
 
@@ -211,6 +96,10 @@
     <h1 class="govuk-heading-l">
       Your pay gaps report
     </h1>
+
+    <p class="review-note">
+        Thematic page (long)
+    </p>
 
     <p>
       You must submit pay gap data which covers:
@@ -256,10 +145,7 @@
           },
           href: "#",
           status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
+              text: "Completed"
           }
         },
         {
@@ -279,23 +165,14 @@
             text: "Workforce breakdown by ethnicity, and disclosure rates"
           },
           href: "epg-questions/eligibility",
-          status: {
-            tag: {
-              text: "Incomplete",
-              classes: "govuk-tag--blue"
-            }
-          },
-          hint: {
-            text: "You must complete your workforce breakdowns before the other sections"
-          }
+          status: ethnicityEligibilityStatus
         },
         {
           title: {
             text: "Workforce breakdown by disability status, and disclosure rates"
           },
           href: "dpg-questions/eligibility",
-          status: disabilityEligibilityStatus,
-          hint: disabilityEligibilityHint
+          status: disabilityEligibilityStatus
         },
         {
           title: {
@@ -318,40 +195,30 @@
           title: {
             text: "Mean and median gender pay gap using hourly pay"
           },
-          href: "gpg-questions/pay-gap-hourly-pay",
           status: gpgHourlyStatus
         },
         {
           title: {
             text: "Mean and median ethnicity pay gap using hourly pay"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: ethnicityHourlyStatus
         },
         {
           title: {
             text: "Mean and median disability pay gap using hourly pay"
           },
-          href: dpgHourlyLink,
           status: dpgHourlyStatus
         },
         {
           title: {
             text: "Ethnicity pay gap by grade using hourly pay"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
-          
+          status: ethnicityHourlyGradeStatus
         },
         {
           title: {
             text: "Disability pay gap by grade using hourly pay"
           },
-          href: disabledGradePayGapLink,
           status: dpgGradeStatus 
         }
       ]
@@ -366,24 +233,22 @@
           title: {
             text: "Percentage of men and women in each hourly pay quarter"
           },
-          href: "gpg-questions/pay-quarters",
+          href: "thematic-questions/gender-pay-quarters",
           status: gpgPayQuarterStatus
         },
         {
           title: {
             text: "Percentage of disabled and non-disabled people in each hourly pay quarter"
           },
-          href: disabledPayQuartersLink,
+          href: "thematic-questions/disability-pay-quarters",
           status: disabledPayQuarterStatus
         },
         {
           title: {
             text: "Percentage of different ethnic groups in each hourly pay quarter"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          href: "thematic-questions/ethnicity-pay-quarters",
+          status: ethnicityPayQuarterStatus
         }
         
       ]
@@ -398,24 +263,19 @@
           title: {
             text: "Percentage of men and women who received bonus pay"
           },
-          href: "gpg-questions/bonus-pay-received",
           status: gpgBonusReceivedStatus
         },
         {
           title: {
             text: "Percentage of different ethnic groups who received bonus pay"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: epgBonusReceivedStatus
         },
         
         {
           title: {
             text: "Percentage of disabled and non-disabled people who received bonus pay"
           },
-          href: disabledBonusPayReceivedLink,
           status: dpgBonusReceivedStatus
         }
       ]
@@ -430,42 +290,31 @@
           title: {
             text: "Mean and median gender pay gap using bonus pay"
           },
-          href: gpgBonusLink,
           status: gpgBonusStatus
         },
         {
           title: {
             text: "Mean and median ethnicity pay gap using bonus pay"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: epgBonusStatus
         },
         {
           title: {
             text: "Mean and median disability pay gap using bonus pay"
           },
-          href: dpgBonusLink,
           status: dpgBonusStatus
         },
            {
           title: {
             text: "Ethnicity pay gap by grade using bonus pay"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: epgGradeBonusStatus
         },
         {
           title: {
             text: "Disability pay gap by grade using bonus pay"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: dpgGradeBonusStatus
         }
 
       ]
@@ -480,16 +329,12 @@
           title: {
             text: "Recruitment, retention and progression by ethnicity"
           },
-          status: {
-            text: "Cannot start yet",
-            classes: "govuk-task-list__status--cannot-start-yet"
-          }
+          status: epgRecRetStatus
         },
         {
           title: {
             text: "Recruitment, retention and progression by disability status"
           },
-          href: disabledRecruitmentRetentionLink,
           status: dpgRecRetStatus
         }
       ]

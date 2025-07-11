@@ -12,7 +12,7 @@
         Disability statuses
       </h1>
 
-      <form class="form" action="../pay-gaps-report" method="post">
+      <form class="form" action="pay-gap-hourly-pay" method="post">
 
         {{ govukInput({
           label: {
@@ -59,9 +59,13 @@
         }) }}
 
 
-        {{ govukButton({
-          text: "Submit"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <a class="govuk-link" href="../pay-gaps-report">Save and exit</a>
+        </div>
 
       </form>
 
