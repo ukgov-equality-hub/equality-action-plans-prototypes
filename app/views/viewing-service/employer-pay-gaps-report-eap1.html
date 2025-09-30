@@ -342,6 +342,24 @@
   </ul>
 {% endset %}
 
+{% set actionPlanExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit an action plan outlining how they
+    intend to address the gender pay gap and to support employees going through
+    menopause.
+  </p>
+  <p>
+    Employers review actions from our database, identify any they already routinely
+    do, and choose some new actions to focus on. You can also
+    <a href="#">see the full list of actions in our database</a>.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -362,6 +380,7 @@
         <li><a href="#main-facts-and-figures">Main facts and figures</a></li>
         <li><a href="#gender">Gender pay report</a></li>
         <li><a href="#eap">Action plan</a></li>
+        <li><a href="#actions-done">Actions implemented</a></li>
         <li><a href="#about">About {{thisPageEmployer.name}}</a></li>
       </ol>
 
@@ -426,14 +445,42 @@
 
       <h2 id="eap" class="govuk-heading-m">3. Action plan</h2>
       <p>This section explains what EmployerName Ltd have already done and plan to do on workplace equality.</p>
-      <h3 class="govuk-heading-s">What they plan to do</h3>
-      <h4 govuk-heading-xs>Recruiting staff</h4>
-      <p>Action one</p>
-      <p>Action two</p>
+      
+       {{ govukDetails({
+        summaryText: "What is an action plan?",
+        html: actionPlanExplanation
+      }) }}
+      
+      <h3 class="govuk-heading-s">Recruiting staff</h3>
+      {{ govukDetails({
+        summaryText: "Inclusive job adverts",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }) }}
+
+      {{ govukDetails({
+        summaryText: "Reduce unconscious bias in CV screening",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }) }}
+
+      <h3 class="govuk-heading-s">Building diversity into the organisation</h3>
+      {{ govukDetails({
+        summaryText: "Support staff to take parental leave",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }) }}
+
+      <h3 class="govuk-heading-s">Supporting staff during menopause</h3>
+      {{ govukDetails({
+        summaryText: "Conducting a menopause risk assessment for the workplace",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }) }}
+      
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="actions-done" class="govuk-heading-m">4. Actions implemented</h2>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-      <h2 id="about" class="govuk-heading-m">4. About {{thisPageEmployer.name}}</h2>
+      <h2 id="about" class="govuk-heading-m">5. About {{thisPageEmployer.name}}</h2>
 
       {{ govukSummaryList({
         rows: [
