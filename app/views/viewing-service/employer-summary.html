@@ -1,0 +1,221 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Employer summary page" %}
+{% set serviceName="Action plans on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer-current-reports?employerCode=" + thisPageEmployer.shortCode
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set reportExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit both:
+  </p>
+  <ul class="govuk-list--bullet">
+    <li>a gender pay gap report showing their breakdown of pay by gender</li>
+    <li>an action plan outlining how they intend to address the gender pay gap and support employees going through menopause</li>
+  </ul>
+  <p>
+    For more detail, see the <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% set actionPlanExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit an action plan outlining how they
+    intend to address the gender pay gap and to support employees going through
+    menopause.
+  </p>
+  <p>
+    Employers review actions from our database, identify any they already routinely
+    do, and choose some new actions to focus on. You can also
+    <a href="#">see the full list of actions in our database</a>.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{thisPageEmployer.name}}
+      </h1>
+
+      {{ govukButton({
+        text: "Add to comparison",
+        href: "#"
+      }) }}
+
+      <h2 class="govuk-heading-m">Contents</h2>
+
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#gender">Latest Gender pay report</a></li>
+        <li><a href="#eap">Action plan</a></li>
+        <li><a href="#actions-done">Previous Gender pay reports</a></li>
+        <li><a href="#about">About {{thisPageEmployer.name}}</a></li>
+      </ol>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">
+        1. Latest Gender pay report
+      </h2>
+
+      {{ govukDetails({
+        summaryText: "What are employers required to submit?",
+        html: reportExplanation
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">
+        2. Taking action to address pay gaps and support employees
+      </h2>
+
+      <p>Following the 2024 Pay Gap figures, significant action is required to reduce the gap and achieve better gender balance at every level. Our plan to accomplish this will be built on key principles: fair and transparent employment and pay practices for everyone; evidence-based and collaborative solutions that are sustainable; and consistent tracking and reporting of progress to both the board and employeess twice a year.</p>
+      <p>Read more about <a href="#">what this employer says about their pay gaps (opens in a new window)</a></p>
+
+      <h3 class="govuk-heading-s">Action plan</h3>
+
+       {{ govukDetails({
+        summaryText: "What is an action plan?",
+        html: actionPlanExplanation
+      }) }}
+
+      <p>[This employer] has committed to embedding these actions:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Making job adverts inclusive</li>
+        <li>Ensure interview outcomes are fair</li>
+        <li>Training line managers to support employees experiencing menopause</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Actions they have completed</h3>
+      <p>[This employer] has embedded these actions:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Appoint diversity leads or taskforces</li>
+        <li>Supporting staff to take parental leave</li>
+        <li>Analysing data to understand pay gaps and staff needs</li>
+        <li>Offering occupational health advice to employees experiencing menopause</li>
+        <li>Creating menopause networks and support groups</li>
+        <li>Offering workplace adjustments to employees experiencing menopause</li>
+      </ul>
+
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">
+        3. Submitted reports (test)
+      </h2>
+    
+      {% set displayCurrentYear = true %}
+      {% set reportsAreEditable = false %}
+      {% set actionPlanUrl = "employer-action-plan" %}
+      {% include "common/submitted-reports" %}
+
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="about" class="govuk-heading-m">
+        4. About {{thisPageEmployer.name}}
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              text: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Sector"
+            },
+            value: {
+              text: "Manufacturing"
+            }
+          },
+          {
+            key: {
+              text: "Snapshot date"
+            },
+            value: {
+              text: "5 April 2025"
+            }
+          },
+          {
+            key: {
+              text: "Employee headcount"
+            },
+            value: {
+              text: "500 to 999 employees"
+            }
+          },
+          {
+            key: {
+              text: "Person responsible"
+            },
+            value: {
+              text: "Toby Flenderson (HR manager)"
+            }
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}
