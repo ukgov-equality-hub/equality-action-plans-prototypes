@@ -1,0 +1,514 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Employer pay gaps report with action plan" %}
+{% set serviceName="Equality and disability pay gaps on the viewing service - visualisations" %}
+
+{% set thisPageEmployer = {} %}
+{% for employer in data.db.dashboardEmployers %}
+  {% if employer.shortCode == "dundermifflin" %}
+    {% set thisPageEmployer = employer %}
+  {% endif %}
+{% endfor %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home page",
+        href: "#"
+      },
+      {
+        text: "Search and compare",
+        href: "#"
+      },
+      {
+        text: thisPageEmployer.name,
+        href: "employer?employerCode=" + thisPageEmployer.shortCode
+      },
+      {
+        text: "Pay gaps report 2023/24"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% set medianVsMeanExplanationDetails %}
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Read more about median and mean
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <h3 class="govuk-heading-s">The median gender pay gap figure</h3>
+      <p>
+        This is the difference between the hourly pay of the median man and the
+        hourly pay of the median woman. The median for each is the man or woman in
+        the middle of a list of hourly pay, ordered from highest to lowest paid.
+      </p>
+      <p>
+        A median involves listing all of the numbers in numerical order. If there is
+        an odd number of results, the median is the middle number. If there is an
+        even number of results, the median will be the mean of the 2 central numbers.
+      </p>
+      <p>
+        Medians are useful to indicate what the ‘typical’ situation is. They are not
+        distorted by very high or low hourly pay, or bonuses. However, this means
+        that not all gender pay gap issues will be picked up. They could also fail
+        to pick up as effectively where the gender pay gap issues are most
+        pronounced in the lowest paid or highest paid employees.
+      </p>
+      <h3 class="govuk-heading-s">The mean (average) gender pay gap figure</h3>
+      <p>
+        The mean gender pay gap figure uses hourly pay of all employees to calculate
+        the difference between the mean hourly pay of men, and the mean hourly pay
+        of women.
+      </p>
+      <p>
+        A mean involves adding up all of the numbers and dividing the result by how
+        many numbers were in the list.
+      </p>
+      <p>
+        Mean averages are useful because they place the same value on every number
+        they use, giving a good overall indication of the gender pay gap. Very high
+        or low hourly pay can ‘dominate’ and distort the figure.
+      </p>
+    </div>
+  </details>
+{% endset %}
+
+{% set payQuartersExplanationDetails %}
+  <details class="govuk-details govuk-!-margin-top-6">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Read more about pay quarters
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p>
+        Pay quarters show the percentage of employees in different groups in 4
+        equally-sized bands based on their hourly pay.
+      </p>
+      <p>
+        Pay quarters give an indication of representation at different
+        levels of the organisation.
+      </p>
+    </div>
+  </details>
+{% endset %}
+
+{% set genderHourlyPay %}
+  <p>In this organisation:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      women’s median hourly pay was 34.0% lower than men’s &mdash; this means
+      they earned 66p for every £1 that men earn when comparing median hourly pay
+      {% set comparisonPay = 66 %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      women’s mean (average) hourly pay was 14.8% lower than men’s
+    </li>
+  </ul>
+
+  {{ medianVsMeanExplanationDetails | safe }}
+{% endset %}
+
+{% set ethnicityHourlyPay %}
+  <p>In this organisation, of those who declared their ethnicity:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>the largest ethnic group was White British (78%)</li>
+    <li>
+      the median hourly pay for people in smaller ethnic groups was 28.0% lower
+      than for White British people &mdash; this means they earned 72p for every
+      £1 that White British people earn when comparing median hourly pay
+      {% set comparisonPay = 72 %}
+      {% set hourlyPayReportType = "ethnicity" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      the mean (average) hourly pay for people in smaller ethnic groups was
+      11.2% lower than for White British people
+    </li>
+  </ul>
+
+  {{ medianVsMeanExplanationDetails | safe }}
+{% endset %}
+
+{% set disabilityHourlyPay %}
+  <p>In this organisation, of those who declared their disability status:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      the median hourly pay for disabled people was 40.6% lower
+      than for non-disabled people &mdash; this means they earned 59p for every
+      £1 that non-disabled people earn when comparing median hourly pay
+      {% set comparisonPay = 59.4 %}
+      {% set hourlyPayReportType = "disability" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      the mean (average) hourly pay for disabled people was
+      20.9% lower than for non-disabled people
+    </li>
+  </ul>
+
+  {{ medianVsMeanExplanationDetails | safe }}
+{% endset %}
+
+{% set genderPayQuarters %}
+  <p>In this organisation, women made up:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      46.4% of employees in the upper hourly pay quarter (highest paid jobs)
+    </li>
+    <li>
+      60.3% of employees in the upper middle hourly pay quarter
+    </li>
+    <li>
+      59.8% of employees in the lower middle hourly pay quarter
+    </li>
+    <li>
+      52.3% of employees in the lower hourly pay quarter (lowest paid jobs)
+    </li>
+  </ul>
+
+  {% include "common/pay-quarters-visualisation" %}
+
+  <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Table: pay quarters by gender
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="user-note">
+        The data table is not shown in this prototype.
+      </p>
+    </div>
+  </details>
+
+  {{ payQuartersExplanationDetails | safe }}
+{% endset %}
+
+{% set ethnicityPayQuarters %}
+  <p>In this organisation, of those who declared their ethnicity, ethnic groups other than White British made up:</p>
+
+  {% set upperQuarterPercentage = 41.5 %}
+  {% set upperMiddleQuarterPercentage = 54.1 %}
+  {% set lowerMiddleQuarterPercentage = 51.3 %}
+  {% set lowerQuarterPercentage = 50.2 %}
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      {{upperQuarterPercentage}}% of employees in the upper hourly pay quarter (highest paid jobs)
+    </li>
+    <li>
+      {{upperMiddleQuarterPercentage}}% of employees in the upper middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerMiddleQuarterPercentage}}% of employees in the lower middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerQuarterPercentage}}% of employees in the lower hourly pay quarter (lowest paid jobs)
+    </li>
+  </ul>
+
+  {% set payQuartersReportType = "ethnicity" %}
+  {% include "common/pay-quarters-visualisation" %}
+
+  <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Table: pay quarters by ethnicity
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="user-note">
+        The data table is not shown in this prototype.
+      </p>
+    </div>
+  </details>
+
+  {{ payQuartersExplanationDetails | safe }}
+{% endset %}
+
+{% set disabilityPayQuarters %}
+  <p>In this organisation, of those who declared their disability status, disabled people made up:</p>
+
+  {% set upperQuarterPercentage = 2.4 %}
+  {% set upperMiddleQuarterPercentage = 5.2 %}
+  {% set lowerMiddleQuarterPercentage = 6.2 %}
+  {% set lowerQuarterPercentage = 8.3 %}
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      {{upperQuarterPercentage}}% of employees in the upper hourly pay quarter (highest paid jobs)
+    </li>
+    <li>
+      {{upperMiddleQuarterPercentage}}% of employees in the upper middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerMiddleQuarterPercentage}}% of employees in the lower middle hourly pay quarter
+    </li>
+    <li>
+      {{lowerQuarterPercentage}}% of employees in the lower hourly pay quarter (lowest paid jobs)
+    </li>
+  </ul>
+
+  {% set payQuartersReportType = "disability" %}
+  {% include "common/pay-quarters-visualisation" %}
+
+  <details class="govuk-details govuk-!-margin-top-6 govuk-!-margin-bottom-0">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Table: pay quarters by disability
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p class="user-note">
+        The data table is not shown in this prototype.
+      </p>
+    </div>
+  </details>
+
+  {{ payQuartersExplanationDetails | safe }}
+{% endset %}
+
+{% set genderBonusPay %}
+  <p>In this organisation:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      women’s median bonus pay was 38.7% lower than men’s &mdash; this means they earned 61p for every £1 that men earn when comparing median bonus pay
+      {% set comparisonPay = 61.3 %}
+      {% set hourlyPayReportType = "gender" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      women’s mean (average) bonus pay was 53.7% lower than men’s
+    </li>
+    <li>
+      9.2% of women and 9.3% of men received bonus pay
+    </li>
+  </ul>
+{% endset %}
+
+{% set ethnicityBonusPay %}
+  <p>In this organisation, of those who declared their ethnicity:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>the largest ethnic group was White British (78%)</li>
+    <li>
+      the median bonus pay for people in smaller ethnic groups was 31.8% lower
+      than for White British people &mdash; this means they earned 68p for every
+      £1 that White British people earn when comparing median bonus pay
+      {% set comparisonPay = 67.2 %}
+      {% set hourlyPayReportType = "ethnicity" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      the mean (average) bonus pay for people in smaller ethnic groups was 39.7%
+      lower than for White British people
+    </li>
+    <li>
+      10.2% of people from smaller ethnic groups and 10.3% of White British people
+      received bonus pay
+    </li>
+  </ul>
+{% endset %}
+
+{% set disabilityBonusPay %}
+  <p>In this organisation, of those who declared their disability status:</p>
+
+  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>
+      disabled people’s median bonus pay was 49.7% lower than non-disabled
+      people’s &mdash; this means they earned 50p for every £1 that non-disabled
+      people earn when comparing median bonus pay
+      {% set comparisonPay = 50.3 %}
+      {% set hourlyPayReportType = "disability" %}
+      {% include "common/hourly-pay-comparison" %}
+    </li>
+    <li>
+      disabled people’s mean (average) bonus pay was 58.7% lower than non-disabled people’s
+    </li>
+    <li>
+      5.4% of disabled people and 9.3% of non-disabled people received bonus pay
+    </li>
+  </ul>
+{% endset %}
+
+{% set actionPlanExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit an action plan outlining how they
+    intend to address the gender pay gap and to support employees going through
+    menopause.
+  </p>
+  <p>
+    Employers review actions from our database, identify any they already routinely
+    do, and choose some new actions to focus on. You can also
+    <a href="#">see the full list of actions in our database</a>.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
+      <h1 class="govuk-heading-l">
+        Pay gaps report 2023/24
+      </h1>
+
+      {{ govukButton({
+        text: "Add to comparison"
+      }) }}
+
+      <h2 class="govuk-heading-m">Contents</h2>
+
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#main-facts-and-figures">Main facts and figures</a></li>
+        <li><a href="#gender">Gender pay report</a></li>
+        <li><a href="#eap">Action plan</a></li>
+        <li><a href="#about">About {{thisPageEmployer.name}}</a></li>
+      </ol>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="main-facts-and-figures" class="govuk-heading-m">1. Main facts and figures</h2>
+
+      <p>In this organisation:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          women earned 66p for every £1 that men earned (comparing median hourly pay)
+        </li>
+        <li>
+          women made up 70.0% of employees in the highest paid quarter, and 88.0% of employees in the lowest paid quarter
+        </li>
+        <li>
+          people from smaller ethnic groups earned 72p for every £1 that White British people earned (comparing median hourly pay)
+        </li>
+        <li>
+          White British people made up 85.0% of employees in the highest paid quarter, and 62.0% of employees in the lowest paid quarter
+        </li>
+        <li>
+          disabled people earned 59p for every £1 that non-disabled people earned (comparing median hourly pay)
+        </li>
+        <li>
+          disabled people made up 2.4% of employees in the highest paid quarter, and 8.3% of employees in the lowest paid quarter
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="gender" class="govuk-heading-m">2. Gender pay report</h2>
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Hourly pay",
+            id: "genderHourlyPay",
+            panel: {
+              html: genderHourlyPay
+            }
+          },
+          {
+            label: "Pay quarters",
+            id: "genderPayQuarters",
+            panel: {
+              html: genderPayQuarters
+            }
+          },
+          {
+            label: "Bonus pay",
+            id: "genderBonusPay",
+            panel: {
+              html: genderBonusPay
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="eap" class="govuk-heading-m">3. Action plan</h2>
+      <p>This section explains what EmployerName Ltd have already done and plan to do on workplace equality.</p>
+      
+       {{ govukDetails({
+        summaryText: "What is an action plan?",
+        html: actionPlanExplanation
+      }) }}
+      
+     <div class="govuk-grid-column-full">
+
+      {% set viewOnly = true %}
+      {% include "common/categorised-action-plan" %}
+
+    </div>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="about" class="govuk-heading-m">5. About {{thisPageEmployer.name}}</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              text: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Sector"
+            },
+            value: {
+              text: "Manufacturing"
+            }
+          },
+          {
+            key: {
+              text: "Snapshot date"
+            },
+            value: {
+              text: "5 April 2025"
+            }
+          },
+          {
+            key: {
+              text: "Employee headcount"
+            },
+            value: {
+              text: "500 to 999 employees"
+            }
+          },
+          {
+            key: {
+              text: "Person responsible"
+            },
+            value: {
+              text: "Toby Flenderson (HR manager)"
+            }
+          }
+        ]
+      }) }}
+
+      <p><a href="#">What this employer says about their pay gaps (opens in a new window)</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
