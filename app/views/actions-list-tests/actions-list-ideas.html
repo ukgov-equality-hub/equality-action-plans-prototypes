@@ -1,0 +1,234 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Ideas for Actions list" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Tell us what you're already doing
+      </h1>
+
+      <p>
+        Below is the list of actions in our service.
+        For each one, we will ask if your organisation:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>has already embedded it in its working culture</li>
+        <li>is working on embedding it but has not yet made it routine</li>
+      </ul>
+      <p>
+        You can also provisionally add actions, for example if your organisation
+        is yet to commit to a specific action. You will be able to review and
+        edit your plan before you submit it.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
+
+      <!--  {% set journeyShortCode = "endToEndMVP" %}
+        {% set creatingNewActionPlan = true %}
+        {% set showEmptyCategories = true %}
+        {% set assessWholeCategoryAtOnce = false %}
+        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set editUrl = "action-details" %}
+        {% set excludeCategory = "data" %}
+        {% include "common/categorised-action-plan.html" %} -->
+
+        {{ govukInsetText({
+            text: "Idea 1: Summary list component."
+          }) }}
+
+        {{ govukSummaryList({
+            card: {
+              title: {
+                text: "Recruitment and Selection"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Make job adverts inclusive"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Encourage applications from diverse candidates"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Reduce unconscious bias in CV screening"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Run structured interviews"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Ensure interview outcomes are fair"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Promote flexible working arrangements in job adverts"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukInsetText({
+            text: "Idea 2: Accordion component."
+          }) }}
+
+          <h2 class="govuk-heading-m">Recruitment and Selection</h2>
+
+          {{ govukAccordion({
+            id: "accordion-default",
+            items: [
+              {
+                heading: {
+                  text: "Make job adverts inclusive"
+                },
+                content: {
+                  html: '<p class="govuk-body">Draft inclusive job adverts using gender-neutral language, clearly defining job requirements with behaviour-based criteria and providing transparent information on salaries, benefits, and parental leave entitlements.</p>'
+                }
+              },
+              {
+                heading: {
+                  text: "Encourage applications from diverse candidates"
+                },
+                content: {
+                  html: '<p class="govuk-body">Implement targeted recruitment strategies to attract diverse candidates, including engaging returners and encouraging reapplication.</p>'
+                }
+              },
+              {
+                heading: {
+                  text: "Reduce unconscious bias in CV screening"
+                },
+                content: {
+                  html: '<p class="govuk-body">Reduce unconscious bias in CV screening by anonymising applications and listing experience in terms of years rather than specific dates.</p>'
+                }
+              },
+              {
+                heading: {
+                  text: "Run structured interviews"
+                },
+                content: {
+                  html: '<p class="govuk-body">Utilise structured interview techniques for recruiting and promoting staff.</p>'
+                }
+              },
+              {
+                heading: {
+                  text: "Ensure interview outcomes are fair"
+                },
+                content: {
+                  html: '<p class="govuk-body">Ensure fair decision-making by using multiple interviewers and assessing applicants in batches.</p>'
+                }
+              },
+              {
+                heading: {
+                  text: "Promote flexible working arrangements in job adverts"
+                },
+                content: {
+                  html: '<p class="govuk-body">Implement targeted recruitment strategies to attract diverse candidates, including engaging returners and encouraging reapplication.</p>'
+                }
+              }
+            ]
+          }) }}
+
+
+          {{ govukInsetText({
+            text: "Idea 3: Details components."
+          }) }}
+
+          <h2 class="govuk-heading-m">Recruitment and Selection</h2>
+
+          {{ govukDetails({
+            summaryText: "Make job adverts inclusive",
+            text: "Draft inclusive job adverts using gender-neutral language, clearly defining job requirements with behaviour-based criteria and providing transparent information on salaries, benefits, and parental leave entitlements."
+          }) }}
+          {{ govukDetails({
+            summaryText: "Encourage applications from diverse candidates",
+            text: "Implement targeted recruitment strategies to attract diverse candidates, including engaging returners and encouraging reapplication."
+          }) }}
+          {{ govukDetails({
+            summaryText: "Reduce unconscious bias in CV screening",
+            text: "Reduce unconscious bias in CV screening by anonymising applications and listing experience in terms of years rather than specific dates."
+          }) }}
+          {{ govukDetails({
+            summaryText: "Run structured interviews",
+            text: "Utilise structured interview techniques for recruiting and promoting staff."
+          }) }}
+          {{ govukDetails({
+            summaryText: "Ensure interview outcomes are fair",
+            text: "Ensure fair decision-making by using multiple interviewers and assessing applicants in batches."
+          }) }}
+          {{ govukDetails({
+            summaryText: "Promote flexible working arrangements in job adverts",
+            text: "Implement targeted recruitment strategies to attract diverse candidates, including engaging returners and encouraging reapplication."
+          }) }}
+
+        <input type="hidden" name="endToEndMVP[provisionalPlanSubmitted]" value="true">
+        <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">
+
+        <p class="govuk-body">
+          When you are ready, continue to review your provisional action plan.
+        </p>
+
+        {{ govukButton({
+          text: "Review provisional plan"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

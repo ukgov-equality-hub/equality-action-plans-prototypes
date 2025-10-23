@@ -1,0 +1,292 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="v2 Actions list" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Tell us what you're already doing
+      </h1>
+
+      <p>
+        Below is the list of actions in our service.
+        For each one, we will ask if your organisation:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>has already embedded it in its working culture</li>
+        <li>is working on embedding it but has not yet made it routine</li>
+      </ul>
+      <p>
+        You can also provisionally add actions, for example if your organisation
+        is yet to commit to a specific action. You will be able to review and
+        edit your plan before you submit it.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-full">
+
+      <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
+
+      <!--  {% set journeyShortCode = "endToEndMVP" %}
+        {% set creatingNewActionPlan = true %}
+        {% set showEmptyCategories = true %}
+        {% set assessWholeCategoryAtOnce = false %}
+        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set editUrl = "action-details" %}
+        {% set excludeCategory = "data" %}
+        {% include "common/categorised-action-plan.html" %} -->
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+            card: {
+              title: {
+                text: "Recruitment and Selection"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Make job adverts inclusive"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Encourage applications from diverse candidates"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Reduce unconscious bias in CV screening"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Run structured interviews"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Ensure interview outcomes are fair"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Promote flexible working arrangements in job adverts"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: "Developing and promoting staff"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Increase transparency for pay, promotion and rewards"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Automatically put forward employees for promotion"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Encourage employee development through actionable steps"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Offer internships, mentoring and other development programmes"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: "Building diversity into your organisation"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Set targets to improve gender representation"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Appoint diversity leads or taskforces"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Support staff to take parental leave"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: "Analysing your data"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Analyse your data to understand your pay gap and staff needs"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Measure outcomes of equality initiatives"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukSummaryList({
+            card: {
+              title: {
+                text: "Supporting staff during menopause"
+              }
+            },
+            rows: [
+              {
+                key: {
+                  text: "Train line managers to support employees experiencing menopause"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Offer occupational health advice to employees experiencing menopause"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Set up menopause networks and support groups"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Offer workplace adjustments to employees experiencing menopause"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              },
+              {
+                key: {
+                  text: "Conduct a menopause risk assessment for your workplace"
+                },
+                value: {
+                  html: "Add status for this action"
+                }
+              }
+            ]
+          }) }}
+
+        <input type="hidden" name="endToEndMVP[provisionalPlanSubmitted]" value="true">
+        <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">
+
+        <p class="govuk-body">
+          When you are ready, continue to review your provisional action plan.
+        </p>
+
+        {{ govukButton({
+          text: "Review provisional plan"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
