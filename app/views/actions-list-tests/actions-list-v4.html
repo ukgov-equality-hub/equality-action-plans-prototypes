@@ -1,0 +1,128 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="v4 Actions list" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Tell us what you're already doing
+      </h1>
+
+      <p>
+        Below is the list of actions in our service.
+        For each one, we will ask if your organisation:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>has already embedded it in its working culture</li>
+        <li>is working on embedding it but has not yet made it routine</li>
+      </ul>
+      <p>
+        You can also provisionally add actions, for example if your organisation
+        is yet to commit to a specific action. You will be able to review and
+        edit your plan before you submit it.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
+
+      <!--  {% set journeyShortCode = "endToEndMVP" %}
+        {% set creatingNewActionPlan = true %}
+        {% set showEmptyCategories = true %}
+        {% set assessWholeCategoryAtOnce = false %}
+        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set editUrl = "action-details" %}
+        {% set excludeCategory = "data" %}
+        {% include "common/categorised-action-plan.html" %} -->
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Recruitment and Selection</h2>
+
+        <h3 class="govuk-heading-s">Make job adverts inclusive</h3>
+        <p>Draft inclusive job adverts using gender-neutral language, clearly defining job requirements with behaviour-based criteria and providing transparent information on salaries, benefits, and parental leave entitlements.</p>
+        <p>For more information, <a href="action-guidance">see the full guidance for this action</a>.</p>
+        <p><a href="#">	Add status for this action</a></p>
+
+        <h3 class="govuk-heading-s">Encourage applications from diverse candidates</h3>
+        <p>Implement targeted recruitment strategies to attract diverse candidates, including engaging returners and encouraging reapplication.</p>
+        <p>For more information, <a href="action-guidance">see the full guidance for this action</a>.</p>
+        <p><a href="#">	Add status for this action</a></p>
+
+        <h3 class="govuk-heading-s">Reduce unconscious bias in CV screening</h3>
+        <p>Reduce unconscious bias in CV screening by anonymising applications and listing experience in terms of years rather than specific dates.</p>
+        <p>For more information, <a href="action-guidance">see the full guidance for this action</a>.</p>
+        <p><a href="#">	Add status for this action</a></p>
+
+        <h3 class="govuk-heading-s">Run structured interviews</h3>
+        <p>Utilise structured interview techniques for recruiting and promoting staff.</p>
+        <p>For more information, <a href="action-guidance">see the full guidance for this action</a>.</p>
+        <p><a href="#">	Add status for this action</a></p>
+
+        <h3 class="govuk-heading-s">Ensure interview outcomes are fair</h3>
+        <p>Ensure fair decision-making by using multiple interviewers and assessing applicants in batches.</p>
+        <p>For more information, <a href="action-guidance">see the full guidance for this action</a>.</p>
+        <p><a href="#">	Add status for this action</a></p>
+
+        <h3 class="govuk-heading-s">Promote flexible working arrangements in job adverts</h3>
+        <p>Implement targeted recruitment strategies to attract diverse candidates, including engaging returners and encouraging reapplication.</p>
+        <p>For more information, <a href="action-guidance">see the full guidance for this action</a>.</p>
+        <p><a href="#">	Add status for this action</a></p>
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Developing and promoting staff</h2>
+
+       
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Building diversity into your organisation</h2>
+
+       
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Analysing your data</h2>
+
+       
+        
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Supporting staff during menopause</h2>
+
+        
+
+        <input type="hidden" name="endToEndMVP[provisionalPlanSubmitted]" value="true">
+        <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">
+
+        <p class="govuk-body">
+          When you are ready, continue to review your provisional action plan.
+        </p>
+
+        {{ govukButton({
+          text: "Review provisional plan"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
