@@ -1,0 +1,375 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="v5 Actions list" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Tell us what you're already doing
+      </h1>
+
+      <p>
+        Below is the list of actions in our service.
+        For each one, we will ask if your organisation:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>has already embedded it in its working culture</li>
+        <li>is working on embedding it but has not yet made it routine</li>
+      </ul>
+      <p>
+        You can also provisionally add actions, for example if your organisation
+        is yet to commit to a specific action. You will be able to review and
+        edit your plan before you submit it.
+      </p>
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
+
+      <!--  {% set journeyShortCode = "endToEndMVP" %}
+        {% set creatingNewActionPlan = true %}
+        {% set showEmptyCategories = true %}
+        {% set assessWholeCategoryAtOnce = false %}
+        {% set unsubmittedLinkText = "Add status for this action" %}
+        {% set editUrl = "action-details" %}
+        {% set excludeCategory = "data" %}
+        {% include "common/categorised-action-plan.html" %} -->
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Recruitment and Selection</h2>
+
+        {{ govukTaskList({
+          idPrefix: "recruitment-and-selection",
+          items: [
+            {
+              title: {
+                text: "Make job adverts inclusive"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Encourage applications from diverse candidates"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Reduce unconscious bias in CV screening"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Run structured interviews"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Ensure interview outcomes are fair"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Promote flexible working arrangements in job adverts"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Developing and promoting staff</h2>
+
+        {{ govukTaskList({
+          idPrefix: "developing-and-promoting-staff",
+          items: [
+            {
+              title: {
+                text: "Increase transparency for pay, promotion and rewards"
+              },
+              hint: {
+                text: "Transparency in pay, promotion, and bonus policies ensures everyone understands how decisions are made."
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Automatically put forward employees for promotion"
+              },
+              hint: {
+                text: "Automatically consider all eligible employees for promotion, giving them the choice to opt-out rather than opting-in."
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Encourage employee development through actionable steps"
+              },
+              hint: {
+                text: "Ask employees for advice instead of feedback. This can aid skill development and benefit organisations with low female progression and retention."
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Offer internships, mentoring and other development programmes"
+              },
+              hint: {
+                text: "Provide development programmes, such as internships to give employees a formal channel for advice, support, and advocacy."
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            }
+          ]
+        }) }}
+       
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Building diversity into your organisation</h2>
+        {{ govukTaskList({
+          idPrefix: "building-diversity-into-your-organisation",
+          items: [
+            {
+              title: {
+                text: "Set targets to improve gender representation"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Embedded",
+                  classes: "govuk-tag--green"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Appoint diversity leads or taskforces"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "In progress",
+                  classes: "govuk-tag--yellow"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Support staff to take parental leave"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "Add to plan",
+                  classes: "govuk-tag--red"
+                }
+              }
+            }
+          ]
+        }) }}
+       
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Analysing your data</h2>
+
+        {{ govukTaskList({
+          idPrefix: "analysing-your-data",
+          items: [
+            {
+              title: {
+                text: "Analyse your data to understand your pay gap and staff needs"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Measure outcomes of equality initiatives"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            }
+          ]
+        }) }}
+       
+        
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Supporting staff during menopause</h2>
+
+        {{ govukTaskList({
+          idPrefix: "supporting-staff-during-menopause",
+          items: [
+            {
+              title: {
+                text: "Train line managers to support employees experiencing menopause"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Offer occupational health advice to employees experiencing menopause"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Set up menopause networks and support groups"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Offer workplace adjustments to employees experiencing menopause"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            },
+            {
+              title: {
+                text: "Conduct a menopause risk assessment for your workplace"
+              },
+              href: "#",
+              status: {
+                tag: {
+                  text: "No_status",
+                  classes: "govuk-tag--blue"
+                }
+              }
+            }
+          ]
+        }) }}
+    
+
+        <input type="hidden" name="endToEndMVP[provisionalPlanSubmitted]" value="true">
+        <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">
+
+        <p class="govuk-body">
+          When you are ready, continue to review your provisional action plan.
+        </p>
+
+        {{ govukButton({
+          text: "Review provisional plan"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
