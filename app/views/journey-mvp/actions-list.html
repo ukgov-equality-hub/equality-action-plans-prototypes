@@ -50,11 +50,8 @@
       </ul>
 
       <p>
-You will be able to review and edit your full action plan before you submit it.
-</p>
-
-    </div>
-    <div class="govuk-grid-column-full">
+        You will be able to review and edit your full action plan before you submit it.
+      </p>
 
       <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
 
@@ -62,10 +59,9 @@ You will be able to review and edit your full action plan before you submit it.
         {% set creatingNewActionPlan = true %}
         {% set showEmptyCategories = true %}
         {% set assessWholeCategoryAtOnce = false %}
-        {% set unsubmittedLinkText = "Add status for this action" %}
         {% set editUrl = "action-details" %}
         {% set excludeCategory = "data" %}
-        {% include "common/categorised-action-plan.html" %}
+        {% include "common/categorised-action-plan--tasklist.html" %}
 
         <input type="hidden" name="endToEndMVP[provisionalPlanSubmitted]" value="true">
         <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">

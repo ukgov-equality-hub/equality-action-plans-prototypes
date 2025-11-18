@@ -1,0 +1,67 @@
+{# PARAMETERS - set before the include statement that includes this file:
+  journeyShortCode          - parameterizes submitted data into a subsection so that it doesn't contaminate other journeys
+  excludeCategory           - give a category shortcode to exclude it from the list (usually excludes the "data" category)
+  showEmptyCategories       - self-explanatory
+  onlyShowSelectedActions   - omits categories with no selected actions, and is passed through to the action-plan-in-progress include file
+  assessWholeCategoryAtOnce - displays links that will loop through all actions in the category before returning to the overview
+
+  Also the following are passed through to the action-plan-in-progress include file (q.v.):
+  journeyShortCode
+  creatingNewActionPlan
+  unsubmittedLinkText
+  editUrl
+  onlyShowSelectedActions
+  highlightNoChange
+  interpretNoSubmissionAsNoChange
+  viewOnly
+  viewingService
+  fakeAllSupportingNarratives
+  fakeEvaluationInformation
+  enableDataCollectionJourney
+#}
+{% for category in data.db.actionCategories %}
+  {% if category.shortCode != excludeCategory %}
+
+    {% set hasSubmitted = false %}
+    {% set actionCount = 0 %}
+
+    {% for action in data.db.actions %}
+      {% if action.category == category.shortCode %}
+        {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
+        {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+
+        {% if submittedStatus %}
+          {% set hasSubmitted = true %}
+        {% endif %}
+
+        {% if (submittedStatus and submittedStatus != "ignore")
+          or ((not creatingNewActionPlan) and dbStatus and dbStatus != "ignore") %}
+
+          {% set actionCount = actionCount + 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if (creatingNewActionPlan and showEmptyCategories) or actionCount > 0 %}
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">
+        {{ category.title }}
+      </h2>
+
+      {% if hasSubmitted or (not creatingNewActionPlan) %}
+        {# We have plan data to display #}
+        {% if actionCount == 0 %}
+          <span>No actions chosen</span>
+        {% else %}
+          {% set categoryCode = category.shortCode %}
+          {% include "common/action-plan-in-progress--tasklist.html" %}
+        {% endif %}
+      {% else %}
+        {# This is a clean slate #}
+        {% set categoryCode = category.shortCode %}
+        {% include "common/action-plan-in-progress--tasklist.html" %}
+      {% endif %}
+
+    {% endif %}
+
+  {% endif %}
+{% endfor %}

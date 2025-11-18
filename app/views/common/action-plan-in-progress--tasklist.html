@@ -1,0 +1,104 @@
+{# PARAMETERS - set before the include statement that includes this file:
+  journeyShortCode                - parameterizes submitted data into a subsection so that it doesn't contaminate other journeys
+  creatingNewActionPlan           - causes the plan to display data submitted in this journey only, and ignore data in data.db
+  unsubmittedLinkText             - text to display per action if a submission is mandatory and has not yet been made (e.g. "Assess this action")
+  editUrl                         - URL slug to go to when user clicks on an action
+  onlyShowSelectedActions         - hides actions that do not have a submitted status or whose submitted status is "ignore"
+  highlightNoChange               - explicitly states "(no change)" when plan changes are displayed but this action has not changed status
+  interpretNoSubmissionAsNoChange - assumes an action with no submitted status counts as submitting the same status (only relevant when highlightNoChange is true, and mostly just for viewing service action plan change views)
+  viewOnly                        - hides all edit controls (mostly used on the viewing service prototypes)
+  viewingService                  - just changes language to avoid "Your"
+  fakeAllSupportingNarratives     - provides fake text for all actions' supporting narrative (used on the viewing service mockups)
+  fakeEvaluationInformation       - provides fake evaluation narrative for action plan reviews (used on the viewing service mockups)
+  enableDataCollectionJourney     - displays links on actions in the "Data collection" category that go through the data collection process
+#}
+{% set showChanges = false %}
+{% if not creatingNewActionPlan %}
+  {% for action in data.db.actions %}
+    {% if data[journeyShortCode][action.shortCode].status
+      and data[journeyShortCode][action.shortCode].status != data.db.company.actionsInProgress[action.shortCode].status %}
+
+      {% set showChanges = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<ul class="govuk-task-list action-plan-summary{{"-with-changes" if showChanges}}{{"-extra-action" if enableDataCollectionJourney}}">
+  
+  {% for action in data.db.actions %}
+    {% set dbStatus = data.db.company.actionsInProgress[action.shortCode].status %}
+    {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
+    {% set submittedNarrative = data[journeyShortCode][action.shortCode].narrative %}
+
+    {% if fakeAllSupportingNarratives %}
+      {% if submittedStatus or dbStatus != "embedded" %}
+        {% set narrativeToDisplay = submittedNarrative or
+          ("We are satisfied that this is now a routine for us and no further action is needed."
+          if submittedStatus == "embedded" else
+          ("We are now ready to start doing this."
+          if submittedStatus == "adopt" else
+          "We have made good progress on this action but there is more to do."))
+        %}
+      {% else %}
+        {% set narrativeToDisplay = "" %}
+      {% endif %}
+    {% else %}
+      {% set narrativeToDisplay = submittedNarrative %}
+    {% endif %}
+
+    {% if fakeEvaluationInformation and narrativeToDisplay %}
+      {% set narrativeToDisplay %}
+        <h3 class="govuk-heading-s">How's this action going?</h3>
+        <p>{{narrativeToDisplay}}</p>
+        <h3 class="govuk-heading-s">What information have you used to evaluate this action?</h3>
+        <p>We used information from our HR system and an anonymous staff survey.</p>
+      {% endset %}
+    {% endif %}
+
+    {#
+      Limit to actions in category if supplied.
+      Ignore unselected actions if instructed (only use when creating a new plan).
+      If this is a new plan, display all actions.
+      Otherwise only display actions on the existing plan
+        or added in this session.
+    #}
+    {% if (not categoryCode or action.category == categoryCode)
+      and (not onlyShowSelectedActions or (submittedStatus and submittedStatus != "ignore"))
+      and (creatingNewActionPlan
+        or (dbStatus and dbStatus != "ignore")
+        or submittedStatus == "adopt") %}
+
+      <li class="govuk-task-list__item govuk-task-list__item--with-link">
+        <div class="govuk-task-list__name-and-hint">
+          <a class="govuk-link govuk-task-list__link" href="{{editUrl}}?actionShortCode={{action.shortCode}}">
+            {{ action.title }}
+          </a>
+        </div>
+        <div class="govuk-task-list__status">
+          {% if creatingNewActionPlan %}
+            {% if submittedStatus %}
+              {{ submittedStatus | statusToTag | safe }}
+            {% else %}
+              <strong class="govuk-tag" style="white-space: nowrap;">No status</strong>
+            {% endif %}
+          {% else %}
+            {% if submittedStatus and submittedStatus != dbStatus %}
+              {# Status has changed - display full change if was on plan already, or just new status if not previously on plan #}
+              {% if dbStatus != "ignore" %}
+                {{ dbStatus | statusToTag | safe }} changed to
+              {% endif %}
+              {{ submittedStatus | statusToTag | safe }}
+            {% else %}
+              {# No change - just display dbStatus and highlight if requested and there is explicitly no change #}
+              {{ dbStatus | statusToTag | safe }}
+              {% if highlightNoChange and (submittedStatus or interpretNoSubmissionAsNoChange) %}
+                <span class="hint">(no change)</span>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div>
+      </li>
+
+    {% endif %}
+  {% endfor %}
+</ul>
