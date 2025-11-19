@@ -24,7 +24,7 @@ addFilter('statusToTag', function(status) {
 
   switch (status) {
     case "embedded":
-      title = "Embedded";
+      title = "Not added - no plan to improve";
       colour = "govuk-tag--green";
       break;
 
@@ -34,12 +34,12 @@ addFilter('statusToTag', function(status) {
       break;
 
     case "in-progress":
-      title = "In progress";
+      title = "Added - in progress";
       colour = "govuk-tag--yellow";
       break;
 
     case "adopt":
-      title = "Add to plan";
+      title = "Added - new action";
       colour = "govuk-tag--orange";
       break;
 
@@ -49,7 +49,7 @@ addFilter('statusToTag', function(status) {
       break;
 
     case "ignore":
-      title = "Not pursuing currently";
+      title = "Not added - no plan to include";
       break;
 
     default:
@@ -58,7 +58,7 @@ addFilter('statusToTag', function(status) {
   }
 
   if (colour) {
-    return '<strong class="govuk-tag ' + colour + '">' + title + '</strong>';
+    return '<strong class="govuk-tag ' + colour + '" style="white-space: nowrap;">' + title + '</strong>';
   } else {
     return title;
   }
