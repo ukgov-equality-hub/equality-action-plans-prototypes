@@ -48,7 +48,7 @@
         {{thisPageAction.summary}}
       </p>
 
-      <p>
+      <p class="govuk-!-margin-bottom-8">
         For more information,
         <a href="action-guidance">see the full guidance for this action</a>.
       </p>
@@ -93,6 +93,49 @@
           ]
         }) }}
 
+        {% set narrativeHintContent %}
+          <div id="narrative-hint--completed" style="display: none;">
+            <div class="govuk-hint govuk-!-margin-bottom-2">
+              Use this section to add further details about:
+            </div>
+            <ul class="govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+              <li>how your organisation implemented this action</li>
+              <li>some of the challenges you faced</li>
+              <li>how you tracked progress</li>
+              <li>what the results were</li>
+            </ul>
+          </div>
+
+          <div id="narrative-hint--in-progress" style="display: none;">
+            <div class="govuk-hint govuk-!-margin-bottom-2">
+              Use this section to add further details about:
+            </div>
+            <ul class="govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+              <li>what your organisation has done so far</li>
+              <li>some of the challenges you faced</li>
+              <li>what you plan to improve or do differently</li>
+              <li>how you plan to track progress to make sure your improvements are effective</li>
+            </ul>
+          </div>
+
+          <div id="narrative-hint--add-to-plan" style="display: none;">
+            <div class="govuk-hint govuk-!-margin-bottom-2">
+              Use this section to add further details about:
+            </div>
+            <ul class="govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+              <li>why your organisation has chosen this action</li>
+              <li>how you plan to implement this action</li>
+              <li>some of the challenges you expect to face</li>
+              <li>how you plan to track progress</li>
+            </ul>
+          </div>
+
+          <div class="govuk-hint">
+            This section is optional.
+            The information you write here will be published alongside the data you report on the gender pay gap service.
+          </div>
+        {% endset %}
+
         {{ govukTextarea({
           id: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
           name: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
@@ -101,7 +144,7 @@
             classes: "govuk-label--s"
           },
           hint: {
-            text: "If you would like to give more details, you can do so here"
+            html: narrativeHintContent
           },
           value: data[journeyShortCode][thisPageAction.shortCode].narrative
         }) }}
@@ -109,6 +152,39 @@
         {{ govukButton({
           text: "Continue"
         }) }}
+
+        <script>
+          (function(){
+            const shortCode = "{{thisPageAction.shortCode}}";
+
+            function updateNarrativeHint() {
+              const statusRadios = document.getElementsByName("{{journeyShortCode}}[" + shortCode + "][status]");
+              let selectedValue = null;
+              for (const radio of statusRadios) {
+                if (radio.checked) {
+                  selectedValue = radio.value;
+                  break;
+                }
+              }
+
+              const hintCompleted = document.getElementById("narrative-hint--completed");
+              hintCompleted.style.display = selectedValue === "embedded" ? "block" : "none";
+
+              const hintInProgress = document.getElementById("narrative-hint--in-progress");
+              hintInProgress.style.display = selectedValue === "in-progress" ? "block" : "none";
+
+              const hintAddToPlan = document.getElementById("narrative-hint--add-to-plan");
+              hintAddToPlan.style.display = selectedValue === "adopt" ? "block" : "none";
+            }
+
+            const statusRadios = document.getElementsByName("{{journeyShortCode}}[" + shortCode + "][status]");
+            for (const radio of statusRadios) {
+              radio.addEventListener("change", updateNarrativeHint);
+            }
+
+            updateNarrativeHint();
+          })();
+        </script>
 
       </form>
 
