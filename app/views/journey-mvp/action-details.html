@@ -81,7 +81,7 @@
             },
             {
               value: "ignore",
-              text: "Remove from action plan"
+              text: "Do not add to action plan"
             }
           ]
         }) }}
@@ -150,9 +150,6 @@
 
               const hintCompleted = document.getElementById("narrative-hint--completed");
               hintCompleted.style.display = selectedValue === "embedded" ? "block" : "none";
-
-              const hintInProgress = document.getElementById("narrative-hint--in-progress");
-              hintInProgress.style.display = selectedValue === "in-progress" ? "block" : "none";
 
               const hintAddToPlan = document.getElementById("narrative-hint--add-to-plan");
               hintAddToPlan.style.display = selectedValue === "adopt" ? "block" : "none";
