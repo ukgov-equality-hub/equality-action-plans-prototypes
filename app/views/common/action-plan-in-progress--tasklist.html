@@ -79,7 +79,7 @@
             {% if submittedStatus %}
               {{ submittedStatus | statusToTag | safe }}
             {% else %}
-              <strong class="govuk-tag" style="white-space: nowrap;">No status</strong>
+              <strong class="govuk-tag" style="white-space: nowrap;">Not added</strong>
             {% endif %}
           {% else %}
             {% if submittedStatus and submittedStatus != dbStatus %}

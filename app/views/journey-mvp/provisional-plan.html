@@ -63,6 +63,11 @@
         Your provisional action plan 2024/25
       </h1>
 
+      {{ govukInsetText({
+        text: "This plan is saved in your account but not yet published on the"
+          + " service. You can log out and come back to it at any time."
+      }) }}
+
       {% if data.endToEndMVP.planValidationFailure == "true" %}
         {{ govukErrorSummary({
           titleText: "There is a problem",
@@ -77,7 +82,12 @@
       <form class="govuk-!-margin-top-4" action="publish-provisional-plan" method="post">
         <div class="govuk-button-group">
           {{ govukButton({
-            text: "Edit your action plan",
+            text: "Return to " + data.db.company.name,
+            href: "dashboard",
+            classes: "govuk-button--secondary"
+          }) }}
+          {{ govukButton({
+            text: "Edit your action plan or add more actions",
             href: "actions-list",
             classes: "govuk-button--secondary"
           }) }}
@@ -243,11 +253,6 @@
         Your plan must include actions with which you can make further progress.
         Actions already fully embedded do not count for this purpose.
       </p>
-
-      {{ govukInsetText({
-        text: "This plan is saved in your account but not yet published on the"
-          + " service. You can log out and come back to it at any time."
-      }) }}
 
 
     </div>
