@@ -117,18 +117,20 @@
           </div>
         {% endset %}
 
-        {{ govukTextarea({
-          id: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
-          name: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
-          label: {
-            text: "Supporting narrative",
-            classes: "govuk-label--s"
-          },
-          hint: {
-            html: narrativeHintContent
-          },
-          value: data[journeyShortCode][thisPageAction.shortCode].narrative
-        }) }}
+        <div id="narrative-wrapper">
+          {{ govukTextarea({
+            id: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
+            name: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
+            label: {
+              text: "Supporting narrative",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              html: narrativeHintContent
+            },
+            value: data[journeyShortCode][thisPageAction.shortCode].narrative
+          }) }}
+        </div>
 
         {{ govukButton({
           text: "Continue"
@@ -153,6 +155,9 @@
 
               const hintAddToPlan = document.getElementById("narrative-hint--add-to-plan");
               hintAddToPlan.style.display = selectedValue === "adopt" ? "block" : "none";
+
+              const narrativeWrapper = document.getElementById("narrative-wrapper");
+              narrativeWrapper.style.display = selectedValue === "ignore" ? "none" : "block";
             }
 
             const statusRadios = document.getElementsByName("{{journeyShortCode}}[" + shortCode + "][status]");
