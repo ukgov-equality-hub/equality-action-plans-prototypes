@@ -56,46 +56,58 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-9">
+        <span class="govuk-caption-l">
+          {{data.db.company.name}}
+        </span>
+        <h1 class="govuk-heading-l">
+          Your provisional action plan 2024/25
+        </h1>
+
+        <p>
+          This plan is saved in your account but not yet published on the service. You can log out and come back to it at any time.
+        </p>
+        <p>
+          When you publish your plan, it will be publicly visible on this service. You will still be able to edit it.
+        </p>
+
+        {% if data.endToEndMVP.planValidationFailure == "true" %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+              {
+                html: errorHtml
+              }
+            ]
+          }) }}
+        {% endif %}
+
+        <form class="govuk-!-margin-top-4" action="publish-provisional-plan" method="post">
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Return to " + data.db.company.name,
+              href: "dashboard",
+              classes: "govuk-button--secondary"
+            }) }}
+            {{ govukButton({
+              text: "Edit your action plan or add more actions",
+              href: "actions-list",
+              classes: "govuk-button--secondary"
+            }) }}
+            {{ govukButton({
+              text: "Publish your action plan"
+            }) }}
+          </div>
+        </form>
+      </div>
+
+
       <span class="govuk-caption-l">
         {{data.db.company.name}}
       </span>
       <h1 class="govuk-heading-l">
-        Your provisional action plan 2024/25
+        Action plan 2024/25
       </h1>
-
-      {{ govukInsetText({
-        text: "This plan is saved in your account but not yet published on the"
-          + " service. You can log out and come back to it at any time."
-      }) }}
-
-      {% if data.endToEndMVP.planValidationFailure == "true" %}
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              html: errorHtml
-            }
-          ]
-        }) }}
-      {% endif %}
-
-      <form class="govuk-!-margin-top-4" action="publish-provisional-plan" method="post">
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Return to " + data.db.company.name,
-            href: "dashboard",
-            classes: "govuk-button--secondary"
-          }) }}
-          {{ govukButton({
-            text: "Edit your action plan or add more actions",
-            href: "actions-list",
-            classes: "govuk-button--secondary"
-          }) }}
-          {{ govukButton({
-            text: "Publish your action plan"
-          }) }}
-        </div>
-      </form>
 
       <h2 class="govuk-heading-m">Contents</h2>
 
@@ -119,7 +131,7 @@
         {{data.db.company.name}} said:
       </p>
       <div class="govuk-inset-text govuk-!-margin-top-2">
-        Following the 2024 Pay Gap figures, significant action is required to reduce the gap and achieve better gender balance at every level. Our plan to accomplish this will be built on key principles: fair and transparent employment and pay practices for everyone; evidence-based and collaborative solutions that are sustainable; and consistent tracking and reporting of progress to both the board and employeess twice a year.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </div>
       <p>Read more about <a href="#">what {{data.db.company.name}} says about their pay gaps (opens in a new window)</a></p>
 
@@ -228,57 +240,7 @@
         ]
       }) }}
 
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">Publishing your plan</h2>
-      <p>
-        Before you can publish your plan, it must have:
-      </p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          at least one action from the &lsquo;Support during menopause&rsquo; category
-        </li>
-        <li>
-          at least one action from any other category
-        </li>
-      </ul>
-
-      <p>
-        Read the
-        <a href="#">guidance on action plan regulations</a>
-        for more details.
-      </p>
-
-      <p>
-        Your plan must include actions with which you can make further progress.
-        Actions already fully embedded do not count for this purpose.
-      </p>
-
-
     </div>
-    <form class="govuk-!-margin-top-4" action="publish-provisional-plan" method="post">
-      <div class="govuk-grid-column-two-thirds">
-
-        {{ govukInsetText({
-          text: "When you publish your plan, it will be publicly visible on this"
-            + " service. You will still be able to edit it.",
-          classes: "govuk-!-margin-top-0"
-        }) }}
-
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Edit your action plan",
-            href: "actions-list",
-            classes: "govuk-button--secondary"
-          }) }}
-          {{ govukButton({
-            text: "Publish your action plan"
-          }) }}
-        </div>
-
-      </div>
-
-    </form>
   </div>
 
 {% endblock %}
