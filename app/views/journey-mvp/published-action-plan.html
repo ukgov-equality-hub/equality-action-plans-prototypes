@@ -102,9 +102,18 @@
         {{data.db.company.name}} said:
       </p>
       <div class="govuk-inset-text govuk-!-margin-top-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {% if data[journeyShortCode].narrative %}
+          {{data[journeyShortCode].narrative}}
+        {% else %}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        {% endif %}
       </div>
-      <p>Read more about <a href="#">what {{data.db.company.name}} says about their pay gaps (opens in a new window)</a></p>
+      <p>
+        Read more about
+        <a href="{{ data[journeyShortCode].narrativeLink if data[journeyShortCode].narrativeLink else '#' }}">
+          what {{data.db.company.name}} says about their pay gaps (opens in a new window)
+        </a>
+      </p>
 
       <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 

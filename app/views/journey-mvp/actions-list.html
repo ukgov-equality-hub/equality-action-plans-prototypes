@@ -40,6 +40,24 @@
         Your action plan will be published alongside the data you report on the gender pay gap service.
       </div>
 
+      {{ govukTaskList({
+        idPrefix: "supporting-narrative",
+        items: [
+          {
+            title: {
+              text: "Supporting narrative and link"
+            },
+            href: "supporting-narrative-and-link",
+            status: {
+              tag: {
+                text: ("Completed" if data[journeyShortCode].narrative else "Not started"),
+                classes: ("govuk-tag--green" if data[journeyShortCode].narrative else "govuk-tag--blue")
+              }
+            }
+          }
+        ]
+      }) }}
+
       <p>
         For each action you select, we will ask if it is:
       </p>

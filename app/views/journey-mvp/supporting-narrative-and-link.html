@@ -1,0 +1,75 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Actions list" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25",
+        href: "actions-list"
+      },
+      {
+        text: "Supporting narrative"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Supporting narrative and link to report
+      </h1>
+
+      <form action="actions-list" method="post">
+        {{ govukTextarea({
+          id: journeyShortCode + "[narrative]",
+          name: journeyShortCode + "[narrative]",
+          label: {
+            text: "Supporting narrative",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "TODO narrative hint"
+          },
+          value: data[journeyShortCode].narrative
+        }) }}
+
+        {{ govukInput({
+          id: journeyShortCode + "[narrativeLink]",
+          name: journeyShortCode + "[narrativeLink]",
+          label: {
+            text: "Link to external supporting narrative",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "TODO link hint"
+          },
+          value: data[journeyShortCode].narrativeLink
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
