@@ -32,7 +32,7 @@
         href: "#"
       },
       {
-        text: "Your employers",
+        text: "Search and compare",
         href: "#"
       },
       {
@@ -40,11 +40,29 @@
         href: "#"
       },
       {
-        text: "Action plan"
+        text: "Action plan 2024/25"
       }
     ]
   }) }}
 {% endblock breadCrumbs %}
+
+{% set actionPlanExplanation %}
+  <p>
+    Any employer who has a headcount of 250 or more on their ‘snapshot date’ at
+    the end of the financial year must submit an action plan outlining how they
+    intend to address the gender pay gap and to support employees going through
+    menopause.
+  </p>
+  <p>
+    Employers review actions from our database, identify any they already routinely
+    do, and choose some new actions to focus on. You can also
+    <a href="#">see the full list of actions in our database</a>.
+  </p>
+  <p>
+    For more detail on the process, see the
+    <a href="#">gender pay gap and action plan guidance</a>.
+  </p>
+{% endset %}
 
 {% block content %}
 
@@ -55,36 +73,142 @@
         {{data.db.company.name}}
       </span>
       <h1 class="govuk-heading-l">
-        Your action plan
+        Action plan 2024/25
       </h1>
 
-      <p>
-        Your action plan contains {{numberOfActions}} actions across
-        {{numberOfCategories}} categories.
-      </p>
-
-      <p>
-        You can also see
-        <a href="#">your action plan history</a>.
-      </p>
-
-    </div>
-    <div class="govuk-grid-column-full">
-
-      {% set journeyShortCode = "endToEndMVP" %}
-      {% set creatingNewActionPlan = true %}
-      {# The above is not really the case but we want to use submitted data, not DB data #}
-      {% set onlyShowSelectedActions = true %}
-      {% set viewOnly = true %}
-      {% set excludeCategory = "data" %}
-      {% include "common/categorised-action-plan.html" %}
-
-    </div>
-    <div class="govuk-grid-column-two-thirds">
-
       {{ govukButton({
-        text: "Edit action plan",
-        href: "#"
+        text: "Add to comparison"
+      }) }}
+
+      <h2 class="govuk-heading-m">Contents</h2>
+
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#actions-planned">Actions planned</a></li>
+        <li><a href="#actions-completed">Actions completed</a></li>
+        <li><a href="#about">About {{thisPageEmployer.name}}</a></li>
+      </ol>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="intro" class="govuk-heading-m">1. Introduction</h2>
+
+      {{ govukDetails({
+        summaryText: "What is an action plan?",
+        html: actionPlanExplanation
+      }) }}
+
+      <p class="govuk-body govuk-!-margin-bottom-2">
+        {{data.db.company.name}} said:
+      </p>
+      <div class="govuk-inset-text govuk-!-margin-top-2">
+        Following the 2024 Pay Gap figures, significant action is required to reduce the gap and achieve better gender balance at every level. Our plan to accomplish this will be built on key principles: fair and transparent employment and pay practices for everyone; evidence-based and collaborative solutions that are sustainable; and consistent tracking and reporting of progress to both the board and employeess twice a year.
+      </div>
+      <p>Read more about <a href="#">what {{data.db.company.name}} says about their pay gaps (opens in a new window)</a></p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="actions-planned" class="govuk-heading-m">2. Actions planned</h2>
+      <p>{{data.db.company.name}} has committed to embedding these actions:</p>
+
+      {% for action in data.db.actions %}
+        {% if data['endToEndMVP'][action.shortCode].status == "adopt" or data['endToEndMVP'][action.shortCode].status == "in-progress" %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            {{ action.title }}
+          </h3>
+
+          {% for action in data.db.actions %}
+            {% if action.shortCode == data.actionShortCode %}
+              <p>{{ action.summary }}</p>
+            {% endif %}
+          {% endfor %}
+
+          {% if data['endToEndMVP'][action.shortCode].narrative %}
+            <p class="govuk-body govuk-!-margin-bottom-2">
+              {{data.db.company.name}} said:
+            </p>
+            <div class="govuk-inset-text govuk-!-margin-top-2">
+              {{ data['endToEndMVP'][action.shortCode].narrative }}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="actions-completed" class="govuk-heading-m">3. Actions already completed</h2>
+      <p>This section explains what {{data.db.company.name}} have already done and plan to do on workplace equality.</p>
+
+      {% for action in data.db.actions %}
+        {% if data['endToEndMVP'][action.shortCode].status == "embedded" %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+            {{ action.title }}
+          </h3>
+
+          {% for action in data.db.actions %}
+            {% if action.shortCode == data.actionShortCode %}
+              <p>{{ action.summary }}</p>
+            {% endif %}
+          {% endfor %}
+
+          {% if data['endToEndMVP'][action.shortCode].narrative %}
+            <p class="govuk-body govuk-!-margin-bottom-2">
+              {{data.db.company.name}} said:
+            </p>
+            <div class="govuk-inset-text govuk-!-margin-top-2">
+              {{ data['endToEndMVP'][action.shortCode].narrative }}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 id="about" class="govuk-heading-m">4. About {{data.db.company.name}}</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Registered address"
+            },
+            value: {
+              text: "Scranton Business Park, 1725 Slough Avenue, Scranton, Pennsylvania"
+            }
+          },
+          {
+            key: {
+              text: "Sector"
+            },
+            value: {
+              text: "Manufacturing"
+            }
+          },
+          {
+            key: {
+              text: "Snapshot date"
+            },
+            value: {
+              text: "5 April 2025"
+            }
+          },
+          {
+            key: {
+              text: "Employee headcount"
+            },
+            value: {
+              text: "500 to 999 employees"
+            }
+          },
+          {
+            key: {
+              text: "Person responsible"
+            },
+            value: {
+              text: "Toby Flenderson (HR manager)"
+            }
+          }
+        ]
       }) }}
 
     </div>

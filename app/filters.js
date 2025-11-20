@@ -58,7 +58,7 @@ addFilter('statusToTag', function(status) {
   }
 
   if (colour) {
-    return '<strong class="govuk-tag ' + colour + '" style="white-space: nowrap;">' + title + '</strong>';
+    return '<strong class="govuk-tag ' + colour + '">' + title + '</strong>';
   } else {
     return title;
   }
