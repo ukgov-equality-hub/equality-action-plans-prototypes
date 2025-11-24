@@ -267,7 +267,7 @@ module.exports = {
         level: 1,
         targets: [],
         title: 'Make job adverts inclusive',
-        summary: 'TBC'
+        summary: 'Inclusive job adverts attract diverse talent by using neutral language, listing only essential requirements, and highlighting equal opportunities.'
       },
       {
         shortCode: 'encourage-diverse-applications',
@@ -275,7 +275,7 @@ module.exports = {
         level: 1,
         targets: [],
         title: 'Encourage applications from diverse candidates',
-        summary: 'TBC'
+        summary: 'Actively seeking applications from underrepresented groups ensures a broader candidate pool for all roles.'
       },
       {
         shortCode: 'reduce-unconscious-bias-in-cv-screening',
@@ -283,7 +283,7 @@ module.exports = {
         level: 1,
         targets: [],
         title: 'Reduce unconscious bias in CV screening',
-        summary: 'TBC'
+        summary: 'Using structured, skill-based screening minimises bias and boosts diversity in hiring.'
       },
       {
         shortCode: 'structured-interviews',
@@ -291,7 +291,7 @@ module.exports = {
         level: 1,
         targets: [],
         title: 'Run structured interviews',
-        summary: 'TBC'
+        summary: 'Running structured interviews ensures fair, objective hiring. Standardised questions and scoring helps reduce bias and promotes equal opportunity.'
       },
       {
         shortCode: 'fair-interview-outcomes',
@@ -299,7 +299,7 @@ module.exports = {
         level: 1,
         targets: [],
         title: 'Ensure interview outcomes are fair',
-        summary: 'TBC'
+        summary: 'Implementing structured interviews with trained assessors leads to objective, consistent, and evidence-based decisions'
       },
       {
         shortCode: 'flexible-working-in-job-adverts',
