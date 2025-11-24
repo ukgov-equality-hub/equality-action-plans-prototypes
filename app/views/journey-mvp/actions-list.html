@@ -32,13 +32,48 @@
       <h1 class="govuk-heading-l">
         List of actions
       </h1>
-
       <p>
         Select actions to include in your action plan for the next reporting year.
       </p>
+
+      <div class="govuk-inset-text">
+        You must select from our list of actions. These are backed by evidence which demonstrates their effectiveness.
+      </div>
+
+      <p>
+        For each action you select, we will ask if it is:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          ‘new or in progress’ – this means you will be working on it for the first time or building on something you are already doing
+        </li>
+        <li>
+          ‘completed’ – this means you have already done it and will not be working on it in the next reporting year
+        </li>
+      </ul>
+      <p>
+        You will be able to review and edit your action plan before you submit it.
+      </p>
+
       <div class="govuk-inset-text">
         Your action plan will be published alongside the data you report on the gender pay gap service.
       </div>
+
+      {% set journeyShortCode = "endToEndMVP" %}
+      {% set creatingNewActionPlan = true %}
+      {% set showEmptyCategories = true %}
+      {% set assessWholeCategoryAtOnce = false %}
+      {% set editUrl = "action-details" %}
+      {% include "common/categorised-action-plan--tasklist.html" %}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-9">
+          Supporting narrative
+      </h2>
+      <p>
+        All employers can add a supporting narrative.
+        This helps people to understand your organisation’s overall objectives for equality, diversity and inclusion.
+        You can include a link to your website.
+      </p>
 
       {{ govukTaskList({
         idPrefix: "supporting-narrative",
@@ -58,37 +93,13 @@
         ]
       }) }}
 
-      <p>
-        For each action you select, we will ask if it is:
-      </p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          ‘new or in progress’ – you will be working on it for the first time or building on something you are already doing
-        </li>
-        <li>
-          ‘completed’ – you have already done it and will not be working on it in the next reporting year
-        </li>
-      </ul>
-     
-      <p>
-        You will be able to review and edit your full action plan before you submit it.
+      <p class="govuk-body govuk-!-margin-top-8">
+        When you are ready, continue to review your provisional action plan.
       </p>
 
       <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
-
-        {% set journeyShortCode = "endToEndMVP" %}
-        {% set creatingNewActionPlan = true %}
-        {% set showEmptyCategories = true %}
-        {% set assessWholeCategoryAtOnce = false %}
-        {% set editUrl = "action-details" %}
-        {% include "common/categorised-action-plan--tasklist.html" %}
-
         <input type="hidden" name="endToEndMVP[provisionalPlanSubmitted]" value="true">
         <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">
-
-        <p class="govuk-body govuk-!-margin-top-8">
-          When you are ready, continue to review your provisional action plan.
-        </p>
 
         {{ govukButton({
           text: "Review provisional plan"

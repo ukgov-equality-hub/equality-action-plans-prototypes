@@ -34,7 +34,7 @@
         {{data.db.company.name}}
       </span>
       <h1 class="govuk-heading-l">
-        Supporting narrative and link to report
+        Supporting narrative and link
       </h1>
 
       <form action="actions-list" method="post">
@@ -45,9 +45,6 @@
             text: "Supporting narrative",
             classes: "govuk-label--s"
           },
-          hint: {
-            text: "TODO narrative hint"
-          },
           value: data[journeyShortCode].narrative
         }) }}
 
@@ -55,11 +52,11 @@
           id: journeyShortCode + "[narrativeLink]",
           name: journeyShortCode + "[narrativeLink]",
           label: {
-            text: "Link to external supporting narrative",
+            text: "Link to report",
             classes: "govuk-label--s"
           },
           hint: {
-            text: "TODO link hint"
+            text: "If your organisation has published content which explains its equality strategy, you can add the link here."
           },
           value: data[journeyShortCode].narrativeLink
         }) }}
