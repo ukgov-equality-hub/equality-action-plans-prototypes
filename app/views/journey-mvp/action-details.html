@@ -27,9 +27,11 @@
         href: "dashboard"
       },
       {
-        text: "Action plan three-year review 2027/28" if threeYearReview
-          else ("Action plan annual review 2025/26" if annualReview
-            else "Action plan 2024/25")
+        text: "Equality action plan 2024/25",
+        href: "actions-list"
+      },
+      {
+        text: thisPageAction.title
       }
     ]
   }) }}
@@ -70,11 +72,17 @@
           items: [
             {
               value: "adopt",
-              text: "New or in progress"
+              text: "New or in progress",
+              hint: {
+                text: "This means you will be working on it for the first time or building on something you are already doing"
+              }
             },
             {
               value: "embedded",
-              text: "Completed"
+              text: "Completed",
+              hint: {
+                text: "This means you have already done it and will not be working on it in the next reporting year"
+              }
             },
             {
               divider: "or"
@@ -133,8 +141,19 @@
         </div>
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
+
+        <p>
+          <a class="govuk-link" href="actions-list">
+            Cancel and return to action plan for reporting year 2024-25
+          </a>
+        </p>
+        <p>
+          <a class="govuk-link" href="dashboard">
+            Cancel and return to Dunder Mifflin Paper Company Ltd
+          </a>
+        </p>
 
         <script>
           (function(){
