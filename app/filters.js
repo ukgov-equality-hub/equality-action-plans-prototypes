@@ -24,7 +24,7 @@ addFilter('statusToTag', function(status) {
 
   switch (status) {
     case "embedded":
-      title = "Completed";
+      title = "Embedded";
       colour = "govuk-tag--yellow";
       break;
 
