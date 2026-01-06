@@ -309,7 +309,7 @@ module.exports = {
         title: 'Advertise flexible working arrangements in job adverts',
         summary: 'Flexible work policies aid work-life balance, especially for those with caring roles. Advertising flexibility attracts a wider, more diverse talent pool.'
       },
-      
+
       {
         shortCode: 'promotion-application-by-default',
         category: 'promotion-and-retention',
@@ -352,7 +352,7 @@ module.exports = {
         summary: 'Appointing equality leads or committees to scrutinise hiring and progression policies ensures organisational accountability.'
       },
 
-        {
+      {
         shortCode: 'remuneration-transparency',
         category: 'data',
         level: 1,
@@ -377,7 +377,7 @@ module.exports = {
           'menopause'
         ],
         title: 'Train your managers to support female employees with health conditions',
-        summary: 'Line manager training on women's health conditions and their effects can help organisations to better support female employees.'
+        summary: 'Line manager training on women’s health conditions and their effects can help organisations to better support female employees.'
       },
       {
         shortCode: 'menopause-occupational-health-advice',
@@ -409,7 +409,7 @@ module.exports = {
         title: 'Offer workplace adjustments for female employees with health conditions',
         summary: 'Personalised workplace adjustments help support employees experiencing menopause and wider women’s health conditions.'
       },
-          {
+      {
         shortCode: 'review-policies-procedures',
         category: 'menopause',
         level: 1,
@@ -427,7 +427,7 @@ module.exports = {
           'menopause'
         ],
         title: 'Conduct a menopause risk assessment for your workplace',
-        summary: 'Workplace risk assessments on menopause and women's health can identify necessary adaptations to support employee wellbeing.'
+        summary: 'Workplace risk assessments on menopause and women’s health can identify necessary adaptations to support employee wellbeing.'
       },
     ],
 
