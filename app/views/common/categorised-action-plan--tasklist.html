@@ -20,7 +20,7 @@
   enableDataCollectionJourney
 #}
 {% for category in data.db.actionCategories %}
-  {% if category.shortCode != excludeCategory %}
+  {% if category.shortCode not in excludeCategory %}
 
     {% set hasSubmitted = false %}
     {% set actionCount = 0 %}
@@ -49,12 +49,8 @@
 
       {% if hasSubmitted or (not creatingNewActionPlan) %}
         {# We have plan data to display #}
-        {% if actionCount == 0 %}
-          <span>No actions chosen</span>
-        {% else %}
-          {% set categoryCode = category.shortCode %}
-          {% include "common/action-plan-in-progress--tasklist.html" %}
-        {% endif %}
+        {% set categoryCode = category.shortCode %}
+        {% include "common/action-plan-in-progress--tasklist.html" %}
       {% else %}
         {# This is a clean slate #}
         {% set categoryCode = category.shortCode %}

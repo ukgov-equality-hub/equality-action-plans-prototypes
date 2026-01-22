@@ -15,7 +15,8 @@
         href: "dashboard"
       },
       {
-        text: "Equality action plan 2024/25"
+        text: "Equality action plan 2024/25",
+        href: "action-plan-task-list"
       }
     ]
   }) }}
@@ -61,6 +62,8 @@
         Your action plan will be published alongside the data you report on the gender pay gap service.
       </div>
 
+      {% set excludeCategory = (["menopause"] if (data['menopause'] == 'no') else (["recruitment", "promotion-and-retention", "leadership-and-accountability", "data"] if (data['menopause'] == 'yes') else "")) %}
+
       {% set journeyShortCode = "endToEndMVP" %}
       {% set creatingNewActionPlan = true %}
       {% set showEmptyCategories = true %}
@@ -68,46 +71,12 @@
       {% set editUrl = "action-details" %}
       {% include "common/categorised-action-plan--tasklist.html" %}
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-9">
-          Supporting narrative
-      </h2>
       <p>
-        All employers can add a supporting narrative.
-        This helps people to understand your organisation’s overall objectives for equality, diversity and inclusion.
-        You can include a link to your website.
-      </p>
-
-      {{ govukTaskList({
-        idPrefix: "supporting-narrative",
-        items: [
-          {
-            title: {
-              text: "Supporting narrative and link"
-            },
-            href: "supporting-narrative-and-link",
-            status: {
-              tag: {
-                text: ("Completed" if data[journeyShortCode].narrative else "Not started"),
-                classes: ("govuk-tag--green" if data[journeyShortCode].narrative else "govuk-tag--blue")
-              }
-            }
-          }
-        ]
-      }) }}
-
-      <p class="govuk-body govuk-!-margin-top-8">
-        When you are ready, continue to review your provisional action plan.
-      </p>
-
-      <form class="govuk-!-margin-top-4" action="provisional-plan" method="post">
-        <input type="hidden" name="endToEndMVP[provisionalPlanSubmitted]" value="true">
-        <input type="hidden" name="endToEndMVP[planValidationFailure]" value="false">
-
         {{ govukButton({
-          text: "Review provisional plan"
+          text: "Save and continue",
+          href: "action-plan-task-list"
         }) }}
-
-      </form>
+      </p>
 
     </div>
   </div>

@@ -10,6 +10,10 @@ addFilter('parseInt', function(number) {
     return parseInt(number);
 })
 
+addFilter('json', function(obj) {
+    return JSON.stringify(obj)
+})
+
 addFilter('statusToTag', function(status) {
   var title, colour;
 
