@@ -16,7 +16,7 @@
         href: "dashboard"
       },
       {
-        text: "Equality action plan 2024/25"
+        text: "Action plan 2024/25"
       }
     ]
   }) }}
@@ -31,8 +31,16 @@
         {{data.db.company.name}}
       </span>
       <h1 class="govuk-heading-l">
-        Action plan
+        Task list
       </h1>
+      <p>
+        You must choose at least 2 actions in your first action plan:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>at least one must address your gender pay gap</li>
+        <li>at least one must support women experiencing menopause</li>
+      </ul>
+      <p>You can also add a supporting narrative with any background information.</p>
 
       {% set menopauseNewInProgress = 0 %}
       {% set menopauseNewCompleted = 0 %}
@@ -99,7 +107,7 @@
         items: [
           {
             title: {
-              text: "Choose actions for everything apart from 'Supporting women with health conditions and menopause'"
+              text: "1. Select actions to reduce your gender pay gap"
             },
             href: "actions-list?menopause=no",
             status: {
@@ -108,7 +116,7 @@
           },
           {
             title: {
-              text: "Choose actions for 'Supporting women with health conditions and menopause'"
+              text: "2. Select actions to support women experiencing menopause"
             },
             href: "actions-list?menopause=yes",
             status: {
@@ -117,7 +125,7 @@
           },
           {
             title: {
-              text: "Supporting narrative and link"
+              text: "3. Add your supporting narrative"
             },
             href: "supporting-narrative-and-link",
             status: {
@@ -129,7 +137,7 @@
           },
           {
             title: {
-              text: "Review your provisional action plan"
+              text: "4. Review your provisional action plan"
             },
             href: "provisional-plan",
             status: {
@@ -139,7 +147,8 @@
               }
             }
           }
-        ]
+        ],
+        classes: "govuk-!-margin-top-7"
       }) }}
 
     </div>

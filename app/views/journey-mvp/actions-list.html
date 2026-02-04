@@ -15,7 +15,7 @@
         href: "dashboard"
       },
       {
-        text: "Equality action plan 2024/25",
+        text: "Action plan 2024/25",
         href: "action-plan-task-list"
       }
     ]
@@ -31,15 +31,13 @@
         {{data.db.company.name}}
       </span>
       <h1 class="govuk-heading-l">
-        List of actions
+        Select actions to
+        {{ "support women experiencing menopause" if (data['menopause'] == 'yes') else "reduce your gender pay gap" }}
       </h1>
       <p>
-        Select actions to include in your action plan for the next reporting year.
+        Select at least one action to
+        {{ "support women experiencing menopause." if (data['menopause'] == 'yes') else "reduce your gender pay gap." }}
       </p>
-
-      <div class="govuk-inset-text">
-        You must select from our list of actions. These are backed by evidence which demonstrates their effectiveness.
-      </div>
 
       <p>
         For each action you select, we will ask if it is:
@@ -55,11 +53,14 @@
         </li>
       </ul>
       <p>
-        You will be able to review and edit your action plan before you submit it.
+        You must select at least one action that is ‘new or in progress’.
       </p>
-
+      <p>
+        For each action you select, you must add further details about how you plan to put it in place and track your progress.
+      </p>
       <div class="govuk-inset-text">
-        Your action plan will be published alongside the data you report on the gender pay gap service.
+        You can select the action ‘Advertise flexible working arrangements in job adverts’ to either address your gender pay gap, or support women experiencing menopause.
+        You cannot select it twice.
       </div>
 
       {% set excludeCategory = (["menopause"] if (data['menopause'] == 'no') else (["recruitment", "promotion-and-retention", "leadership-and-accountability", "data"] if (data['menopause'] == 'yes') else "")) %}

@@ -254,7 +254,7 @@ module.exports = {
       },
       {
         shortCode: 'menopause',
-        title: 'Supporting women with health conditions and menopause'
+        title: 'Supporting women experiencing menopause'
       }
     ],
 

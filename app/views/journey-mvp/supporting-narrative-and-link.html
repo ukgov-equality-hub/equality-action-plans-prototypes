@@ -16,7 +16,7 @@
         href: "dashboard"
       },
       {
-        text: "Equality action plan 2024/25",
+        text: "Action plan 2024/25",
         href: "actions-list"
       },
       {
@@ -35,8 +35,15 @@
         {{data.db.company.name}}
       </span>
       <h1 class="govuk-heading-l">
-        Supporting narrative and link
+        Add your supporting narrative
       </h1>
+      <p>
+        You can add an overall supporting narrative with any background information.
+        This might include your organisation’s objectives for equality, diversity and inclusion.
+      </p>
+      <p>
+        You must add a link to your website – for example, to your organisation’s equality policies or strategy.
+      </p>
 
       <form action="action-plan-task-list" method="post">
         {{ govukTextarea({
@@ -53,11 +60,8 @@
           id: journeyShortCode + "[narrativeLink]",
           name: journeyShortCode + "[narrativeLink]",
           label: {
-            text: "Link to report",
+            text: "Website link",
             classes: "govuk-label--s"
-          },
-          hint: {
-            text: "If your organisation has published content which explains its equality strategy, you can add the link here."
           },
           value: data[journeyShortCode].narrativeLink
         }) }}
