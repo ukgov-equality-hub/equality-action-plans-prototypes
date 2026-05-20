@@ -1,29 +1,22 @@
 {% extends "layouts/menu-bar.html" %}
 
 {% block breadCrumbs %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Your employers"
-      }
-    ]
-  }) }}
 {% endblock breadCrumbs %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">
-        Your employers
+      <h1 class="govuk-heading-xl">
+        Add or select an employer you're reporting for
       </h1>
 
       <p>
         Add or select an employer so you can:
       </p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>enter gender pay gap information and save a draft for later</li>
+        <li>enter gender pay gap information and save a draft for publication at a later date</li>
         <li>report your gender pay gap information</li>
         <li>change whether your employer is required to report for each reporting year</li>
       </ul>
@@ -34,7 +27,7 @@
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Employer</th>
+            <th scope="col" class="govuk-table__header">Employer name</th>
             <th scope="col" class="govuk-table__header">Status</th>
             <th scope="col" class="govuk-table__header">Details</th>
           </tr>
