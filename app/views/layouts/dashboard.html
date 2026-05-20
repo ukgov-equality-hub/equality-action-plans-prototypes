@@ -22,7 +22,7 @@
   {{ govukBreadcrumbs({
     items: [
       {
-        text: "Your employers",
+        text: "Manage Employers",
         href: "employers-list"
       },
       {
@@ -35,45 +35,196 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <span class="govuk-caption-l">{{thisPageEmployer.name}}</span>
-      <h1 class="govuk-heading-l">
-        Your reports
-      </h1>
-
-      <p>
-        This page shows your current submissions.
-      </p>
-      <p>
-        You can also see
-        <a href="employer-past-reports">your submitted reports</a>
-        or manage
-        <a href="manage-employer">your employer's users and information</a>.
-      </p>
-
-    </div>
     <div class="govuk-grid-column-full">
 
-      {% if overdueReports %}
-        <h2 class="govuk-heading-m">Overdue submissions</h2>
-        {% set reportingYear = "2023/24" %}
-        {% include "common/submissions-due" %}
-      {% endif %}
+      <h1 class="govuk-heading-xl">
+        Manage your employer's reporting
+        <br>
+        <span class="govuk-!-font-size-27">
+          for {{thisPageEmployer.name}}
+        </span>
+      </h1>
 
-      <h2 class="govuk-heading-m">This year's submissions</h2>
+      <h2 class="govuk-heading-l">
+        Your employer's reports
+      </h2>
 
-      {% if allReportsComplete %}
-        <p class="govuk-!-margin-bottom-6">
-          You have no outstanding submissions for this employer.
-        </p>
-        <p>
-          <a href="employer-past-reports">See your previously submitted reports</a>
-        </p>
-      {% else %}
-        {% set reportingYear = currentReportingYear %}
-        {% include "common/submissions-due" %}
-      {% endif %}
+
+      <h3 class="govuk-heading-m govuk-!-font-size-27 govuk-!-margin-top-8">
+        Reporting year 2026 to 2027
+      </h3>
+
+      <div class="govuk-inset-text govuk-!-padding-top-0 govuk-!-padding-bottom-0 govuk-!-margin-top-0">
+        <dl class="govuk-summary-list" style="width: unset;">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width: 170px;">
+              Deadline
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <span class="govuk-!-margin-right-2">
+                30 March 2027
+              </span>
+              <span>
+                (314 days until the deadline)
+              </span>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row" style="border: none;">
+            <dt class="govuk-summary-list__key" style="width: 170px;">
+              Reporting status
+            </dt>
+            <dd class="govuk-summary-list__value" style="line-height: 1.5;">
+              Required to report
+              <br>
+              <a href="#"
+                 class="govuk-link">
+                Think this is wrong?
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <table class="govuk-table">
+        <thead class="govuk-visually-hidden">
+          <tr>
+            <th scope="col">
+              Type of report
+            </th>
+            <th scope="col">
+              Status
+            </th>
+            <th scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="width: 33.33%">
+              Gender pay gap data
+              <span class="govuk-visually-hidden">
+                for reporting year 2026 to 2027
+              </span>
+            </th>
+            <td class="govuk-table__cell" style="width: 33.33%">
+              <strong class="govuk-tag govuk-tag--blue" style="max-width: unset;">
+                Due
+              </strong>
+            </td>
+            <td class="govuk-table__cell" style="width: 33.33%">
+              <a href="/{{ journeyUrl }}/pay-gaps-report"
+                 class="govuk-link" loadtest-id="create-report-2026">
+                Create your gender pay gap report
+                <span class="govuk-visually-hidden">
+                  for reporting year 2026 to 2027
+                </span>
+              </a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="width: 33.33%">
+              Action plan
+              <span class="govuk-visually-hidden">
+                for reporting year 2026 to 2027
+              </span>
+              <div class="govuk-hint">
+                Optional for reporting year 2026 to 2027
+              </div>
+            </th>
+            <td class="govuk-table__cell" style="width: 33.33%">
+              <strong class="govuk-tag govuk-tag--blue" style="max-width: unset;">
+                Not started
+              </strong>
+            </td>
+            <td class="govuk-table__cell" style="width: 33.33%">
+              <a href="/{{ journeyUrl }}/action-plan-intro"
+                 class="govuk-link">
+                Create your action plan
+                <span class="govuk-visually-hidden">
+                  (reporting year 2026 to 2027)
+                </span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h3 class="govuk-heading-m govuk-!-font-size-27 govuk-!-margin-top-8">
+        Reporting year 2025 to 2026
+      </h3>
+
+      <div class="govuk-inset-text govuk-!-padding-top-0 govuk-!-padding-bottom-0 govuk-!-margin-top-0">
+        <dl class="govuk-summary-list" style="width: unset;">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width: 170px;">
+              Deadline
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <span class="govuk-!-margin-right-2">
+                30 March 2026
+              </span>
+              <span>
+                (46 days ago)
+              </span>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row" style="border: none;">
+            <dt class="govuk-summary-list__key" style="width: 170px;">
+              Reporting status
+            </dt>
+            <dd class="govuk-summary-list__value" style="line-height: 1.5;">
+              Required to report
+              <br>
+              <a href="#"
+                 class="govuk-link">
+                Think this is wrong?
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <table class="govuk-table">
+        <thead class="govuk-visually-hidden">
+          <tr>
+            <th scope="col">
+              Type of report
+            </th>
+            <th scope="col">
+              Status
+            </th>
+            <th scope="col">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header" style="width: 33.33%">
+              Gender pay gap data
+              <span class="govuk-visually-hidden">
+                for reporting year 2026 to 2027
+              </span>
+            </th>
+            <td class="govuk-table__cell" style="width: 33.33%">
+              <strong class="govuk-tag govuk-tag--green" style="max-width: unset;">
+                Submitted
+              </strong>
+            </td>
+            <td class="govuk-table__cell" style="width: 33.33%">
+              <a href="/{{ journeyUrl }}/pay-gaps-report"
+                 class="govuk-link" loadtest-id="create-report-2026">
+                Edit your gender pay gap report
+                <span class="govuk-visually-hidden">
+                  for reporting year 2025 to 2026
+                </span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       {% block endNote %}
       {% endblock %}
