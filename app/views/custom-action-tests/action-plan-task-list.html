@@ -1,0 +1,157 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Actions list" %}
+{% set serviceName="Custom action tests" %}
+{% set journeyShortCode = "endToEndMVP" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Task list
+      </h1>
+      <p>
+      You must choose a minimum of 2 actions in your action plan:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>one must address your gender pay gap</li>
+        <li>one must support employees experiencing menopause</li>
+      </ul>
+      <p>You will be asked to add a supporting narrative with any background information. Your supporting narrative will be published as part of your action plan on the gender pay gap service.</p>
+
+      {% set menopauseNewInProgress = 0 %}
+      {% set menopauseNewCompleted = 0 %}
+      {% set nonMenopauseNewInProgress = 0 %}
+      {% set nonMenopauseNewCompleted = 0 %}
+
+      {% for action in data.db.actions %}
+          {% set submittedStatus = data[journeyShortCode][action.shortCode].status %}
+          {% if action.category == 'menopause' %}
+              {% if submittedStatus == 'adopt' %}
+                  {% set menopauseNewInProgress = menopauseNewInProgress + 1 %}
+              {% elseif submittedStatus == 'embedded' %}
+                  {% set menopauseNewCompleted = menopauseNewCompleted + 1 %}
+              {% endif %}
+          {% else %}
+              {% if submittedStatus == 'adopt' %}
+                  {% set nonMenopauseNewInProgress = nonMenopauseNewInProgress + 1 %}
+              {% elseif submittedStatus == 'embedded' %}
+                  {% set nonMenopauseNewCompleted = nonMenopauseNewCompleted + 1 %}
+              {% endif %}
+          {% endif %}
+      {% endfor %}
+
+      {% set menopauseHtml %}
+        {{ govukTag({ text: 'Completed', classes: 'govuk-tag--green' }
+          if menopauseNewInProgress > 0
+          else (
+            { text: 'In progress', classes: 'govuk-tag--blue'}
+            if (menopauseNewInProgress > 0 or menopauseNewCompleted > 0)
+            else { text: 'Not started', classes: 'govuk-tag--blue'}))
+        }}
+
+        {% if (menopauseNewInProgress > 0 or menopauseNewCompleted > 0) %}
+          <br><br>
+          {{ govukTag({
+            html: '<span style="white-space: nowrap;">' ~ menopauseNewInProgress ~ ' New or in progress</span><br><span style="white-space: nowrap;">' ~ menopauseNewCompleted ~ ' Embedded</span>',
+            classes: 'govuk-tag--grey',
+            attributes: { 'style': 'max-width: unset;' }
+          }) }}
+        {% endif %}
+      {% endset %}
+
+      {% set nonMenopauseHtml %}
+        {{ govukTag({ text: 'Completed', classes: 'govuk-tag--green' }
+          if nonMenopauseNewInProgress > 0
+          else (
+            { text: 'In progress', classes: 'govuk-tag--blue'}
+            if (nonMenopauseNewInProgress > 0 or nonMenopauseNewCompleted > 0)
+            else { text: 'Not started', classes: 'govuk-tag--blue'}))
+        }}
+
+        {% if (nonMenopauseNewInProgress > 0 or nonMenopauseNewCompleted > 0) %}
+          <br><br>
+          {{ govukTag({
+            html: '<span style="white-space: nowrap;">' ~ nonMenopauseNewInProgress ~ ' New or in progress</span><br><span style="white-space: nowrap;">' ~ nonMenopauseNewCompleted ~ ' Embedded</span>',
+            classes: 'govuk-tag--grey',
+            attributes: { 'style': 'max-width: unset;' }
+          }) }}
+        {% endif %}
+      {% endset %}
+
+      {{ govukTaskList({
+        idPrefix: "overall-task-list",
+        items: [
+          {
+            title: {
+              text: "Select actions to reduce your gender pay gap"
+            },
+            href: "actions-list?menopause=no",
+            status: {
+              html: nonMenopauseHtml
+            }
+          },
+          {
+            title: {
+              text: "Select actions to support women experiencing menopause"
+            },
+            href: "actions-list?menopause=yes",
+            status: {
+              html: menopauseHtml
+            }
+          },
+          {
+            title: {
+              text: "Add your supporting narrative"
+            },
+            href: "supporting-narrative-and-link",
+            status: {
+              tag: {
+                text: ("Completed" if data[journeyShortCode].narrative else "Not started"),
+                classes: ("govuk-tag--green" if data[journeyShortCode].narrative else "govuk-tag--blue")
+              }
+            }
+          },
+          {
+            title: {
+              text: "Preview and publish your action plan"
+            },
+            href: "provisional-plan",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--blue"
+              }
+            }
+          }
+        ],
+        classes: "govuk-!-margin-top-7"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

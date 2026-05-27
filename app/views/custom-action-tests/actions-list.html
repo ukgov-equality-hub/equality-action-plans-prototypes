@@ -1,0 +1,88 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Actions list" %}
+{% set serviceName="Custom action tests" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25",
+        href: "action-plan-task-list"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{data.db.company.name}}
+      </span>
+      <h1 class="govuk-heading-l">
+        Select actions to
+        {{ "support women experiencing menopause" if (data['menopause'] == 'yes') else "reduce your gender pay gap" }}
+      </h1>
+      <p>
+        Select at least one action to
+        {{ "support women experiencing menopause." if (data['menopause'] == 'yes') else "reduce your gender pay gap." }}
+      </p>
+
+      <p>
+        For each action you select, we will ask if it is:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <b>New or in progress</b>
+          – this means you will be working on it for the first time or building on something you are already doing
+        </li>
+        <li>
+          <b>Embedded</b>
+          – this means it is already part of your working practice
+        </li>
+      </ul>
+      <p>
+        You must select at least one action that is ‘new or in progress’.
+      </p>
+      <p>
+        For each action you select, you must add further details about how you plan to put it in place and track your progress.
+      </p>
+      <div class="govuk-inset-text">
+        You can select the action ‘Advertise flexible working arrangements in job adverts’ to either address your gender pay gap, or support women experiencing menopause.
+        You cannot select it twice.
+      </div>
+
+      {% set excludeCategory = (["menopause"] if (data['menopause'] == 'no') else (["recruitment", "promotion-and-retention", "leadership-and-accountability", "data"] if (data['menopause'] == 'yes') else "")) %}
+
+      {% set journeyShortCode = "endToEndMVP" %}
+      {% set creatingNewActionPlan = true %}
+      {% set showEmptyCategories = true %}
+      {% set assessWholeCategoryAtOnce = false %}
+      {% set editUrl = "action-details" %}
+      {% include "common/categorised-action-plan--tasklist.html" %}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-9">Custom actions</h2>
+      <p>Lead-in to explain what custom actions are.</p>
+      <p><a class="govuk-link" href="create-action-intro">Create a custom action</a></p>
+      <p class="govuk-!-margin-top-8">
+        {{ govukButton({
+          text: "Save and continue",
+          href: "action-plan-task-list"
+        }) }}
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

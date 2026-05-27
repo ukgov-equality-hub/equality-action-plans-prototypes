@@ -1,0 +1,154 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Action status (step 1)" %}
+{% set serviceName="Custom action tests" %}
+
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% set annualReview = data.endToEndMVP.lifecycleStage == "annualReview" %}
+{% set threeYearReview = data.endToEndMVP.lifecycleStage == "threeYearReview" %}
+
+{% set journeyShortCode = "endToEndMVP" + (data.endToEndMVP.lifecycleStage or "") %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25",
+        href: "action-plan-task-list"
+      },
+      {
+        text: thisPageAction.title
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Step 1
+      </h1>
+
+      {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview"
+        else ("action-description" if thisPageAction.category == 'menopause' else "action-description" ) %}
+      <form action="{{formAction}}" method="post">
+
+        {{ govukInput({
+          label: {
+            text: "Add a title for the action",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "The title will be published on your action plan"
+          },
+          id: "event-name",
+          name: "eventName"
+        }) }}
+
+        {{ govukRadios({
+          name: journeyShortCode + "[" + thisPageAction.shortCode + "][status]",
+          fieldset: {
+            legend: {
+              text: "Choose a status for this action",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: data[journeyShortCode][thisPageAction.shortCode].status,
+          items: [
+            {
+              value: "adopt",
+              text: "New or in progress",
+              hint: {
+                text: "This means you will be working on it for the first time or building on something you are already doing"
+              }
+            },
+            {
+              value: "embedded",
+              text: "Embedded",
+              hint: {
+                text: "This means it is already part of your working practice"
+              }
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "ignore",
+              text: "Do not add to action plan"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p>
+          <a class="govuk-link" href="actions-list">
+            Cancel and return to action plan for reporting year 2024-25
+          </a>
+        </p>
+        <p>
+          <a class="govuk-link" href="dashboard">
+            Cancel and return to Dunder Mifflin Paper Company Ltd
+          </a>
+        </p>
+
+        <script>
+          (function(){
+            const shortCode = "{{thisPageAction.shortCode}}";
+
+            function updateNarrativeHint() {
+              const statusRadios = document.getElementsByName("{{journeyShortCode}}[" + shortCode + "][status]");
+              let selectedValue = null;
+              for (const radio of statusRadios) {
+                if (radio.checked) {
+                  selectedValue = radio.value;
+                  break;
+                }
+              }
+
+              const hintCompleted = document.getElementById("narrative-hint--completed");
+              hintCompleted.style.display = selectedValue === "embedded" ? "block" : "none";
+
+              const hintAddToPlan = document.getElementById("narrative-hint--add-to-plan");
+              hintAddToPlan.style.display = selectedValue === "adopt" ? "block" : "none";
+
+              const narrativeWrapper = document.getElementById("narrative-wrapper");
+              narrativeWrapper.style.display = selectedValue === "ignore" ? "none" : "block";
+            }
+
+            const statusRadios = document.getElementsByName("{{journeyShortCode}}[" + shortCode + "][status]");
+            for (const radio of statusRadios) {
+              radio.addEventListener("change", updateNarrativeHint);
+            }
+
+            updateNarrativeHint();
+          })();
+        </script>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
