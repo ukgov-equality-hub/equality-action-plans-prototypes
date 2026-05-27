@@ -1,0 +1,57 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Create action (start page)" %}
+{% set serviceName="MVP action plan journey" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Create a new action
+      </h1>
+      <p>
+        We'll need a simple paragraph that explains the process and requirements to the user. We should explain things like when and why they should use this feature.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+      <p>
+        List of things: 
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>they should have checked</li>
+        <li>things they'll need to provide</li>
+        <li>to create a new action</li>
+      </ul>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "action-status",
+        classes: "govuk-!-margin-top-4"
+      }) }}
+  
+    </div>
+  </div>
+
+{% endblock %}

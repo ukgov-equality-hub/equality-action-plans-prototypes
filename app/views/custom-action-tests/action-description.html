@@ -1,0 +1,162 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Action description (step 2)" %}
+{% set serviceName="Custom action tests" %}
+
+{% set thisPageAction = {} %}
+{% for action in data.db.actions %}
+  {% if action.shortCode == data.actionShortCode %}
+    {% set thisPageAction = action %}
+  {% endif %}
+{% endfor %}
+
+{% set annualReview = data.endToEndMVP.lifecycleStage == "annualReview" %}
+{% set threeYearReview = data.endToEndMVP.lifecycleStage == "threeYearReview" %}
+
+{% set journeyShortCode = "endToEndMVP" + (data.endToEndMVP.lifecycleStage or "") %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Action plan 2024/25",
+        href: "action-plan-task-list"
+      },
+      {
+        text: thisPageAction.title
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Step 2
+      </h1>
+      <p class="govuk-!-margin-bottom-8">The information you write here will be published as part of your action plan on the gender pay gap service.</p>
+
+      {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview"
+        else ("actions-list?menopause=yes" if thisPageAction.category == 'menopause' else "actions-list?menopause=no" ) %}
+      <form action="{{formAction}}" method="post">
+
+        {% set descriptionHintContent %}
+            <div class="govuk-hint govuk-!-margin-bottom-2">
+              You must add further details about:
+            </div>
+            <ul class="govuk-hint govuk-!-margin-top-2 govuk-!-margin-bottom-3">
+              <li>the purpose of this action</li>
+              <li>the benefits or goals your organisation plans to achieve</li>
+            </ul>
+            <p class="govuk-hint">You can write up to 100 words. You cannot upload files or add links.</p>
+        {% endset %}
+
+        <div id="description-wrapper" class="govuk-!-margin-bottom-8">
+          {{ govukTextarea({
+            id: journeyShortCode + "[" + thisPageAction.shortCode + "][description]",
+            name: journeyShortCode + "[" + thisPageAction.shortCode + "][description]",
+            label: {
+              text: "Description",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              html: descriptionHintContent
+            },
+            value: data[journeyShortCode][thisPageAction.shortCode].narrative
+          }) }}
+        </div>
+
+        {% set narrativeHintContent %}
+          <div>
+            <div class="govuk-hint govuk-!-margin-bottom-2">
+              You must add further details about:
+            </div>
+            <ul class="govuk-hint govuk-!-margin-top-2 govuk-!-margin-bottom-3">
+              <li>why your organisation has chosen this action</li>
+              <li>how you will track and understand that this action is improving gender equality in your organisation</li>
+            </ul>
+            <p class="govuk-hint">You can write up to 100 words. You cannot upload files or add links.</p>
+          </div>
+
+        {% endset %}
+
+        <div id="narrative-wrapper" class="govuk-!-margin-bottom-8">
+          {{ govukTextarea({
+            id: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
+            name: journeyShortCode + "[" + thisPageAction.shortCode + "][narrative]",
+            label: {
+              text: "Supporting text",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              html: narrativeHintContent
+            },
+            value: data[journeyShortCode][thisPageAction.shortCode].narrative
+          }) }}
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p>
+          <a class="govuk-link" href="actions-list">
+            Cancel and return to action plan for reporting year 2024-25
+          </a>
+        </p>
+        <p>
+          <a class="govuk-link" href="dashboard">
+            Cancel and return to Dunder Mifflin Paper Company Ltd
+          </a>
+        </p>
+
+        <script>
+          (function(){
+            const shortCode = "{{thisPageAction.shortCode}}";
+
+            function updateNarrativeHint() {
+              const statusRadios = document.getElementsByName("{{journeyShortCode}}[" + shortCode + "][status]");
+              let selectedValue = null;
+              for (const radio of statusRadios) {
+                if (radio.checked) {
+                  selectedValue = radio.value;
+                  break;
+                }
+              }
+
+              const hintCompleted = document.getElementById("narrative-hint--completed");
+              hintCompleted.style.display = selectedValue === "embedded" ? "block" : "none";
+
+              const hintAddToPlan = document.getElementById("narrative-hint--add-to-plan");
+              hintAddToPlan.style.display = selectedValue === "adopt" ? "block" : "none";
+
+              const narrativeWrapper = document.getElementById("narrative-wrapper");
+              narrativeWrapper.style.display = selectedValue === "ignore" ? "none" : "block";
+            }
+
+            const statusRadios = document.getElementsByName("{{journeyShortCode}}[" + shortCode + "][status]");
+            for (const radio of statusRadios) {
+              radio.addEventListener("change", updateNarrativeHint);
+            }
+
+            updateNarrativeHint();
+          })();
+        </script>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
