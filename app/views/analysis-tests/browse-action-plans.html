@@ -1,0 +1,783 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Browse published action plans" %}
+{% set serviceName="Action plan prototypes" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">
+        Published action plans
+      </h1>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Chingford Academies Trust</h2>
+      <dl class="govuk-summary-list">
+        <!--div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer number</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/3201">3201</a></dd>
+        </div-->
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Education</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">?</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 new or in-progress"
+            }) %}
+             <ul>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Set targets to improve gender representation</li>
+              <li>Train managers to support employees experiencing menopause</li>
+              <li>Set up menopause support groups and networks</li>
+             </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "14 embedded"
+            }) %}
+             <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Advertise leave policies in job adverts</li>
+              <li>Advertise flexible working arrangements in job adverts</li>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Automatically consider eligible employees for promotion</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Offer occupational health advice to employees experiencing menopause</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+              <li>Conduct a menopause risk assessment for your workplace</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+             </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/3201/reporting-year-2026/action-plan">Chingford Academies Trust Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Ebor Academy Trust</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Education</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">1,000 to 4,999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 new or in-progress"
+            }) %}
+             <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Offer occupational health advice to employees experiencing menopause</li>
+             </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "1 embedded"
+            }) %}
+             <ul>
+              <li>Automatically consider eligible employees for promotion</li>
+             </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/14525/reporting-year-2026/action-plan">Ebor Academy Trust Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Esteem Multi-academy Trust</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Education</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">1,000 to 4,999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "6 new or in-progress"
+            }) %}
+            <ul>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+              <li>Set up menopause support groups and networks</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "1 embedded"
+            }) %}
+            <ul>
+              <li>Advertise flexible working arrangements in job adverts</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/19467/reporting-year-2026/action-plan">Esteem Multi-academy Trust Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+      
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">General Traffic Limited</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Wholesale and retail trade; repair of motor vehicles and motorcycles</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">500 to 999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 new or in-progress"
+            }) %}
+            <ul>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Conduct a menopause risk assessment for your workplace</li>
+              <li>Offer workplace adjustments to employees experiencing menopause"</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "7 embedded"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Automatically consider eligible employees for promotion</li>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Set targets to improve gender representation</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/5447/reporting-year-2026/action-plan">General Traffic Limited Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Knowsley Metropolitan Borough Council</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Public sector</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">500 to 999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "3 new or in-progress"
+            }) %}
+            <ul>
+              <li>Offer occupational health advice to employees experiencing menopause
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+              <li>Use fair and structured interview techniques</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 embedded"
+            }) %}
+            <ul>
+              <li>Advertise flexible working arrangements in job adverts</li>
+              <li>Set up menopause support groups and networks</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+              <li>Advertise leave policies in job adverts"</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/7344/reporting-year-2026/action-plan">Knowsley Metropolitan Borough Council Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Lifetime Training Group Limited</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Education</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">500 to 999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "6 new or in-progress"
+            }) %}
+            <ul>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Automatically consider eligible employees for promotion</li>
+              <li>Set targets to improve gender representation</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "12 embedded"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Advertise leave policies in job adverts</li>
+              <li>Advertise flexible working arrangements in job adverts</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Train managers to support employees experiencing menopause</li>
+              <li>Offer occupational health advice to employees experiencing menopause</li>
+              <li>Set up menopause support groups and networks</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+              <li>Conduct a menopause risk assessment for your workplace</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/7638/reporting-year-2026/action-plan">Lifetime Training Group Limited Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Milton Keynes University Hospital NHS Foundation Trust</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Human health and social work activities, Public sector</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">1,000 to 4,999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "2 new or in-progress"
+            }) %}
+            <ul>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Train managers to support employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 embedded"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Advertise leave policies in job adverts</li>
+              <li>Advertise flexible working arrangements in job adverts</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Offer occupational health advice to employees experiencing menopause</li>
+              <li>Set up menopause support groups and networks</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/8486/reporting-year-2026/action-plan">Milton Keynes University Hospital NHS Foundation Trust Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Mott Macdonald Limited</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Professional scientific and technical activities</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">5,000 to 19,999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "2 new or in-progress"
+            }) %}
+            <ul>
+              <li>Set targets to improve gender representation</li>
+              <li>Conduct a menopause risk assessment for your workplace"</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "9 embedded"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Advertise leave policies in job adverts</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Advertise flexible working arrangements in job adverts</li>
+              <li>Set up menopause support groups and networks</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/8672/reporting-year-2026/action-plan">Mott Macdonald Limited Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">PossAbilities CIC</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Human health and social work activities</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">500 to 999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 new or in-progress"
+            }) %}
+            <ul>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+                <li>Offer occupational health advice to employees experiencing menopause</li>
+                <li>Conduct a menopause risk assessment for your workplace</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "5 embedded"
+            }) %}
+            <ul>
+              <li>Train managers to support employees experiencing menopause</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Set up menopause support groups and networks</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/17737/reporting-year-2026/action-plan">PossAbilities CIC Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Semco Maritime Limited</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Manufacturing</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">250 to 499 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 new or in-progress"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "5 embedded"
+            }) %}
+            <ul>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Advertise leave policies in job adverts</li>
+              <li>Set targets to improve gender representation</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Train managers to support employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/21189/reporting-year-2026/action-plan">Semco Maritime Limited Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Shrewsbury Colleges Group</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Education</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">500 to 999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "3 new or in-progress"
+            }) %}
+            <ul>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "1 embedded"
+            }) %}
+            <ul>
+              <li>Advertise flexible working arrangements in job adverts</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/15135/reporting-year-2026/action-plan">Shrewsbury Colleges Group Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">The Southfield Trust</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Education</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">250 to 499 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "2 new or in-progress"
+            }) %}
+            <ul>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Train managers to support employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "6 embedded"
+            }) %}
+            <ul>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Set targets to improve gender representation</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/23090/reporting-year-2026/action-plan">The Southfield Trust Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Turning Point</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Human health and social work activities</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">1,000 to 4,999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "2 new or in-progress"
+            }) %}
+            <ul>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "2 embedded"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Set up menopause support groups and networks</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/13027/reporting-year-2026/action-plan">Turning Point Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">West Norfolk Academies Trust</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Education</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">500 to 999 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "4 new or in-progress"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Advertise leave policies in job adverts</li>
+              <li>Train managers to support employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "12 embedded"
+            }) %}
+            <ul>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Advertise flexible working arrangements in job adverts</li>
+              <li>Automatically consider eligible employees for promotion</li>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Set up menopause support groups and networks</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+              <li>Conduct a menopause risk assessment for your workplace</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/13633/reporting-year-2026/action-plan">West Norfolk Academies Trust Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Woodgate and Clark Limited</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Administrative and support service activities</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">250 to 499 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "7 new or in-progress"
+            }) %}
+            <ul>
+              <li>Automatically consider eligible employees for promotion</li>
+              <li>Encourage applications from a range of candidates</li>
+              <li>Reduce unconscious bias in CV screening</li>
+              <li>Advertise flexible working arrangements in job adverts</li>
+              <li>Advertise leave policies in job adverts</li>
+              <li>Set targets to improve gender representation</li>
+              <li>Conduct a menopause risk assessment for your workplace</li>
+            </ul>
+            {% endcall %}
+
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "12 embedded"
+            }) %}
+            <ul>
+              <li>Encourage employee development through actionable steps</li>
+              <li>Make job descriptions inclusive</li>
+              <li>Use fair and structured interview techniques</li>
+              <li>Offer mentoring, sponsorship and other development programmes</li>
+              <li>Increase transparency for pay, promotion and rewards</li>
+              <li>Enhance and promote flexible working and leave policies</li>
+              <li>Train managers to support employees experiencing menopause</li>
+              <li>Offer occupational health advice to employees experiencing menopause</li>
+              <li>Offer workplace adjustments to employees experiencing menopause</li>
+              <li>Review policies and procedures to meet the needs of employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/23630/reporting-year-2026/action-plan">Woodgate and Clark Limited Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--xl">
+
+      <h2 class="govuk-heading-m">Wyre Forest District Council</h2>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Sector</dt>
+          <dd class="govuk-summary-list__value">Public sector</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Employer size</dt>
+          <dd class="govuk-summary-list__value">250 to 499 employees</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Actions</dt>
+          <dd class="govuk-summary-list__value">
+            {% from "govuk/components/details/macro.njk" import govukDetails %}
+            {% call govukDetails({
+              summaryText: "2 new or in-progress"
+            }) %}
+            <ul>
+              <li>Make job descriptions inclusive</li>
+              <li>Train managers to support employees experiencing menopause</li>
+            </ul>
+            {% endcall %}
+
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">View action plan</dt>
+          <dd class="govuk-summary-list__value"><a href="https://gender-pay-gap.service.gov.uk/employers/13971/reporting-year-2026/action-plan">Wyre Forest District Council Action plan 2026 to 2027</a></dd>
+        </div>
+      </dl>
+  
+    </div>
+  </div>
+
+{% endblock %}
