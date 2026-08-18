@@ -1,0 +1,89 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-l">
+      Pay gaps report
+    </h1>
+
+    <p class="govuk-!-margin-bottom-8">
+      There are 2 ways to upload your pay gap figures:
+    </p>
+    <ul class="govuk-list govuk-list--spaced">
+      <li>
+        <h2 class="govuk-heading-m">
+          <span class="govuk-!-margin-right-2">
+            Use our calculator
+          </span>
+          <strong class="govuk-tag">
+            Recommended
+          </strong>
+        </h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Download our example CSV file</li>
+          <li>Fill in details of your employees<br>(we'll explain in more detail on the next page)</li>
+          <li>Upload the CSV to our service, privately</li>
+          <li>We will do all the calculations for you</li>
+          <li>You can review and edit the report before you submit</li>
+        </ul>
+        <p>
+          {{ govukButton({
+            text: "Continue with our calculator",
+            href: "calculator/guidance"
+          }) }}
+        </p>
+      </li>
+      <li>
+        <h2 class="govuk-heading-m">
+          Enter the figures manually
+        </h2>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Calculate your pay gap figures yourself</li>
+          <li>Enter them into our service</li>
+          <li>Review and edit the report before publication</li>
+        </ul>
+        <p>
+          {{ govukButton({
+            text: "Continue with manual entry",
+            classes: "govuk-button--secondary",
+            href: "pay-gaps-report"
+          }) }}
+        </p>
+      </li>
+    </ul>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

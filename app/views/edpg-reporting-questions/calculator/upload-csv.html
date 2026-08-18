@@ -1,0 +1,64 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-l">
+      Pay gaps calculator
+    </h1>
+
+    {{ govukFileUpload({
+      id: "csvFile",
+      name: "csvFile",
+      label: {
+        text: "Upload your CSV file",
+        classes: "govuk-label--m"
+      },
+      javascript: true,
+      attributes: {
+        accept: 'text/csv,.csv'
+      }
+    }) }}
+
+    <p>
+      {{ govukButton({
+        text: "Upload and continue",
+        href: "validate-csv"
+      }) }}
+    </p>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-l">
+      Pay gaps calculator
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      How to use our calculator
+    </h2>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          Download our example CSV file
+        </h3>
+        We have created an example CSV file.
+        <br>
+        The example CSV file contains the details of 5 fictitious employees, to help you understand the format of the data we require (more details on the next page).
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          Fill in details about your employees
+        </h3>
+        Replace the data about our fictitious employees with the data about your own employees.
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          Upload the CSV to our service
+        </h3>
+        The CSV file with the details of your employees will be processed and held securely and will never be published.
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          We will check the CSV file
+        </h3>
+        We will check that the CSV file is in the correct format and ask you to verify some details about your employees, to ensure you've filled it in correctly.
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          We will do all the calculations for you
+        </h3>
+        Once you are happy with the details of your employees, we will do all the calculations for you and provide you with a report of your pay gaps.
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          You can review and edit the report before you submit
+        </h3>
+        You will be returned to the manual data entry journey, with all the pay gap data pre-filled,
+        so you can review and edit the report before you submit it.
+      </li>
+    </ul>
+
+    <p>
+      {{ govukButton({
+        text: "Continue",
+        href: "download-example-csv"
+      }) }}
+    </p>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
