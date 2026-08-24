@@ -1,0 +1,465 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-xl">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-xl">
+      Preview calculations
+    </h1>
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">
+      Employees
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Number of employees
+        </dt>
+        <dd class="govuk-summary-list__value">
+          524
+        </dd>
+      </div>
+    </dl>
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">
+      Gender
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Male employees
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">306</span><span style="color:#858686">(58.4%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Female employees
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">218</span><span style="color:#858686">(41.6%)</span>
+        </dd>
+      </div>
+    </dl>
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">
+      Gender pay gap
+    </h2>
+    <h3 class="govuk-heading-m">
+      Hourly pay gap
+    </h3>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median hourly pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          5.8%
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Mean hourly pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          7.3%
+        </dd>
+      </div>
+    </dl>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Pay quarters</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Pay quarter</th>
+          <th scope="col" class="govuk-table__header">Number of male employees</th>
+          <th scope="col" class="govuk-table__header">Number of female employees</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Highest-paid</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">82</span><span style="color:#858686">(62.6% of the highest-paid quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">49</span><span style="color:#858686">(37.4% of the highest-paid quarter)</span></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">2nd quarter</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">76</span><span style="color:#858686">(58.0% of the 2nd quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">55</span><span style="color:#858686">(42.0% of the 2nd quarter)</span></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">3rd quarter</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">63</span><span style="color:#858686">(48.1% of the 3rd quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">68</span><span style="color:#858686">(51.9% of the 3rd quarter)</span></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Lowest paid</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">72</span><span style="color:#858686">(55.0% of the lowest-paid quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">59</span><span style="color:#858686">(45.0% of the lowest-paid quarter)</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Bonus pay</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header"></th>
+          <th scope="col" class="govuk-table__header">Employees who receive bonus pay</th>
+          <th scope="col" class="govuk-table__header">Employees who do not receive bonus pay</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">All employees</th>
+          <td class="govuk-table__cell">258</td>
+          <td class="govuk-table__cell">266</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Male employees</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">175</span><span style="color:#858686">(57.2% of male employees)</span></td>
+          <td class="govuk-table__cell">131</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Female employees</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">83</span><span style="color:#858686">(38.1% of female employees)</span></td>
+          <td class="govuk-table__cell">135</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="govuk-heading-m">
+      Bonus pay gap
+    </h3>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median bonus pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          6.2%
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Mean bonus pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          10.7%
+        </dd>
+      </div>
+    </dl>
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">
+      Ethnicity
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees who disclosed their ethnicity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">486</span><span style="color:#858686">(92.7%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees who did not disclose their ethnicity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">38</span><span style="color:#858686">(7.3%)</span>
+        </dd>
+      </div>
+    </dl>
+
+    <p>
+      Of those who disclosed their ethnicity:
+    </p>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees whose ethnicity is Asian
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">82</span><span style="color:#858686">(16.9%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees whose ethnicity is Black
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">76</span><span style="color:#858686">(15.6%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees whose ethnicity is Mixed
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">49</span><span style="color:#858686">(10.1%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees whose ethnicity is Other
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">42</span><span style="color:#858686">(8.6%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees whose ethnicity is White
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">327</span><span style="color:#858686">(67.3%)</span>
+        </dd>
+      </div>
+    </dl>
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">
+      Ethnicity pay gaps
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median pay gap Asian-White
+        </dt>
+        <dd class="govuk-summary-list__value">
+          2.3%
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median pay gap Black-White
+        </dt>
+        <dd class="govuk-summary-list__value">
+          4.9%
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median pay gap Mixed-White
+        </dt>
+        <dd class="govuk-summary-list__value">
+          3.1%
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median pay gap Other-White
+        </dt>
+        <dd class="govuk-summary-list__value">
+          3.6%
+        </dd>
+      </div>
+    </dl>
+
+    <p style="color: #ca3535">
+      Note: There's probably loads more pay gap info to calculate here, but I wasn't sure exactly what we're going to calculate.
+    </p>
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">
+      Disability
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees who disclosed their disability status
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">507</span><span style="color:#858686">(96.8%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees who did not disclose their disability status
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">17</span><span style="color:#858686">(3.2%)</span>
+        </dd>
+      </div>
+    </dl>
+
+    <p>
+      Of those employees who disclosed their disability status:
+    </p>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees with a disability
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">54</span><span style="color:#858686">(10.7%)</span>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employees without a disability
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <span class="govuk-!-margin-right-2">453</span><span style="color:#858686">(89.3%)</span>
+        </dd>
+      </div>
+    </dl>
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-9">
+      Disability pay gap
+    </h2>
+    <h3 class="govuk-heading-m">
+      Hourly pay gap
+    </h3>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median hourly pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          12.3%
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Mean hourly pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          15.7%
+        </dd>
+      </div>
+    </dl>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Pay quarters</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Pay quarter</th>
+          <th scope="col" class="govuk-table__header">Number of employees with a disability</th>
+          <th scope="col" class="govuk-table__header">Number of employees without a disability</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Highest-paid</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">9</span><span style="color:#858686">(7.1% of the highest-paid quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">118</span><span style="color:#858686">(92.9% of the highest-paid quarter)</span></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">2nd quarter</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">10</span><span style="color:#858686">(7.9% of the 2nd quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">117</span><span style="color:#858686">(92.1% of the 2nd quarter)</span></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">3rd quarter</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">13</span><span style="color:#858686">(10.2% of the 3rd quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">114</span><span style="color:#858686">(89.8% of the 3rd quarter)</span></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Lowest paid</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">22</span><span style="color:#858686">(17.5% of the lowest-paid quarter)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">104</span><span style="color:#858686">(82.5% of the lowest-paid quarter)</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Bonus pay</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header"></th>
+          <th scope="col" class="govuk-table__header">Employees who receive bonus pay</th>
+          <th scope="col" class="govuk-table__header">Employees who do not receive bonus pay</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">All employees</th>
+          <td class="govuk-table__cell">258</td>
+          <td class="govuk-table__cell">266</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Employees with a disability</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">20</span><span style="color:#858686">(37.0% of employees with a disability)</span></td>
+          <td class="govuk-table__cell">34</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Employees without a disability</th>
+          <td class="govuk-table__cell"><span class="govuk-!-margin-right-2">238</span><span style="color:#858686">(46.9% of employees without a disability)</span></td>
+          <td class="govuk-table__cell">232</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="govuk-heading-m">
+      Bonus pay gap
+    </h3>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Median bonus pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          14.2%
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Mean bonus pay gap
+        </dt>
+        <dd class="govuk-summary-list__value">
+          22.1%
+        </dd>
+      </div>
+    </dl>
+
+
+    <p>
+      {{ govukButton({
+        text: "Continue",
+        href: "../pay-gaps-report"
+      }) }}
+    </p>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

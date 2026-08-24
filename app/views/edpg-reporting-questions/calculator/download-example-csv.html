@@ -1,0 +1,163 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-l">
+      Pay gaps calculator
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      Our example CSV file
+    </h2>
+    <p>
+      We have created an example CSV file.
+      <br>
+      The example CSV file contains the details of 5 fictitious employees, to help you understand the format of the data we require.
+      <br>
+      The CSV file contains a row of headings, and then 1 row for each employee.
+    </p>
+    <p>
+      Here is a preview of the CSV file:
+    </p>
+    <div class="govuk-inset-text">
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Gender</th>
+            <th scope="col" class="govuk-table__header">Ethnicity</th>
+            <th scope="col" class="govuk-table__header">Disability</th>
+            <th scope="col" class="govuk-table__header">HourlyPay</th>
+            <th scope="col" class="govuk-table__header">BonusPayInTheLastYear</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Male</td>
+            <td class="govuk-table__cell">Asian</td>
+            <td class="govuk-table__cell">No</td>
+            <td class="govuk-table__cell">25.00</td>
+            <td class="govuk-table__cell">300</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Female</td>
+              <td class="govuk-table__cell">Black</td>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">25.00</td>
+              <td class="govuk-table__cell">350</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Male</td>
+              <td class="govuk-table__cell">Mixed</td>
+              <td class="govuk-table__cell">No</td>
+              <td class="govuk-table__cell">24.70</td>
+              <td class="govuk-table__cell">250</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Female</td>
+              <td class="govuk-table__cell">Other</td>
+              <td class="govuk-table__cell">No</td>
+              <td class="govuk-table__cell">23.70</td>
+              <td class="govuk-table__cell">275</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Male</td>
+              <td class="govuk-table__cell">White</td>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">26.00</td>
+              <td class="govuk-table__cell">400</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      <a href="/public/pay-gaps-template-csv.csv">Download our example CSV file</a>,
+      then replace the data about our fictitious employees with the data about your own employees
+    </p>
+    <p>
+      The CSV file contains 5 columns:
+    </p>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          Gender
+        </h3>
+        The gender of the employee.
+        <br>
+        This should be either <b>Male</b> or <b>Female</b>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          Ethnicity
+        </h3>
+        The high-level ethnicity of the employee.
+        <br>
+        This should be <b>Asian</b>, <b>Black</b>, <b>Mixed</b>, <b>Other</b> or <b>White</b>.
+        <br>
+        If the employee has not declared their ethnicity, leave this blank.
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          Disability
+        </h3>
+        This should be <b>Yes</b> (for employees with a disability) or <b>No</b> (for employees with no disablity).
+        <br>
+        If the employee has not declared their disability status, leave this blank.
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          HourlyPay
+        </h3>
+        The hourly pay of the employee (in £ per hour).
+        Do not include a £ sign or commas in the number. For example, if an employee receives £22.75 per hour, enter <b>22.75</b>
+      </li>
+      <li>
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          BonusPayInTheLastYear
+        </h3>
+        The bonus pay the employee received in the previous year (in £).
+        Do not include a £ sign or commas in the number. For example, if the employee received a bonus of £1,300, enter <b>1300</b>
+      </li>
+    </ul>
+
+    <p>
+      {{ govukButton({
+        text: "Continue",
+        href: "upload-csv"
+      }) }}
+    </p>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

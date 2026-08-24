@@ -1,0 +1,405 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{% set pageName="Pay gaps report - overview" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block breadCrumbs %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Your employers",
+        href: "employers-list"
+      },
+      {
+        text: data.db.company.name,
+        href: "dashboard"
+      },
+      {
+        text: "Pay gaps report 2024/25"
+      }
+    ]
+  }) }}
+{% endblock breadCrumbs %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">
+      {{data.db.company.name}}
+    </span>
+    <h1 class="govuk-heading-l">
+      Let's check your CSV file
+    </h1>
+    <p>
+      Tick each box to confirm that we've interpreted your CSV file correctly.
+    </p>
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      CSV file format checks
+    </h2>
+    <p>
+      ✅ You uploaded a CSV file named <b>pay-gaps-data.csv</b>
+    </p>
+    <p>
+      ✅ The CSV file has 5 columns
+    </p>
+    <p>
+      ✅ The 5 columns are as expected:
+      <br><b class="govuk-!-margin-left-6">Gender</b>,
+      <br><b class="govuk-!-margin-left-6">Ethnicity</b>,
+      <br><b class="govuk-!-margin-left-6">Disabled</b>,
+      <br><b class="govuk-!-margin-left-6">HourlyPay</b>,
+      <br><b class="govuk-!-margin-left-6">BonusPayInTheLastYear</b>
+    </p>
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      Preview
+    </h2>
+    <p>
+      Here is a preview of the top 5 rows of your CSV file:
+    </p>
+    <div class="govuk-inset-text">
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Gender</th>
+            <th scope="col" class="govuk-table__header">Ethnicity</th>
+            <th scope="col" class="govuk-table__header">Disability</th>
+            <th scope="col" class="govuk-table__header">HourlyPay</th>
+            <th scope="col" class="govuk-table__header">BonusPayInTheLastYear</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Male</td>
+            <td class="govuk-table__cell">Asian</td>
+            <td class="govuk-table__cell">No</td>
+            <td class="govuk-table__cell">15.00</td>
+            <td class="govuk-table__cell">25</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Female</td>
+              <td class="govuk-table__cell">Black</td>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">25.00</td>
+              <td class="govuk-table__cell" style="color:#858686">[blank]</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Male</td>
+              <td class="govuk-table__cell" style="color:#858686">[blank]</td>
+              <td class="govuk-table__cell">No</td>
+              <td class="govuk-table__cell">24.70</td>
+              <td class="govuk-table__cell">250</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Female</td>
+              <td class="govuk-table__cell">Other</td>
+              <td class="govuk-table__cell" style="color:#858686">[blank]</td>
+              <td class="govuk-table__cell">23.70</td>
+              <td class="govuk-table__cell">275</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Male</td>
+              <td class="govuk-table__cell">White</td>
+              <td class="govuk-table__cell">Yes</td>
+              <td class="govuk-table__cell">172.63</td>
+              <td class="govuk-table__cell">36170</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {{ govukCheckboxes({
+      name: "preview_check",
+      items: [
+        {
+          value: "true",
+          html: "Does this preview match the CSV file you uploaded?"
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      Number of employees
+    </h2>
+    <p>
+      The CSV file has 524 rows of data.
+    </p>
+    {{ govukCheckboxes({
+      name: "rows_of_data",
+      items: [
+        {
+          value: "true",
+          html: "Do you have <b>524 employees</b>?"
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      Gender
+    </h2>
+    <p>
+      ✅ The <b>Gender</b> column contains a value for each row.
+    </p>
+    <p>
+      ✅ The values are all either <b>Male</b> or <b>Female</b>.
+    </p>
+    <p>
+      In the <b>Gender</b> column:
+      <br>306 rows have the value <b>Male</b>
+      <br>218 rows have the value <b>Female</b>
+    </p>
+    <p>
+      Do you have:
+    </p>
+
+    {{ govukCheckboxes({
+      name: "gender_split",
+      items: [
+        {
+          value: "male",
+          html: "<b>306</b> male employees?"
+        },
+        {
+          value: "female",
+          html: "<b>218</b> female employees?"
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      Ethnicity
+    </h2>
+    <p>
+      The <b>Ethnicity</b> column contains:
+      <br><b>486</b> rows with a value
+      <br><b>38</b> rows without a value
+    </p>
+    <p>
+      Do you have:
+    </p>
+    {{ govukCheckboxes({
+      name: "ethnicity_told",
+      items: [
+        {
+          value: "told_yes",
+          html: "<b>486</b> employees who <b>have told</b> you their ethnicity?"
+        },
+        {
+          value: "told_no",
+          html: "<b>38</b> employees who <b>have not told</b> you their ethnicity?"
+        }
+      ]
+    }) }}
+    <p>
+      ✅ In the <b>Ethnicity</b> column, the values are all valid:
+      <br><b class="govuk-!-margin-left-6">Asian</b>,
+      <br><b class="govuk-!-margin-left-6">Black</b>,
+      <br><b class="govuk-!-margin-left-6">Mixed</b>,
+      <br><b class="govuk-!-margin-left-6">Other</b>,
+      <br><b class="govuk-!-margin-left-6">White</b>
+    </p>
+
+    <p>
+      In the <b>Ethnicity</b> column:
+      <br>82 rows have the value <b>Asian</b>
+      <br>76 rows have the value <b>Black</b>
+      <br>49 rows have the value <b>Mixed</b>
+      <br>42 rows have the value <b>Other</b>
+      <br>237 rows have the value <b>White</b>
+    </p>
+    <p>
+      Do you have:
+    </p>
+
+    {{ govukCheckboxes({
+      name: "ethnicity_list",
+      items: [
+        {
+          value: "asian",
+          html: "<b>82</b> employees whose ethnicity is <b>Asian</b>?"
+        },
+        {
+          value: "black",
+          html: "<b>76</b> employees whose ethnicity is <b>Black</b>?"
+        },
+        {
+          value: "mixed",
+          html: "<b>49</b> employees whose ethnicity is <b>Mixed</b>?"
+        },
+        {
+          value: "other",
+          html: "<b>42</b> employees whose ethnicity is <b>Other</b>?"
+        },
+        {
+          value: "white",
+          html: "<b>327</b> employees whose ethnicity is <b>White</b>?"
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      Disability
+    </h2>
+    <p>
+      The <b>Disabled</b> column contains:
+      <br><b>507</b> rows with a value
+      <br><b>17</b> rows without a value
+    </p>
+    <p>
+      Do you have:
+    </p>
+    {{ govukCheckboxes({
+      name: "disabled_told",
+      items: [
+        {
+          value: "told_yes",
+          html: "<b>507</b> employees who <b>have disclosed</b> their disability status?"
+        },
+        {
+          value: "told_no",
+          html: "<b>17</b> employees who <b>have not disclosed</b> their disability status?"
+        }
+      ]
+    }) }}
+    <p>
+      ✅ In the <b>Disabled</b> column, the values are all valid:
+      <br><b class="govuk-!-margin-left-6">Yes</b>,
+      <br><b class="govuk-!-margin-left-6">No</b>
+    </p>
+
+    <p>
+      In the <b>Disabled</b> column:
+      <br>54 rows have the value <b>Yes</b>
+      <br>453 rows have the value <b>No</b>
+    </p>
+    <p>
+      Do you have:
+    </p>
+
+    {{ govukCheckboxes({
+      name: "disability_list",
+      items: [
+        {
+          value: "yes",
+          html: "<b>54</b> employees <b>with</b> a disability?"
+        },
+        {
+          value: "no",
+          html: "<b>453</b> employees <b>without</b> a disability?"
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      Hourly pay
+    </h2>
+    <p>
+      ✅ The <b>HourlyPay</b> column contains a value for each row
+    </p>
+
+    <p>
+      In the <b>HourlyPay</b> column:
+      <br>the lowest value is <b>15</b>,
+      <br>the highest value is <b>172.63</b>
+    </p>
+
+    <p>
+      ✅ In the <b>HourlyPay</b> column, the values are all valid numbers
+    </p>
+
+    <p>
+      Is it correct that:
+    </p>
+    {{ govukCheckboxes({
+      name: "hourly_pay_list",
+      items: [
+        {
+          value: "lowest",
+          html: "your <b>lowest-paid</b> employee earns <b>£15.00 per hour</b>?"
+        },
+        {
+          value: "highest",
+          html: "your <b>highest-paid</b> employee earns <b>£172.63 per hour</b>?"
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+      Bonus pay
+    </h2>
+    <p>
+      The <b>BonusPayInTheLastYear</b> column contains:
+      <br><b>258</b> rows with a value
+      <br><b>266</b> rows without a value
+    </p>
+    <p>
+      Do you have:
+    </p>
+    {{ govukCheckboxes({
+      name: "bonus_yes_no",
+      items: [
+        {
+          value: "bonus_yes",
+          html: "<b>258</b> employees who <b>earned a bonus</b> in the last year?"
+        },
+        {
+          value: "bonus_no",
+          html: "<b>266</b> employees who <b>did not earn a bonus</b> in the last year?"
+        }
+      ]
+    }) }}
+
+    <p>
+      ✅ In the <b>BonusPayInTheLastYear</b> column, the values are all valid numbers
+    </p>
+
+    <p>
+      In the <b>BonusPayInTheLastYear</b> column:
+      <br>the lowest value is <b>25</b>,
+      <br>the highest value is<b>36170</b>
+    </p>
+
+    <p>
+      Is it correct that:
+    </p>
+    {{ govukCheckboxes({
+      name: "bonus_pay_list",
+      items: [
+        {
+          value: "lowest",
+          html: "the employee paid the smallest bonus received a bonus of <b>£25</b>?"
+        },
+        {
+          value: "highest",
+          html: "the employee paid the smallest bonus received a bonus of <b>£36,170</b>?"
+        }
+      ]
+    }) }}
+
+
+    <p>
+      {{ govukButton({
+        text: "Continue",
+        href: "preview-calculations"
+      }) }}
+    </p>
+
+    <p>
+      <a href="#">Cancel and return to {{data.db.company.name}}</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
