@@ -9,38 +9,110 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Which ethnicities do you collect in your workforce data?
+        Workforce breakdown by ethnicity, and disclosure rates
       </h1>
 
-      <form class="form" action="answer-action-plan-external" method="post">
+      <p>[V.1 where eligibility messages appear direclty on page]</p>
 
-        {{ govukRadios({
-          name: "edpgReportingQuestions.collectWhite",
-          fieldset: {
+      <form class="form" action="mean-median" method="post">
+
+        <p>Ethnicity pay gap reporting will require employers to report a binary comparison at minimum and also aggregate to 5 ethnic groups where possible.</p>
+
+        <p>The minimum headline comparison is between the white (including white other) ethnic group and all other ethnic groups combined.</p>
+
+        <p>To be eligible to report on your ethnicity pay gap you must meet the minimum criteria for number of employees in each ethnic group (10). This is to protect the identity of individual employees in each group.</p>
+
+        <div class="govuk-inset-text">
+            <a href="#">View full guidance on ethnicity reporting and the GSS harmonised standard</a> 
+        </div>
+
+        <div>
+        <h2 class="govuk-heading-m" id="headline-comparison">
+            Headline comparison
+        </h2>
+
+        <p>Enter the number of employees who have disclosed their ethnicity in each of the groups below</p>
+
+        {{ govukInput({
+          label: {
+            text: "White (including white other)",
+            classes: "govuk-label--xs"
           },
-          hint: {
-            text: "If you already have an action plan hosted elsewhere, e.g. on your website,
-          then you do not need to enter it in full on our service."
+          classes: "govuk-input--width-10",
+          id: "disabled-employees",
+          name: "workforce[disabled]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "All other ethnicities",
+            classes: "govuk-label--xs"
           },
-          items: [
+          classes: "govuk-input--width-10",
+          id: "non-disabled-employees",
+          name: "workforce[nonDisabled]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Status not disclosed",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "disability-status-not-disclosed",
+          name: "workforce[disabilityStatusNotDisclosed]",
+          inputmode: "numeric"
+        }) }}
+
+
+        <div class="govuk-!-margin-bottom-9">
+                {% from "govuk/components/button/macro.njk" import govukButton %}
+                {{ govukButton({
+                text: "Submit"
+                }) }}
+        </div>
+
+<p><b>Message 1: eligible</b></p>
+        <p>You meet the minimum eligibility criteria for ethnicity reporting</p>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        
+        {{ govukButton({
+        text: "Continue to ethnicity reporting"
+        }) }}
+
+        <div>
+          <p class="govuk-!-margin-bottom-9">
+            <a href="/edpg-reporting-questions/pay-gaps-report" class="govuk-back-link">return to dashboard</a>
+          </p>
+        </div>
+        
+        <div>
+          <p><b>Message 2: not eligible</b></p>
+            {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+            
+            {{ govukErrorSummary({
+            titleText: "There are not enough employees in each group to meet the mimimum eligibility criteria",
+            errorList: [
             {
-              value: "Yes",
-              text: "Yes"
+            text: "If you believe this is incorrect please review the information entered above"
             },
             {
-              value: "No",
-              text: "No"
+            text: "Return to dashboard",
+            href: "/edpg-reporting-questions/pay-gaps-report"
             }
-          ]
-        }) }}
+            ]
+            }) }}
+            <a href="#">View full guidance on ethnicity reporting and the GSS harmonised standard</a> 
+            <br>
+            
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+        </div>
 
-      </form>
+        </div>
 
-    </div>
-  </div>
+        <div>
 
 {% endblock %}

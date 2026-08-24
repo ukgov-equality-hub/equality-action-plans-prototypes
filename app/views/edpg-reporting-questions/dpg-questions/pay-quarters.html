@@ -1,0 +1,227 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block breadCrumbs %}
+{% endblock %}
+
+{% block content %}
+
+<form action="bonus" method="post">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+        Enter percentage of disabled and non-disabled people in each hourly pay quarter
+    </h1>
+
+    <h2 class="govuk-heading-m">
+        Reporting as Dunder Mifflin for snapshot date April 2027
+    </h2>   
+    
+    <p>
+        Enter your figures as whole percentages or rounded to one decimal place.
+    </p>
+
+<p>If disabled people in your organisation are paid more than non-disabled, enter a negative percentage figure – for example -12%.</p>
+
+<div>
+    <p>
+    <strong>Upper hourly pay quarter</strong> 
+    </p>  
+
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-upper-disabled",
+        label: {
+        text: "Disabled",
+        classes: ""
+        },
+    
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+    
+    </div>
+
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-upper-nondisabled",
+        label: {
+        text: "Non-disabled",
+        classes: ""
+        },
+
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+
+        </div>
+</div>
+
+<div class="govuk-margin-bottom-10">
+    <p>
+    <strong>Upper middle hourly pay quarter</strong> 
+    </p>     
+
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-uppermid-disabled",
+        label: {
+        text: "Disabled",
+        classes: ""
+        },
+    
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+    
+    </div>
+
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-uppermid-nondisabled",
+        label: {
+        text: "Non-disabled",
+        classes: ""
+        },
+
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+
+    </div>
+
+</div>
+
+<div>
+    <p>
+    <strong>Lower middle hourly pay quarter</strong> 
+    </p>   
+
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-lowermid-disabled",
+        label: {
+        text: "Disabled",
+        classes: ""
+        },
+    
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+    
+    </div>
+
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-lowermid-nondisabled",
+        label: {
+        text: "Non-disabled",
+        classes: ""
+        },
+
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+
+    </div>
+
+</div>
+
+<div>
+
+    <p>
+        <strong>Lower hourly pay quarter</strong>
+    </p>
+    
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-lower-disabled",
+        label: {
+        text: "Disabled",
+        classes: ""
+        },
+    
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+    
+    </div>
+
+    <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-lower-nondisabled",
+        label: {
+        text: "Non-disabled",
+        classes: ""
+        },
+
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+
+    </div>
+
+
+</div>
+
+<div class="govuk-button-group">
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+        Save and continue
+    </button>
+</div>
+
+<div>
+    <a href="/edpg-reporting-questions/dpg-questions/mean-median" class="govuk-back-link">back</a>
+</div>
+
+<div>
+    <p class="govuk-!-margin-top-9">
+        <a href="/edpg-reporting-questions/pay-gaps-report" class="govuk-back-link">return to dashboard</a>
+    </p>
+</div>
+
+
+ </form> 
+
+</div>
+</div>
+
+
+
+
+ {% endblock %}

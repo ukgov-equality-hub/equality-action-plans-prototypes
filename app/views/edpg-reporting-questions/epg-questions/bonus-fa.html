@@ -1,0 +1,180 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block breadCrumbs %}
+{% endblock %}
+
+{% block content %}
+
+<form class="form" action="bonus-pay-gap-fa" method="post">
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+        Enter percentage of employees from each ethnic group people who received bonus pay
+    </h1>
+
+     <h2 class="govuk-heading-m">
+        Reporting as Dunder Mifflin for snapshot date April 2027
+    </h2>   
+    
+    <p class="govuk-!-margin-bottom-10">
+        Enter your figures as whole percentages or rounded to one decimal place.
+    </p>
+
+        
+    <p>If people in your organisation from the non-white group are paid more than people in the white (including white other) group, enter a negative percentage figure – for example -12%.</p>
+
+
+    <form action="bonus-pay-gap" method="post">
+    <div>
+    <h2 class="govuk-heading-m">
+        Headline comparison
+    </h2>
+    <p>
+        <b>Percentage who received bonus pay</b>
+        </p>
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-hourlypay-median",
+            label: {
+            text: "White (including white other)",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+        
+        </div>
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-hourlypay-median",
+            label: {
+            text: "All other ethnic groups combined",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+        </div>
+    </div>
+
+    <div>
+        <h2 class="govuk-heading-m">
+       Further analysis
+    </h2>
+    <p>
+        <b>Percentage who received bonus pay</b>
+        </p>
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-hourlypay-median",
+            label: {
+            text: "Asian or British Asian",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+        
+        </div>
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-hourlypay-median",
+            label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+        </div>
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-hourlypay-median",
+            label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+        </div>
+
+         <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-hourlypay-median",
+            label: {
+            text: "Other ethnic groups",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+        </div>
+    </div>
+
+    <div class="govuk-button-group">
+        
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Save and continue
+        </button>
+    </div>
+
+    <div>
+        <a href="/edpg-reporting-questions/dpg-questions/pay-quarters" class="govuk-back-link">back</a>
+    </div>
+
+    <div>
+        <p class="govuk-!-margin-top-9">
+            <a href="/edpg-reporting-questions/pay-gaps-report" class="govuk-back-link">return to dashboard</a>
+        </p>
+    </div>
+
+    </form>
+</div>
+</div>
+
+</form>
+{% endblock %}

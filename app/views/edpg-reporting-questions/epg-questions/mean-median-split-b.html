@@ -1,0 +1,163 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Enter mean and median ethnicity pay gap using median pay - Further analysis
+      </h1>
+
+      <form class="form" action="#" method="post">
+
+        <h2 class="govuk-heading-m">
+            Reporting as Dunder Mifflin for snapshot date April 2027
+        </h2>
+
+        <p>
+            Enter your figures as whole percentages or rounded to one decimal place.
+        </p>
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-6" id="headline-comparison">
+            Further analysis 
+        </h2>
+
+        <p>Enter the <b>mean</b> pay gap between the <b>white (including white other)</b> ethnic group and each of the individual groups below</p>
+
+   {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Asian or Asian British",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+   {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Other ethnic groups",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+        <p>Enter the <b>median</b> pay gap between the <b>white (including white other)</b> ethnic group and each of the individual groups below</p>
+
+   {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Asian or Asian British",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+   {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Other ethnic groups",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

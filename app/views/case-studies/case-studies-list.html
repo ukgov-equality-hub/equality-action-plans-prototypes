@@ -1,0 +1,495 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% set pageName="Case studies" %}
+{% set serviceName="Case Studies" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Case Studies
+    </h1>
+
+    <p>Case studies are real world examples of how employers have implemented actions to address their gender pay gap.</p>
+
+    <p>These case studies are shared by employers to demonstrate best practice, show what employers can achieve and help
+      other employers to understand what actions their peers are taking.</p>
+
+    <div class="govuk-inset-text">
+      You can also see a full list of suggested actions for employers to addres their gender pay gap.
+    </div>
+
+    <p>Case studies are grouped under the same categories as the list of suggested actions:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li><a href="#menopause">Menopause</a></li>
+    <li><a href="#recruiting_staff"> Recruiting Staff</a></li>
+    <li><a href="#develop_and_promote">Developing and promoting staff</a></li>
+    <li><a href="#building_diversity">Building diversity in your organisation</a></li>
+    <li><a href="#increasing_transparency">Increasing transparency</a></li>
+    </ul>
+
+    <p class="govuk-body govuk-!-margin-top-6">Filter results relevant to you:
+    </p>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="filter-sector">
+        Sector
+      </label>
+      <select class="govuk-select" id="filter-sector">
+        <option value="">All sectors</option>
+        <option value="banking and finance">Banking/Finance</option>
+        <option value="consultancy">Consultancy</option>
+        <option value="education">Education</option>
+        <option value="housing">Housing</option>
+        <option value="not-for-profit">Not for profit</option>
+        <option value="public">Public sector</option>
+      </select>
+    </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="filter-size">
+        Number of employees
+      </label>
+      <select class="govuk-select" id="filter-size">
+        <option value="">All sizes</option>
+        <option value="<250">Less than 250</option>
+        <option value="250-499">250 - 499</option>
+        <option value="500-999">500 - 999</option>
+        <option value="1000-4999">1000 - 4,999</option>
+        <option value="5000-19999">5,000 to 19,999</option>
+        <option value=">20000">More than 20,0000</option>
+      </select>
+    </div>
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9" id="menopause">
+      Menopause
+    </h2>
+
+    <div data-filter data-filter-sector="public" data-filter-size=">20000">
+      <p class="govuk-!-margin-bottom-2">
+        <a href="/case-studies/case-study-tvp">TVP: Reasonable adjustments for menopause</a>
+      </p>
+
+      <p>
+        Action:
+        <strong>
+          Offer workplace adjustments for employees experiencing menopause
+        </strong>
+      </p>
+
+      <p>
+        Employees:
+        <strong>
+          More than 20,000
+        </strong>
+      </p>
+
+      <p>
+        Sector:
+        <strong>
+          Public Sector
+        </strong>
+      </p>
+      </p>
+
+      <p>
+        Managing workplace dignity and organisational understanding for a female Thames Valley Police (TVP) Crime Scene
+        Investigator (CSI) who required Reasonable Adjustments.
+      </p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+
+    </div>
+
+    <div data-filter data-filter-sector="consultancy" data-filter-size=">20000">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Bain: Taking action to help with menopause</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+         More than 20,000
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Consultancy
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+    </div>
+
+
+    <div data-filter data-filter-sector="education" data-filter-size="5000-19999">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Middlesex University: The first example regarding menopause</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        5,000-19,999
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Education
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+
+    </div>
+
+    <div data-filter data-filter-sector="education" data-filter-size="5000-19999">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Middlesex University: The second example regarding menopause</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        5,000-19,999
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Education
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+
+    </div>
+
+    <div data-filter data-filter-sector="public" data-filter-size="500-999">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Cambridge Council: Action taken by us reagarding menopause</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        500-999
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Local authority
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+
+    </div>
+
+    <div data-filter data-filter-sector="housing" data-filter-size="1000-4999">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">L&Q: This is our experience regarding menopause</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        1,000-4,999
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Housing
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+    </div>
+
+
+    <div data-filter data-filter-sector="education" data-filter-size="1000-4999">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Greenwich University: Reviewing our policies and procedures</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        1,000-4,999
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Education
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+
+    </div>
+
+    <div data-filter data-filter-sector="not-for-profit" data-filter-size="250-499">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Opportunity Green: Reviewing existing
+      policies to ensure they reflect the needs of those going thrugh menopause</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        250-499
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Charity
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+    </div>
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9" id="recruiting_staff">
+      Recruiting staff
+    </h2>
+
+    <div data-filter data-filter-sector="banking and finance" data-filter-size=">20000">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Barclays: Parental policy</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        More than 20,000
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Banking/Finance
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+
+    </div>
+
+    <div data-filter data-filter-sector="consultancy" data-filter-size=">20000">
+    <p class="govuk-!-margin-bottom-2">
+      <a href="/case-studies/case-study-tvp">Bain: Our flexible leave policies</a>
+    </p>
+
+    <p>
+      Action:
+      <strong>
+        One line title for the action(s) that organisation took
+      </strong>
+    </p>
+
+    <p>
+      Employees:
+      <strong>
+        More than 20,000
+      </strong>
+    </p>
+
+    <p>
+      Sector:
+      <strong>
+        Consultancy
+      </strong>
+    </p>
+    </p>
+
+    <p>
+
+      This is a longer paragraph that explains in one or two sentances what actions the employer took as well as a bit
+      of background information about the case. This should still be limited to one or two sentances, possibly create an
+      AI prompt to generate these from the forms employers complete.
+
+    </p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+
+    </div>
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9" id="develop_and_promote">
+      Developing and promoting staff
+    </h2>
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9" id="building_diversity">
+      Building diversity into your organisation
+    </h2>
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9" id="increasing_transparency">
+      Increasing transparency
+    </h2>
+
+  </div>
+</div>
+
+<script>
+    (function() {
+        const filterSector = document.getElementById('filter-sector');
+        const filterSize = document.getElementById('filter-size');
+        const filterElements = document.querySelectorAll('[data-filter]');
+
+        function applyFilters() {
+            const selectedSector = filterSector.value;
+            const selectedSize = filterSize.value;
+
+            filterElements.forEach(element => {
+                const elementSector = element.getAttribute('data-filter-sector');
+                const elementSize = element.getAttribute('data-filter-size');
+
+                const sectorMatches = !selectedSector || elementSector === selectedSector;
+                const sizeMatches = !selectedSize || elementSize === selectedSize;
+
+                if (sectorMatches && sizeMatches) {
+                    element.style.display = '';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+
+        filterSector.addEventListener('change', applyFilters);
+        filterSize.addEventListener('change', applyFilters);
+    })();
+</script>
+
+{% endblock %}

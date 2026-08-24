@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block breadCrumbs %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+        Workforce breakdown by disability and disclosure rates
+    </h1>
+
+    <p> Disability pay gap reporting requires employers to report using a binary approach (comparing disabled and non-disabled employees) under the Equality Act 2010 definition of disability.</p>
+
+    <p>In order to calculate if you are eligible to report your disability pay gap we need to know:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>Percentage of employees who declared their disability status</li>
+        <li>Percentage of employees who declared themselves non-disabled</li>
+        <li>Percentage of employees who declared themselves disabled</li>
+    
+    </ul>
+
+    <div class="govuk-form-group govuk-!-margin-bottom-10">
+        <label class="govuk-label" for="width-4">
+            Percentage of employees who declared their disability status
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="width-4" name="width4" type="text" inputmode="numeric">
+    </div>
+
+     <div class="govuk-form-group govuk-!-margin-bottom-10">
+        <label class="govuk-label" for="width-4">
+            Percentage of employees who declared themselves non-disabled
+        </label>
+        <input class="govuk-input govuk-input--width-4" id="width-4" name="width4" type="text" inputmode="numeric">
+    </div>
+
+        <div class="govuk-form-group govuk-!-margin-bottom-10">
+            <label class="govuk-label" for="width-4">
+                Percentage of employees who declared themselves disabled
+            </label>
+            <input class="govuk-input govuk-input--width-4" id="width-4" name="width4" type="text" inputmode="numeric">
+        </div>
+
+    <div> 
+        <p>You are eligible to report you disability pay gap</p>
+        <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                <a href="mean-median">Continue</a>
+            </button>
+        </div>
+  </div>
+
+  <a href="#" class="govuk-back-link">Return to dashboard</a>
+
+  
+{% endblock %}
