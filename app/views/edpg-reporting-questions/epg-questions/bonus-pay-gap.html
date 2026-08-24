@@ -1,0 +1,102 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block breadCrumbs %}
+{% endblock %}
+
+{% block content %}
+
+<form action="/edpg-reporting-questions/pay-gaps-report" method="post">
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+        Enter mean and median ethnicity pay gap using bonus pay
+    </h1>
+
+     <h2 class="govuk-heading-m">
+        Reporting as Dunder Mifflin for snapshot date April 2027
+    </h2>   
+    
+    <p class="govuk-!-margin-bottom-10">
+        Enter your figures as whole percentages or rounded to one decimal place.
+    </p>
+
+    <p>If employees in non-white ethnic groups are paid more than employees in the white (including white other) group, enter a negative percentage figure – for example -12%.</p>
+
+    <div>
+        <h2 class="govuk-heading-m">
+            Headline comparison
+        </h2>
+    
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-bonuspay-mean",
+            label: {
+            text: "Mean pay gap between the white (including white other) ethnic group and all other ethnic groups combined",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+        
+        </div>
+
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-bonuspay-median",
+            label: {
+            text: "Median pay gap between the white (including white other) ethnic group and all other ethnic groups combined",
+            classes: ""
+            },
+
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+        </div>
+
+    </div>
+
+        <p class="user-note">
+            <strong>Prototype users:</strong> You have been through the journey showing the 'headline' or minimum binary ethnicity comparison. There are further journey options that show how users might report on other ethnic groups for further analysis.
+            {% set nextStageUrl = "three-year-review-user-note" if annualReview else "annual-review-user-note" %}
+            <a href="/edpg-reporting-questions/epg-questions/epg-fa-options">click here to go to the next stage of the prototype</a>
+        </p>
+
+    <div class="govuk-button-group">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Save and return to dashboard
+        </button>
+    </div>
+    
+    <div>
+        <a href="/edpg-reporting-questions/epg-questions/bonus" class="govuk-back-link">back</a>
+    </div>
+    
+    <div>
+        <p class="govuk-!-margin-top-9">
+            <a href="/edpg-reporting-questions/pay-gaps-report" class="govuk-back-link">return to dashboard</a>
+        </p>
+    </div>
+
+    </div>
+</div>
+
+</form>
+
+{% endblock %}

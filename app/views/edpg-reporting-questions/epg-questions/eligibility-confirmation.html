@@ -1,0 +1,404 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-l">Check what you are eligible to report</h1>
+  
+<p>You can see what you are eligible to report on based on the information you provided.</p>
+
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m">
+        Headline comparison
+      </h2>
+
+    <form class="form" action="mean-median-fa" method="post">  
+
+      <p class="govuk-body">
+        For the headline comparison between the white (including white other) ethnic group and all other ethnic groups combined you <strong class="govuk-tag govuk-tag--green">are eligible</strong> to report for:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Ethnicity pay gap, percentage who recieve bonus and bonus pay gap</li>
+        <li>Pay quarters</li>
+      </ul>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Further analysis
+      </h2>
+
+      <p class="govuk-body">
+        For the <b>ethnicity pay gap, percentage of employees who recieve bonus pay</b> and <b>bonus pay gap</b> reports you <strong class="govuk-tag govuk-tag--green">are eligible</strong> to report for the below groups:
+      </p>
+      
+      <ul class="govuk-list govuk-list--bullet">
+        <li>White (including white other)</li>
+        <li>Asian or Asian British</li>
+        <li>Black, Black British, Caribbean or African</li>
+        <li>Mixed or multiple ethnic groups</li>
+        <li>Other ethnic groups</li>
+      </ul>
+
+      <p class="govuk-body">
+        For the <b>pay quarters</b> report you <strong class="govuk-tag govuk-tag--green">are eligible</strong> to report for the below groups:
+      </p>
+      
+      <ul class="govuk-list govuk-list--bullet">
+        <li>White (including white other)</li>
+        <li>Asian or Asian British</li>
+        <li>Mixed or multiple ethnic groups</li>
+        <li>Other ethnic groups</li>
+      </ul>
+
+            <p class="govuk-body">
+        For the <b>pay quarters</b> report you <strong class="govuk-tag govuk-tag--red">are not eligible</strong> to report for the below groups:
+      </p>
+      
+      <ul class="govuk-list govuk-list--bullet">
+       <li>Black, Black British, Caribbean or African</li>
+      </ul>
+
+      <p>If you think that this is incorrect please check the information below. You can change the information you submitted using the links</p>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue to ethnicity reporting
+        </button>
+
+            <div>
+                <p class="govuk-!-margin-bottom-6">
+                    <a href="/edpg-reporting-questions/pay-gaps-report" class="govuk-back-link">return to dashboard</a>
+                </p>
+            </div>
+
+
+
+
+<h2 class="govuk-heading-m govuk-!-margin-top-6">Number of employees in each ethnic group</h2>
+
+  <dl class="govuk-summary-list">
+    
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      White (incuding white other)
+    </dt>
+    <dd class="govuk-summary-list__value">
+      200
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Asian or Asian British
+    </dt>
+    <dd class="govuk-summary-list__value">
+      100
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Black, Black British, Caribbean or African
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Mixed or multiple ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      100
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+   <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Other ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      120
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+</dl>
+
+<h2 class="govuk-heading-m">Number of employees in each ethnic group per pay quarter</h2>
+
+  <dl class="govuk-summary-list" >
+
+    <div class="govuk-summary-list_row">
+        <dt class="govuk-summary-list_key">
+            <h3>Upper</h3>
+        </dt>
+    </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      White (incuding white other)
+    </dt>
+    <dd class="govuk-summary-list__value">
+      50
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Asian or Asian British
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Black, Black British, Caribbean or African
+    </dt>
+    <dd class="govuk-summary-list__value">
+        8
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Mixed or multiple ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+   <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Other ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      30
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+</dl>
+
+<dl class="govuk-summary-list">
+    <div class="govuk-summary-list_row">
+        <dt class="govuk-summary-list_key">
+            <h3>Upper middle</h3>
+        </dt>
+    </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      White (incuding white other)
+    </dt>
+    <dd class="govuk-summary-list__value">
+      50
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Asian or Asian British
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Black, Black British, Caribbean or African
+    </dt>
+    <dd class="govuk-summary-list__value">
+        7
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Mixed or multiple ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+   <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Other ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      30
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+</dl>
+
+<dl class="govuk-summary-list">
+    <div class="govuk-summary-list_row">
+        <dt class="govuk-summary-list_key">
+            <h3>Lower middle</h3>
+        </dt>
+    </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      White (incuding white other)
+    </dt>
+    <dd class="govuk-summary-list__value">
+      50
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Asian or Asian British
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Black, Black British, Caribbean or African
+    </dt>
+    <dd class="govuk-summary-list__value">
+        8
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Mixed or multiple ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+   <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Other ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      30
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+</dl>
+
+<dl class="govuk-summary-list">
+    <div class="govuk-summary-list_row">
+        <dt class="govuk-summary-list_key">
+            <h3>Lower</h3>
+        </dt>
+    </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      White (incuding white other)
+    </dt>
+    <dd class="govuk-summary-list__value">
+      50
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Asian or Asian British
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Black, Black British, Caribbean or African
+    </dt>
+    <dd class="govuk-summary-list__value">
+        7
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Mixed or multiple ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      25
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+   <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Other ethnic groups
+    </dt>
+    <dd class="govuk-summary-list__value">
+      30
+    </dd>
+     <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+    </dd>
+  </div>
+</dl>
+
+
+
+    </form>
+
+    </div>
+  </div>
+
+{% endblock %}

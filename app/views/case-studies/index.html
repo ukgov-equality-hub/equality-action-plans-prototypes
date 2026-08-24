@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+{% set serviceName="Case Studies" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ serviceName }}
+    </h1>
+
+    <p>
+      Paragraph here
+    </p>
+
+    <p>This is a second paragraph as a test</p>
+
+    <p> <a href="/case-studies/list-page">Continue to List page</a></p>
+
+    <p><a href="data-collection/from-annual-review">Data collection as part of an annual review</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

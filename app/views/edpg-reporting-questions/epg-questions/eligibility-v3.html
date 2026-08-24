@@ -1,0 +1,392 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+<form action="/edpg-reporting-questions/epg-questions/eligibility-confirmation" method="post">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Workforce breakdown by ethnicity, and disclosure rates
+      </h1>
+
+      <p>[Version where users submit information and are taken to a checking page]</p>
+
+
+
+        <p>Ethnicity pay gap reporting will require employers to report a binary comparison at minimum and also aggregate to 5 ethnic groups where possible.</p>
+
+        <p>The <b>headline</b> comparison is between the white (including white other) ethnic group and all other ethnic groups combined.</p>
+
+        <p>The <b>further analysis</b> comparisons are between the white (including white other) ethnic group and each of the other ethnic groups in the GSS harmonised stardard, where eligible.</p>
+
+        <p>Ethnicity data calculation will be in line with the GSS harmonised standards, and aggregation in line with ONS guidance.</p>
+
+        <p>The 5 ethnic groups for ethnicity pay gap reporting are:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>White (including white other)</li>
+            <li>Asian or Asian British</li>
+            
+            <li>Mixed or multiple ethnic groups</li>
+            <li>Other ethnic groups</li>
+        </ul>
+
+        <p>To be eligible to report on your ethnicity pay gap you must meet the minimum criteria for number of employees in each ethnic group (10). This is to protect the identity of individual employees in each group.</p>
+
+        <div class="govuk-inset-text">
+            <a href="#">View full guidance on ethnicity reporting and the GSS harmonised standard</a> 
+        </div>
+
+        <div>
+        <h2 class="govuk-heading-m" id="headline-comparison">
+            Headline comparison
+        </h2>
+
+        <p>Enter the number of employees who have disclosed their ethnicity in each of the groups below</p>
+
+        {{ govukInput({
+          label: {
+            text: "White (including white other)",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "disabled-employees",
+          name: "workforce[disabled]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "All other ethnicities",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "non-disabled-employees",
+          name: "workforce[nonDisabled]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Status not disclosed",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "disability-status-not-disclosed",
+          name: "workforce[disabilityStatusNotDisclosed]",
+          inputmode: "numeric"
+        }) }}
+
+        </div>
+
+        <div>
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-6" id="headline-comparison">
+            Further analysis 
+        </h2>
+
+        <p>Enter the number of employees who have disclosed their ethnicity in each of the groups below</p>
+
+              {{ govukInput({
+          label: {
+            text: "Asian or Asian British",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-asian",
+          name: "workforce[ethnicity-asian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-black",
+          name: "workforce[ethnicity-black]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Other ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-other-groups",
+          name: "workforce[ethnicity-other-ethnic-groups]",
+          inputmode: "numeric"
+        }) }}
+
+        </div>
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-6" id="headline-comparison">
+            Further analysis - pay quarters
+        </h2>
+
+        <p>Enter the number of employees who have disclosed their ethnicity in each pay quarter</p>
+        
+        <div>
+        <p><strong>Upper</strong></p>
+
+              {{ govukInput({
+          label: {
+            text: "White (including white other)",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-asian",
+          name: "workforce[ethnicity-asian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Asian or Asian British",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-black",
+          name: "workforce[ethnicity-black]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Other ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-other-groups",
+          name: "workforce[ethnicity-other-ethnic-groups]",
+          inputmode: "numeric"
+        }) }}
+        </div>
+
+        <div>
+        <p><strong>Upper middle</strong></p>
+
+              {{ govukInput({
+          label: {
+            text: "White (including white other)",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-asian",
+          name: "workforce[ethnicity-asian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Asian or Asian British",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-black",
+          name: "workforce[ethnicity-black]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Other ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-other-groups",
+          name: "workforce[ethnicity-other-ethnic-groups]",
+          inputmode: "numeric"
+        }) }}
+        </div>
+
+        <div>
+        <p><strong>Lower middle</strong></p>
+
+              {{ govukInput({
+          label: {
+            text: "White (including white other)",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-asian",
+          name: "workforce[ethnicity-asian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Asian or Asian British",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-black",
+          name: "workforce[ethnicity-black]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Other ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-other-groups",
+          name: "workforce[ethnicity-other-ethnic-groups]",
+          inputmode: "numeric"
+        }) }}
+        </div>
+
+        <div>
+        <p><strong>Lower</strong></p>
+
+              {{ govukInput({
+          label: {
+            text: "White (including white other)",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-asian",
+          name: "workforce[ethnicity-asian]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Asian or Asian British",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-black",
+          name: "workforce[ethnicity-black]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Black, Black British, Caribbean or African",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Mixed or multiple ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-mixed-multiple",
+          name: "workforce[ethnicity-mixed-multiple-groups]",
+          inputmode: "numeric"
+        }) }}
+
+         {{ govukInput({
+          label: {
+            text: "Other ethnic groups",
+            classes: "govuk-label--xs"
+          },
+          classes: "govuk-input--width-10",
+          id: "ethnicity-other-groups",
+          name: "workforce[ethnicity-other-ethnic-groups]",
+          inputmode: "numeric"
+        }) }}
+        </div>
+
+
+        {{ govukButton({
+          text: "Submit"
+        }) }}
+
+    
+
+    </div>
+  </div>
+</form>
+{% endblock %}

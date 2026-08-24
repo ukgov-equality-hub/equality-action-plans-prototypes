@@ -1,0 +1,82 @@
+{% extends "layouts/menu-bar.html" %}
+
+{% set pageName="Workforce breakdown - ethnicity" %}
+{% set serviceName="Ethnicity and disability pay gap reporting - visualisations" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Enter mean and median ethnicity pay gap using median pay - Headline comparison
+      </h1>
+
+      <form class="form" action="mean-median-split-b" method="post">
+
+        <h2 class="govuk-heading-m">
+            Reporting as Dunder Mifflin for snapshot date April 2027
+        </h2>
+
+        <p>
+            Enter your figures as whole percentages or rounded to one decimal place.
+        </p>
+
+        <p>If people in your organisation from the non-white group are paid more than people in the white (including white other) group, enter a negative percentage figure – for example -12%.</p>
+
+        <div class="govuk-!-margin-top-6">
+        <h2 class="govuk-heading-m" id="headline-comparison">
+            Headline comparison
+        </h2>
+
+        <p>Enter the mean and median ethnicity pay gaps between the white (including white other) and all other ethnic groups combined</p>
+
+            <div>
+        {{ govukInput({
+        id: "cost-per-item",
+        name: "disability-payquarter-upper-nondisabled",
+        label: {
+        text: "Enter the mean ethnicity pay gap using hourly pay",
+        classes: ""
+        },
+
+        suffix: {
+        text: "%"
+        },
+        classes: "govuk-input--width-5",
+        spellcheck: false
+        }) }}
+
+        </div>
+
+        <div>
+            {{ govukInput({
+            id: "cost-per-item",
+            name: "disability-payquarter-upper-nondisabled",
+            label: {
+            text: "Enter the median ethnicity pay gap using hourly pay",
+            classes: ""
+            },
+        
+            suffix: {
+            text: "%"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+        
+        </div>
+
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
