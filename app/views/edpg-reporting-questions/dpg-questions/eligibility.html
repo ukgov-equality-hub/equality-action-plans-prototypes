@@ -27,7 +27,7 @@
         <p>To be eligible to report on your disability pay gap you must meet the minimum criteria for number of employees in each group (10). This is to protect the identity of individual employees in each group.</p>
 
 
-      <form class="form" action="../pay-gaps-report" method="post">
+      <form class="form" action="mean-median" method="post">
 
 
         <h2 class="govuk-heading-s">
@@ -76,9 +76,24 @@
           inputmode: "numeric"
         }) }}
 
+        <div class=govuk-!-margin-bottom 6>
         {{ govukButton({
           text: "Submit"
         }) }}
+        </div>
+
+        <div class=govuk-!-margin-bottom 6>
+          <p>
+          You are eligible for disability pay gap reporting
+          </p>
+        </div>
+
+        
+        <div>
+        {{ govukButton({
+          text: "Continue to disability pay gap reporting"
+        }) }}
+        </div>
 
       </form>
 

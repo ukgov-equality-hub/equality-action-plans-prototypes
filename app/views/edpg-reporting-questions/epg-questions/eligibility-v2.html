@@ -8,7 +8,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="mean-median-fa" method="post">  
+    <form class="form" action="epg-fa-options" method="post">  
 
       <h1 class="govuk-heading-l">
         Workforce breakdown by ethnicity, and disclosure rates
@@ -81,8 +81,6 @@
           inputmode: "numeric"
         }) }}
 
-        <p>You meet the minimum eligibility criteria for headline ethnicity reporting</p>
-
         <div>
 
         <h2 class="govuk-heading-m govuk-!-margin-top-6" id="headline-comparison">
@@ -137,20 +135,6 @@
 
         </div>
 
-    <h2 class="govuk-heading-s">
-        Headline comparison
-    </h2>
-
-     <p class="govuk-body">
-        For the headline comparison between the white (including white other) ethnic group and all other ethnic groups combined you <strong class="govuk-tag govuk-tag--green">are eligible</strong> to report for:
-      </p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>Ethnicity pay gap, percentage who recieve bonus and bonus pay gap</li>
-        <li>Pay quarters</li>
-      </ul>
-
-    
 
         <h2 class="govuk-heading-m govuk-!-margin-top-9" id="headline-comparison">
             Further analysis - pay quarters
@@ -396,7 +380,25 @@
 
         </div>
 
+        <div>
+                {{ govukButton({
+          text: "Submit"
+        }) }}
+        </div>
 
+
+    <h2 class="govuk-heading-s govuk-!-margin-top-9">
+        Headline comparison
+    </h2>
+
+     <p class="govuk-body">
+        For the headline comparison between the white (including white other) ethnic group and all other ethnic groups combined you <strong class="govuk-tag govuk-tag--green">are eligible</strong> to report for:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Ethnicity pay gap, percentage who recieve bonus and bonus pay gap</li>
+        <li>Pay quarters</li>
+      </ul>
 
       <h2 class="govuk-heading-s govuk-!-margin-top-6">
         Further analysis
