@@ -46,6 +46,18 @@
         Step 1
       </h1>
 
+      {% set titleHintContent %}
+            <div class="govuk-hint govuk-!-margin-bottom-2">
+              The title will be published on your action plan. It should be:
+            </div>
+            <ul class="govuk-hint govuk-!-margin-top-2 govuk-!-margin-bottom-3">
+              <li>no more than 65 characters</li>
+              <li>written in &lsquo;<a href="https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/style-guides/a-to-z-style-guide/#capitalisation">sentence case</a>&rsquo;</li>
+              <li>in plain English and avoid jargon</li>
+            </ul>
+            <p class="govuk-hint">You can write up to 100 words. You cannot upload files or add links.</p>
+        {% endset %}
+
       {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview"
         else ("action-description" if thisPageAction.category == 'menopause' else "action-description" ) %}
       <form action="{{formAction}}" method="post">
@@ -57,7 +69,7 @@
             isPageHeading: false
           },
           hint: {
-            text: "The title will be published on your action plan"
+            html: titleHintContent
           },
           id: "event-name",
           name: "eventName"
@@ -78,7 +90,7 @@
               value: "adopt",
               text: "New or in progress",
               hint: {
-                text: "This means you will be working on it for the first time or building on something you are already doing"
+                text: "This means you will be working on something for the first time or building on something you are already doing"
               }
             },
             {
@@ -93,7 +105,7 @@
             },
             {
               value: "ignore",
-              text: "Do not add to action plan"
+              text: "Do not add to plan"
             }
           ]
         }) }}

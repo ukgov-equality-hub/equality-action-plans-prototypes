@@ -58,7 +58,7 @@
             isPageHeading: false
           },
           hint: {
-            text: "Not sure what the hint taxt should be, but could explain the possible sources: External research they've decided to use or an Internal report"
+            text: "Add a website link to the evidence. You cannot upload files."
           },
           id: "evidence-link",
           name: "evidenceLink"
@@ -66,19 +66,19 @@
 
         {{ govukInput({
           label: {
-            text: "Please describe the resource you're linking to",
+            text: "Please describe the resource you&rsquo;re linking to",
             classes: "govuk-label--m",
             isPageHeading: false
           },
           hint: {
-            text: "Not sure what the hint taxt should be, but could explain what we'd expect the caption to contain."
+            text: "For example, external research or an internal report. Include the name of the study, its authors and the date it was published."
           },
           id: "evidence-caption",
           name: "evidenceCaption"
         }) }}
 
         <p>
-        <a href="https://www.gov.uk/government/collections/action-plans-list-of-actions">add another resource</a> 
+        <a href="https://www.gov.uk/government/collections/action-plans-list-of-actions">Add another resource</a> 
         </p>
 
         {{ govukButton({

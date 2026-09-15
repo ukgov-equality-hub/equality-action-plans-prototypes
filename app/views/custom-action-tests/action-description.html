@@ -48,7 +48,7 @@
       <p class="govuk-!-margin-bottom-8">The information you write here will be published as part of your action plan on the gender pay gap service.</p>
 
       {% set formAction = "annual-review-update-action-plan" if data.endToEndMVP.lifecycleStage == "annualReview"
-        else ("actions-list?menopause=yes" if thisPageAction.category == 'menopause' else "actions-list?menopause=no" ) %}
+        else ("action-evidence?menopause=yes" if thisPageAction.category == 'menopause' else "action-evidence?menopause=no" ) %}
       <form action="{{formAction}}" method="post">
 
         {% set descriptionHintContent %}
