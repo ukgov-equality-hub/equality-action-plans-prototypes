@@ -7,13 +7,13 @@
 
 {% block content %}
 
-<form action="bonus-pay-gap" method="post">
+<form action="/edpg-reporting-questions/epg-questions/bonus-split-b" method="post">
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-        Enter percentage of disabled and non-disabled people who received bonus pay
+        Enter percentage of employees from each ethnic group people who received bonus pay - minimum comparison
     </h1>
 
      <h2 class="govuk-heading-m">
@@ -24,19 +24,24 @@
         Enter your figures as whole percentages or rounded to one decimal place.
     </p>
 
+    <p>If people in your organisation from the non-white group are paid more than people in the white (including white other) group, enter a negative percentage figure – for example -12%.</p>
+
+
     <form action="bonus-pay-gap" method="post">
     <div>
-
+    <h2 class="govuk-heading-m">
+        Minimum comparison
+    </h2>
     <p>
         <b>Percentage who received bonus pay</b>
-    </p>
+        </p>
 
         <div>
             {{ govukInput({
             id: "cost-per-item",
             name: "disability-hourlypay-median",
             label: {
-            text: "Disabled",
+            text: "White (including white other)",
             classes: ""
             },
         
@@ -54,7 +59,7 @@
             id: "cost-per-item",
             name: "disability-hourlypay-median",
             label: {
-            text: "Non-disabled",
+            text: "All other ethnic groups combined",
             classes: ""
             },
 

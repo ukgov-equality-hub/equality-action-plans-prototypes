@@ -7,40 +7,108 @@
 
 <div class="govuk-grid-row" style="display: flex; align-items: flex-start;">
 
-  <!-- Left Column: Sticky Filters (1/3 Width) -->
+  <!-- Left Column: Sticky Filters with Multiple Select Checkboxes (1/3 Width) -->
   <div class="govuk-grid-column-one-third" style="position: sticky; top: 20px; align-self: flex-start;">
     <h2 class="govuk-heading-m">Filter results</h2>
     <p class="govuk-body">Filter results relevant to you:</p>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="filter-sector">
-        Sector
-      </label>
-      <select class="govuk-select govuk-!-width-full" id="filter-sector">
-        <option value="">All sectors</option>
-        <option value="banking and finance">Banking/Finance</option>
-        <option value="consultancy">Consultancy</option>
-        <option value="education">Education</option>
-        <option value="housing">Housing</option>
-        <option value="not-for-profit">Not for profit</option>
-        <option value="public">Public sector</option>
-      </select>
-    </div>
+    <!-- Sector Filters (Expandable Details) -->
+    <details class="govuk-details govuk-!-margin-bottom-4">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Sector
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-banking" type="checkbox" value="banking and finance">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-banking">
+              Banking/Finance
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-consultancy" type="checkbox" value="consultancy">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-consultancy">
+              Consultancy
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-education" type="checkbox" value="education">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-education">
+              Education
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-housing" type="checkbox" value="housing">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-housing">
+              Housing
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-not-for-profit" type="checkbox" value="not-for-profit">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-not-for-profit">
+              Not for profit
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-public" type="checkbox" value="public">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-public">
+              Public sector
+            </label>
+          </div>
+        </div>
+      </div>
+    </details>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="filter-size">
-        Number of employees
-      </label>
-      <select class="govuk-select govuk-!-width-full" id="filter-size">
-        <option value="">All sizes</option>
-        <option value="<250">Less than 250</option>
-        <option value="250-499">250 - 499</option>
-        <option value="500-999">500 - 999</option>
-        <option value="1000-4999">1,000 - 4,999</option>
-        <option value="5000-19999">5,000 to 19,999</option>
-        <option value=">20000">More than 20,000</option>
-      </select>
-    </div>
+    <!-- Size Filters (Expandable Details) -->
+    <details class="govuk-details govuk-!-margin-bottom-4">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Number of employees
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-250" type="checkbox" value="<250">
+            <label class="govuk-label govuk-checkboxes__label" for="size-250">
+              Less than 250
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-250-499" type="checkbox" value="250-499">
+            <label class="govuk-label govuk-checkboxes__label" for="size-250-499">
+              250 - 499
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-500-999" type="checkbox" value="500-999">
+            <label class="govuk-label govuk-checkboxes__label" for="size-500-999">
+              500 - 999
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-1000-4999" type="checkbox" value="1000-4999">
+            <label class="govuk-label govuk-checkboxes__label" for="size-1000-4999">
+              1,000 - 4,999
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-5000-19999" type="checkbox" value="5000-19999">
+            <label class="govuk-label govuk-checkboxes__label" for="size-5000-19999">
+              5,000 to 19,999
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-20000" type="checkbox" value=">20000">
+            <label class="govuk-label govuk-checkboxes__label" for="size-20000">
+              More than 20,000
+            </label>
+          </div>
+        </div>
+      </div>
+    </details>
   </div>
 
   <!-- Right Column: Case Studies Content (2/3 Width) -->
@@ -89,15 +157,17 @@
       </div>
 
       <div data-filter data-filter-sector="consultancy" data-filter-size=">20000">
-        <p class="govuk-body govuk-!-margin-bottom-2">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
           <a class="govuk-link" href="#">Bain: Taking action to help with menopause</a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>More than 20,000</strong></p>
-        <p class="govuk-body">Sector: <strong>Consultancy</strong></p>
-        <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        <p class="govuk-body-m">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of
+          background information about the case.
         </p>
+        <p class="govuk-body-s">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body-s">Employees: <strong>More than 20,000</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Consultancy</strong></p>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
@@ -240,14 +310,20 @@
 
 <script>
   (function() {
-    const filterSector = document.getElementById('filter-sector');
-    const filterSize = document.getElementById('filter-size');
+    const sectorCheckboxes = document.querySelectorAll('.filter-checkbox-sector');
+    const sizeCheckboxes = document.querySelectorAll('.filter-checkbox-size');
     const sections = document.querySelectorAll('.case-study-section');
 
+    function getSelectedValues(checkboxes) {
+      return Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+    }
+
     function applyFilters() {
-      const selectedSector = filterSector.value;
-      const selectedSize = filterSize.value;
-      const isAnyFilterActive = Boolean(selectedSector || selectedSize);
+      const selectedSectors = getSelectedValues(sectorCheckboxes);
+      const selectedSizes = getSelectedValues(sizeCheckboxes);
+      const isAnyFilterActive = selectedSectors.length > 0 || selectedSizes.length > 0;
 
       sections.forEach(section => {
         const filterElements = section.querySelectorAll('[data-filter]');
@@ -257,8 +333,8 @@
           const elementSector = element.getAttribute('data-filter-sector');
           const elementSize = element.getAttribute('data-filter-size');
 
-          const sectorMatches = !selectedSector || elementSector === selectedSector;
-          const sizeMatches = !selectedSize || elementSize === selectedSize;
+          const sectorMatches = selectedSectors.length === 0 || selectedSectors.includes(elementSector);
+          const sizeMatches = selectedSizes.length === 0 || selectedSizes.includes(elementSize);
 
           if (sectorMatches && sizeMatches) {
             element.style.display = '';
@@ -268,7 +344,7 @@
           }
         });
 
-        // Hide section if filters are active and there are 0 visible items under it
+        // Hide section heading if filters are active and no items match under it
         if (isAnyFilterActive && visibleItemsInSection === 0) {
           section.style.display = 'none';
         } else {
@@ -277,8 +353,8 @@
       });
     }
 
-    filterSector.addEventListener('change', applyFilters);
-    filterSize.addEventListener('change', applyFilters);
+    sectorCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+    sizeCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
   })();
 </script>
 
