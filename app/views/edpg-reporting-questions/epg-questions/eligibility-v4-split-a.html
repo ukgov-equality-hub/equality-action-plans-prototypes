@@ -5,20 +5,35 @@
 
 {% block content %}
 
+<form action="/edpg-reporting-questions/epg-questions/eligibility-v4-split-b" method="post">
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Workforce breakdown by ethnicity, and disclosure rates
+        Workforce breakdown by ethnicity, and disclosure rates - (1/3) minimum comparison
       </h1>
 
-      <p>[V.1 where eligibility messages appear direclty on page]</p>
+      <p>[Version where users submit information and are taken to a checking page]</p>
 
-      <form class="form" action="mean-median" method="post">
+
 
         <p>Ethnicity pay gap reporting will require employers to report a binary comparison at minimum and also aggregate to 5 ethnic groups where possible.</p>
 
-        <p>The minimum headline comparison is between the white (including white other) ethnic group and all other ethnic groups combined.</p>
+        <p>The <b>minimum</b> comparison is between the white (including white other) ethnic group and all other ethnic groups combined.</p>
+
+        <p>The <b>further analysis</b> comparisons are between the white (including white other) ethnic group and each of the other ethnic groups in the GSS harmonised stardard, where eligible.</p>
+
+        <p>Ethnicity data calculation will be in line with the GSS harmonised standards, and aggregation in line with ONS guidance.</p>
+
+        <p>The 5 ethnic groups for ethnicity pay gap reporting are:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>White (including white other)</li>
+            <li>Asian or Asian British</li>
+            
+            <li>Mixed or multiple ethnic groups</li>
+            <li>Other ethnic groups</li>
+        </ul>
 
         <p>To be eligible to report on your ethnicity pay gap you must meet the minimum criteria for number of employees in each ethnic group (10). This is to protect the identity of individual employees in each group.</p>
 
@@ -28,7 +43,7 @@
 
         <div>
         <h2 class="govuk-heading-m" id="headline-comparison">
-            Headline comparison
+            Minimum comparison
         </h2>
 
         <p>Enter the number of employees who have disclosed their ethnicity in each of the groups below</p>
@@ -66,53 +81,17 @@
           inputmode: "numeric"
         }) }}
 
-
-        <div class="govuk-!-margin-bottom-9">
-                {% from "govuk/components/button/macro.njk" import govukButton %}
-                {{ govukButton({
-                text: "Submit"
-                }) }}
         </div>
 
-<p><b>Message 1: eligible</b></p>
-        <p>You meet the minimum eligibility criteria for ethnicity reporting</p>
+        <div>
 
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-        
-        {{ govukButton({
-        text: "Continue to ethnicity reporting"
+                    {{ govukButton({
+          text: "Submit"
         }) }}
 
-        <div>
-          <p class="govuk-!-margin-bottom-9">
-            <a href="/edpg-reporting-questions/pay-gaps-report" class="govuk-back-link">return to dashboard</a>
-          </p>
-        </div>
-        
-        <div>
-          <p><b>Message 2: not eligible</b></p>
-            {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-            
-            {{ govukErrorSummary({
-            titleText: "There are not enough employees in each group to meet the mimimum eligibility criteria",
-            errorList: [
-            {
-            text: "If you believe this is incorrect please review the information entered above"
-            },
-            {
-            text: "Return to dashboard",
-            href: "/edpg-reporting-questions/pay-gaps-report"
-            }
-            ]
-            }) }}
-            <a href="#">View full guidance on ethnicity reporting and the GSS harmonised standard</a> 
-            <br>
-            
+    
 
-        </div>
-
-        </div>
-
-        <div>
-
+    </div>
+  </div>
+</form>
 {% endblock %}

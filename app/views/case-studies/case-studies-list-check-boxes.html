@@ -1,0 +1,361 @@
+{% extends "layouts/menu-bar.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% set pageName="Case studies" %}
+{% set serviceName="Case Studies" %}
+
+{% block content %}
+
+<div class="govuk-grid-row" style="display: flex; align-items: flex-start;">
+
+  <!-- Left Column: Sticky Filters with Multiple Select Checkboxes (1/3 Width) -->
+  <div class="govuk-grid-column-one-third" style="position: sticky; top: 20px; align-self: flex-start;">
+    <h2 class="govuk-heading-m">Filter results</h2>
+    <p class="govuk-body">Filter results relevant to you:</p>
+
+    <!-- Sector Filters (Expandable Details) -->
+    <details class="govuk-details govuk-!-margin-bottom-4">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Sector
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-banking" type="checkbox" value="banking and finance">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-banking">
+              Banking/Finance
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-consultancy" type="checkbox" value="consultancy">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-consultancy">
+              Consultancy
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-education" type="checkbox" value="education">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-education">
+              Education
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-housing" type="checkbox" value="housing">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-housing">
+              Housing
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-not-for-profit" type="checkbox" value="not-for-profit">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-not-for-profit">
+              Not for profit
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-sector" id="sector-public" type="checkbox" value="public">
+            <label class="govuk-label govuk-checkboxes__label" for="sector-public">
+              Public sector
+            </label>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Size Filters (Expandable Details) -->
+    <details class="govuk-details govuk-!-margin-bottom-4">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Number of employees
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-250" type="checkbox" value="<250">
+            <label class="govuk-label govuk-checkboxes__label" for="size-250">
+              Less than 250
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-250-499" type="checkbox" value="250-499">
+            <label class="govuk-label govuk-checkboxes__label" for="size-250-499">
+              250 - 499
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-500-999" type="checkbox" value="500-999">
+            <label class="govuk-label govuk-checkboxes__label" for="size-500-999">
+              500 - 999
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-1000-4999" type="checkbox" value="1000-4999">
+            <label class="govuk-label govuk-checkboxes__label" for="size-1000-4999">
+              1,000 - 4,999
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-5000-19999" type="checkbox" value="5000-19999">
+            <label class="govuk-label govuk-checkboxes__label" for="size-5000-19999">
+              5,000 to 19,999
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-size" id="size-20000" type="checkbox" value=">20000">
+            <label class="govuk-label govuk-checkboxes__label" for="size-20000">
+              More than 20,000
+            </label>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Right Column: Case Studies Content (2/3 Width) -->
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Case Studies
+    </h1>
+
+    <p class="govuk-body">Case studies are real world examples of how employers have implemented actions to address their gender pay gap.</p>
+
+    <p class="govuk-body">These case studies are shared by employers to demonstrate best practice, show what employers can achieve and help other employers to understand what actions their peers are taking.</p>
+
+    <div class="govuk-inset-text">
+      You can also see a full list of suggested actions for employers to address their gender pay gap.
+    </div>
+
+    <p class="govuk-body">Case studies are grouped under the same categories as the list of suggested actions:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="#menopause">Menopause</a></li>
+      <li><a class="govuk-link" href="#recruiting_staff">Recruiting Staff</a></li>
+      <li><a class="govuk-link" href="#develop_and_promote">Developing and promoting staff</a></li>
+      <li><a class="govuk-link" href="#building_diversity">Building diversity in your organisation</a></li>
+      <li><a class="govuk-link" href="#increasing_transparency">Increasing transparency</a></li>
+    </ul>
+
+    <!-- Category 1: Menopause -->
+    <section class="case-study-section">
+      <h2 class="govuk-heading-l govuk-!-margin-top-9" id="menopause">
+        Menopause
+      </h2>
+
+      <div data-filter data-filter-sector="public" data-filter-size=">20000">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-tvp">TVP: Reasonable adjustments for menopause</a>
+        </p>
+          <p class="govuk-body-m">
+            Managing workplace dignity and organisational understanding for a female Thames Valley Police (TVP) Crime Scene
+            Investigator (CSI) who required Reasonable Adjustments.
+          </p>
+        <p class="govuk-body-s">Action: <strong>Offer workplace adjustments for employees experiencing menopause</strong></p>
+        <p class="govuk-body-s">Employees: <strong>More than 20,000</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Public Sector</strong></p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="consultancy" data-filter-size=">20000">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">Bain: Taking action to help with menopause</a>
+        </p>
+        <p class="govuk-body-m">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of
+          background information about the case.
+        </p>
+        <p class="govuk-body-s">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body-s">Employees: <strong>More than 20,000</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Consultancy</strong></p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="education" data-filter-size="5000-19999">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">Middlesex University: The first example regarding menopause</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>5,000-19,999</strong></p>
+        <p class="govuk-body">Sector: <strong>Education</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="education" data-filter-size="5000-19999">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">Middlesex University: The second example regarding menopause</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>5,000-19,999</strong></p>
+        <p class="govuk-body">Sector: <strong>Education</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="public" data-filter-size="500-999">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">Cambridge Council: Action taken by us regarding menopause</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>500-999</strong></p>
+        <p class="govuk-body">Sector: <strong>Local authority</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="housing" data-filter-size="1000-4999">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">L&Q: This is our experience regarding menopause</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>1,000-4,999</strong></p>
+        <p class="govuk-body">Sector: <strong>Housing</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="education" data-filter-size="1000-4999">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">Greenwich University: Reviewing our policies and procedures</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>1,000-4,999</strong></p>
+        <p class="govuk-body">Sector: <strong>Education</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="not-for-profit" data-filter-size="250-499">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">Opportunity Green: Reviewing existing policies to ensure they reflect the needs of those going through menopause</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>250-499</strong></p>
+        <p class="govuk-body">Sector: <strong>Charity</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+    </section>
+
+    <!-- Category 2: Recruiting Staff -->
+    <section class="case-study-section">
+      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="recruiting_staff">
+        Recruiting staff
+      </h2>
+
+      <div data-filter data-filter-sector="banking and finance" data-filter-size=">20000">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="#">Barclays: Parental policy</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>More than 20,000</strong></p>
+        <p class="govuk-body">Sector: <strong>Banking/Finance</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+
+      <div data-filter data-filter-sector="consultancy" data-filter-size=">20000">
+        <p class="govuk-body govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-tvp">Bain: Our flexible leave policies</a>
+        </p>
+        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+        <p class="govuk-body">Employees: <strong>More than 20,000</strong></p>
+        <p class="govuk-body">Sector: <strong>Consultancy</strong></p>
+        <p class="govuk-body">
+          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
+      </div>
+    </section>
+
+    <!-- Category 3: Developing and promoting staff -->
+    <section class="case-study-section">
+      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="develop_and_promote">
+        Developing and promoting staff
+      </h2>
+    </section>
+
+    <!-- Category 4: Building diversity into your organisation -->
+    <section class="case-study-section">
+      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="building_diversity">
+        Building diversity into your organisation
+      </h2>
+    </section>
+
+    <!-- Category 5: Increasing transparency -->
+    <section class="case-study-section">
+      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="increasing_transparency">
+        Increasing transparency
+      </h2>
+    </section>
+
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const sectorCheckboxes = document.querySelectorAll('.filter-checkbox-sector');
+    const sizeCheckboxes = document.querySelectorAll('.filter-checkbox-size');
+    const sections = document.querySelectorAll('.case-study-section');
+
+    function getSelectedValues(checkboxes) {
+      return Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+    }
+
+    function applyFilters() {
+      const selectedSectors = getSelectedValues(sectorCheckboxes);
+      const selectedSizes = getSelectedValues(sizeCheckboxes);
+      const isAnyFilterActive = selectedSectors.length > 0 || selectedSizes.length > 0;
+
+      sections.forEach(section => {
+        const filterElements = section.querySelectorAll('[data-filter]');
+        let visibleItemsInSection = 0;
+
+        filterElements.forEach(element => {
+          const elementSector = element.getAttribute('data-filter-sector');
+          const elementSize = element.getAttribute('data-filter-size');
+
+          const sectorMatches = selectedSectors.length === 0 || selectedSectors.includes(elementSector);
+          const sizeMatches = selectedSizes.length === 0 || selectedSizes.includes(elementSize);
+
+          if (sectorMatches && sizeMatches) {
+            element.style.display = '';
+            visibleItemsInSection++;
+          } else {
+            element.style.display = 'none';
+          }
+        });
+
+        // Hide section heading if filters are active and no items match under it
+        if (isAnyFilterActive && visibleItemsInSection === 0) {
+          section.style.display = 'none';
+        } else {
+          section.style.display = '';
+        }
+      });
+    }
+
+    sectorCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+    sizeCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
+  })();
+</script>
+
+{% endblock %}
