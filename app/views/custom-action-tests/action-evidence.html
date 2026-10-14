@@ -51,6 +51,50 @@
         else ("actions-list?menopause=yes" if thisPageAction.category == 'menopause' else "actions-list?menopause=no" ) %}
       <form action="{{formAction}}" method="post">
 
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+          {{ govukCheckboxes({
+            name: "types",
+            fieldset: {
+              legend: {
+                text: "What kind of evidence are you using to support your custom action?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "litReview",
+                text: "a literature review"
+              },
+              {
+                value: "peerReviewed",
+                text: "peer-reviewed research"
+              },
+              {
+                value: "evaluation",
+                text: "an evaluation report"
+              },
+              {
+                value: "internal",
+                text: "internal evidence which your employer has published"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "other",
+                text: "Other",
+                behaviour: "exclusive"
+              }
+            ]
+        }) }}
+
+        <hr class="govuk-section-break govuk-section-break--l">
+
         {{ govukInput({
           label: {
             text: "Add a link to evidence that supports this action",
@@ -63,6 +107,8 @@
           id: "evidence-link",
           name: "evidenceLink"
         }) }}
+
+        <hr class="govuk-section-break govuk-section-break--m">
 
         {{ govukInput({
           label: {
@@ -77,9 +123,13 @@
           name: "evidenceCaption"
         }) }}
 
+        <hr class="govuk-section-break govuk-section-break--xl">
+
         <p>
         <a href="https://www.gov.uk/government/collections/action-plans-list-of-actions">Add another resource</a> 
         </p>
+
+        <hr class="govuk-section-break govuk-section-break--xl">
 
         {{ govukButton({
           text: "Save and continue"

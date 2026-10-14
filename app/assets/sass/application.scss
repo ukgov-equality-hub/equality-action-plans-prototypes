@@ -324,3 +324,69 @@
   .women { width: 15%; }
   .men { width: 85%; }
 }
+
+/* Styles for headline figure boxes - trialling on action summary text pages */
+
+.headline-figures-boxes-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px 10px -10px;
+}
+.headline-figures-box {
+    display: block;
+    margin: 10px;
+    padding: 15px;
+
+    background-color: #ededed;
+    font-family: "GDS Transport", Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: #0b0c0c;
+    line-height: 1.25;
+
+    text-align: left !important;
+
+    width: 100%;
+}
+@media (min-width: 465px) {
+    .headline-figures-box {
+        width: calc(50% - 20px);
+    }
+}
+@media (min-width: 720px) {
+    .headline-figures-box {
+        width: calc(33.33% - 20px);
+    }
+}
+@media (min-width: 769px) {
+    .headline-figures-box {
+        width: calc(50% - 20px);
+    }
+}
+@media (min-width: 1020px) {
+    .headline-figures-box {
+        width: calc(33.33% - 20px);
+    }
+}
+
+.headline-figures-box--title {
+    font-weight: bold;
+}
+.headline-figures-box--value-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin: 7px 0;
+}
+.headline-figures-box--value {
+    font-weight: bold;
+    font-size: 36px;
+    margin-right: 7px;
+}
+.headline-figures-box--value-suffix {
+    font-weight: bold;
+}
+.headline-figures-box--follow-on-text {
+    color: #505A5F;
+    font-size: 16px;
+}

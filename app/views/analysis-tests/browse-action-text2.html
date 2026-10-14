@@ -6,13 +6,471 @@
 {% block content %}
 
   <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter">
+        <h2 class="govuk-heading-m">
+          Filters
+        </h2>
+        
+        <p class="govuk-body">
+          <button type="submit" id="gpg-search-page--clear-all-filters" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2" data-module="govuk-button" style="width: fit-content;" data-govuk-button-init="">
+            Clear all filters
+          </button>
+        </p>
+        
+        <details class="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    <span class="govuk-visually-hidden">
+                        Number of
+                    </span>
+                    Employees
+                    <span id="gpg-search-page--filters--number-of-employees--selected"></span>
+                </span>
+            </summary>
+            <div class="govuk-details__text govuk-!-padding-top-0 govuk-!-padding-bottom-0">
+                <fieldset class="govuk-fieldset gpg-search-page--filter--fieldset">
+                  <legend class="govuk-fieldset__legend govuk-visually-hidden">Employer size</legend>
+                  <div class="govuk-form-group ">
+                    <div class="govuk-checkboxes ">
+                    <div class="govuk-checkboxes__item gpg-search-page--filter-employerSize--not-provided">
+                      <input class="govuk-checkboxes__input" id="EmployerSize_NotProvided" name="EmployerSize" type="checkbox" value="NotProvided">
+                      <label class="govuk-label govuk-checkboxes__label " for="EmployerSize_NotProvided">Not Provided</label>
+                    </div>
+                    <div class="govuk-checkboxes__item ">
+                      <input class="govuk-checkboxes__input" id="EmployerSize_Employees0To249" name="EmployerSize" type="checkbox" value="Employees0To249">
+                      <label class="govuk-label govuk-checkboxes__label " for="EmployerSize_Employees0To249">Less than 250</label>
+                    </div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="EmployerSize_Employees250To499" name="EmployerSize" type="checkbox" value="Employees250To499">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="EmployerSize_Employees250To499">
+
+250 to 499    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="EmployerSize_Employees500To999" name="EmployerSize" type="checkbox" value="Employees500To999">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="EmployerSize_Employees500To999">
+
+500 to 999    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="EmployerSize_Employees1000To4999" name="EmployerSize" type="checkbox" value="Employees1000To4999">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="EmployerSize_Employees1000To4999">
+
+1000 to 4999    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="EmployerSize_Employees5000To19999" name="EmployerSize" type="checkbox" value="Employees5000To19999">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="EmployerSize_Employees5000To19999">
+
+5000 to 19,999    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="EmployerSize_Employees20000OrMore" name="EmployerSize" type="checkbox" value="Employees20000OrMore">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="EmployerSize_Employees20000OrMore">
+
+20,000 or more    </label>
+</div>
+                </div>
+            </div>
+         
+</fieldset><input name="EmployerSize" type="hidden" value="hidden_checkbox_dummy_value">
+            </div>
+        </details>        
+        
+        <details class="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    Sector
+                    <span id="gpg-search-page--filters--sector--selected"></span>
+                </span>
+            </summary>
+            <div class="govuk-details__text govuk-!-padding-top-0 govuk-!-padding-bottom-0">
+                
+
+
+<fieldset class="govuk-fieldset gpg-search-page--filter--fieldset">
+
+<legend class="govuk-fieldset__legend govuk-visually-hidden">
+
+Sector</legend>
+    
+            <div class="govuk-form-group ">
+                <div class="govuk-checkboxes ">
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_I" name="Sector" type="checkbox" value="I">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_I">
+
+Accommodation and food service activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_U" name="Sector" type="checkbox" value="U">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_U">
+
+Activities of extraterritorial organisations and bodies
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_T" name="Sector" type="checkbox" value="T">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_T">
+
+Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_N" name="Sector" type="checkbox" value="N">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_N">
+
+Administrative and support service activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_A" name="Sector" type="checkbox" value="A">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_A">
+
+Agriculture Forestry and Fishing
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_R" name="Sector" type="checkbox" value="R">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_R">
+
+Arts entertainment and recreation
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_F" name="Sector" type="checkbox" value="F">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_F">
+
+Construction
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_P" name="Sector" type="checkbox" value="P">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_P">
+
+Education
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_D" name="Sector" type="checkbox" value="D">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_D">
+
+Electricity gas steam and air conditioning supply
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_K" name="Sector" type="checkbox" value="K">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_K">
+
+Financial and insurance activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_Q" name="Sector" type="checkbox" value="Q">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_Q">
+
+Human health and social work activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_J" name="Sector" type="checkbox" value="J">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_J">
+
+Information and communication
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_C" name="Sector" type="checkbox" value="C">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_C">
+
+Manufacturing
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_B" name="Sector" type="checkbox" value="B">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_B">
+
+Mining and Quarrying
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_S" name="Sector" type="checkbox" value="S">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_S">
+
+Other service activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_M" name="Sector" type="checkbox" value="M">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_M">
+
+Professional scientific and technical activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_O" name="Sector" type="checkbox" value="O">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_O">
+
+Public administration and defence; compulsory social security
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_X" name="Sector" type="checkbox" value="X">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_X">
+
+Public sector    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_L" name="Sector" type="checkbox" value="L">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_L">
+
+Real estate activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_H" name="Sector" type="checkbox" value="H">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_H">
+
+Transportation and storage
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_E" name="Sector" type="checkbox" value="E">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_E">
+
+Water supply sewerage waste management and remediation activities
+    </label>
+</div>
+
+
+
+
+<div class="govuk-checkboxes__item ">
+    <input class="govuk-checkboxes__input" id="Sector_G" name="Sector" type="checkbox" value="G">
+
+
+    <label class="govuk-label govuk-checkboxes__label " for="Sector_G">
+
+Wholesale and retail trade; repair of motor vehicles and motorcycles
+    </label>
+</div>
+                </div>
+            </div>
+         
+</fieldset><input name="Sector" type="hidden" value="hidden_checkbox_dummy_value">
+            </div>
+        </details>        
+        
+    </div>
+
     <div class="govuk-grid-column-three-quarters">
 
       <h1 class="govuk-heading-l">
         Supporting texts: Encourage applications from a range of candidates
       </h1>
+      <p>Actively seeking applications from under-represented groups can ensure a broader range of applicants for all roles.</p>
       <p>Guidance: <a href="https://www.gov.uk/government/publications/encourage-applications-from-a-range-of-candidates/encourage-applications-from-a-range-of-candidates">Encourage applications from a range of candidates</a></p>
 
+      <div class="headline-figures-boxes-container">
+        <a href="#" class="govuk-button govuk-button--secondary headline-figures-box">
+          <div class="headline-figures-box--title">
+            Planned
+          </div>
+          <div class="headline-figures-box--value-row">
+              <div class="headline-figures-box--value">
+                  27%
+              </div>
+          </div>
+          <div class="headline-figures-box--follow-on-text">
+              of employers who have published an action plan
+          </div>
+        </a>
+        <a href="/employers/5816/reporting-year-2025/gender-pay-gap-report#pay-quarters" class="govuk-button govuk-button--secondary headline-figures-box">
+          <div class="headline-figures-box--title">
+              Embedded
+          </div>
+          <div class="headline-figures-box--value-row" style="margin: 7px 0 2px 0;">
+              <div class="headline-figures-box--value">
+                  30%
+              </div>
+          </div>
+          <div class="headline-figures-box--follow-on-text">
+              of employers who have published an action plan
+          </div>
+        </a>
+        <div class="govuk-button govuk-button--secondary headline-figures-box">
+          <div class="headline-figures-box--title">
+              Total
+          </div>
+          <div class="headline-figures-box--value-row" style="margin: 7px 0 2px 0;">
+              <div class="headline-figures-box--value">
+                  21
+              </div>
+          </div>
+          <div class="headline-figures-box--follow-on-text">
+              employers included this action in their plan
+          </div>
+        </div>
+      </div>
+      
       <hr class="govuk-section-break govuk-section-break--xl">
 
       <p class="govuk-body govuk-!-margin-bottom-2">
