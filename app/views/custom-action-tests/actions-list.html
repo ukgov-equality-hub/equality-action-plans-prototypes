@@ -74,8 +74,36 @@
 
       <h2 class="govuk-heading-m govuk-!-margin-top-9">Custom actions</h2>
       <p>Custom actions are those which have been designed and developed by your organisation.</p>
-      <p><a href="#">Read more about custom actions</a> and when you should consider creating them.</p>
-      <p><a class="govuk-link" href="create-action-intro">Create a custom action</a></p>
+      <div class="govuk-inset-text">
+        <a href="#">Read more about custom actions (opens in new tab)</a> and when you should consider creating them.</p>
+      </div>
+      <ul class="govuk-task-list">
+        <li class="govuk-task-list__item">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="create-action-intro">
+              My new custiom action I just created
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            <strong class="govuk-tag govuk-tag--green">New or in progress</strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="create-action-intro">
+              Create a custom action
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            <!--strong class="govuk-tag govuk-tag--grey">
+              None added
+            </strong-->
+          </div>
+        </li>
+      </ul>
+      <!--p><a class="govuk-link" href="create-action-intro">Create a custom action</a></p-->
+      
+      <hr class="govuk-section-break govuk-section-break--l">
       
       <p class="govuk-!-margin-top-8">
         {{ govukButton({
