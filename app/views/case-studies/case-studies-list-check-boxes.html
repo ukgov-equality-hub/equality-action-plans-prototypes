@@ -7,12 +7,37 @@
 
 <div class="govuk-grid-row" style="display: flex; align-items: flex-start;">
 
-  <!-- Left Column: Sticky Filters with Multiple Select Checkboxes (1/3 Width) -->
+  <!-- Left Column: Sticky Filters (1/3 Width) -->
   <div class="govuk-grid-column-one-third" style="position: sticky; top: 20px; align-self: flex-start;">
     <h2 class="govuk-heading-m">Filter results</h2>
     <p class="govuk-body">Filter results relevant to you:</p>
 
-    <!-- Sector Filters (Expandable Details) -->
+    <!-- Category Filters -->
+    <details class="govuk-details govuk-!-margin-bottom-4">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Category
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-category" id="category-gender-pay-gap" type="checkbox" value="gender_pay_gap">
+            <label class="govuk-label govuk-checkboxes__label" for="category-gender-pay-gap">
+              Gender Pay Gap
+            </label>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input filter-checkbox-category" id="category-menopause" type="checkbox" value="menopause">
+            <label class="govuk-label govuk-checkboxes__label" for="category-menopause">
+              Menopause
+            </label>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Sector Filters -->
     <details class="govuk-details govuk-!-margin-bottom-4">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
@@ -61,7 +86,7 @@
       </div>
     </details>
 
-    <!-- Size Filters (Expandable Details) -->
+    <!-- Size Filters -->
     <details class="govuk-details govuk-!-margin-bottom-4">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
@@ -126,13 +151,10 @@
       You can also see a full list of suggested actions for employers to address their gender pay gap.
     </div>
 
-    <p class="govuk-body">Case studies are grouped under the same categories as the list of suggested actions:</p>
+    <p class="govuk-body">Case studies are grouped under actions designed to address employers' Gender Pay Gap or to address Menopause</p>
     <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="#gender_pay_gap">Gender pay gap</a></li>
       <li><a class="govuk-link" href="#menopause">Menopause</a></li>
-      <li><a class="govuk-link" href="#recruiting_staff">Recruiting Staff</a></li>
-      <li><a class="govuk-link" href="#develop_and_promote">Developing and promoting staff</a></li>
-      <li><a class="govuk-link" href="#building_diversity">Building diversity in your organisation</a></li>
-      <li><a class="govuk-link" href="#increasing_transparency">Increasing transparency</a></li>
     </ul>
 
     <!-- Category 1: Menopause -->
@@ -141,167 +163,137 @@
         Menopause
       </h2>
 
-      <div data-filter data-filter-sector="public" data-filter-size=">20000">
+      <div data-filter data-filter-category="menopause" data-filter-size=">20000" data-filter-sector="public">
         <p class="govuk-body-l govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="/case-studies/case-study-tvp">TVP: Reasonable adjustments for menopause</a>
+          <a class="govuk-link" href="/case-studies/case-study-tvp">TVP: Maintaining workplace dignity for a Crime Scene Investigator (CSI) who needed reasonable adjustments for menopause symptoms.</a>
         </p>
-          <p class="govuk-body-m">
-            Managing workplace dignity and organisational understanding for a female Thames Valley Police (TVP) Crime Scene
-            Investigator (CSI) who required Reasonable Adjustments.
-          </p>
-        <p class="govuk-body-s">Action: <strong>Offer workplace adjustments for employees experiencing menopause</strong></p>
+        <p class="govuk-body-m">
+          The CSI accessed tailored reasonable adjustments to manage menopause symptoms. This enabled her to remain in the job she loved and continue performing effectively.
+        </p>
+
         <p class="govuk-body-s">Employees: <strong>More than 20,000</strong></p>
         <p class="govuk-body-s">Sector: <strong>Public Sector</strong></p>
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
-      <div data-filter data-filter-sector="consultancy" data-filter-size=">20000">
+      <div data-filter data-filter-category="menopause" data-filter-size=">20000" data-filter-sector="consultancy">
         <p class="govuk-body-l govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">Bain: Taking action to help with menopause</a>
+          <a class="govuk-link" href="/case-studies/case-study-bain-menopause">Bain: Taking action to help with menopause</a>
         </p>
         <p class="govuk-body-m">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of
-          background information about the case.
+          Bain & Company UK introduced a standalone menopause policy and comprehensive practical support, creating an environment where employees can seek help with confidence.
         </p>
-        <p class="govuk-body-s">Action: <strong>One line title for the action(s) that organisation took</strong></p>
+
         <p class="govuk-body-s">Employees: <strong>More than 20,000</strong></p>
         <p class="govuk-body-s">Sector: <strong>Consultancy</strong></p>
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
-      <div data-filter data-filter-sector="education" data-filter-size="5000-19999">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">Middlesex University: The first example regarding menopause</a>
+      <div data-filter data-filter-category="menopause" data-filter-size="5000-19999" data-filter-sector="education">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-middlesex">Middlesex University: Raising awareness of menopause symptoms and reducing workplace taboo</a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>5,000-19,999</strong></p>
-        <p class="govuk-body">Sector: <strong>Education</strong></p>
-        <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        <p class="govuk-body-m">
+          Middlesex University ran a poster campaign and peer support sessions, resulting in more people of all genders being open to workplace conversations about menopause.
         </p>
+
+        <p class="govuk-body-s">Employees: <strong>5,000-19,999</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Education</strong></p>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
-      <div data-filter data-filter-sector="education" data-filter-size="5000-19999">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">Middlesex University: The second example regarding menopause</a>
+      <div data-filter data-filter-category="menopause" data-filter-size="500-999" data-filter-sector="public">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-cambridgeshire-council">Cambridgeshire County Council: How Cambridgeshire became a ‘Menopause Friendly’ employer </a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>5,000-19,999</strong></p>
-        <p class="govuk-body">Sector: <strong>Education</strong></p>
-        <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        <p class="govuk-body-m">
+          Cambridgeshire County Council developed and enhanced their support for colleagues experiencing menopause, culminating
+          in recognition as a Menopause Friendly employer.
         </p>
+
+        <p class="govuk-body-s">Employees: <strong>500-999</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Local authority</strong></p>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
-      <div data-filter data-filter-sector="public" data-filter-size="500-999">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">Cambridge Council: Action taken by us regarding menopause</a>
+      <div data-filter data-filter-category="menopause" data-filter-size="1000-4999" data-filter-sector="housing">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-LQ">L&Q: Using training, specialist care and ‘champions’ to improve menopause support</a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>500-999</strong></p>
-        <p class="govuk-body">Sector: <strong>Local authority</strong></p>
-        <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        <p class="govuk-body-m">
+          L&Q has created meaningful cultural change around menopause awareness and support. They have done this through safe spaces for talking, specialist GP advice, and menopause ‘champions’.
         </p>
+
+        <p class="govuk-body-s">Employees: <strong>1,000-4,999</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Housing</strong></p>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
-      <div data-filter data-filter-sector="housing" data-filter-size="1000-4999">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">L&Q: This is our experience regarding menopause</a>
+      <div data-filter data-filter-category="menopause" data-filter-size="1000-4999" data-filter-sector="education">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-greenwich">University of Greenwich: How University of Greenwich embedded menopause awareness and support for staff </a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>1,000-4,999</strong></p>
-        <p class="govuk-body">Sector: <strong>Housing</strong></p>
         <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+          The University of Greenwich (UoG) created a culture where conversations about menopause were normalised by providing
+          menopause awareness and support for staff.
         </p>
+
+        <p class="govuk-body-s">Employees: <strong>1,000-4,999</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Education</strong></p>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
-      <div data-filter data-filter-sector="education" data-filter-size="1000-4999">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">Greenwich University: Reviewing our policies and procedures</a>
+      <div data-filter data-filter-category="menopause" data-filter-size="250-499" data-filter-sector="not-for-profit">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-OG">Opportunity Green: Reviewing existing policies to ensure they reflect the needs of those going through menopause</a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>1,000-4,999</strong></p>
-        <p class="govuk-body">Sector: <strong>Education</strong></p>
-        <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        <p class="govuk-body-m">
+          Opportunity Green helped to create a supportive working environment for employees experiencing menopausal symptoms, problematic periods or menstrual ill health.
         </p>
-        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
-      </div>
+        <p class="govuk-body-s">Employees: <strong>250-499</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Charity</strong></p>
 
-      <div data-filter data-filter-sector="not-for-profit" data-filter-size="250-499">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">Opportunity Green: Reviewing existing policies to ensure they reflect the needs of those going through menopause</a>
-        </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>250-499</strong></p>
-        <p class="govuk-body">Sector: <strong>Charity</strong></p>
-        <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
-        </p>
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
     </section>
 
-    <!-- Category 2: Recruiting Staff -->
+    <!-- Category 2: Gender Pay Gap -->
     <section class="case-study-section">
-      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="recruiting_staff">
-        Recruiting staff
+      <h2 class="govuk-heading-l govuk-!-margin-top-9" id="gender_pay_gap">
+        Gender Pay Gap
       </h2>
 
-      <div data-filter data-filter-sector="banking and finance" data-filter-size=">20000">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="#">Barclays: Parental policy</a>
+      <div data-filter data-filter-category="gender_pay_gap" data-filter-size=">20000" data-filter-sector="banking and finance">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-barclays-paternity">Barclays: Parental policy</a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>More than 20,000</strong></p>
-        <p class="govuk-body">Sector: <strong>Banking/Finance</strong></p>
-        <p class="govuk-body">
+        <p class="govuk-body-m">
           This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
         </p>
+        <p class="govuk-body-s">Employees: <strong>More than 20,000</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Banking/Finance</strong></p>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
 
-      <div data-filter data-filter-sector="consultancy" data-filter-size=">20000">
-        <p class="govuk-body govuk-!-margin-bottom-2">
-          <a class="govuk-link" href="/case-studies/case-study-tvp">Bain: Our flexible leave policies</a>
+      <div data-filter data-filter-category="gender_pay_gap" data-filter-size=">20000" data-filter-sector="consultancy">
+        <p class="govuk-body-l govuk-!-margin-bottom-2">
+          <a class="govuk-link" href="/case-studies/case-study-bain-flexible-leave">Bain: How Bain enhanced its family leave policies to support parents and carers</a>
         </p>
-        <p class="govuk-body">Action: <strong>One line title for the action(s) that organisation took</strong></p>
-        <p class="govuk-body">Employees: <strong>More than 20,000</strong></p>
-        <p class="govuk-body">Sector: <strong>Consultancy</strong></p>
-        <p class="govuk-body">
-          This is a longer paragraph that explains in one or two sentences what actions the employer took as well as a bit of background information about the case.
+        <p class="govuk-body-m">
+          Bain & Company UK made support equal for all types of parents and carers, helping them navigate the transition before, during and after leave.
         </p>
+        <p class="govuk-body-s">Employees: <strong>More than 20,000</strong></p>
+        <p class="govuk-body-s">Sector: <strong>Consultancy</strong></p>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-0">
       </div>
-    </section>
-
-    <!-- Category 3: Developing and promoting staff -->
-    <section class="case-study-section">
-      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="develop_and_promote">
-        Developing and promoting staff
-      </h2>
-    </section>
-
-    <!-- Category 4: Building diversity into your organisation -->
-    <section class="case-study-section">
-      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="building_diversity">
-        Building diversity into your organisation
-      </h2>
-    </section>
-
-    <!-- Category 5: Increasing transparency -->
-    <section class="case-study-section">
-      <h2 class="govuk-heading-m govuk-!-margin-top-9" id="increasing_transparency">
-        Increasing transparency
-      </h2>
     </section>
 
   </div>
@@ -310,6 +302,7 @@
 
 <script>
   (function() {
+    const categoryCheckboxes = document.querySelectorAll('.filter-checkbox-category');
     const sectorCheckboxes = document.querySelectorAll('.filter-checkbox-sector');
     const sizeCheckboxes = document.querySelectorAll('.filter-checkbox-size');
     const sections = document.querySelectorAll('.case-study-section');
@@ -321,22 +314,26 @@
     }
 
     function applyFilters() {
+      const selectedCategories = getSelectedValues(categoryCheckboxes);
       const selectedSectors = getSelectedValues(sectorCheckboxes);
       const selectedSizes = getSelectedValues(sizeCheckboxes);
-      const isAnyFilterActive = selectedSectors.length > 0 || selectedSizes.length > 0;
+
+      const isAnyFilterActive = selectedCategories.length > 0 || selectedSectors.length > 0 || selectedSizes.length > 0;
 
       sections.forEach(section => {
         const filterElements = section.querySelectorAll('[data-filter]');
         let visibleItemsInSection = 0;
 
         filterElements.forEach(element => {
+          const elementCategory = element.getAttribute('data-filter-category');
           const elementSector = element.getAttribute('data-filter-sector');
           const elementSize = element.getAttribute('data-filter-size');
 
+          const categoryMatches = selectedCategories.length === 0 || selectedCategories.includes(elementCategory);
           const sectorMatches = selectedSectors.length === 0 || selectedSectors.includes(elementSector);
           const sizeMatches = selectedSizes.length === 0 || selectedSizes.includes(elementSize);
 
-          if (sectorMatches && sizeMatches) {
+          if (categoryMatches && sectorMatches && sizeMatches) {
             element.style.display = '';
             visibleItemsInSection++;
           } else {
@@ -353,6 +350,7 @@
       });
     }
 
+    categoryCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
     sectorCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
     sizeCheckboxes.forEach(cb => cb.addEventListener('change', applyFilters));
   })();
